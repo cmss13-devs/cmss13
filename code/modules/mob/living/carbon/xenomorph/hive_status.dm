@@ -73,8 +73,6 @@
 	var/allow_core_larva_spawning = TRUE //blocked on bug hunt
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
-	/// If hit limit of larva from pylons
-	var/hit_larva_pylon_limit = FALSE
 
 	var/list/hive_inherited_traits
 
@@ -150,8 +148,11 @@
 
 	/// Can this hive see humans on the tacmap
 	var/see_humans_on_tacmap = FALSE
-	/// Does the queen need to be on ovi for xenos to see
-	var/tacmap_requires_queen_ovi = TRUE
+
+	/// Does the queen need to exist for xenos to see
+	var/tacmap_requires_queen = TRUE
+	/// Does the queen need to be on ovi for tacmap to be constantly updated
+	var/tacmap_live_requires_queen_ovi = TRUE
 
 	var/list/available_nicknumbers = list()
 
@@ -854,7 +855,7 @@
 			hive_structures[name_ref] -= S
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
-		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
+		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z) && !should_block_game_interaction(xeno))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(xeno)
@@ -885,14 +886,16 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+		if(!ishuman_strict(current_human))
+			continue
+		if(should_block_game_interaction(current_human))
 			continue
 		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
 		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_mainship_level(turf?.z))
-			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
+			shipside_humans_weighted_count += job.role_weight
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
@@ -1184,22 +1187,6 @@
 			count++
 	return count
 
-/// Checks if we hit larva limit
-/datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
-	var/groundside_humans_weighted_count = 0
-	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
-			continue
-		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
-		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
-			continue
-		var/turf/turf = get_turf(current_human)
-		if(is_ground_level(turf?.z))
-			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
-	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
-	hive_ui.update_pylon_status()
-	return hit_larva_pylon_limit
-
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
 /datum/hive_status/proc/increase_larva_after_burst(is_nested)
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
@@ -1316,7 +1303,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_requires_queen = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
 	name = FACTION_XENOMORPH_FORSAKEN
@@ -1332,7 +1320,8 @@
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
 	see_humans_on_tacmap = TRUE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_requires_queen = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 	evolution_locked = TRUE
 
 	need_round_end_check = TRUE
@@ -1399,7 +1388,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_requires_queen = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1477,7 +1467,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = TRUE // No tacmap
+	tacmap_requires_queen = TRUE // No tacmap
+	tacmap_live_requires_queen_ovi = TRUE // No tacmap!
 
 	need_round_end_check = TRUE
 
@@ -1515,7 +1506,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
@@ -1870,7 +1861,8 @@
 		if(!see_humans_on_tacmap && human_count < (get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			see_humans_on_tacmap = TRUE
-			tacmap_requires_queen_ovi = FALSE
+			tacmap_requires_queen = FALSE
+			tacmap_live_requires_queen_ovi = FALSE
 			SEND_SIGNAL(src, COMSIG_XENO_REVEAL_TACMAP)
 
 		if(last_living_human && human_count == 1)

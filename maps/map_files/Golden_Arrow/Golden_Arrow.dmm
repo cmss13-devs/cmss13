@@ -692,7 +692,7 @@
 /turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "bl" = (
-/obj/effect/vehicle_spawner/apc_cmd/fixed/bug_hunt{
+/obj/effect/vehicle_spawner/apc_movierecon/fixed{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,

@@ -22,10 +22,6 @@
 	name = "Command APC"
 	interior_id = "apc_command"
 
-/datum/map_template/interior/apc_bughunt
-	name = "Recon APC"
-	interior_id = "apc_bughunt"
-
 /datum/map_template/interior/apc_med
 	name = "Med APC"
 	interior_id = "apc_med"
@@ -33,6 +29,18 @@
 /datum/map_template/interior/apc_no_fpw
 	name = "APC - No FPW"
 	interior_id = "apc_no_fpw"
+
+/datum/map_template/interior/apc_movie
+	name = "Movie APC"
+	interior_id = "apc_movie"
+
+/datum/map_template/interior/apc_moviemed
+	name = "Medical Treatment APC"
+	interior_id = "apc_moviemed"
+
+/datum/map_template/interior/apc_movierecon
+	name = "RECON Movie APC"
+	interior_id = "apc_movierecon"
 
 /datum/map_template/interior/tank
 	name = "Tank"

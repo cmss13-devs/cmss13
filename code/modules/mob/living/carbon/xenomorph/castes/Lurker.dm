@@ -91,6 +91,12 @@
 	// State
 	var/next_slash_buffed = FALSE
 
+/datum/behavior_delegate/lurker_base/get_slash_icon_state()
+	return next_slash_buffed ? "crippling_strike" : ..()
+
+/datum/behavior_delegate/lurker_base/get_tail_strike_icon_state(default_state)
+	return next_slash_buffed ? "crippling_strike_tail" : ..()
+
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
 		return original_damage
@@ -205,6 +211,10 @@
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
 
+
+/datum/action/xeno_action/activable/pounce/lurker/register_launch_effects(mob/living/carbon/xenomorph/xeno)
+	if(!HAS_TRAIT(xeno, TRAIT_CLOAKED))
+		return ..()
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
 	var/mob/living/carbon/xenomorph/xeno = owner

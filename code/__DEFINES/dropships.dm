@@ -5,11 +5,24 @@
 #define DROPSHIP_FUEL_EQP "dropship_fuel_equipment"
 #define DROPSHIP_COMPUTER "dropship_computer"
 
+// Dropship equipment mount compatibility flags
+#define DROPSHIP_CATEGORY_WEAPON (1<<0)
+#define DROPSHIP_CATEGORY_CREW_WEAPON (1<<1)
+#define DROPSHIP_CATEGORY_ELECTRONICS (1<<2)
+#define DROPSHIP_CATEGORY_FUEL (1<<3)
+#define DROPSHIP_CATEGORY_COMPUTER (1<<4)
+
 //Automated transport
 #define DROPSHIP_MAX_AUTO_DELAY 60 SECONDS
 #define DROPSHIP_MIN_AUTO_DELAY 10 SECONDS
 #define DROPSHIP_AUTO_RETRY_COOLDOWN 20 SECONDS
 #define DROPSHIP_MEDEVAC_COOLDOWN 20 SECONDS
+
+// Firemission shadow animation
+#define CAS_SHADOW_EXIT_DURATION (1.4 SECONDS)
+#define CAS_SHADOW_FADE_IN 0.1
+#define CAS_SHADOW_CLIMB_START 0.55
+#define CAS_SHADOW_FINAL_SCALE 0.45
 
 //Hatches states
 #define SHUTTLE_DOOR_BROKEN -1

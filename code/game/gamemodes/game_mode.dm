@@ -319,6 +319,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	QDEL_LIST(GLOB.sensor_tower_landmarks)
 	QDEL_LIST(GLOB.small_sensor_tower_landmarks)
 
+/datum/game_mode/proc/on_queen_spawn(hivenumber)
+	return
+
 //////////////////////////
 //Reports player logouts//
 //////////////////////////

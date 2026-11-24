@@ -323,7 +323,10 @@
 		for(var/obj/item/thing in contents)
 			if(thing.flags_inv_hide & HIDEEYES)
 				break
-		msg += "[t_He] has closed [t_his] eyes.\n"
+		if(napping_level)
+			msg += "[t_He] appears to have drifted off to sleep.\n"
+		else
+			msg += "[t_He] has closed [t_his] eyes.\n"
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()

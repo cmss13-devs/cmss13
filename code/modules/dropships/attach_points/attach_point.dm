@@ -82,7 +82,7 @@
 
 /obj/effect/attach_point/weapon/dropship_midway/nose/install_equipment(obj/structure/dropship_equipment/our_equipment)
 	var/obj/structure/dropship_equipment/ds_equipment = our_equipment
-	if(!(base_category in ds_equipment.equip_categories))
+	if(!(category_flag in ds_equipment.compatible_category_flags))
 		CRASH("Tried installing [our_equipment.name] on [src.name] -- wrong catergory")
 
 	ds_equipment.flags_atom |= NO_ZFALL

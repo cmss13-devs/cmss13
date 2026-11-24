@@ -30,14 +30,14 @@
 	pixel_x = -13;
 	pixel_y = 4
 	},
-/obj/structure/machinery/computer/groundside_operations/arc{
-	dir = 4;
-	layer = 2.981;
-	pixel_x = -13;
-	pixel_y = -9
-	},
 /obj/structure/bed/chair/comfy/arc{
 	dir = 8
+	},
+/obj/structure/machinery/computer/overwatch/groundside_operations/arc{
+	dir = 4;
+	layer = 2.981;
+	pixel_y = -9;
+	pixel_x = -13
 	},
 /turf/open/floor,
 /area/interior/vehicle/arc)

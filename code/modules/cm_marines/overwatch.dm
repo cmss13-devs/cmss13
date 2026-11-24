@@ -1776,6 +1776,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	layer = ABOVE_TABLE_LAYER
 	density = TRUE
 
+/obj/structure/machinery/computer/overwatch/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
+
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND
 #undef HIDE_NONE

@@ -157,6 +157,10 @@
 	density = TRUE
 	bound_height = 64
 
+/obj/structure/machinery/prop/almayer/CICmap/toc
+	name = "Tactical Map Display"
+	icon_state = "toc_map"
+
 //Nonpower using props
 
 /obj/structure/prop/almayer

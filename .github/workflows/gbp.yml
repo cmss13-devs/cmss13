@@ -1,7 +1,7 @@
 name: GBP
 on:
   pull_request_target:
-    types: [closed, opened]
+    types: [closed]
 jobs:
   gbp:
     runs-on: ubuntu-24.04
@@ -42,3 +42,4 @@ jobs:
         branch: "gbp-balances"
         directory: ./gbp-balances
         token: ${{ secrets.GITHUB_TOKEN }}
+        comment: False

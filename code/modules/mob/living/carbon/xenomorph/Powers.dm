@@ -116,7 +116,7 @@
 		return
 	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
 	if(!alien_weeds || alien_weeds.secreting)
-		return SECRETE_RESIN_FAIL_NODEBREAK
+		return SECRETE_RESIN_FAIL
 
 	if(alien_weeds.hivenumber != hivenumber)
 		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
@@ -405,7 +405,8 @@
 	q.ckey = src.ckey
 
 /obj/effect/alien/resin/building_node/proc/try_fill(mob/living/carbon/xenomorph/filler, build_cost = TRUE)
-	if(isnull(get_turf(src)))
+	var/turf/nodeturf = get_turf(src)
+	if(isnull(nodeturf))
 		qdel(src)
 		return
 

@@ -540,6 +540,9 @@ XENO_ABILITY_STATS(queen_spit, datum/action/xeno_action/activable/xeno_spit/quee
 	var/damage = /datum/ammo/xeno/acid/spatter::damage
 	return list(
 		XENO_STAT_VALUE("Acid base burn damage", damage, "burn", "."),
+		XENO_STAT_VALUE("Neurotoxin knockdown", /datum/ammo/xeno/toxin/queen::effect_power * GLOBAL_STATUS_MULTIPLIER DECISECONDS_TO_SECONDS, "crowd_control", "s."),
+		XENO_STAT_VALUE("Neurotoxin stimulant drain", /datum/ammo/xeno/toxin/queen::drain_power, null, " units."),
+		XENO_STAT_VALUE("Neurotoxin range", /datum/ammo/xeno/toxin/queen::max_range, null, " tiles."),
 	)
 
 /datum/action/xeno_action/activable/tail_stab

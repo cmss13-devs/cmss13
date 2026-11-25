@@ -111,6 +111,9 @@
 	if(!can_take_strain())
 		return
 
+	var/client/purchasing_client = client
+	var/datum/caste_datum/purchasing_caste = caste
+
 	// Make an assoc list of {name: typepath} from the strains available to the xeno's caste.
 	var/list/strain_list = list()
 	for(var/datum/xeno_strain/strain_type as anything in caste.available_strains)
@@ -125,14 +128,14 @@
 	var/datum/xeno_strain/chosen_strain = strain_list[strain_choice]
 
 	// Check again after the user picks one, in case anything changed.
-	if(!can_take_strain())
+	if(QDELETED(src) || client != purchasing_client || caste != purchasing_caste || !can_take_strain())
 		return
 	var/datum/xeno_strain/strain_instance = new chosen_strain()
 	if(!strain_instance.show_preview(src, purchasing = TRUE))
 		qdel(strain_instance)
 		return
 	// One more time after they confirm.
-	if(!can_take_strain() || !(chosen_strain in caste.available_strains))
+	if(QDELETED(src) || client != purchasing_client || caste != purchasing_caste || !can_take_strain() || !(chosen_strain in caste.available_strains))
 		qdel(strain_instance)
 		return
 
@@ -230,6 +233,64 @@
 
 /datum/tgui_modal/xeno_preview
 	var/list/details
+	/// The xeno this preview was opened for
+	var/mob/living/carbon/xenomorph/preview_owner
+	var/client/preview_client
+	var/datum/caste_datum/preview_caste
+	var/datum/xeno_strain/preview_strain
+	var/invalidated = FALSE
+
+/datum/tgui_modal/xeno_preview/New(mob/living/carbon/xenomorph/user, message, title, list/buttons, timeout, autofocus, ui_state)
+	..()
+	preview_owner = user
+	preview_client = user.client
+	preview_caste = user.caste
+	preview_strain = user.strain
+	RegisterSignal(user, list(COMSIG_MOB_LOGOUT, COMSIG_PARENT_QDELETING), PROC_REF(invalidate))
+
+/datum/tgui_modal/xeno_preview/Destroy()
+	if(preview_owner)
+		UnregisterSignal(preview_owner, list(COMSIG_MOB_LOGOUT, COMSIG_PARENT_QDELETING))
+	preview_owner = null
+	preview_client = null
+	preview_caste = null
+	preview_strain = null
+	return ..()
+
+/datum/tgui_modal/xeno_preview/proc/is_valid(mob/user)
+	return !invalidated && !QDELETED(preview_owner) && user == preview_owner && preview_client && preview_owner.client == preview_client && preview_client.mob == preview_owner && preview_owner.caste == preview_caste && preview_owner.strain == preview_strain
+
+/datum/tgui_modal/xeno_preview/proc/invalidate()
+	SIGNAL_HANDLER
+	invalidated = TRUE
+	choice = null
+	closed = TRUE
+	SStgui.close_uis(src)
+
+/datum/tgui_modal/xeno_preview/ui_status(mob/user, datum/ui_state/state)
+	if(!is_valid(user))
+		return UI_CLOSE
+	return UI_INTERACTIVE
+
+/datum/tgui_modal/xeno_preview/set_choice(choice)
+	if(!is_valid(preview_owner))
+		invalidate()
+		return
+	return ..()
+
+/datum/tgui_modal/xeno_preview/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(!ui || !is_valid(ui.user))
+		invalidate()
+		if(ui)
+			ui.status = UI_CLOSE
+	return ..()
+
+/datum/tgui_modal/xeno_preview/wait()
+	while(!choice && !closed && !QDELETED(src))
+		if(!is_valid(preview_owner))
+			invalidate()
+			return
+		stoplag(0.2 SECONDS)
 
 /datum/tgui_modal/xeno_preview/proc/resource_changes(mob/living/carbon/xenomorph/user, datum/caste_datum/from_caste, datum/xeno_strain/from_strain, datum/caste_datum/to_caste, datum/xeno_strain/to_strain)
 	var/from_pool = from_caste.base_plasma_capacity(from_strain)
@@ -309,11 +370,11 @@
 	return result
 
 /datum/tgui_modal/xeno_preview/proc/prompt(mob/user)
-	if(!user.client)
+	if(!is_valid(user))
 		return null
 	tgui_interact(user)
 	wait()
-	return choice
+	return is_valid(user) ? choice : null
 
 /datum/tgui_modal/xeno_preview/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -327,7 +388,7 @@
 
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)
-	if(!length(caste.available_strains) || !check_state(TRUE))
+	if(!client || !length(caste.available_strains) || !check_state(TRUE))
 		return FALSE
 
 	if(strain && !reset)

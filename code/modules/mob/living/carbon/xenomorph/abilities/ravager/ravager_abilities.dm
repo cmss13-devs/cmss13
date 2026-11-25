@@ -162,11 +162,8 @@ XENO_ABILITY_STATS(activable_clothesline, datum/action/xeno_action/activable/clo
 	var/windup_reduction_at_rage_levels = list(0, 2, 4, 6, 10)
 
 
-/proc/eviscerate_damage_levels()
-	return EVISCERATE_DAMAGE_LEVELS
-
 XENO_ABILITY_STATS(activable_eviscerate, datum/action/xeno_action/activable/eviscerate)
-	var/list/damages = ispath(ability) ? eviscerate_damage_levels() : ability.damage_at_rage_levels
+	var/list/damages = ispath(ability) ? EVISCERATE_DAMAGE_LEVELS : ability.damage_at_rage_levels
 	return list(
 		xeno_stat_row("Brute damage by rage", list(xeno_description_value(min(damages), "brute"), " to ", xeno_description_value(max(damages), "brute"), ".")),
 		xeno_stat_row("Healing per nearby enemy", list(xeno_description_value(XENO_ABILITY_VALUE(ability, lifesteal_per_marine), "health"), ", capped at ", xeno_description_value(XENO_ABILITY_VALUE(ability, max_lifesteal), "health"), ".")),

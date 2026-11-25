@@ -71,7 +71,7 @@ type Ability = {
 
 function AbilityTooltip(props: { readonly ability: Ability }) {
   const { description, stats = [], costs = [] } = props.ability;
-  const rows = [...stats, ...costs];
+  const rows = [...costs, ...stats];
   return (
     <>
       {description && <Box>{description}</Box>}

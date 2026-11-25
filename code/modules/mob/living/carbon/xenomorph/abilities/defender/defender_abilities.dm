@@ -43,15 +43,9 @@ XENO_ABILITY_STATS(headbutt, datum/action/xeno_action/activable/headbutt)
 	)
 
 /datum/action/xeno_action/activable/headbutt/steel_crest
-	ability_stats_type = /datum/xeno_ability_stats/steel_crest_headbutt
-	ability_description = "Deliver a stronger headbutt with extra knockback, even while fortified."
+	ability_description = "Deliver a stronger headbutt, even while fortified. Lowering your crest trades the lunge and damage for extra knockback."
 	base_damage = 37.5
 	usable_while_fortified = TRUE
-
-XENO_ABILITY_STATS(steel_crest_headbutt, datum/action/xeno_action/activable/headbutt/steel_crest)
-	return list(
-		XENO_STAT_BRUTE(base_damage, "Base brute damage with crest raised"),
-	)
 
 /datum/action/xeno_action/onclick/tail_sweep
 	ability_stats_type = /datum/xeno_ability_stats/tail_sweep

@@ -14,8 +14,8 @@ XENO_ABILITY_STATS(burrow, datum/action/xeno_action/activable/burrow)
 	var/duration = /datum/caste_datum/burrower::burrow_duration
 	var/cooldown = /datum/caste_datum/burrower::burrow_cooldown
 	return list(
-		XENO_STAT_VALUE("Underground duration", duration * 0.1, null, "s."),
-		XENO_STAT_VALUE("Burrow cooldown", cooldown * 0.1, null, "s."),
+		XENO_STAT_VALUE("Underground duration", duration DECISECONDS_TO_SECONDS, null, "s."),
+		XENO_STAT_VALUE("Burrow cooldown", cooldown DECISECONDS_TO_SECONDS, null, "s."),
 	)
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)

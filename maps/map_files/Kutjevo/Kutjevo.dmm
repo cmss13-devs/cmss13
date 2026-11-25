@@ -16977,11 +16977,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_southeast)
-"xlt" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/space/basic,
-/area/kutjevo/interior/colony_south)
 "xlD" = (
 /obj/structure/machinery/light,
 /obj/structure/terminal{
@@ -46610,7 +46605,7 @@ bpj
 bpj
 qOP
 ehJ
-xlt
+dcb
 dxF
 dxF
 dxF

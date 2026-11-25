@@ -989,6 +989,12 @@
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+
+		var/text_color = (xeno_player.hive.color ? xeno_player.hive.color : COLOR_PURPLE)
+		var/screen_text = xeno_player.langchat_speech(whisper, list(target_mob), GLOB.all_languages, skip_language_check = TRUE)
+		animate(screen_text, color = text_color, time = 0.3 SECONDS, loop = -1)
+		animate(color = COLOR_WHITE, time = 0.3 SECONDS)
+
 		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
 
 		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
@@ -1026,6 +1032,11 @@
 			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
 			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+
+		var/text_color = (xeno_player.hive.color ? xeno_player.hive.color : COLOR_PURPLE)
+		var/atom/movable/screen/text/screen_text = possible_target.play_screen_text(SPAN_LANGCHAT(SPAN_CENTERBOLD("<u>You hear an alien voice in your head...</u><br>[whisper]")), /atom/movable/screen/text/screen_text/command_order, override_color = text_color)
+		animate(screen_text, color = text_color, time = 0.3 SECONDS, loop = -1)
+		animate(color = COLOR_PINK, time = 0.3 SECONDS)
 	FOR_DVIEW_END
 	if(!length(target_list))
 		return

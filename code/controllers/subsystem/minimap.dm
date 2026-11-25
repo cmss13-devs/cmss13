@@ -979,8 +979,7 @@ SUBSYSTEM_DEF(minimaps)
 	src.target_zlevel = target_zlevel
 	assigned_map = map_ref
 	screen_loc = "[map_ref]:1,1"
-	if(map_transform)
-		transform = map_transform
+	transform = map_transform
 
 /atom/movable/screen/minimap_ceiling_layer/proc/set_enabled(new_enabled)
 	enabled = new_enabled

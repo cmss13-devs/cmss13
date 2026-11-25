@@ -19,8 +19,6 @@
 	var/atom/movable/screen/minimap/map
 	///List of currently interacting mobs
 	var/list/mob/interactees = list()
-	///Button for closing map
-	var/close_button
 	///Map holder
 	var/datum/tacmap_holder/map_holder
 	///ceiling_layer for the map_holder
@@ -58,25 +56,35 @@
 	if(has_update)
 		drawing_tools += /atom/movable/screen/minimap_tool/update
 
+/datum/component/tacmap/Destroy(force, silent)
+	. = ..()
+	map = null
+	QDEL_NULL(map_holder)
+	QDEL_NULL(ceiling_layer)
+	interactees.Cut()
+	interactees = null
+
 /datum/component/tacmap/proc/move_tacmap_up()
 	targetted_zlevel++
-	var/list/_interactees = interactees.Copy()
-	for(var/mob/interactee in _interactees)
-		on_unset_interaction(interactee)
-		close_popout_tacmaps(interactee)
-	map = null
-	for(var/mob/interactee in _interactees)
-		show_tacmap(interactee)
+	reset()
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
+	reset()
+
+/datum/component/tacmap/proc/reset()
+	var/list/had_popout = list()
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
+		if(SStgui.get_open_ui(interactee, src))
+			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
+		if(interactee in had_popout)
+			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
@@ -157,11 +165,13 @@
 	// Set up map_holder for tgui_interact
 	user.client.clear_map(map_holder?.map?.assigned_map)
 	map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
-	if(map_holder.map)
-		ceiling_layer = new(null, map_holder.map_ref, targetted_zlevel)
-		ceiling_layer.set_enabled(ceiling)
+	QDEL_NULL(ceiling_layer)
+	var/matrix/transform = matrix()
+	transform.Translate(-32, 64) // Don't know why we're needing to do this
+	ceiling_layer = new(null, map_holder.map_ref, targetted_zlevel, transform)
+	ceiling_layer.set_enabled(ceiling)
 	if(user.client.using_popout_tacmap)
-		user.client.register_map_obj(map_holder?.map)
+		user.client.register_map_obj(map_holder.map)
 		user.client.register_map_obj(ceiling_layer)
 
 	// Store references for cleanup
@@ -177,14 +187,7 @@
 /// SIGNAL_HANDLER for COMSIG_CLIENT_CEILING_PREF_CHANGED
 /datum/component/tacmap/proc/on_ceiling_change(client/target, ceiling_setting)
 	SIGNAL_HANDLER
-
-	var/list/_interactees = interactees.Copy()
-	for(var/mob/interactee in _interactees)
-		on_unset_interaction(interactee)
-		close_popout_tacmaps(interactee)
-	map = null
-	for(var/mob/interactee in _interactees)
-		show_tacmap(interactee)
+	INVOKE_ASYNC(src, PROC_REF(reset))
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
 	// For embedded tacmap, delegate to parent's UI status
@@ -208,9 +211,15 @@
 		return
 
 	user.client.register_map_obj(map_holder.map)
+	user.client.register_map_obj(ceiling_layer)
+	var/ceiling = user.client.prefs?.show_minimap_ceiling_protection
+	ceiling_layer.set_enabled(ceiling)
+
 	ui = new(user, src, "TacticalMap")
 	ui.open()
 	ui.set_autoupdate(FALSE)
+
+	user.client.using_popout_tacmap = TRUE
 
 /datum/component/tacmap/ui_static_data(mob/user)
 	. = list()
@@ -234,8 +243,6 @@
 		return
 
 	user.client.clear_map(map_holder?.map?.assigned_map)
-	QDEL_NULL(ceiling_layer)
-
 	user.client.using_popout_tacmap = FALSE
 
 GLOBAL_LIST_INIT(tacmap_holders, list())

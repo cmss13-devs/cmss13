@@ -396,25 +396,6 @@
 		if(buckle_offset_y != 0)
 			M.pixel_y = mob_old_y
 			mob_old_y = 0
-	if(allways_undense)
-		ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-	else
-		for(var/obj/structure/bed/chair/vehicle/VS in get_turf(src))
-			if(VS != src)
-				//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
-				if(buckled_mob)
-					if(VS.buckled_mob)
-						REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-						REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-					else
-						ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				else
-					if(VS.buckled_mob)
-						ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-					REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				break
-
-
 
 	handle_rotation()
 

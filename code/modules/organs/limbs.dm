@@ -1505,22 +1505,39 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 				if(name == "head")
 					if(surgery_status & INCISION_BONE_OPENED)
 						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
+						surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
 						if(organ.damage > 0)
-							surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "[organ.name]_hematoma", layer = SURGERY_LAYER +3)
-							surgery_organ_damage_overlay.color = owner?.species.blood_color
-						if(organ.damage >= BONECHIPS_MAX_DAMAGE)
-							surgery_extra_bone_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "[organ.name]_bonechips", layer = SURGERY_LAYER +2)
+							if(organ.damage >= BONECHIPS_MAX_DAMAGE)
+								surgery_extra_bone_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "[organ.name]_bonechips", layer = SURGERY_LAYER +2)
+								surgery_organ_damage_overlay.icon_state = "[organ.name]_hematoma_severe"
+								surgery_organ_damage_overlay.color = owner?.species.incision_color_fresh
+							if(organ.damage <= BONECHIPS_MAX_DAMAGE)
+								surgery_organ_damage_overlay.icon_state = "[organ.name]_hematoma_light"
+								surgery_organ_damage_overlay.color = owner?.species.incision_color_fresh
+						else if(organ && organ.damage <= 0)
+							surgery_extra_bone_overlay = null
+							surgery_organ_damage_overlay = null
+
+					else if(surgery_status & INCISION_BONE_CLOSED)
+						surgery_organ_overlay = null
+						surgery_organ_damage_overlay =  null
+						surgery_extra_bone_overlay = null
 
 				if(name == "chest" || name == "groin")
 					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi')
-					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "damaged_[organ.name]")
+					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi')
 
-					if(organ.organ_status & ORGAN_LITTLE_BRUISED)
-						surgery_organ_damage_overlay.color = "#00000033"
-					else if(organ.organ_status & ORGAN_BRUISED)
-						surgery_organ_damage_overlay.color = "#00000066"
-					else if(organ.organ_status & ORGAN_BROKEN)
-						surgery_organ_damage_overlay.color = "#00000099"
+					if(organ.organ_status || organ.damage > 0)
+						switch(organ.organ_status)
+							if(ORGAN_LITTLE_BRUISED)
+								surgery_organ_damage_overlay.icon_state = "damaged_[organ.name]" //A good hangover would do you well.
+							if(ORGAN_BRUISED)
+								surgery_organ_damage_overlay.icon_state = "bruised_[organ.name]" //Maybe you should lay off the celebratory free shots.
+							if(ORGAN_BROKEN)
+								surgery_organ_damage_overlay.icon_state = "broken_[organ.name]" //ewww it's all black and crusty and gangrenous. Did you drink an entire keg!?
+							if(0)
+								surgery_organ_damage_overlay.icon_state = null
+
 
 					if(name == "chest")
 						if(organ.name == "heart" || organ.name == "liver")

@@ -706,7 +706,6 @@
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
-		/datum/surgery_step/clamp_bleeders_step, //so you can clamp after important gut surgery or larba removal
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/cauterize/abort,
 		/datum/surgery_step/suture_incision/abort,

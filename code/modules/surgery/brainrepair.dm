@@ -79,7 +79,6 @@
 	var/datum/internal_organ/brain/patient_brain = target.internal_organs_by_name["brain"]
 	if(patient_brain)
 		patient_brain.heal_damage(patient_brain.damage)
-		target.update_surgery_overlays()
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
@@ -90,6 +89,7 @@
 	target.sdisabilities &= ~DISABILITY_DEAF
 	target.sdisabilities &= ~DISABILITY_MUTE
 	target.jitteriness = 0
+	target.update_surgery_overlays()
 	target.pain.recalculate_pain()
 
 	log_interact(user, target, "[key_name(user)] finished taking bone chips out of [key_name(target)]'s brain with [tool], finishing [surgery].")

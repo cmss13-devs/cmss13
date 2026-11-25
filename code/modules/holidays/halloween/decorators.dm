@@ -87,7 +87,7 @@
 		var/valid = TRUE
 		for(var/a_cardinal in GLOB.cardinals)
 			var/cardinal_dir = diag & a_cardinal
-			if(!a_cardinal) // We check cardinals contributing to that diagonal
+			if(!cardinal_dir) // We check cardinals contributing to that diagonal
 				continue
 			var/turf/target = get_step(turf, cardinal_dir)
 			if(locate(/obj/structure/machinery/door) in target)

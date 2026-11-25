@@ -1,8 +1,10 @@
 /datum/xeno_strain/vanguard
 	name = PRAETORIAN_VANGUARD
-	description = "You forfeit all of your acid-based abilities and some health for some extra speed and a rechargable shield that can block one attack. Use your Pierce from up to three paces away to stab through talls, while stabbing through two or more will completely recharge your shield. Use your charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. You also have a Cleave ability, amplified by your shield, which you can toggle to either immobilize or fling a target away."
-	flavor_description = "Fearless you are born, fearless you serve, fearless you die. This one will become my Vanguard"
+	description = "We forfeit all of our acid-based abilities and some health for some extra speed and a rechargeable shield that can block one attack. Use our Pierce from up to three paces away to stab through talls, while stabbing through two or more will completely recharge our shield. Use our charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. We also have a Cleave ability, amplified by our shield, which we can toggle to either immobilize or fling a target away."
+	flavor_description = "Fearless it was born, fearless it now serves, and fearless it will die. This one will become my Vanguard."
 	icon_state_prefix = "Vanguard"
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
+	health_mod = -XENO_HEALTH_MOD_MED
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,
@@ -22,10 +24,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_vanguard
 
 /datum/xeno_strain/vanguard/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	prae.health_modifier -= XENO_HEALTH_MOD_MED
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_SHARP
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_vanguard
 	name = "Praetorian Vanguard Behavior Delegate"
@@ -101,10 +101,9 @@
 	// Get list of target mobs
 	var/list/target_mobs = list()
 	var/blocked = FALSE
+	var/reached_tiles = 0
 
 	for(var/turf/path_turf as anything in target_turfs)
-		if(blocked)
-			break
 		//Check for walls etc and stop if we encounter one
 		if(path_turf.density)
 			break
@@ -131,6 +130,12 @@
 
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
+
+		if(blocked)
+			break
+		reached_tiles++
+
+	show_pierce_telegraph(get_turf(pierce_user), target_turfs, reached_tiles)
 
 	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user] slashes its claws through the area in front of it!"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
 	pierce_user.animation_attack_on(targetted_atom, 15)
@@ -194,6 +199,9 @@
 
 	var/list/target_mobs = list()
 	var/list/list_of_targets = orange(1, dash_user)
+	for(var/turf/target_turf in list_of_targets)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/prae_dash(target_turf, 0.6 SECONDS)
+
 	for (var/mob/living/carbon/targets_in_range in list_of_targets)
 		if (!isxeno_human(targets_in_range) || dash_user.can_not_harm(targets_in_range))
 			continue

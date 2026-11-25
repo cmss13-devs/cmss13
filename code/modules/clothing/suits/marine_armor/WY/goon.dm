@@ -12,6 +12,7 @@
 	lamp_icon = "lamp"
 	lamp_light_color = LIGHT_COLOR_TUNGSTEN
 	light_color = LIGHT_COLOR_TUNGSTEN
+	uniform_restricted = list(/obj/item/clothing/under)
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/medic
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant has a red badge, denoting the medical purpose of the wearer. At least in theory."

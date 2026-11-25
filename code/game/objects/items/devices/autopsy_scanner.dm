@@ -70,6 +70,9 @@
 		if(O.trace_chemicals[V] > 0 && !chemtraces.Find(V))
 			chemtraces += V
 
+/obj/item/device/autopsy_scanner/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 /obj/item/device/autopsy_scanner/verb/print_data()
 	set category = "Object"
 	set src in view(usr, 1)

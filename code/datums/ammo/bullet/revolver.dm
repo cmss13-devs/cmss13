@@ -12,6 +12,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	accurate_range = 7
 	handful_type = /obj/item/ammo_magazine/handful/revolver
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/bullet
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
@@ -82,9 +83,9 @@
 	))
 
 /datum/ammo/bullet/revolver/upp
-	name = "heavy revolver bullet"
+	name = "high-powered revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_8
 	damage = 70
 
 
@@ -95,11 +96,12 @@
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/shrapnel
 
 	max_range = 6
 	damage = 40 // + TIER_4 * 3
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_4
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
 	shrapnel_type = /obj/item/shard/shrapnel/upp

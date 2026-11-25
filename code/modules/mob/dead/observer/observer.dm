@@ -1410,7 +1410,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/get_status_tab_items()
 	. = ..()
 	. += ""
-	. += "Game Mode: [GLOB.master_mode]"
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		. += "Game Mode: [GLOB.master_mode]"
 
 	if(!SSticker.HasRoundStarted())
 		var/time_remaining = SSticker.GetTimeLeft()
@@ -1429,17 +1430,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(SSticker.mode?.force_end_at)
 		var/time_left = SSticker.mode.force_end_at - world.time
-		if(time_left >= 0)
-			. += "Hijack Time Left: [DisplayTimeText(time_left, 1)]"
+		if(GLOB.master_mode != GAMEMODE_SURVIVE)
+			if(time_left >= 0)
+				. += "Hijack Time Left: [DisplayTimeText(time_left, 1)]"
+			else
+				. += "Hijack Over"
 		else
-			. += "Hijack Over"
+			if(time_left >= 0)
+				. += "Evacuation Time Left: [DisplayTimeText(time_left, 1)]"
+			else
+				. += "Evacuation Over"
 
 	if(SShijack)
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goal: [eta_status]"
 
-		if(SShijack.sd_unlocked)
+		if(SShijack.sd_unlocked || SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
 	if(client.prefs?.be_special & BE_ALIEN)

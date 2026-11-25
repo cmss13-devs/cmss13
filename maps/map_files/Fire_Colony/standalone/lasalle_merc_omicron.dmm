@@ -567,7 +567,7 @@
 /area/fire_colony/interior/omicron_facility/lobby)
 "kK" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/smooth_dir/northeast,
 /area/fire_colony/interior/omicron_facility/lobby)
 "kN" = (
@@ -802,8 +802,8 @@
 /turf/open/floor/plating/fire_colony/warning_grate/west,
 /area/fire_colony/exterior/clearing/south_west)
 "pK" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/fire_colony/warnplate/northeast,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "pU" = (
@@ -1348,7 +1348,7 @@
 /turf/open/floor/fire_colony/warning_grate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Bd" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -1694,8 +1694,8 @@
 "JS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/fire_colony/warning_grate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "JW" = (
@@ -1761,8 +1761,8 @@
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Lr" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "LE" = (
@@ -1802,12 +1802,12 @@
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "ML" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "MS" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "MY" = (
@@ -2218,7 +2218,7 @@
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Xg" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -2231,8 +2231,8 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
@@ -2249,8 +2249,8 @@
 "XK" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -2282,7 +2282,7 @@
 /area/fire_colony/exterior/clearing/south_west)
 "YH" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "YI" = (

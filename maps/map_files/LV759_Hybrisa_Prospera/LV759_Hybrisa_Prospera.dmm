@@ -3670,7 +3670,7 @@
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "ajG" = (
@@ -4997,7 +4997,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_east_street)
 "amO" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -10065,8 +10065,8 @@
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "aDK" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "aDM" = (
@@ -10807,8 +10807,8 @@
 /area/lv759/indoors/caves/north_east_caves)
 "aIH" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
@@ -10998,7 +10998,7 @@
 "aKx" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "aKA" = (
@@ -14935,7 +14935,7 @@
 /turf/open/floor/corsat/squares,
 /area/lv759/indoors/power_plant/gas_generators)
 "bpa" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/indoors/wy_security/checkpoint_west)
 "bpe" = (
@@ -17931,9 +17931,9 @@
 /turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/indoors/wy_research_complex/researchanddevelopment)
 "bMO" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "bMW" = (
@@ -18641,8 +18641,8 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "bRK" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "bRM" = (
@@ -18651,8 +18651,8 @@
 	pixel_x = 10;
 	pixel_y = 21
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "bRP" = (
@@ -19677,7 +19677,7 @@
 /area/lv759/indoors/apartment/eastbedroomsstorage)
 "bYz" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -19849,7 +19849,7 @@
 /turf/open/floor/hybrisa/metal/greenmetal1/northwest,
 /area/lv759/bunker/checkpoint)
 "bZx" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "bZz" = (
@@ -20679,8 +20679,8 @@
 /area/lv759/indoors/wy_research_complex/dormsbedroom)
 "cfM" = (
 /obj/item/ammo_magazine/m56d,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
 "cfN" = (
@@ -22273,8 +22273,8 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "cso" = (
@@ -22366,10 +22366,10 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -22878,8 +22878,8 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "cwr" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/smg/p90,
 /obj/structure/pipes/standard/manifold/hidden/dark,
 /turf/open/floor/prison,
@@ -23311,8 +23311,8 @@
 	color = "#550d0d"
 	},
 /obj/structure/platform/metal/almayer,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/lv759/indoors/caves/comms_tower)
 "cAn" = (
@@ -23940,7 +23940,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "cEt" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/hybrisa_goon,
 /obj/item/weapon/gun/smg/p90,
 /turf/open/hybrisa/street/asphalt,
@@ -25490,7 +25490,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "cPb" = (
@@ -26216,10 +26216,10 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/revolver/cmb/normalpoint{
 	pixel_x = 3;
 	pixel_y = -2
@@ -26329,7 +26329,7 @@
 /turf/open/floor/corsat/squares,
 /area/lv759/indoors/wy_research_complex/southeastexit)
 "cVE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
@@ -27000,7 +27000,7 @@
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/ap{
 	pixel_x = -5;
 	pixel_y = 1
@@ -27725,9 +27725,9 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -29054,7 +29054,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "doX" = (
@@ -33874,7 +33874,7 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "ebm" = (
@@ -34435,7 +34435,7 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/north_east_street)
 "efF" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/comms_tower)
 "efG" = (
@@ -34535,7 +34535,7 @@
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/lv759/indoors/derelict_ship)
 "ego" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "egq" = (
@@ -35901,11 +35901,11 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "eqW" = (
@@ -36248,7 +36248,7 @@
 /area/lv759/outdoors/colony_streets/south_west_street)
 "etz" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
 	},
@@ -39869,7 +39869,7 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "eWL" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
@@ -40033,7 +40033,7 @@
 "eYf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/platform/metal/almayer/east,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
@@ -40131,7 +40131,7 @@
 	pixel_x = 10;
 	pixel_y = 21
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist,
 /turf/open/floor/prison,
@@ -40744,7 +40744,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
 "fdX" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/light/double/blue,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 5
@@ -41842,10 +41842,10 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "fmb" = (
@@ -42227,7 +42227,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_street)
 "fpn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "fpp" = (
@@ -42869,8 +42869,8 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/lv759/indoors/landing_zone_1/flight_control_room)
 "fup" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/nsg23{
 	current_rounds = 17
 	},
@@ -43273,7 +43273,7 @@
 /turf/open/floor/prison/red/west,
 /area/lv759/indoors/colonial_marshals/hallway_reception)
 "fwR" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "fxd" = (
@@ -43406,7 +43406,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "fyh" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -45304,7 +45304,7 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_x = -9
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "fNH" = (
@@ -49107,7 +49107,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/landing_zone_1)
 "grS" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/closed/wall/hybrisa/marhsalls/reinforced,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "gsb" = (
@@ -49430,7 +49430,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/comms_tower)
 "gur" = (
@@ -50532,7 +50532,7 @@
 "gDH" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "gDJ" = (
@@ -50835,7 +50835,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/stack/barbed_wire/small_stack,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/outdoors/landing_zone_2)
@@ -50999,7 +50999,7 @@
 	icon_state = "E";
 	pixel_x = 3
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "gHA" = (
@@ -51032,7 +51032,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "gHE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "gHF" = (
@@ -51759,7 +51759,7 @@
 /area/lv759/indoors/power_plant/Hallway_East)
 "gMW" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
@@ -52523,8 +52523,8 @@
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/lv759/indoors/apartment/westentertainment)
 "gSE" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
@@ -53145,7 +53145,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
 "gXM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison,
@@ -54560,10 +54560,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "hiT" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 5
@@ -55144,8 +55144,8 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
 "hog" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "hok" = (
@@ -56841,8 +56841,8 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/red3/west,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "hBB" = (
@@ -57559,7 +57559,7 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "hGw" = (
@@ -57887,7 +57887,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
 "hIR" = (
@@ -58168,7 +58168,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/strata/red3/east,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
@@ -58655,9 +58655,9 @@
 	pixel_x = 4;
 	pixel_y = -1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
 	pixel_y = 25
@@ -59613,7 +59613,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/bloodtrail,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/blood/blood1{
 	layer = 3.1;
 	pixel_y = 68
@@ -60209,7 +60209,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/central_streets)
 "iae" = (
@@ -61823,7 +61823,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "imQ" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/restraint/handcuffs,
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
@@ -62461,7 +62461,7 @@
 	health = 140;
 	icon_state = "folding_2"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/comms_tower)
 "irT" = (
@@ -64789,7 +64789,7 @@
 	icon_state = "bodybag_open";
 	pixel_y = -8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "iIL" = (
@@ -64957,7 +64957,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/east)
 "iJF" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 1;
 	pixel_y = 14
@@ -65459,7 +65459,7 @@
 	layer = 3.33;
 	pixel_y = 2
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -67263,7 +67263,7 @@
 "jco" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "jcp" = (
@@ -67595,8 +67595,8 @@
 	},
 /obj/item/clothing/ears/earmuffs,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/revolver/cmb/normalpoint,
 /turf/open/floor/prison/redfull,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
@@ -68880,10 +68880,10 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "jpy" = (
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
@@ -69479,7 +69479,7 @@
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "jtP" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -71431,7 +71431,7 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/hospital/virology)
 "jJM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/red/southeast,
 /area/lv759/indoors/colonial_marshals/armory_foyer)
 "jKb" = (
@@ -72215,7 +72215,7 @@
 	},
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer/east,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/stairs{
 	color = "#a6aeab";
 	layer = 2.5
@@ -72353,8 +72353,8 @@
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
 /area/lv759/indoors/derelict_ship)
 "jRR" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/mar40/extended,
 /turf/open/floor/plating,
 /area/lv759/indoors/caves/comms_tower)
@@ -72542,8 +72542,8 @@
 	pixel_x = 10;
 	pixel_y = 21
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "jTm" = (
@@ -73191,7 +73191,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/south_caves)
 "jXC" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "jXE" = (
@@ -74078,8 +74078,8 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/power_plant/south_hallway)
 "kfL" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "kfM" = (
@@ -78586,8 +78586,8 @@
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/lv759/indoors/weymart)
 "kMC" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -79532,11 +79532,11 @@
 	icon_state = "gib6";
 	pixel_y = 12
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "kUw" = (
@@ -80445,7 +80445,7 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "laM" = (
@@ -80513,7 +80513,7 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "lbt" = (
@@ -80722,8 +80722,8 @@
 /area/lv759/indoors/power_plant/workers_canteen_kitchen)
 "lcW" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -81210,7 +81210,7 @@
 /obj/structure/platform/stone/mineral/east,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe/west,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "lgM" = (
@@ -82614,10 +82614,10 @@
 /area/lv759/indoors/apartment/northfoyer)
 "lrC" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = -1
 	},
@@ -82736,7 +82736,7 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/gas_generators)
 "lsa" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -2;
 	pixel_y = 12
@@ -82974,8 +82974,8 @@
 /obj/item/stack/sandbags_empty,
 /obj/item/tool/shovel,
 /obj/item/stack/barbed_wire,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
 "lui" = (
@@ -84290,7 +84290,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/north_east_caves_comms_2)
 "lDI" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/manifold/hidden/dark{
 	dir = 1
 	},
@@ -84970,7 +84970,7 @@
 	pixel_x = 12;
 	pixel_y = 16
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
 "lIg" = (
@@ -85034,7 +85034,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/comms_tower)
@@ -85788,7 +85788,7 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
 	pixel_y = 21
@@ -86117,8 +86117,8 @@
 /area/lv759/indoors/hotel/hotel_rooms)
 "lRl" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/lv759/indoors/caves/comms_tower)
 "lRn" = (
@@ -86232,7 +86232,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "lSd" = (
@@ -87006,7 +87006,7 @@
 	},
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "lXY" = (
@@ -88921,7 +88921,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/central_streets)
 "mnq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "mnt" = (
@@ -89340,8 +89340,8 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/pistol/l54{
 	pixel_x = -1;
 	pixel_y = 9
@@ -90222,10 +90222,10 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal2"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
@@ -91974,7 +91974,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_street)
 "mKy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "mKz" = (
@@ -95721,8 +95721,8 @@
 "npx" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/landing_zone_2)
@@ -96150,8 +96150,8 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/revolver/cmb/custom{
 	pixel_y = 5
 	},
@@ -96823,7 +96823,7 @@
 	icon_state = "W";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "nyO" = (
@@ -97230,7 +97230,7 @@
 "nCp" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/hybrisa_goon,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
@@ -97440,7 +97440,7 @@
 	level = 2;
 	color = "#550d0d"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/comms_tower)
 "nDX" = (
@@ -97920,14 +97920,14 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "nHH" = (
@@ -98007,7 +98007,7 @@
 	},
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
@@ -98047,7 +98047,7 @@
 	pixel_x = 3;
 	pixel_y = 13
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
@@ -98624,8 +98624,8 @@
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "nMO" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/smg/p90,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/lv759/outdoors/colony_streets/south_west_street)
@@ -99314,8 +99314,8 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/meridian/meridian_maintenance_east)
 "nRz" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
@@ -99848,7 +99848,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "nUX" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "nUY" = (
@@ -101036,8 +101036,8 @@
 /area/lv759/indoors/caves/central_caves)
 "odk" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "odl" = (
@@ -101758,7 +101758,7 @@
 "oiA" = (
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
@@ -102692,7 +102692,7 @@
 /obj/item/device/flashlight/lamp/tripod/grey{
 	on = 0
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/lv759/indoors/caves/comms_tower)
 "opJ" = (
@@ -102773,7 +102773,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "armor_blood"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/smg/p90,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
@@ -104958,16 +104958,16 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/redfull,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "oIH" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -105369,7 +105369,7 @@
 	pixel_x = 4;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/red4,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "oLO" = (
@@ -106987,7 +106987,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "oYJ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
@@ -107401,7 +107401,7 @@
 	pixel_y = 7
 	},
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
@@ -107876,7 +107876,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "pfu" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
 "pfv" = (
@@ -109189,9 +109189,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "pqd" = (
@@ -111089,7 +111089,7 @@
 	pixel_y = 16
 	},
 /obj/item/device/flashlight/on,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "pDQ" = (
@@ -112890,7 +112890,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
@@ -113983,7 +113983,7 @@
 	icon_state = "E";
 	pixel_x = 3
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "qbK" = (
@@ -115771,9 +115771,9 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/smg/p90,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
@@ -116960,7 +116960,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "qyP" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
@@ -117678,7 +117678,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv759/indoors/caves/north_caves)
 "qGj" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
@@ -118343,7 +118343,7 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "qKF" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
@@ -121145,8 +121145,8 @@
 /area/lv759/indoors/jacks_surplus)
 "rgG" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/tool/pickaxe{
 	pixel_y = -7
 	},
@@ -122102,12 +122102,12 @@
 	pixel_y = -9
 	},
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = 6
@@ -123523,7 +123523,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/east)
 "rzM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
@@ -128568,7 +128568,7 @@
 	pixel_x = 5;
 	pixel_y = 21
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "sjQ" = (
@@ -129373,8 +129373,8 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal3"
@@ -130115,7 +130115,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/screwdriver,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/comms_tower)
 "svs" = (
@@ -132263,9 +132263,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "sMG" = (
@@ -132830,7 +132830,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -132840,7 +132840,7 @@
 "sQL" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/caves/north_west_caves)
@@ -134271,8 +134271,8 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/red4/east,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "tcp" = (
@@ -135678,7 +135678,7 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -136011,7 +136011,7 @@
 	level = 2;
 	color = "#550d0d"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
@@ -136404,9 +136404,9 @@
 	icon_state = "mgibbl4"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/caves/north_west_caves)
@@ -136825,7 +136825,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/weymart)
 "ttV" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
 	pixel_y = 40
@@ -137417,9 +137417,9 @@
 "twS" = (
 /obj/item/ammo_magazine/rifle/mar40/extended,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "twW" = (
@@ -137792,8 +137792,8 @@
 "tBj" = (
 /obj/item/device/motiondetector,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/comms_tower)
 "tBm" = (
@@ -138697,7 +138697,7 @@
 /area/lv759/indoors/weyyu_office/pressroom)
 "tJj" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "tJk" = (
@@ -140186,9 +140186,9 @@
 /turf/open/floor/strata/orange_edge/north,
 /area/lv759/indoors/spaceport/hallway_east)
 "tVw" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
 	pixel_y = 21
@@ -140242,11 +140242,11 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/landmark/corpsespawner/hybrisa_goon,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "tVZ" = (
@@ -140344,7 +140344,7 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/hybrisa/civilian,
 /turf/open/floor/hybrisa/metal/grated/north,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -140612,8 +140612,8 @@
 /area/lv759/outdoors/landing_zone_2)
 "tYn" = (
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "tYx" = (
@@ -141512,7 +141512,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
@@ -142091,9 +142091,9 @@
 /area/lv759/indoors/caves/north_east_caves_comms)
 "ukF" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/hybrisa/street/asphalt,
@@ -142982,7 +142982,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/north_east_street_LZ)
 "urA" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -5;
 	pixel_y = 16
@@ -144516,7 +144516,7 @@
 	},
 /obj/structure/platform/stone/mineral/east,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe/west,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
 "uCU" = (
@@ -146156,7 +146156,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/caves/comms_tower)
 "uOo" = (
@@ -146551,10 +146551,10 @@
 /area/lv759/indoors/apartment/eastbedrooms)
 "uQq" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "uQr" = (
@@ -147135,8 +147135,8 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "uUm" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2";
 	pixel_x = -3;
@@ -147969,7 +147969,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "vaO" = (
@@ -149325,8 +149325,8 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "vmS" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/indoors/wy_security/checkpoint_west)
 "vmX" = (
@@ -150559,7 +150559,7 @@
 	pixel_x = 10;
 	pixel_y = 21
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/indoors/caves/comms_tower)
 "vvW" = (
@@ -150991,11 +150991,11 @@
 /area/lv759/indoors/recycling_plant_office)
 "vzR" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -151760,11 +151760,11 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/smg/p90,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/indoors/wy_security/checkpoint_west)
@@ -151778,7 +151778,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/jacks_surplus)
 "vFl" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "vFm" = (
@@ -151871,7 +151871,7 @@
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/lv759/indoors/apartment/westbedrooms)
 "vFU" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/manifold/hidden/dark,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
@@ -152083,7 +152083,7 @@
 /area/lv759/indoors/hospital/icu)
 "vHP" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/black{
 	dir = 4
@@ -155255,7 +155255,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/wy_research_complex/vehicledeploymentbay)
 "wfy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
@@ -158165,8 +158165,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_street)
 "wDf" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "wDg" = (
@@ -158202,9 +158202,9 @@
 /area/lv759/indoors/caves/north_east_caves)
 "wDw" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "wDz" = (
@@ -158311,8 +158311,8 @@
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 20
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "wEf" = (
@@ -159291,8 +159291,8 @@
 	pixel_y = 21
 	},
 /obj/effect/spawner/random/gun/pistol/highchance,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv759/outdoors/landing_zone_2)
@@ -159942,7 +159942,7 @@
 "wSc" = (
 /obj/item/device/flashlight/on,
 /obj/effect/landmark/corpsespawner/hybrisa_goon,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -4;
 	pixel_y = -5
@@ -160621,7 +160621,7 @@
 /area/lv759/indoors/hospital/east_hallway)
 "wXq" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/caves/comms_tower)
 "wXu" = (
@@ -165703,11 +165703,11 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
@@ -167323,7 +167323,7 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "xWl" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "xWo" = (
@@ -167371,8 +167371,8 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "xWD" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)
 "xWE" = (
@@ -167551,10 +167551,10 @@
 /area/lv759/indoors/wy_research_complex/mainlabs)
 "xYj" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/wy_research_complex/hangarbayshuttle)
 "xYk" = (
@@ -167640,7 +167640,7 @@
 /obj/structure/stairs/perspective{
 	layer = 2.41
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/wy_research_complex/weaponresearchlabtesting)
@@ -169375,12 +169375,12 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
 "ylb" = (

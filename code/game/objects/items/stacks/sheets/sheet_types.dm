@@ -30,6 +30,10 @@ GLOBAL_LIST_INIT_TYPED(metal_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("large airlock assembly", /obj/structure/airlock_assembly/multi_tile, 5, time = 50, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI), \
 	null, \
 	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe_list("metal table parts", list( \
+		new/datum/stack_recipe("tan table parts", /obj/item/frame/table, 2), \
+		new/datum/stack_recipe("gray table parts", /obj/item/frame/table/almayer, 2), \
+	), 2), \
 	new/datum/stack_recipe("chair", /obj/structure/bed/chair, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe_list("comfy chairs", list( \
 		new/datum/stack_recipe("beige comfy chair", /obj/structure/bed/chair/comfy/beige, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
@@ -146,11 +150,17 @@ GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
 GLOBAL_LIST_INIT_TYPED(wood_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("pair of wooden sandals", /obj/item/clothing/shoes/sandal, 1), \
 	new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20), \
-	/*
-	new/datum/stack_recipe("table parts", /obj/item/frame/table/wood, 2), \
-	 */
+	new/datum/stack_recipe_list("wooden table parts", list( \
+		new/datum/stack_recipe("wooden table parts", /obj/item/frame/table/wood, 2), \
+		new/datum/stack_recipe("poor wooden table parts", /obj/item/frame/table/wood/poor, 2), \
+		new/datum/stack_recipe("fancy wooden table parts", /obj/item/frame/table/wood/fancy, 2), \
+		new/datum/stack_recipe("gambling table parts", /obj/item/frame/table/gambling, 2), \
+	), 2), \
+	new/datum/stack_recipe_list("wooden chairs", list( \
+		new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood/normal, 1, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood/wings, 1, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	), 1), \
 	new/datum/stack_recipe("campfire", /obj/structure/prop/brazier/frame/full/campfire, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = TRUE), \
-	new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood/normal, 1, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wooden barricade", /obj/structure/barricade/wooden, 5, time = 20, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1), \
 	new/datum/stack_recipe("wooden crate", /obj/structure/closet/coffin/woodencrate, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wooden door", /obj/structure/mineral_door/wood, 10, time = 20, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
@@ -396,8 +406,8 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (Type73)", /obj/item/ammo_box/magazine/type73/empty), \
 		new/datum/stack_recipe("empty magazine box (Type73 High-Impact)", /obj/item/ammo_box/magazine/type73/impact/empty), \
 		null, \
-		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm)", /obj/item/ammo_box/rounds/type71/empty), \
-		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm AP)", /obj/item/ammo_box/rounds/type71/ap/empty), \
+		new/datum/stack_recipe("empty rifle ammo box (10x27mm)", /obj/item/ammo_box/rounds/type71/empty), \
+		new/datum/stack_recipe("empty rifle ammo box (10x27mm AP)", /obj/item/ammo_box/rounds/type71/ap/empty), \
 		null, \
 		new/datum/stack_recipe("empty auto-pistol ammo box (10x20mm-APC)", /obj/item/ammo_box/rounds/pistol/m10/empty), \
 		new/datum/stack_recipe("empty auto-pistol ammo box (10x20mm-APC (AP))", /obj/item/ammo_box/rounds/pistol/m10/ap/empty), \

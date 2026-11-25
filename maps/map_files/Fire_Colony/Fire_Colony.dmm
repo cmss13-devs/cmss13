@@ -15490,7 +15490,7 @@
 	pixel_y = 25
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "bZZ" = (
@@ -31053,8 +31053,8 @@
 "fIb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/seeg4/north,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "fIm" = (
@@ -36697,8 +36697,8 @@
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/southwest)
 "gVC" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
@@ -53021,7 +53021,7 @@
 /area/fire_colony/exterior/clearing/south_west)
 "kYs" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/fire_colony/filtrationside_lava/northwest,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "kYA" = (
@@ -59481,7 +59481,7 @@
 	pixel_x = -14;
 	pixel_y = 16
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/solid/directions/east,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "mAD" = (
@@ -77841,7 +77841,7 @@
 /area/fire_colony/exterior/clearing/pass)
 "qUS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/fire_colony/filtrationside_lava_straight/east,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "qUV" = (
@@ -80093,8 +80093,8 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/fire_colony/catwalk/glass_lattice,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "rud" = (
@@ -104668,7 +104668,7 @@
 	dir = 8;
 	pixel_y = 25
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/seeg3/north,
 /area/fire_colony/interior/seegson/ai_core/lobby)
 "xrI" = (

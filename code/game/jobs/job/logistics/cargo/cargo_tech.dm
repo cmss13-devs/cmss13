@@ -2,8 +2,7 @@
 	title = JOB_CARGO_TECH
 	total_positions = 2
 	spawn_positions = 2
-	allow_additional = 1
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the requisitions officer"
 	selection_class = "job_ct"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
@@ -17,16 +16,15 @@ AddTimelock(/datum/job/logistics/cargo, list(
 /datum/job/logistics/cargo/set_spawn_positions(count)
 	spawn_positions = ct_slot_formula(count)
 
-/datum/job/logistics/cargo/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = ct_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/logistics/cargo/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : ct_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 /obj/effect/landmark/start/cargo

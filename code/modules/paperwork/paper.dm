@@ -799,6 +799,10 @@
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
+			if(!reaction_generated && istype(chemical_to_generate, /datum/reagent/generated))
+				var/list/required_reagents = chemical_to_generate.reagent_recipe_hint ? list(chemical_to_generate.reagent_recipe_hint) : null
+				var/list/locked_reagents = chemical_to_generate.locked_reagent ? list(chemical_to_generate.locked_reagent) : null
+				reaction_generated = chemical_to_generate.generate_assoc_recipe(null, required_reagents, locked_reagents)
 			icon_state = "paper_wy_partial_report"
 			if(!contract)
 				name = "Synthesis of [chemical_to_generate.name]"
@@ -806,17 +810,24 @@
 				name = "Contract for [chemical_to_generate.name]"
 				icon_state = "paper_wy_contract"
 			txt += "[name] </H2></center>"
+			if(!reaction_generated || !length(reaction_generated.required_reagents))
+				txt += "«[chemical_to_generate.name]» reagent data has been corrupted. Request a contract reprint or contact Weyland-Yutani.<BR>\n"
+				txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+				info = txt
+				return
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in reaction_generated.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = reaction_generated.required_reagents[I]
-				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+				var/reagent_name = R ? R.name : "Unknown reagent ([I])"
+				txt += "<font size = \"2\"><I> - [U] [reagent_name]</I></font><BR>\n"
 			if(LAZYLEN(reaction_generated.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in reaction_generated.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = reaction_generated.required_catalysts[I]
-					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+					var/reagent_name = R ? R.name : "Unknown reagent ([I])"
+					txt += "<font size = \"2\"><I> - [U] [reagent_name]</I></font><BR>\n"
 			if(full_report)
 				txt += "<BR>Chemical has following reaction indicators:"
 				if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))

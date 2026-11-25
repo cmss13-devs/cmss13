@@ -7,10 +7,10 @@
 	pixel_x = -32;
 	tag = "back_right"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/vehicle/van_floor_1/east,
 /area/interior/vehicle/clf_van)
@@ -31,9 +31,9 @@
 /turf/open/void/vehicle,
 /area/space)
 "h" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/bed/chair/vehicle/comfy/alt_2{
 	dir = 1;
 	pixel_x = -10;
@@ -116,11 +116,11 @@
 	pixel_x = -32;
 	tag = "back_left"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -4;
 	pixel_y = 11
@@ -246,8 +246,8 @@
 /turf/open/void/vehicle,
 /area/space)
 "M" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/bed/chair/vehicle/comfy/alt_2{
 	pixel_x = -10;
 	pixel_y = 17;

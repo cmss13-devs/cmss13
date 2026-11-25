@@ -13,6 +13,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_7
 	armor_deflection = XENO_ARMOR_FACTOR_TIER_5
 	speed = XENO_SPEED_TIER_1
+	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 
 	evolves_to = null
 	deevolves_to = null
@@ -43,7 +44,6 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
-	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 	base_actions = list(
@@ -58,6 +58,8 @@
 		/datum/action/xeno_action/onclick/king_shield,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/medium/loud_stomps
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	weed_food_states = list()
@@ -164,7 +166,7 @@
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
 		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourselves!"))
 	apply_cooldown()
 	..()
 
@@ -333,7 +335,7 @@
 
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
-	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourselves for a giant leap."))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))

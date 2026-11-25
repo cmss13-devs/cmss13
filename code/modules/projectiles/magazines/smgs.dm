@@ -8,6 +8,7 @@
 		)
 	default_ammo = /datum/ammo/bullet/smg
 	max_rounds = 30
+	flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 
 //-------------------------------------------------------
 //M39 SMG ammo
@@ -159,9 +160,9 @@
 //Type-19, based on the PPS-43
 
 /obj/item/ammo_magazine/smg/pps43
-	name = "\improper Type-19 stick magazine (7.62x25mm)"
-	desc = "A stick magazine for the Type-19 submachinegun."
-	caliber = "7.62x25mm"
+	name = "\improper Type-19 stick magazine (10mm)"
+	desc = "A stick magazine for the Type-19 submachinegun. Chambed in 10mm cased."
+	caliber = "10mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu_stickmag"
 	bonus_overlay = "insasu_stickmag_overlay"
@@ -173,8 +174,8 @@
 
 
 /obj/item/ammo_magazine/smg/pps43/extended
-	name = "\improper Type-19 drum magazine (7.62x25mm)"
-	desc = "A 7.62x25mm drum magazine for the Type-19 submachinegun."
+	name = "\improper Type-19 drum magazine (10mm)"
+	desc = "A 10mm cased drum magazine for the Type-19 submachinegun."
 	icon_state = "insasu_drum"
 	bonus_overlay = "insasu_drum_overlay"
 	max_rounds = 71
@@ -182,16 +183,17 @@
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WEAPON_DELAY_VERY_FAST
 //-------------------------------------------------------
-//Type 64 SMG, based on the PP Bizon.
+//PPZ-49/64 SMG, based on the PP Bizon.
 
 /obj/item/ammo_magazine/smg/bizon
-	name = "\improper Type 64 Helical Magazine (7.62x19mm)"
-	desc = "A 7.62x19mm 64-round helical magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
-	caliber = "7.62x19mm"
+	name = "\improper PPZ-49/64 Helical Magazine (8.6x20mm)"
+	desc = "A 8.6x20mm caseless 64-round helical magazine for the PPZ-49/64 submachinegun, the standard SMG of the UPP armed collective."
+	caliber = "8.6x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "type64mag"
 	max_rounds = 64
 	gun_type = /obj/item/weapon/gun/smg/bizon
+	flags_magazine = AMMUNITION_REFILLABLE
 
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
@@ -282,6 +284,7 @@
 	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/p90
 	max_rounds = 50
+	flags_magazine = AMMUNITION_REFILLABLE
 
 /obj/item/ammo_magazine/smg/p90/ap
 	name = "\improper FN P90 AP magazine (5.7x28mm)"

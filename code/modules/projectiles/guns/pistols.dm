@@ -36,7 +36,7 @@
 		/obj/item/attachable/burstfire_assembly,
 	)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS //For easy reference.
 	gun_category = GUN_CATEGORY_HANDGUN
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)
@@ -61,7 +61,7 @@
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -162,7 +162,7 @@
 	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is often used as a sidearm by non-governmental bodies due to its reliability. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP."
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
 	..()
@@ -179,7 +179,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/fluff
 	name = "\improper M48A4 service pistol"
-	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is also often privately bought and used as a sidearm if a standard pistol is not issued out. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP. This one looks a bit worn and old."
+	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is also often privately bought and used as a sidearm if a standard pistol is not issued out. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP.  <span class='notice'> This one looks worn, and won't be as effective in combat.</span>"
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
@@ -199,7 +199,7 @@
 	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
 	icon_state = "m1911c"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT|GUN_AUTO_EJECT_CASINGS
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -346,13 +346,14 @@
 
 /obj/item/weapon/gun/pistol/np92
 	name = "\improper NP92 pistol"
-	desc = "The standard issue sidearm of the UPP. The NP92 is a small but powerful sidearm, well-liked by most it is issued to, although some prefer the weapon it was meant to replace, the Type 73. Takes 12 round magazines."
+	desc = "The current standard issue sidearm of the UPP Armed Collective, the NP92 is a small but powerful sidearm, chambered in the unique 8.6x20mm caseless cartridge. It's a well-liked pistol by most of its users, though certain flaws lead some to prefer the weapon it replaced, the Type 73."
+	desc_lore = "One of the longest running desires of UPPAC Procurement was that of a caseless pistol, but for much of the Union's lifespan a reliable and effective caseless pistol(or at least one that's on par with the Type 73) had been out of reach. But technology marches on, and with developments in caseless technology in the late 2160s the dream of a modern caseless pistol had become a reality. The design stage of the NP92 passed by quickly, and with prototyping and testing complete by 2171, it was soon-after adopted, replacing the Type 73 and recently adopted Type 74. \nDesign wise, the NP92 is a quite advanced and forward looking pistol, featuring a large capacity and decent stopping power. Though the pistol is not without its flaws, it's overly small size leaves many with larger frames or hands struggling to comfortably use the pistol, and it suffers from poor relability if not strictly maintained.\nThe NP92 series consists of the original NP92, the integrally suppressed NPZ92, the compact NPT92, and a machinepistol variant with the NPG92."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "np92"
 	item_state = "np92"
 	fire_sound = "88m4"
 	current_mag = /obj/item/ammo_magazine/pistol/np92
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -377,17 +378,17 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/pistol/np92/suppressed
 	name = "\improper NPZ92 pistol"
-	desc = "The NPZ92 is a version of the NP92 that includes an integrated suppressor, issued sparingly to Kommando units."
+	desc = "The current standard issue sidearm of the UPP Armed Collective. A unique variant of the NP92, the NPZ92 is integrally suppressed. It's quite rare to find, usually only issued to special units like the Commandos."
 	icon_state = "npz92"
 	item_state = "npz92"
 	inherent_traits = list(TRAIT_GUN_SILENCED)
 	fire_sound = "gun_silenced"
 	current_mag = /obj/item/ammo_magazine/pistol/np92/suppressed
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -404,13 +405,14 @@
 
 /obj/item/weapon/gun/pistol/t73
 	name = "\improper Type 73 pistol"
-	desc = "The Type 73 is the once-standard issue sidearm of the UPP. Replaced by the NP92 in UPP use, it remains popular with veteran UPP troops due to familiarity and extra power. Due to an extremely large amount being produced, they tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary or pirate group out there."
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it has been officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity, extra firepower, and reliability."
+	desc_lore = "Originally a joint project between the then-fledgling UPP and the now-defunct CANC, the Type 73 was first adopted in 2122, since then it's served the Union well, with the design remained mostly unchanged throughout most of its lifespan. \nThe Type 73 series is considered to be one of the most widely produced handguns of the 22nd century, with production far exceeding UPPAC requirements surplus batches tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary, rebel, or pirate group out there."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "tt"
 	item_state = "tt"
 	fire_sound = 'sound/weapons/gun_tt.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/t73
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -439,14 +441,22 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 
+/obj/item/weapon/gun/pistol/t73/loadout
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it has been officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity and extra firepower. <span class='notice'> This one looks worn, and won't be as effective in combat.</span>"
+
+/obj/item/weapon/gun/pistol/t73/loadout/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+
 
 /obj/item/weapon/gun/pistol/t73/leader
 	name = "\improper Type 74 pistol"
-	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil spring, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
+	desc = "The Type 74 was the originally intended replacement for the Type 73 pistol. It's reinforced frame allows it to fire high-powered cartridges that would destroy a normal Type 73."
+	desc_lore = "More of an upgrade package to the Type 73 than an actual replacement, featuring many improvements such as an integrated lasersight and reinforced frame to allow the usage of higher pressure cartridges. Just months after the initial adoption of the Type 74, the new NP92 series was completed and soon-after adopted as a replacement to both the Type 73 and Type 74. With only a small number of Type 74s being produced in the time between it's adoption and replacement, the Type 74 was relegated to a senior officer's weapon, usually given as token of appreciation for long or excellent service."
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/pistol/t73,
 		/obj/item/ammo_magazine/pistol/t73_impact,
@@ -611,7 +621,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "m43"
 	item_state = "m43"
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS
 	fire_sound = 'sound/weapons/gun_m43.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/clfpistol
 	w_class = SIZE_TINY
@@ -746,7 +756,7 @@
 	icon_state = "highpower_tac"
 	item_state = "highpower_tac"
 	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 
 
 
@@ -765,7 +775,7 @@
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/mod88
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -872,7 +882,7 @@
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/vp78
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -924,6 +934,55 @@
 
 /obj/item/weapon/gun/pistol/vp78/army/heap
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6
+	name = "\improper VP78M6 pistol"
+	desc = "The VP78M6, often called the 'Mod Six', or just 'Sixes', are enhanced variants of the VP78 combat pistol. Smoother trigger assemblies, formed grips, longer shrouded barrels. These M6's have been modified to have special counterweights in the receivers and under the barrels to resist muzzle climb, allowing for much better handling, so much better, in fact, that holding just one doesn't feel right."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	icon_state = "vp78m6"
+	item_state = "vp78m6"
+	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg'
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
+	var/last_firing_sound_time = -1 //makes it not rupture your eardrums when dual wield firing
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight/vp,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
+	if(LAZYLEN(starting_attachment_types))
+		for(var/path in starting_attachment_types)
+			var/obj/item/attachable/starting_attachment = new path(src)
+			starting_attachment.Attach(src)
+			update_attachable(starting_attachment.slot)
+
+	var/obj/item/attachable/lasersight/vp/attachment = new(src)
+	attachment.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachment.hidden = FALSE
+	attachment.Attach(src)
+	update_attachable(attachment.slot)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+	if(!user || flags_gun_features & GUN_SILENCED || active_attachable?.flags_attach_features & ATTACH_PROJECTILE || projectile_to_fire.ammo?.sound_override)
+		return ..()
+
+	var/obj/item/weapon/gun/pistol/vp78/vp78m6/other_pistol = user.get_active_hand() == src ? user.get_inactive_hand() : user.get_active_hand()
+	if(istype(other_pistol) && other_pistol != src && other_pistol.fire_sound == fire_sound && other_pistol.last_firing_sound_time == world.time)
+		return
+
+	last_firing_sound_time = world.time
+	return ..()
 
 
 //-------------------------------------------------------
@@ -1005,7 +1064,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	fire_sound = 'sound/weapons/gun_su6.ogg'
 	reload_sound = 'sound/weapons/handling/gun_su6_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_su6_unload.ogg'
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS // strange lore suggests refraining on using normal smartgun rounds for modified .45 ACP for this pistol but lets let it leave casings for now
 
 /obj/item/weapon/gun/pistol/smart/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 24, "under_y" = 17, "stock_x" = 24, "stock_y" = 17)
@@ -1045,7 +1104,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	)
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reddot/small,

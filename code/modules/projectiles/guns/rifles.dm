@@ -137,6 +137,7 @@
 /obj/item/weapon/gun/rifle/m41a/army
 	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
 
+
 /obj/item/weapon/gun/rifle/m41a/army/full
 	current_mag = /obj/item/ammo_magazine/rifle/heap
 
@@ -800,7 +801,7 @@
 		/obj/item/attachable/compensator,
 	)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 	start_automatic = TRUE
 
 
@@ -826,7 +827,7 @@
 /obj/item/weapon/gun/rifle/mar40/tactical
 	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or CLF. This one has been equipped with an after-market ammo-counter."
 	starting_attachment_types = list(/obj/item/attachable/angledgrip, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
-	flags_gun_features = GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/rifle/mar40/carbine
 	name = "\improper MAR-30 battle carbine"
@@ -906,7 +907,7 @@
 /obj/item/weapon/gun/rifle/mar40/carbine/tactical
 	desc = "A cheap, reliable carbine chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries. This one has been equipped with an after-market ammo-counter."
 	starting_attachment_types = list(/obj/item/attachable/verticalgrip, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
-	flags_gun_features = GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/rifle/mar40/lmg
 	name = "\improper MAR-50 light machine gun"
@@ -945,7 +946,7 @@
 	random_spawn_under = list() //prevents equipping invalid attachments from base
 	random_spawn_muzzle = list()
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_AUTO_EJECT_CASINGS
 	hud_offset = -4
 	pixel_x = -4
 
@@ -969,7 +970,7 @@
 /obj/item/weapon/gun/rifle/mar40/lmg/tactical
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
-	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_AUTO_EJECT_CASINGS
 //-------------------------------------------------------
 //M16 RIFLE
 
@@ -1044,7 +1045,7 @@
 		/obj/item/attachable/extended_barrel,
 	)
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/rifle/m16/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17 ,"rail_x" = 13, "rail_y" = 20, "under_x" = 26, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
@@ -1193,7 +1194,7 @@
 	item_state = "m16"
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE|GUN_AUTO_EJECT_CASINGS
 
 	fire_sound = 'sound/weapons/gun_m16.ogg'
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
@@ -1338,7 +1339,7 @@
 		/obj/item/attachable/extended_barrel,
 	)
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/rifle/ar10/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 20, "under_x" = 26, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
@@ -1476,7 +1477,7 @@
 	scatter = SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m20a/unloaded
@@ -1581,7 +1582,8 @@
 
 /obj/item/weapon/gun/rifle/type71
 	name = "\improper Type 71 pulse rifle"
-	desc = "The primary service rifle of the UPP space forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 5.45x39mm. In accordance with doctrinal principles of overmatch and suppression, the rifle has a high rate of fire and a high-capacity casket magazine. Despite lackluster precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
+	desc = "The primary service rifle of the UPP Space Operating Forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 10x27mm. Whilst not as fast-firing as the M41A of the Colonial Marines, the larger size of the 10x27mm cartridge allows superior penetration and stopping power. Despite comparatively poor precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
+	desc_lore = "Officially designated the Rifle, Infantry, Type 71, Model B, the Type 71 serves as the most common rifle throughout the UPP SOF. \nThe initial design for the Type 71 originates in the now defunct Chinese/Asian-Nation Cooperative, recognising the limited effectiveness of their current carbines, plans were drafted to replace their current weapons, though the end of the Dog War and subsequent absorption of the CANC into the UPP put these on hold. \nIn 2170, with the experience of the Dog War and early fights against CANC seperatists in mind, the SOF recognised a need to replace their current rifle and set out to find a replacement. By the end of the trials, SOF Procurement had chosen to adopt the Type 71-A as its new rifle, which immediately began to show teething issues not uncovering in the adoption process. The original Type 71-A was shown to suffer from poor reliabilty and accuracy, and early magazine models had a chronic issue of malfunctioning when undergoing rapid heat changes. These issues, compounded with general opportunities to make improvements to the design led the SOF to adopt the current model, the Type 71-B, which has served the UPP faithfully ever since."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "type71"
 	item_state = "type71"
@@ -1707,7 +1709,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
-	desc = "This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
+	desc = "An uncommon variant of the UPPAC SOF's standard rifle, the Type 71-F trades out the commonly attached grenade launcher for an underbarrel flamethrower, allowing greater close-quarters capabilities and foliage clearage."
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1756,8 +1758,9 @@
 	)
 
 /obj/item/weapon/gun/rifle/type71/carbine
-	name = "\improper Type 71 pulse carbine"
-	desc = "A carbine variant of the Type 71, easier to handle at the cost of lesser damage, but negative soldier reviews have shifted it out of active use, given only to reserves or troops not expected to face much combat."
+	name = "\improper Type 71-C pulse carbine"
+	desc = "A carbine variant of the UPPAC SOF's standard rifle, the Type 71-C is a smaller and lighter version of the standard Type 71, primarily issued to non-combat troops, or those expecting close quarters fighting. It fires faster than the standard rifle, but the shorter barrel lowers damage output."
+	desc_lore = "The Type 71-C was initially developed as a personal defense weapon for troops not expected to frequently engage in combat, such as logistics or vehicle crews. Features such as an overall lighter and smaller frame as well as a faster fire-rate than the standard rifle have left it a popular choice with even frontline troops who are going into close quarters, or simply just want a lighter weapon."
 	icon_state = "type71c"
 	item_state = "type71c"
 
@@ -1829,8 +1832,9 @@
 	)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
-	name = "\improper Type 71 'Commando' pulse carbine"
-	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
+	name = "\improper Type 71-K 'Commando' pulse carbine"
+	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, IFF capable targetting system, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
+	desc_lore = "The Type 71-K is the newest, and most rare variant of the Type 71. Issued sparingly to commando and special forces units throughout the entire UPPAC, the Type 71-K features several improvements over both the Type 71-C and standard Type 71; such as an integrated suppressor, superior accuracy and fire-rate, a computerised tracking system, an attached low-power scope for precise shots, superior reliability(when properly maintained) whilst at the same time remaining lighter than the standard Type 71 rifle by use of several lighter and cut down parts."
 	icon_state = "type73"
 	item_state = "type73"
 
@@ -2743,7 +2747,7 @@
 	)
 
 	flags_equip_slot = SLOT_BACK
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_MANUAL_EJECT_CASINGS
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
 	map_specific_decoration = TRUE
@@ -2795,6 +2799,7 @@
 	playsound(user, pump_sound, 10, 1)
 	COOLDOWN_START(src, allow_pump, pump_delay)
 	ready_in_chamber()
+	eject_casing()
 	burst_count = 0 //Reset the count for burst mode.
 
 /obj/item/weapon/gun/rifle/xm51/load_into_chamber(mob/user)

@@ -516,12 +516,16 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/grass/temperate
 	icon = 'icons/obj/structures/props/natural/vegetation/temperate_flora.dmi'
 	icon_state = "1"
+	plane = -7
+	layer = 2.4
 
 /obj/structure/flora/wood
 	name = "stick"
 	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_wood_flora.dmi'
 	icon_state = "stick1"
 	density = FALSE
+	plane = -7
+	layer = 2.4
 	fire_flag = FLORA_BURN_NO_SPREAD
 
 /obj/structure/flora/wood/stick1
@@ -575,6 +579,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "firstbush_1"
 	variations = 4
 	cut_level = PLANT_CUT_KNIFE
+	plane = -7
+	layer = 2.4
 	projectile_coverage = 0//CEASE EATING BULLETS, I BEG YOU
 
 /obj/structure/flora/bush/ausbushes/ausbush
@@ -810,7 +816,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_tag = "light"
 	variations = 3
 	cut_level = PLANT_CUT_MACHETE
-	fire_flag = FLORA_BURN_NO_SPREAD
+	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/jungle/vines/light_1
 	icon_state = "light_1"
@@ -976,6 +982,74 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	update_health(xeno.melee_damage_upper)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
+
+/*
+
+	Canyon Bushes
+
+*/
+
+/obj/structure/flora/bush/canyon
+	name = "bush"
+	icon = 'icons/obj/structures/props/natural/vegetation/canyon_flora.dmi'
+	desc = "A small, leafy bush."
+	icon_state = "green_small_bush"
+	cut_level = PLANT_CUT_KNIFE
+	layer = ABOVE_XENO_LAYER
+
+/obj/structure/flora/bush/canyon/bush
+	icon_state = "green_small_bush"
+
+/obj/structure/flora/bush/canyon/bush/alt1
+	icon_state = "orange_small_bush"
+
+/obj/structure/flora/bush/canyon/bush/alt2
+	icon_state = "yellow_small_bush"
+
+/obj/structure/flora/bush/canyon/tree
+	name = "small tree"
+	desc = "A small, leafy tree."
+	icon_state = "green_small_tree"
+
+/obj/structure/flora/bush/canyon/tree/alt1
+	icon_state = "orange_small_tree"
+
+/obj/structure/flora/bush/canyon/tree/alt2
+	icon_state = "yellow_small_tree"
+
+/obj/structure/flora/bush/canyon/grass_green
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "green_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_green/alt1
+	icon_state = "green_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_green/alt2
+	icon_state = "green_grass_3"
+
+/obj/structure/flora/bush/canyon/grass_orange
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "orange_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_orange/alt1
+	icon_state = "orange_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_orange/alt2
+	icon_state = "orange_grass_3"
+
+/obj/structure/flora/bush/canyon/grass_yellow
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "yellow_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_yellow/alt1
+	icon_state = "yellow_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_yellow/alt2
+	icon_state = "yellow_grass_3"
+
 
 // Alien Flora
 

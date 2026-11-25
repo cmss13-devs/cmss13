@@ -379,7 +379,7 @@
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/current_storage = wear_suit
-			if(istype(current_storage) && current_storage.pockets.storage_slots)
+			if(istype(current_storage) && (current_storage.pockets.storage_slots || isnull(current_storage.pockets.storage_slots)))
 				current_storage.pockets.attempt_item_insertion(equipping_item, disable_warning, src)
 				wear_suit.update_icon()
 

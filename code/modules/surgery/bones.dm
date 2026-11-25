@@ -11,8 +11,10 @@
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
-		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_bones,
+		/datum/surgery_step/clamp_bleeders_step, //why not
+		/datum/surgery_step/cauterize/abort, //bones can wait, someone has a larba about to burst
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/set_bones,
 	)
 	var/affected_bone //Used for messaging.
@@ -38,8 +40,8 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to repair bones, same as /datum/surgery_step/mend_encased
@@ -75,7 +77,6 @@
 				SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with [tool]."))
 
 			target.custom_pain("You can feel something grinding in your [surgery.affected_bone]!", 1)
-			playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
 	else
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,

@@ -145,6 +145,7 @@ Class Procs:
 	if(breaker_switch)
 		breaker_switch.machinery_list -= src
 		breaker_switch = null
+	QDEL_NULL_LIST(component_parts)
 	. = ..()
 
 /obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -325,6 +326,8 @@ Class Procs:
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1
 		I.forceMove(loc)
+	component_parts.Cut()
+	component_parts = null
 	qdel(src)
 	return 1
 

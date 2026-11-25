@@ -1,8 +1,13 @@
 /datum/xeno_strain/bulwark
 	name = WARRIOR_BULWARK
-	description = "You give up all of your normal abilities, as well as some damage, speed, tackle reliability, and you take 50% more melee damage, in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor with no directional-lock slowdown. Encasing Plates lets you enter a defensive stance that slows your movement and reduces tackle efficiency, but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target up to 3 tiles away and knocks them down. Tail Swing trips enemies around you; if used on a grenade instead, it reflects it up to 3 tiles away with a reduced cooldown. Reflective Shield allows you to reflect bullets coming from the front back toward enemies for up to 6 seconds with a 100% reflection chance. While active, it locks your facing direction to the direction it was activated in. You can stop this ability at any time, but its minimum cooldown is 6 seconds, and each additional 1 second of use adds 2 seconds to the cooldown."
+	description = "We give up all of our normal abilities, as well as some damage, speed, and tackle reliability, and we take 50% more melee damage in exchange for plasma, slightly stronger explosive resistance, and directional defenses. We take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor with no directional-lock slowdown. Our Encasing Plates ability lets us enter a defensive stance that slows our movement and reduces tackle efficiency, but increases directional armor, makes us immune to knockbacks, and allows us to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target up to 3 tiles away and knocks them down. Tail Swing trips enemies around us; if used on a grenade instead, it reflects it up to 3 tiles away with a reduced cooldown. Reflective Shield allows us to reflect bullets coming from the front back toward enemies for up to 6 seconds with a 100% reflection chance. While active, it locks our facing direction to the direction it was activated in. We can stop this ability at any time, but its minimum cooldown is 6 seconds, and each additional 1 second of use adds 2 seconds to the cooldown."
 	flavor_description = "Where there's a sword, there's a shield."
 	icon_state_prefix = "Bulwark"
+	explosive_armor_mod = XENO_EXPLOSIVE_ARMOR_TIER_1
+	health_mod = XENO_HEALTH_MOD_VERY_LARGE
+	armor_mod = XENO_ARMOR_MOD_SMALL
+	plasma_mod = XENO_PLASMA_TIER_2 // Normally has 0
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_8
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/warrior_punch,
@@ -19,15 +24,9 @@
 	behavior_delegate_type = /datum/behavior_delegate/warrior_bulwark
 
 /datum/xeno_strain/bulwark/apply_strain(mob/living/carbon/xenomorph/warrior/warrior)
-	warrior.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_1
-	warrior.health_modifier += XENO_HEALTH_MOD_VERY_LARGE
-	warrior.armor_modifier += XENO_ARMOR_MOD_SMALL
-	warrior.add_plasma += XENO_PLASMA_TIER_2
-	warrior.speed += XENO_SPEED_TIER_1
+	..() // stat modifiers
 	warrior.tackle_max_modifier += 1
 	warrior.melee_vulnerability_mult += 1.5
-
-	warrior.recalculate_everything()
 
 //
 // bulwark config
@@ -127,7 +126,7 @@
 		return
 
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
-	to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield."))
+	to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield!"))
 	xeno_player.ability_speed_modifier += speed_debuff
 	xeno_player.mob_size = MOB_SIZE_BIG //knockback immune
 	button.icon_state = "template_active"
@@ -195,7 +194,7 @@
 		return
 
 	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES) && distance > 1)
-		xeno_player.throw_atom(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking=TRUE)
+		launch_with_dash_smoke(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking = TRUE)
 		if(!xeno_player.Adjacent(carbon_target))
 			return
 

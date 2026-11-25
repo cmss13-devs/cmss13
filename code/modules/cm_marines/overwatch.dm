@@ -599,6 +599,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
+	data["hijack_plan"] = SShijack.hijack_plan
+	data["sd_unlocked"] = SShijack.sd_unlocked
+	data["hijack_started"] = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND
+	data["can_select_hijack_plan"] = allowed(user) && SShijack.can_select_hijack_plan()
+	data["withdrawal_available"] = SShijack.withdrawal_available
+	data["withdrawal_end_time"] = SShijack.withdrawal_end_time
+	data["can_start_withdrawal"] = allowed(user) && SShijack.can_start_withdrawal()
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
@@ -1108,6 +1115,22 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
 			. = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("withdrawal_start")
+			if(!allowed(ui.user))
+				return FALSE
+			return SShijack.start_withdrawal()
+
+		if("hijack_plan")
+			if(!allowed(ui.user))
+				return FALSE
+			return SShijack.select_hijack_plan(params["plan"])
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER
@@ -1765,6 +1788,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	else
 		data["clarity_color"] = "bad"
 		data["clarity_status"] = "CRITICAL BLACKOUT"
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/apc
+	name = "TOC Overwatch Console"
+	desc = "The Tactical Operations Center overwatch console. Many different screens make up the display. A large scribbled text is next to one of the monitors.. WARNING: THE SHIPS GROUNDSIDE OPERATIONS CONSOLE MUST NOT BE LOGGED IN AT THE SAME TIME!"
+	icon = 'icons/obj/structures/machinery/toc.dmi'
+	icon_state = "toc"
+	bound_width = 64
+	bound_height = 32
+	layer = ABOVE_TABLE_LAYER
+	density = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

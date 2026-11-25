@@ -387,6 +387,7 @@
 
 	plasma_cost = 40
 	xeno_cooldown = 8 SECONDS
+	cooldown_message = "Our acid glands refill. We are ready to spray acid again."
 
 
 	// Configurable options
@@ -484,6 +485,10 @@
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
+	///should we pick where the mouse is aiming when windup ends
+	var/retarget_after_windup = FALSE
+	///target obtained from click drag
+	var/new_target
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -499,6 +504,7 @@
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
+	cooldown_message = "Our tail is no longer tired. We can stab with it again."
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
@@ -566,19 +572,18 @@
 	xeno_cooldown = 5 SECONDS
 	ability_primacy = XENO_BECOME_SEETHROUGH
 
-
 /datum/action/xeno_action/onclick/toggle_seethrough/use_ability(atom/target)
-
 	var/datum/component/seethrough_mob/seethroughComp = owner.GetComponent(/datum/component/seethrough_mob)
 	. = ..()
+
+	if(!.)
+		return
 
 	if(!action_cooldown_check())
 		return
 
-
 	seethroughComp.toggle_active()
 	apply_cooldown()
-
 
 
 /mob/living/carbon/xenomorph/proc/set_orders()
@@ -596,7 +601,7 @@
 
 	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 	if(txt)
-		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
+		xeno_message("<B>The Queen's will overwhelms our instincts...</B>", 3, hivenumber)
 		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
 		xeno_maptext(txt, "Hive Orders Updated", hivenumber)
 		hive.hive_orders = txt
@@ -674,25 +679,25 @@
 
 	if(choice == "Allowed")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already allow harming."))
+			to_chat(src, SPAN_XENOWARNING("We already allow harming."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You allow harming."))
+		to_chat(src, SPAN_XENONOTICE("We allow harming."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), hivenumber=hivenumber)
 		hive.hive_flags |= XENO_SLASH_ALLOW_ALL
 	else if(choice == "Restricted - Infected Hosts")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already forbid harming of infected hosts."))
+			to_chat(src, SPAN_XENOWARNING("We already forbid harming of infected hosts."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You forbid harming of infected hosts."))
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You can no longer slash infected hosts."), hivenumber=hivenumber)
+		to_chat(src, SPAN_XENONOTICE("We forbid harming of infected hosts."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. We can no longer slash infected hosts."), hivenumber=hivenumber)
 		hive.hive_flags &= ~XENO_SLASH_INFECTED
 		hive.hive_flags |= XENO_SLASH_NORMAL
 	else if(choice == "Forbidden")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already forbid harming entirely."))
+			to_chat(src, SPAN_XENOWARNING("We already forbid harming entirely."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You forbid harming entirely."))
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), hivenumber=hivenumber)
+		to_chat(src, SPAN_XENONOTICE("We forbid harming entirely."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. We can no longer slash our enemies."), hivenumber=hivenumber)
 		hive.hive_flags &= ~XENO_SLASH_ALLOW_ALL
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_TOGGLE_SLASH, 30 SECONDS)
@@ -732,24 +737,24 @@
 
 	if(choice == "Anyone")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already allow construction placement to all builder castes."))
+			to_chat(src, SPAN_XENOWARNING("We already allow construction placement to all builder castes."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
+		to_chat(src, SPAN_XENONOTICE("We allow construction placement to all builder castes."))
 		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!", hivenumber=hivenumber)
 		hive.hive_flags |= XENO_CONSTRUCTION_ALLOW_ALL
 	else if(choice == "Leaders")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already restrict construction placement to leaders only."))
+			to_chat(src, SPAN_XENOWARNING("We already restrict construction placement to leaders only."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
+		to_chat(src, SPAN_XENONOTICE("We restrict construction placement to leaders only."))
 		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.", hivenumber=hivenumber)
 		hive.hive_flags &= ~XENO_CONSTRUCTION_NORMAL
 		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS
 	else if(choice == "Queen")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already forbid construction placement entirely."))
+			to_chat(src, SPAN_XENOWARNING("We already forbid construction placement entirely."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
+		to_chat(src, SPAN_XENONOTICE("We forbid construction placement entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to all but herself.", hivenumber=hivenumber)
 		hive.hive_flags &= ~(XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)
 		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN
@@ -791,24 +796,24 @@
 
 	if(choice == "Anyone")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already allow special structure destruction to all builder castes and leaders."))
+			to_chat(src, SPAN_XENOWARNING("We already allow special structure destruction to all builder castes and leaders."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
+		to_chat(src, SPAN_XENONOTICE("We allow special structure destruction to all builder castes and leaders."))
 		xeno_message("The Queen has <b>permitted</b> the destruction of special structures to all builder castes and leaders!", hivenumber=hivenumber)
 		hive.hive_flags |= XENO_DECONSTRUCTION_ALLOW_ALL
 	else if(choice == "Leaders")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already restrict special structure destruction to leaders only."))
+			to_chat(src, SPAN_XENOWARNING("We already restrict special structure destruction to leaders only."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You restrict special structure destruction to leaders only."))
+		to_chat(src, SPAN_XENONOTICE("We restrict special structure destruction to leaders only."))
 		xeno_message("The Queen has <b>restricted</b> the destruction of special structures to leaders only.", hivenumber=hivenumber)
 		hive.hive_flags &= ~XENO_DECONSTRUCTION_NORMAL
 		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS
 	else if(choice == "Queen")
 		if(current_setting == choice)
-			to_chat(src, SPAN_XENOWARNING("You already forbid special structure destruction entirely."))
+			to_chat(src, SPAN_XENOWARNING("We already forbid special structure destruction entirely."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
+		to_chat(src, SPAN_XENONOTICE("We forbid special structure destruction entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the destruction of special structures to all but herself.", hivenumber=hivenumber)
 		hive.hive_flags &= ~(XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)
 		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN
@@ -847,16 +852,16 @@
 
 	if(choice == "Anyone")
 		if(!(hive.hive_flags & XENO_UNNESTING_RESTRICTED))
-			to_chat(src, SPAN_XENOWARNING("You have already allowed everyone to unnest hosts."))
+			to_chat(src, SPAN_XENOWARNING("We have already allowed everyone to unnest hosts."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You have allowed everyone to unnest hosts."))
+		to_chat(src, SPAN_XENONOTICE("We have allowed everyone to unnest hosts."))
 		xeno_message("The Queen has <b>allowed</b> everyone to unnest hosts.", hivenumber=hivenumber)
 		hive.hive_flags &= ~XENO_UNNESTING_RESTRICTED
 	else
 		if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
-			to_chat(src, SPAN_XENOWARNING("You have already forbidden anyone to unnest hosts, except for the drone caste."))
+			to_chat(src, SPAN_XENOWARNING("We have already forbidden anyone to unnest hosts, except for the drone caste."))
 			return
-		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
+		to_chat(src, SPAN_XENONOTICE("We have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has <b>forbidden</b> anyone to unnest hosts, except for the drone caste.", hivenumber=hivenumber)
 		hive.hive_flags |= XENO_UNNESTING_RESTRICTED
 

@@ -336,7 +336,7 @@
 	SIGNAL_HANDLER
 	if(range == new_range)
 		return
-	if(range == 0)
+	if(new_range == 0)
 		turn_off()
 	range = clamp(CEILING(new_range, 0.5), 1, 7)
 	var/pixel_bounds = ((range - 1) * 64) + 32
@@ -399,6 +399,19 @@
 	cone.color = new_color
 	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
 		current_holder.underlays += cone
+
+
+///Offsets the visible light mask from the center of its source.
+/datum/component/overlay_lighting/proc/set_pixel_offset(offset_x, offset_y)
+	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
+		current_holder.underlays -= visible_mask
+	var/pixel_bounds = ((range - 1) * 64) + 32
+	var/icon_offset = (pixel_bounds - 32) * 0.5
+	var/matrix/light_transform = matrix()
+	light_transform.Translate(offset_x - icon_offset, offset_y - icon_offset)
+	visible_mask.transform = light_transform
+	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
+		current_holder.underlays += visible_mask
 
 
 ///Toggles the light on and off.
@@ -499,11 +512,11 @@
 	SIGNAL_HANDLER
 	set_direction(newdir)
 
-///Called when parent changes loc.
+///Called when parent changes dir.
 /datum/component/overlay_lighting/proc/on_parent_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
 
-	if(current_holder?.dir != newdir)
+	if(current_holder?.dir == newdir)
 		return
 
 	set_direction(newdir)

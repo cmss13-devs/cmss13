@@ -15,8 +15,6 @@ GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
 GLOBAL_VAR_INIT(players_preassigned, 0)
 
-#define SHIPSIDE_ROLE_WEIGHT 0.25
-
 /proc/guest_jobbans(job)
 	return (job in GLOB.ROLES_COMMAND)
 
@@ -188,27 +186,28 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
-	if(istype(XJ))
+	if(istype(XJ) && !isnull(XJ.scaled))
 		XJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Limit the number of SQUAD MARINE roles players can roll initially (somereason)
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
-	if(istype(SMJ))
+	if(istype(SMJ) && !isnull(SMJ.scaled))
 		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set initial squad caps
 	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
-	if(istype(engi_job))
+	if(istype(engi_job)) // This job will handle a null scaled
 		engi_job.set_spawn_positions(GLOB.players_preassigned)
 	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
-	if(istype(medic_job))
+	if(istype(medic_job)) // This job will handle a null scaled
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	for(var/job_name, job_datum in temp_roles_for_mode)
 		if(istype(job_datum, /datum/job/civilian/survivor))
 			var/datum/job/civilian/survivor/surv_job_datum = job_datum
-			surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
+			if(!isnull(surv_job_datum.scaled))
+				surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
 			surv_job_datum.create_landmark_lists()
 
 	var/chance = trim(file2text("data/predchance.txt"))
@@ -221,10 +220,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ))
+		if(istype(PJ) && !isnull(PJ.scaled))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
 		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
-		if(istype(pred_surv))
+		if(istype(pred_surv) && !isnull(pred_surv.scaled))
 			pred_surv.set_spawn_positions(YAUTJA_SURV_HUNT)
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
@@ -232,7 +231,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/huntless_chance = CONFIG_GET(number/pred_survivor_huntless_chance)
 	if(!(SSticker.mode.flags_round_type & MODE_PREDATOR) && prob(huntless_chance))//Very rare but it could happen on a non-pred round.
 		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
-		if(istype(pred_surv))
+		if(istype(pred_surv) && !isnull(pred_surv.scaled))
 			pred_surv.set_spawn_positions(YAUTJA_SURV_NO_HUNT)
 			log_debug("YAUTJA SURV: Triggered with no Hunt Round at [huntless_chance]%.")
 
@@ -331,14 +330,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			log_debug("Error setting up jobs, no job datum set for: [job].")
 			continue
 
-		var/role_weight = calculate_role_weight(J)
 		for(var/M in unassigned_players)
 			var/mob/new_player/NP = M
 			if(!(NP.client.prefs.get_job_priority(J.title) == priority))
 				continue //If they don't want the job. //TODO Change the name of the prefs proc?
 
 			if(assign_role(NP, J))
-				assigned += role_weight
+				assigned += J.role_weight
 				unassigned_players -= NP
 				// -1 check is not strictly needed here, since standard marines are
 				// supposed to have an actual spawn_positions number at this point
@@ -351,36 +349,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(count)
 		return assigned
 	return roles_to_iterate
-
-/**
-* Calculate role balance weight for one person joining as that role. This weight is used
-* when calculating the number of xenos both roundstart and burrowed larva they get for
-* people late joining. This weight also controls the size of local wildlife population,
-* survivors and the number of roundstart Squad Rifleman slots.
-*/
-/datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
-	if(!J)
-		return 0
-	if(J.title in GLOB.ROLES_MARINES)
-		return 1
-	if(J.title in GLOB.ROLES_XENO)
-		return 1
-	if(J.title in FAX_RESPONDER_JOB_LIST)
-		return 0
-	switch(J.title)
-		if(JOB_SURVIVOR)
-			return 1
-		if(JOB_SURVIVOR_UNLIMITED)
-			return 1
-		if(JOB_SYNTH_SURVIVOR)
-			return 1
-		if(JOB_CO_SURVIVOR)
-			return 1
-		if(JOB_PRED_SURVIVOR)
-			return 1
-		if(JOB_PREDATOR)
-			return 0
-	return SHIPSIDE_ROLE_WEIGHT
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
 	. = roles_to_iterate
@@ -471,14 +439,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	message_admins("[key_name(user)] freed the [job.title] job slot[squad ? " in [squad.name] Squad" : ""].")
 	return TRUE
 
-/datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
-	if(!istype(J))
-		return 0
-	if(amount < J.current_positions) //we should be able to slot everyone
-		return 0
-	J.total_positions = amount
-	J.total_positions_so_far = amount
-	return 1
+/datum/authority/branch/role/proc/modify_role(datum/job/job, amount)
+	if(!istype(job))
+		return FALSE
+	if(amount < job.current_positions && amount != -1) //we should be able to slot everyone
+		return FALSE
+	job.total_positions = amount
+	job.total_positions_so_far = amount
+	return TRUE
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.
 /datum/authority/branch/role/proc/reset_roles()
@@ -769,5 +737,3 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(new_squad.roles_in[transfer_marine.job] >= new_squad.roles_cap[transfer_marine.job])
 			return TRUE
 	return FALSE
-
-#undef SHIPSIDE_ROLE_WEIGHT

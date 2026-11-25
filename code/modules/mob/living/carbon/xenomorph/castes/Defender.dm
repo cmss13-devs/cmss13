@@ -192,7 +192,7 @@
 		return
 
 	if(!fendy.crest_defense && distance > 1)
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
+		launch_with_dash_smoke(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking = TRUE)
 		if(!fendy.Adjacent(carbone))
 			return
 

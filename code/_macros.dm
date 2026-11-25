@@ -53,7 +53,7 @@
 // Reads the length of L, returning 0 if null
 #define LAZYLEN(L) length(L)
 // Safely checks if I is in L
-#define LAZYISIN(L, I) (L ? (I in L) : FALSE)
+#define LAZYISIN(L, I) (I in L)
 // Null-safe L.Cut()
 #define LAZYCLEARLIST(L) L?.Cut()
 // Null-safe L.Copy()

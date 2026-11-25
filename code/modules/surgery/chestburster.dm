@@ -210,16 +210,17 @@
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/larba = locate() in target //the larva was fully grown, ready to burst.
 		if(larba)
-			larba.forceMove(target.loc)
+			larba.forceMove(get_turf(target))
 			qdel(embryo)
 			user.affected_message(target,
 				SPAN_HIGHDANGER("You removed the larva just in time, but it is fully grown and alive!"),
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"),
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"))
 		else
-			embryo.forceMove(target.loc)
+			embryo.forceMove(get_turf(target))
 			target.status_flags &= ~XENO_HOST
 
+		target.pain.recalculate_pain()
 		SEND_SIGNAL(user, COMSIG_HUMAN_REMOVED_A_LARVA)
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their [user.hand ? "left" : "right"] hand"], ending [surgery].")
 

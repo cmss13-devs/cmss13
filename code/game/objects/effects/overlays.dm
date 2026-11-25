@@ -46,6 +46,34 @@
 	if(start_on_spawn)
 		QDEL_IN(src, effect_duration)
 
+/obj/effect/overlay/temp/smoke_plume
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke_plume"
+	layer = BELOW_MOB_LAYER
+	effect_duration = 0.7 SECONDS
+
+/proc/scatter_smoke_plumes(list/affected_area)
+	var/list/candidate_tiles = list()
+	for(var/turf/tile in affected_area)
+		candidate_tiles += tile
+	var/plume_count = min(rand(5, 8), length(candidate_tiles))
+	for(var/index in 1 to plume_count)
+		new /obj/effect/overlay/temp/smoke_plume(pick_n_take(candidate_tiles))
+
+/obj/effect/overlay/temp/xeno_dash_smoke
+	icon = 'icons/mob/xenos/overlay_effects48x48.dmi'
+	icon_state = "smoke_dash"
+	layer = BELOW_MOB_LAYER
+	pixel_x = -8
+	pixel_y = -8
+	effect_duration = 0.6 SECONDS
+
+/obj/effect/overlay/temp/xeno_dash_smoke/large
+	icon = 'icons/mob/xenos/overlay_effects64x64.dmi'
+	pixel_x = -16
+	pixel_y = -16
+	effect_duration = 0.8 SECONDS
+
 /obj/effect/overlay/temp/point
 	name = "arrow"
 	desc = "It's an arrow hanging in mid-air. There may be a wizard about."
@@ -56,6 +84,72 @@
 	var/glide_time = 0.5 SECONDS
 
 	start_on_spawn = FALSE
+
+// firemission shadow overlay appears over open/glass roofs only
+/proc/show_cas_exit_shadow(turf/start, direction, mission_length, duration, obj/docking_port/mobile/marine_dropship/dropship)
+	if(!start || !is_ground_level(start.z) || !(direction in GLOB.cardinals) || !dropship || dropship.cas_shadow_alpha <= 0)
+		return
+	var/icon/silhouette = dropship.get_cas_shadow_icon(direction)
+	if(!silhouette)
+		return
+
+	var/dx = (direction == EAST) - (direction == WEST)
+	var/dy = (direction == NORTH) - (direction == SOUTH)
+	// clear the entire silhouette before entering/leaving the strike corridor.
+	var/flight_length = dx ? silhouette.Width() : silhouette.Height()
+	var/flight_margin = CEILING(flight_length / world.icon_size / 2, 1) + 1
+	var/start_x = start.x - dx * flight_margin
+	var/start_y = start.y - dy * flight_margin
+	var/end_x = start.x + dx * (mission_length + flight_margin)
+	var/end_y = start.y + dy * (mission_length + flight_margin)
+	var/radius_x = CEILING(silhouette.Width() / world.icon_size / 2, 1)
+	var/radius_y = CEILING(silhouette.Height() / world.icon_size / 2, 1)
+	var/turf/lower = locate(clamp(min(start_x, end_x) - radius_x, 1, world.maxx), clamp(min(start_y, end_y) - radius_y, 1, world.maxy), start.z)
+	var/turf/upper = locate(clamp(max(start_x, end_x) + radius_x, 1, world.maxx), clamp(max(start_y, end_y) + radius_y, 1, world.maxy), start.z)
+	var/canvas_width = (upper.x - lower.x + 1) * world.icon_size
+	var/canvas_height = (upper.y - lower.y + 1) * world.icon_size
+	var/icon/canvas = icon(silhouette)
+	canvas.Crop(1, 1, canvas_width, canvas_height)
+	canvas.DrawBox("#00000000", 1, 1, canvas_width, canvas_height)
+	var/icon/roof_mask = icon(canvas)
+	var/has_exposed_ground = FALSE
+	for(var/turf/ground as anything in block(lower, upper))
+		var/area/ground_area = get_area(ground)
+		if(ground_area.ceiling != CEILING_NONE && ground_area.ceiling != CEILING_GLASS)
+			continue
+		var/mask_x = (ground.x - lower.x) * world.icon_size + 1
+		var/mask_y = (ground.y - lower.y) * world.icon_size + 1
+		roof_mask.DrawBox(COLOR_WHITE, mask_x, mask_y, mask_x + world.icon_size - 1, mask_y + world.icon_size - 1)
+		has_exposed_ground = TRUE
+	if(!has_exposed_ground)
+		return
+
+	// layer filters use offsets from the canvas center
+	var/center_x = lower.x + (upper.x - lower.x) / 2
+	var/center_y = lower.y + (upper.y - lower.y) / 2
+	return new /obj/effect/overlay/temp/cas_exit_shadow(lower, canvas, silhouette, roof_mask, (start_x - center_x) * world.icon_size, (start_y - center_y) * world.icon_size, (end_x - center_x) * world.icon_size, (end_y - center_y) * world.icon_size, duration, dropship.cas_shadow_alpha)
+
+/obj/effect/overlay/temp/cas_exit_shadow
+	name = "dropship shadow"
+	layer = ABOVE_BLOOD_LAYER
+	start_on_spawn = FALSE
+
+/obj/effect/overlay/temp/cas_exit_shadow/Initialize(mapload, icon/canvas, icon/silhouette, icon/roof_mask, start_x, start_y, end_x, end_y, duration, peak_alpha)
+	. = ..()
+	if(!canvas || !silhouette || !roof_mask || duration <= 0)
+		return INITIALIZE_HINT_QDEL
+	effect_duration = duration
+	alpha = clamp(peak_alpha, 0, 255)
+	icon = canvas
+	bound_width = canvas.Width()
+	bound_height = canvas.Height()
+	add_filter("aircraft", 1, layering_filter(icon = silhouette, x = start_x, y = start_y, color = "#00000000", transform = matrix()))
+	add_filter("roof", 2, alpha_mask_filter(icon = roof_mask))
+	var/aircraft = get_filter("aircraft")
+	animate(aircraft, x = start_x + (end_x - start_x) * CAS_SHADOW_FADE_IN, y = start_y + (end_y - start_y) * CAS_SHADOW_FADE_IN, color = COLOR_BLACK, time = duration * CAS_SHADOW_FADE_IN, easing = LINEAR_EASING)
+	animate(x = start_x + (end_x - start_x) * CAS_SHADOW_CLIMB_START, y = start_y + (end_y - start_y) * CAS_SHADOW_CLIMB_START, time = duration * (CAS_SHADOW_CLIMB_START - CAS_SHADOW_FADE_IN), easing = LINEAR_EASING)
+	animate(x = end_x, y = end_y, transform = matrix().Scale(CAS_SHADOW_FINAL_SCALE), color = "#00000000", time = duration * (1 - CAS_SHADOW_CLIMB_START), easing = LINEAR_EASING)
+	QDEL_IN(src, effect_duration)
 
 /obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
@@ -230,48 +324,148 @@
 /obj/effect/overlay/temp/ob_impact
 	name = "ob impact animation"
 	effect_duration = 12
-	var/atom/shell
 	var/size_mod = 1
 
 /obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner, size)
 	. = ..()
-	if (!owner)
+	if(!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
-	shell = owner
+		return INITIALIZE_HINT_QDEL
 	size_mod = size
-	appearance = shell.appearance
-	transform = matrix().Turn(-90)
-	transform *= size_mod
+	appearance = owner.appearance
+	var/matrix/shell_transform = matrix().Turn(-90)
+	shell_transform *= size_mod
+	apply_transform(shell_transform)
 	add_filter("motionblur", 1, motion_blur_filter(x = 5, y = 0)) //either im stupid and dont know what its supposed to look like or it needs to be x because it got rotated
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_y = 6000
-	animate(src, pixel_y = -100, time=10)
-	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+	animate(src, pixel_y = -100, time = 1 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS) // to vanish it immediately
 
 //same as above but for mortar shells
 /obj/effect/overlay/temp/mortar_impact
 	name = "mortar impact animation"
 	effect_duration = 22
-	var/atom/shell
 
 /obj/effect/overlay/temp/mortar_impact/Initialize(mapload, atom/owner)
 	. = ..()
-	if (!owner)
+	if(!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
-	shell = owner
-	appearance = shell.appearance
-	transform = matrix().Turn(-180)
+		return INITIALIZE_HINT_QDEL
+	appearance = owner.appearance
+	apply_transform(matrix().Turn(-180))
 	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_y = 3000
-	animate(src, pixel_y = -50, time=2 SECONDS)
-	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+	animate(src, pixel_y = -50, time = 2 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for CAS missiles.
+/obj/effect/overlay/temp/cas_rocket_impact
+	name = "cas rocket impact animation"
+	effect_duration = 1.8 SECONDS
+	light_system = MOVABLE_LIGHT
+	light_range = 1.5
+	light_power = 0.5
+	light_color = LIGHT_COLOR_FIRE
+	light_on = TRUE
+	var/size_multiplier = 1.2
+
+/obj/effect/overlay/temp/cas_rocket_impact/Initialize(mapload, atom/owner, rocket_size = 1.2)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	size_multiplier = rocket_size
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/rocket_transform = matrix().Turn(90)
+	rocket_transform *= size_multiplier
+	apply_transform(rocket_transform)
+	var/datum/component/overlay_lighting/projectile_light = GetComponent(/datum/component/overlay_lighting)
+	projectile_light.set_pixel_offset(16, 16)
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time = 1 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for CAS minirockets.
+/obj/effect/overlay/temp/cas_minirocket_impact
+	name = "cas minirocket impact animation"
+	effect_duration = 1.5 SECONDS
+	light_system = MOVABLE_LIGHT
+	light_range = 1
+	light_power = 0.5
+	light_color = LIGHT_COLOR_FIRE
+	light_on = TRUE
+
+/obj/effect/overlay/temp/cas_minirocket_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/minirocket_transform = matrix().Turn(90)
+	minirocket_transform *= 0.8
+	apply_transform(minirocket_transform)
+	add_filter("motionblur", 1, motion_blur_filter(x = 1, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time = 0.8 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for GAU rounds.
+/obj/effect/overlay/temp/cas_cannon_impact
+	name = "cas cannon impact animation"
+	effect_duration = 1.2 SECONDS
+
+/obj/effect/overlay/temp/cas_cannon_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/cannon_transform = matrix().Turn(-180)
+	cannon_transform *= 1.2
+	apply_transform(cannon_transform)
+	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time = 0.8 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for cluster bombs.
+/obj/effect/overlay/temp/cas_cluster_impact
+	name = "cas cluster impact animation"
+	effect_duration = 1.8 SECONDS
+	var/size_multiplier = 1.5
+
+/obj/effect/overlay/temp/cas_cluster_impact/Initialize(mapload, atom/owner, bomb_size = 1.3)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	size_multiplier = bomb_size
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_mini"
+	var/matrix/bomb_transform = matrix()
+	bomb_transform *= size_multiplier
+	apply_transform(bomb_transform)
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 2000
+	animate(src, pixel_y = 0, time = 1 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
 
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'

@@ -14,7 +14,9 @@
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/create_cavity,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/place_item,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/cauterize/close_cavity,
 	)
 
@@ -31,7 +33,9 @@
 	name = "Implant Removal Surgery"
 	steps = list(
 		/datum/surgery_step/create_cavity,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/remove_implant,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/cauterize/close_cavity,
 	)
 
@@ -254,6 +258,7 @@
 		SPAN_NOTICE("[user] mends your [surgery.affected_limb.cavity] wall."),
 		SPAN_NOTICE("[user] mends [target]'s [surgery.affected_limb.cavity] wall."))
 
+	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.cavity] wall with [tool], ending [surgery].")
 
 /datum/surgery_step/cauterize/close_cavity/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -318,7 +323,7 @@
 				SPAN_NOTICE("[user] extracts the shrapnel from your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] extracts the shrapnel from [target]'s [surgery.affected_limb.display_name]."))
 			for(var/obj/item/shard/S as anything in shrapnel)
-				S.forceMove(target.loc)
+				S.forceMove(get_turf(target))
 				surgery.affected_limb.implants -= S
 				target.embedded_items -= S
 				for(var/i in 1 to S.count-1)
@@ -353,7 +358,8 @@
 			SPAN_NOTICE("You could not find anything inside [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] could not find anything inside your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] could not find anything inside [target]'s [surgery.affected_limb.display_name]."))
-
+			
+		target.pain.recalculate_pain()
 		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
 /datum/surgery_step/remove_embedded/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

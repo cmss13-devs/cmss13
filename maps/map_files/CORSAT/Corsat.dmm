@@ -40114,11 +40114,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/officesquares,
 /area/corsat/gamma/administration)
-"qVA" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/floor/corsat/plate,
-/area/corsat/omega/biodome)
 "qVF" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/corsat/plate,
@@ -51546,7 +51541,7 @@ avX
 avX
 avX
 avX
-qVA
+hwe
 hwe
 aFc
 avX
@@ -52766,7 +52761,7 @@ hwe
 avX
 avX
 avX
-qVA
+hwe
 hwe
 avX
 avX
@@ -54262,7 +54257,7 @@ hwe
 avX
 avX
 hwe
-qVA
+hwe
 aFc
 avX
 avX

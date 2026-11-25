@@ -43,7 +43,7 @@
 			wash(M)
 			check_heat(M)
 		for (var/atom/movable/G in src.loc)
-			G.clean_blood("water")
+			G.clean_blood(cleaning_reagent = "water")
 	else
 		stop_processing()
 

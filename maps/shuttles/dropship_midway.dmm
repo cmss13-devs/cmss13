@@ -373,7 +373,6 @@
 /turf/template_noop,
 /area/shuttle/multiz/drop_midway/midway)
 "pG" = (
-/obj/structure/machinery/light/dropship/double/blue,
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/multiz/drop_midway/midway)
 "pM" = (
@@ -685,6 +684,10 @@
 /obj/item/device/radio/intercom/midway{
 	pixel_y = 28
 	},
+/obj/structure/machinery/light/dropship/double/blue{
+	dir = 8;
+	pixel_x = -12
+	},
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/multiz/drop_midway/midway)
 "Ct" = (
@@ -697,6 +700,10 @@
 	},
 /obj/item/device/radio/intercom/midway{
 	pixel_y = 28
+	},
+/obj/structure/machinery/light/dropship/double/blue{
+	pixel_x = 12;
+	dir = 4
 	},
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/multiz/drop_midway/midway)

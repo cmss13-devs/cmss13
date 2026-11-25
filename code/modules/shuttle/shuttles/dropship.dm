@@ -92,7 +92,7 @@
 	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console = locate(/obj/structure/machinery/computer/cameras/dropship/midway/gunnery) in obj_shuttle_contents
 	if(console)
 		console.linked_dropship = src
-		
+
 		/// cache each asset/configuration/direction combination
 /obj/docking_port/mobile/marine_dropship/proc/get_cas_shadow_icon(direction)
 	if(!cas_shadow_icon || cas_shadow_scale <= 0 || !(direction in GLOB.cardinals) || !(cas_shadow_nose_direction in GLOB.cardinals))
@@ -217,6 +217,7 @@
 	dheight = 12
 	zdepth = 1
 	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/omaha
+	cas_shadow_icon_state = "shadow_mohawk"
 
 /obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
@@ -240,6 +241,7 @@
 	dheight = 12
 	zdepth = 1
 	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/midway
+	cas_shadow_icon_state = "shadow_mohawk"
 
 /obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
 	return /turf/open/space/transit/dropship/midway

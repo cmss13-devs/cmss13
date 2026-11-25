@@ -63,7 +63,6 @@
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/multiz/drop_omaha/omaha)
 "bw" = (
-/obj/structure/machinery/light/dropship/double,
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/multiz/drop_omaha/omaha)
 "bX" = (
@@ -1319,6 +1318,10 @@
 	dir = 8;
 	pixel_x = 16
 	},
+/obj/structure/machinery/light/dropship/double{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/multiz/drop_omaha/omaha)
 "WI" = (
@@ -1370,6 +1373,10 @@
 /obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
 	dir = 4;
 	pixel_x = -16
+	},
+/obj/structure/machinery/light/dropship/double{
+	dir = 8;
+	pixel_x = -12
 	},
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/multiz/drop_omaha/omaha)

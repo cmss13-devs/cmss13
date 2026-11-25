@@ -203,6 +203,7 @@
 	max_per_xeno = 5
 
 	build_path = /turf/closed/wall/resin/reflective
+	buildnode_icon = "buildnode_wall_reflective"
 
 // Resin Membrane
 /datum/resin_construction/resin_turf/membrane

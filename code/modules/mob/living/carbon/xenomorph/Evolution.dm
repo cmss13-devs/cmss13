@@ -499,12 +499,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 // If the new xenomorph can't build (drone -> burrower) they're just deleted.
 /mob/living/carbon/xenomorph/proc/transfer_build_nodes(mob/living/carbon/xenomorph/new_xeno)
 	// Do we have the ability to build?
-	if(locate(/datum/action/xeno_action/activable/secrete_resin) in actions)
+	if(locate(/datum/action/xeno_action/activable/secrete_resin) in new_xeno.actions)
 		new_xeno.current_building_nodes = current_building_nodes
 		// Were there any nodes to begin with?
 		if(new_xeno.current_building_nodes)
 			// Transfer each node's 'planter' to the new xenomorph, and recreate the client holder image for the new mob.
 			for(var/obj/effect/alien/resin/building_node/node in new_xeno.current_building_nodes)
+				// If the new xeno can't build the old construction type or a variant thereof, delete node.
+				if(!node.check_construction_type(new_xeno))
+					qdel(node)
+					continue
 				node.planter = new_xeno
 				node.create_node_image(new_xeno)
 		// Wipe away the old list completely.

@@ -124,25 +124,20 @@
 	if(!queued_node)
 		return
 
-	if(isnull(get_turf(queued_node)))
-		LAZYREMOVE(queen_owner.current_building_nodes, queued_node)
-		qdel(queued_node)
-		build_from_queue(queen_owner, message)
-		return
-
-	// Build turfs before objects always.
-	// Doors need walls, and walls are more important in general than any object.
+	// Build turfs (walls) before objects (doors, and others)
+	// This is because 1. Walls are the most important resin construction, 2. Walls are necessary for doors
 	if((queued_node.resin_type in typesof(/datum/resin_construction/resin_obj)))
-		for(var/obj/effect/alien/resin/building_node/turf_node in queen_owner.current_building_nodes)
-			if(turf_node.resin_type in typesof(/datum/resin_construction/resin_turf))
-				queued_node = turf_node
-				break
+		for(var/obj/effect/alien/resin/building_node/other_node in queen_owner.current_building_nodes)
+			if(other_node.resin_type in typesof(/datum/resin_construction/resin_turf))
+				queued_node = other_node
+				return
 
-	// If it fails to be built it goes to the back of the list.
-	// This prevents a chain of doors from being stuck on the door that can't be built.
-	if(!queen_owner.build_resin(queued_node, queued_node.resin_type, message = message, use_plasma = (plasma_cost != 0)))
-		LAZYREMOVE(queen_owner.current_building_nodes, queued_node)
-		LAZYADD(queen_owner.current_building_nodes, queued_node)
+	// Shove the new node to the back of the list, in case it's a door and we fail to make it later
+	LAZYREMOVE(queen_owner.current_building_nodes, queued_node)
+	LAZYADD(queen_owner.current_building_nodes, queued_node)
+
+	if(queued_node.try_fill(queen_owner, build_cost = (plasma_cost != 0)) == SECRETE_RESIN_SUCCESS)
+		return build_from_queue(queen_owner, message)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/life_tick()
 	. = ..()

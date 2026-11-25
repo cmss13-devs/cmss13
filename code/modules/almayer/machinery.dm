@@ -145,6 +145,10 @@
 /obj/structure/machinery/prop/almayer/CICmap/pmc
 	minimap_flag = MINIMAP_FLAG_PMC
 
+/obj/structure/machinery/prop/almayer/CICmap/toc
+	name = "Tactical Map Display"
+	icon_state = "toc_map"
+
 //Nonpower using props
 
 /obj/structure/prop/almayer

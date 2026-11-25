@@ -134,6 +134,7 @@
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name] again."))
 
+	target.pain.recalculate_pain()
 	complete(target, surgery)
 	log_interact(user, target, "[key_name(user)] successfully aborted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
@@ -193,6 +194,7 @@
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 	surgery.affected_limb.droplimb(amputation = TRUE, surgery_in_progress = TRUE)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
+	target.pain.recalculate_pain() // I mean... you don't have a limb there, any more.
 	log_interact(user, target, "[key_name(user)] successfully severed [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/saw_off_limb/failure(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -225,6 +227,7 @@
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 		surgery.affected_limb.droplimb() //This will sever the limb messily and reset incision depth. The stump cleanup surgery will have to be done to properly amputate, but doing this saved two seconds. Worth it?
 		target.apply_damage(20, BRUTE, surgery.affected_limb.parent)
+		target.pain.recalculate_pain()  //I mean... you don't have a limb there, any more.
 		log_interact(user, target, "[key_name(user)] hacked [key_name(target)]'s [surgery.affected_limb.display_name] off with [tool], ending [surgery].")
 		return TRUE
 

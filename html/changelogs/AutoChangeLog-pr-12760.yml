@@ -1,0 +1,8 @@
+author: "Cess183"
+delete-after: True
+changes:
+  - rscadd: "Added \"elastic band\" to rifleman squad prep, costing 5 points each."
+  - code_imp: "Added a \"Jungle Style\" component for magazines"
+  - code_imp: "Added a few extra signals for unique action, magazine behaviors"
+  - code_imp: "Added flags for able to jungle style and able to act as binding item"
+  - imageadd: "Added elastic band icons made by MinZizka"

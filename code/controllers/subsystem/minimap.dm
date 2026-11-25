@@ -55,6 +55,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/hashed_minimaps = list()
 	///list of individual client minimap copies for tracking and updates
 	var/list/atom/movable/screen/minimap/client_minimap_copies = list()
+	///list of minimap copies for ceiling
+	var/list/atom/movable/screen/minimap/ceiling_minimap_copies = list()
 	///assoc list storing frozen overlay states when updates are sent
 	var/list/frozen_overlay_states = list()
 
@@ -217,11 +219,8 @@ SUBSYSTEM_DEF(minimaps)
 		callback.Invoke()
 	LAZYREMOVE(earlyadds, "[level]")
 
-/// Creates ceiling protection overlay for a specific client and z-level
-/datum/controller/subsystem/minimaps/proc/create_ceiling_overlay(client/target_client, z_level)
-	if(!target_client?.prefs?.show_minimap_ceiling_protection)
-		return null
-
+/// Creates ceiling protection overlay for a specific z-level
+/datum/controller/subsystem/minimaps/proc/create_ceiling_overlay(z_level)
 	var/datum/hud_displays/hud_data = minimaps_by_z["[z_level]"]
 	if(!hud_data)
 		return null
@@ -355,8 +354,8 @@ SUBSYSTEM_DEF(minimaps)
 
 		frozen_overlay_states["[z_level]-[minimap_flag]"] = frozen_overlays
 
-	// Update existing late joiner minimaps with the new frozen state
-	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies)
+	// Update existing late joiner & ceiling minimaps with the new frozen state
+	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies + ceiling_minimap_copies)
 		if(client_map.live || !(client_map.minimap_flags & minimap_flag))
 			continue
 		var/frozen_key = "[client_map.target]-[client_map.minimap_flags]"
@@ -373,8 +372,8 @@ SUBSYSTEM_DEF(minimaps)
 		if(istype(target) && target.live && target.minimap_flags & minimap_flag)
 			target.update_drawing_overlay(show_cic_drawings = FALSE)
 
-	// Also update non-live client minimap copies that match this minimap flag
-	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies)
+	// Also update non-live client & ceiling minimap copies that match this minimap flag
+	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies + ceiling_minimap_copies)
 		if(!client_map.live && (client_map.minimap_flags & minimap_flag) && client_map.drawing)
 			client_map.update_drawing_overlay(show_cic_drawings = FALSE)
 
@@ -392,8 +391,8 @@ SUBSYSTEM_DEF(minimaps)
 				frozen_overlays |= drawn_images["[z_level]-[flag]label"]
 		frozen_overlay_states["[z_level]-[minimap_flag]"] = frozen_overlays
 
-	// Update individual client copies with overlay system
-	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies)
+	// Update individual client & ceiling copies with overlay system
+	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies + ceiling_minimap_copies)
 		if(client_map.live || !(client_map.minimap_flags & minimap_flag))
 			continue
 
@@ -448,6 +447,10 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/proc/remove_client_copy(atom/movable/screen/minimap/source)
 	SIGNAL_HANDLER
 	client_minimap_copies -= source
+	for(var/hash in hashed_minimaps)
+		if(hashed_minimaps[hash] == source)
+			hash -= source // TODO: Does this work/necessary?
+			break
 	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 
 /**
@@ -692,7 +695,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client, uncached = FALSE)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, ceiling, client/for_client, uncached = FALSE)
 	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
 		return null
 	if(!SSminimaps.minimaps_by_z["[zlevel]"])
@@ -701,7 +704,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!SSminimaps.minimaps_by_z["[zlevel]"].hud_image)
 		return null
 
-	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
+	var/hash = "[zlevel]-[flags]-[!!live]-[!!popup]-[!!drawing]-[!!ceiling]"
 
 	if(for_client || uncached || (!popup && !live))
 		var/client_hash = "[hash][for_client ? "-[REF(for_client)]" : ""]"
@@ -713,8 +716,14 @@ SUBSYSTEM_DEF(minimaps)
 			// Create and cache the base minimap
 			var/atom/movable/screen/minimap/base_map = new(null, null, zlevel, flags, live, popup, drawing)
 			if(!base_map.icon)
-				CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'")
+				CRASH("Empty and unusable minimap generated for '[hash]'")
 			hashed_minimaps[hash] = base_map
+
+			if(ceiling)
+				var/inverse_ceiling_hash = "[zlevel]-[flags]-[!!live]-[!!popup]-[!!drawing]-[!ceiling]"
+				if(!hashed_minimaps[inverse_ceiling_hash])
+					// Requested ceiling version when base version doesn't even exist yet either
+					fetch_minimap_object(zlevel, flags, live, popup, drawing, FALSE)
 
 		var/atom/movable/screen/minimap/cached_base = hashed_minimaps[hash]
 		var/atom/movable/screen/minimap/map = new()
@@ -739,6 +748,12 @@ SUBSYSTEM_DEF(minimaps)
 
 		// Apply standard minimap filters
 		map.apply_minimap_filters()
+
+		// Apply ceiling overlay if needed
+		if(ceiling)
+			var/icon/ceiling_overlay = SSminimaps.create_ceiling_overlay(zlevel)
+			if(ceiling_overlay)
+				map.add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
 
 		// Register for live updates if needed
 		if(live)
@@ -774,6 +789,16 @@ SUBSYSTEM_DEF(minimaps)
 		if(!map.icon) //Don't wanna save an unusable minimap for a z-level.
 			CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 		hashed_minimaps[hash] = map
+
+		// Apply ceiling overlay if needed
+		if(ceiling)
+			var/icon/ceiling_overlay = SSminimaps.create_ceiling_overlay(zlevel)
+			if(ceiling_overlay)
+				map.add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
+			var/inverse_ceiling_hash = "[zlevel]-[flags]-[!!live]-[!!popup]-[!!drawing]-[!ceiling]"
+			if(!hashed_minimaps[inverse_ceiling_hash])
+				// Requested ceiling version when base version doesn't even exist yet either
+				fetch_minimap_object(zlevel, flags, live, popup, drawing, FALSE)
 	return map
 
 /// Clears all drawings and labeled turfs for the provided `zlevel` and `minimap_flags`
@@ -938,24 +963,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	SSminimaps.remove_updater(src)
 
-/// Updates ceiling protection overlay for this minimap
-/atom/movable/screen/minimap/proc/update_ceiling_overlay(client/owner_client)
-	// Remove any existing ceiling filter
-	remove_filter("ceiling_protection")
-
-	// For individual client copies only
-	if(!owner_client)
-		return
-
-	// Check if this specific client wants ceiling protection overlay
-	if(!owner_client.prefs?.show_minimap_ceiling_protection)
-		return
-
-	// Create ceiling overlay for this client
-	var/icon/ceiling_overlay = SSminimaps.create_ceiling_overlay(owner_client, target)
-	if(ceiling_overlay)
-		add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
-
 /// client ceiling layer for minimaps embedded in a console
 /atom/movable/screen/minimap_ceiling_layer
 	name = ""
@@ -972,7 +979,8 @@ SUBSYSTEM_DEF(minimaps)
 	src.target_zlevel = target_zlevel
 	assigned_map = map_ref
 	screen_loc = "[map_ref]:1,1"
-	transform = map_transform
+	if(map_transform)
+		transform = map_transform
 
 /atom/movable/screen/minimap_ceiling_layer/proc/set_enabled(new_enabled)
 	enabled = new_enabled
@@ -1190,7 +1198,9 @@ SUBSYSTEM_DEF(minimaps)
 		if(owner.client?.using_main_tacmap || (map in owner.client?.screen))
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
-		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
+		RegisterSignal(owner.client, COMSIG_CLIENT_CEILING_PREF_CHANGED, PROC_REF(on_ceiling_change))
+		var/ceiling = owner.client?.prefs?.show_minimap_ceiling_protection
+		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing, ceiling)
 		if(owner.client)
 			if(tool_references)
 				owner.client.remove_from_screen(tool_references)
@@ -1200,8 +1210,6 @@ SUBSYSTEM_DEF(minimaps)
 			owner.client.add_to_screen(tool_references)
 			owner.client.add_to_screen(map)
 			owner.client.add_to_screen(locator)
-		// Apply ceiling protection overlay if client has preference enabled
-		map.update_ceiling_overlay(owner.client)
 		locator.link_locator(map, owner)
 		locator.update(tracking, null, null)
 		// Show ceiling protection toggle action when minimap opens
@@ -1223,6 +1231,7 @@ SUBSYSTEM_DEF(minimaps)
 			owner.client.remove_from_screen(map)
 			owner.client.remove_from_screen(tool_references)
 			QDEL_NULL_LIST(tool_references)
+			UnregisterSignal(owner.client, COMSIG_CLIENT_CEILING_PREF_CHANGED)
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
 		var/datum/action/minimap_ceiling/ceiling_action = locate() in owner.actions
@@ -1231,7 +1240,17 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_displayed = force_state
 	return TRUE
 
+/// SIGNAL_HANDLER for COMSIG_CLIENT_CEILING_PREF_CHANGED
+/datum/action/minimap/proc/on_ceiling_change(client/target, ceiling_setting)
+	SIGNAL_HANDLER
 
+	if(minimap_displayed)
+		map.stop_polling -= owner
+		target.remove_from_screen(map)
+		map = SSminimaps.fetch_minimap_object(map.target, map.minimap_flags, map.live, FALSE, map.drawing, ceiling_setting)
+		target.add_to_screen(map)
+		locator.link_locator(map, owner)
+		locator.update(locator_override || owner)
 
 ///Overrides the minimap locator to a given atom
 /datum/action/minimap/proc/override_locator(atom/movable/to_track)
@@ -1330,7 +1349,7 @@ SUBSYSTEM_DEF(minimaps)
 				SSminimaps.load_new_z(null, z_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"])
 			return FALSE
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 		if(!map)
 			return FALSE
 		return TRUE
@@ -1346,7 +1365,7 @@ SUBSYSTEM_DEF(minimaps)
 	// Only require hud_image for ground levels
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"].hud_image && (is_ground_level(tracking.z) || SSmapping.level_trait(tracking.z, ZTRAIT_AWAY)))
 		return FALSE
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 	if(!map)  // Handle null return from fetch_minimap_object
 		return FALSE
 	return TRUE
@@ -1354,7 +1373,6 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
 	UnregisterSignal(locator_override || mob, COMSIG_MOVABLE_Z_CHANGED)
-
 	return ..()
 
 /**
@@ -1362,39 +1380,10 @@ SUBSYSTEM_DEF(minimaps)
  */
 /datum/action/minimap/proc/on_owner_z_change(atom/movable/source, oldz, newz)
 	SIGNAL_HANDLER
-	var/atom/movable/tracking = locator_override ? locator_override : owner
+
 	if(minimap_displayed)
 		toggle_minimap(force_state=FALSE)
-	map = null
-	if(default_overwatch_level)
-		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
-			if(minimap_displayed)
-				owner.client?.screen -= locator
-				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
-				minimap_displayed = FALSE
-			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
-		if(minimap_displayed)
-			if(owner.client)
-				owner.client.screen += map
-				map.update_ceiling_overlay(owner.client)
-			else
-				minimap_displayed = FALSE
-		return
-	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
-		if(minimap_displayed)
-			owner.client?.screen -= locator
-			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
-			minimap_displayed = FALSE
-		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
-	if(minimap_displayed)
-		if(owner.client)
-			owner.client.screen += map
-			map.update_ceiling_overlay(owner.client)
-		else
-			minimap_displayed = FALSE
-
+		toggle_minimap(force_state=TRUE)
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
@@ -1540,20 +1529,14 @@ SUBSYSTEM_DEF(minimaps)
 		to_chat(owner, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(owner.client, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
 		return FALSE
 
-	owner.client.prefs.show_minimap_ceiling_protection = !owner.client.prefs.show_minimap_ceiling_protection
-
 	// Set cooldown
 	COOLDOWN_START(owner.client, ceiling_protection_toggle_cooldown, 2 SECONDS)
+
+	owner.client.prefs.show_minimap_ceiling_protection = !owner.client.prefs.show_minimap_ceiling_protection
 	owner.client.prefs.save_preferences()
 	to_chat(owner, SPAN_NOTICE("Ceiling protection overlay [owner.client.prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
 	update_button_icon()
-
-	// Refresh minimaps for this client
-	for(var/atom/movable/screen/minimap/mini_map in owner.client.screen)
-		if(mini_map.assigned_map) // Skip shared popup maps
-			continue
-		mini_map.update_ceiling_overlay(owner.client)
-
+	SEND_SIGNAL(owner.client, COMSIG_CLIENT_CEILING_PREF_CHANGED, owner.client.prefs.show_minimap_ceiling_protection)
 	return TRUE
 
 /atom/movable/screen/exit_map
@@ -2187,7 +2170,8 @@ SUBSYSTEM_DEF(minimaps)
 		to_chat(user, SPAN_WARNING("This is already the highest Z-level."))
 		return
 
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	var/ceiling = user.client.prefs?.show_minimap_ceiling_protection
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, ceiling)
 	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/down
@@ -2208,7 +2192,8 @@ SUBSYSTEM_DEF(minimaps)
 		to_chat(user, SPAN_WARNING("This is already the lowest Z-level."))
 		return
 
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	var/ceiling = user.client.prefs?.show_minimap_ceiling_protection
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, ceiling)
 	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
@@ -2222,32 +2207,30 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/atom/movable/screen/minimap_tool/tool in user.client.screen)
 		tool.linked_map = new_linked_map
 
-	// Apply ceiling protection overlay if client has preference enabled
-	new_linked_map.update_ceiling_overlay(user.client)
-
 /atom/movable/screen/minimap_tool/change_map
 	desc = "Switch ground / ship map."
 	screen_loc = "15,7"
 	icon_state = "update"
 
 /atom/movable/screen/minimap_tool/change_map/clicked(mob/user, list/mods)
+	var/ceiling = user.client.prefs?.show_minimap_ceiling_protection
 	var/atom/movable/screen/minimap/new_linked_map
 	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, ceiling)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.add_to_screen(map.locator)
 		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, ceiling)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.remove_from_screen(map.locator)
 	else
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, ceiling)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.add_to_screen(map.locator)
 		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, ceiling)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.remove_from_screen(map.locator)
 

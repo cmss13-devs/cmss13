@@ -48,3 +48,6 @@
 
 /// Called when something animates pixel_x/pixel_y on the client : /mob/proc/dizzy_process()
 #define COMSIG_CLIENT_ANIMATING "client_animating"
+
+/// Called when a client toggles ceiling protection pref: (show_minimap_ceiling_protection)
+#define COMSIG_CLIENT_CEILING_PREF_CHANGED "client_ceiling_preference_changed"

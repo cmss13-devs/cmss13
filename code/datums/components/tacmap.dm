@@ -23,6 +23,8 @@
 	var/close_button
 	///Map holder
 	var/datum/tacmap_holder/map_holder
+	///ceiling_layer for the map_holder
+	var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer
 	///Is drawing enabled
 	var/drawing
 	///Is this tacmap embedded in parent UI
@@ -112,17 +114,17 @@
 	user.client.active_draw_tool = null
 	winset(user, "drawingtools", "reset=true")
 	user.client.using_main_tacmap = FALSE
+	UnregisterSignal(user.client, COMSIG_CLIENT_CEILING_PREF_CHANGED)
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if (user.client.using_tacmap())
 		to_chat(user.client, SPAN_WARNING("You're already using a tacmap. Close it to open another one."))
 		return
 
-	if(!map_holder)
-		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
-
-	// Create per client minimap and tools for ceiling protection isolation
-	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client)
+	// Get ceiling respective minimap
+	RegisterSignal(user.client, COMSIG_CLIENT_CEILING_PREF_CHANGED, PROC_REF(on_ceiling_change))
+	var/ceiling = user.client.prefs?.show_minimap_ceiling_protection
+	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, ceiling=ceiling)
 	var/atom/movable/screen/exit_map/user_close_button = new(null, src)
 
 	// Apply drawing overlays to minimap
@@ -138,9 +140,6 @@
 	user.client.add_to_screen(user_close_button)
 	user.client.add_to_screen(user_map)
 
-	// Apply ceiling protection overlay if client has preference enabled
-	user_map.update_ceiling_overlay(user.client)
-
 	// Give ceiling protection toggle action when CIC tactical map opens
 	var/datum/action/minimap_ceiling/ceiling_action = locate() in user.actions
 	if(ceiling_action)
@@ -155,6 +154,16 @@
 			user.actions.Add(ceiling_action)
 		user.update_action_buttons()
 
+	// Set up map_holder for tgui_interact
+	user.client.clear_map(map_holder?.map?.assigned_map)
+	map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
+	if(map_holder.map)
+		ceiling_layer = new(null, map_holder.map_ref, targetted_zlevel)
+		ceiling_layer.set_enabled(ceiling)
+	if(user.client.using_popout_tacmap)
+		user.client.register_map_obj(map_holder?.map)
+		user.client.register_map_obj(ceiling_layer)
+
 	// Store references for cleanup
 	interactees[user] = list(
 		"map" = user_map,
@@ -164,6 +173,18 @@
 		)
 
 	user.client.using_main_tacmap = TRUE
+
+/// SIGNAL_HANDLER for COMSIG_CLIENT_CEILING_PREF_CHANGED
+/datum/component/tacmap/proc/on_ceiling_change(client/target, ceiling_setting)
+	SIGNAL_HANDLER
+
+	var/list/_interactees = interactees.Copy()
+	for(var/mob/interactee in _interactees)
+		on_unset_interaction(interactee)
+		close_popout_tacmaps(interactee)
+	map = null
+	for(var/mob/interactee in _interactees)
+		show_tacmap(interactee)
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
 	// For embedded tacmap, delegate to parent's UI status
@@ -176,24 +197,20 @@
 	return UI_INTERACTIVE
 
 /datum/component/tacmap/tgui_interact(mob/user, datum/tgui/ui)
+	if(!user.client)
+		return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 
 	// try_update_ui returns NULL as the UI even if the UI is trying to close from ui_status.
 	// Double check that we aren't attempting to close so that we don't make a UI when we don't need to.
-	if(get_dist(parent, user) > 1)
+	if(ui || get_dist(parent, user) > 1)
 		return
 
-	if(!user.client)
-		return
-
-	user.client.clear_map(map_holder?.map?.assigned_map)
-	map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
 	user.client.register_map_obj(map_holder.map)
-
-	if(!ui)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
-		ui.set_autoupdate(FALSE)
+	ui = new(user, src, "TacticalMap")
+	ui.open()
+	ui.set_autoupdate(FALSE)
 
 /datum/component/tacmap/ui_static_data(mob/user)
 	. = list()
@@ -216,7 +233,9 @@
 	if(!user.client)
 		return
 
-	user.client.remove_from_screen(map_holder.map)
+	user.client.clear_map(map_holder?.map?.assigned_map)
+	QDEL_NULL(ceiling_layer)
+
 	user.client.using_popout_tacmap = FALSE
 
 GLOBAL_LIST_INIT(tacmap_holders, list())
@@ -226,7 +245,7 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	var/atom/movable/screen/minimap/map
 	var/owns_map = FALSE
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE, client/for_client, uncached = FALSE)
+/datum/tacmap_holder/New(loc, zlevel, flags, popup=TRUE, drawing, client/for_client, uncached=FALSE)
 	map_ref = "tacmap_[REF(src)]_map"
 	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing, for_client=for_client, uncached=uncached)
 	owns_map = !!for_client || uncached

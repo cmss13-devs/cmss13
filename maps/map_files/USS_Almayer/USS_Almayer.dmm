@@ -16226,9 +16226,6 @@
 	pixel_y = -7
 	},
 /obj/item/jungle_mag_binders/elastic_band,
-/obj/item/jungle_mag_binders/elastic_band{
-	pixel_y = 2
-	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "aQN" = (
@@ -79118,10 +79115,6 @@
 /obj/item/ammo_magazine/rifle/pre_bundled,
 /obj/item/jungle_mag_binders/elastic_band{
 	pixel_x = -8
-	},
-/obj/item/jungle_mag_binders/elastic_band{
-	pixel_x = -8;
-	pixel_y = 2
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)

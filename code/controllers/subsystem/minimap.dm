@@ -1251,6 +1251,8 @@ SUBSYSTEM_DEF(minimaps)
 		target.add_to_screen(map)
 		locator.link_locator(map, owner)
 		locator.update(locator_override || owner)
+		for(var/atom/movable/screen/minimap_tool/tool in target.screen)
+			tool.linked_map = map
 
 ///Overrides the minimap locator to a given atom
 /datum/action/minimap/proc/override_locator(atom/movable/to_track)

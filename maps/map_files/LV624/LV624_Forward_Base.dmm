@@ -4957,7 +4957,8 @@
 /area/forward_base/lv624/brig/reception)
 "arb" = (
 /obj/structure/machinery/vending/security{
-	pixel_y = -32
+	pixel_y = -32;
+	density = 0
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -10308,10 +10309,23 @@
 /area/lv624/lazarus/quart)
 "aHk" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/motiondetector,
-/obj/item/device/motiondetector,
 /obj/item/storage/box/flashbangs{
 	pixel_x = 7
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = -4
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = -4
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = -4
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = -4
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = -4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/brig)

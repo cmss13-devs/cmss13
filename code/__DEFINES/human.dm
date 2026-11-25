@@ -72,6 +72,10 @@
 ///The operation is on a limb that is internally bleeding. Can be any step until IB is fixed.
 #define INCISION_INT_BLEEDING (1<<8)
 
+///The surgical site's eschar has been removed but not covered
+#define INCISION_CRUST_REMOVED (1<<9)
+
+
 
 ///////////////////WOUND DEFINES///////////////////
 

@@ -58,11 +58,17 @@
 
 	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
 	var/image/burn_overlay //Ditto but for burns.
+	var/image/severe_burn_overlay //this sticks around until you slap a poultice on it
+	var/image/eschar_overlay //can only be removed with surgery
+
+	//surgery overlays
 	var/image/surgery_flesh_overlay = null
 	var/image/surgery_bone_overlay = null
 	var/image/surgery_ib_overlay = null
 	var/image/surgery_organ_overlay = null
-	var/image/extra_organ_overlay = null
+	var/image/surgery_extra_organ_overlay = null
+	var/image/surgery_extra_bone_overlay = null
+	var/image/surgery_organ_damage_overlay = null
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -111,13 +117,19 @@
 		surgery_bone_overlay = null
 		surgery_ib_overlay = null
 		surgery_organ_overlay = null
-		extra_organ_overlay = null
+		surgery_extra_organ_overlay = null
+		surgery_extra_bone_overlay = null
+		surgery_organ_damage_overlay = null
 
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0", -DAMAGE_LAYER)
+
+	severe_burn_overlay = image('icons/mob/humans/dam_human.dmi', "severeburn_0", -DAMAGE_LAYER)
+
+	eschar_overlay = image('icons/mob/humans/dam_human.dmi', "eschar_0", -DAMAGE_LAYER)
 
 	if(owner)
 		forceMove(owner)
@@ -1407,6 +1419,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
 		. += burn_overlay
 
+	if(status & (LIMB_THIRD_DEGREE_BURNS)) //so the burn stays there even after the burn damage goes away
+		severe_burn_overlay.icon_state = "burn_[icon_name]_2" //fresh skin
+		. += severe_burn_overlay
+	else if(status & (LIMB_ESCHAR)) //so the burn stays there even after the burn damage goes away
+		eschar_overlay.icon_state = "burn_[icon_name]_3"
+		. += eschar_overlay
 
 /obj/limb/proc/get_surgery_overlays()
 	. = list()
@@ -1472,26 +1490,40 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		//Adds intestines and stomach overlay manually. They're fluff organs, but they
 		if(name == "groin" && !issynth(owner))
 			if(surgery_status & INCISION_PELVIS_HIDDEN)
-				extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1) //intestines.
+				surgery_extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1) //intestines.
 			else if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
-				extra_organ_overlay = null
-			. += extra_organ_overlay
+				surgery_extra_organ_overlay = null
+			. += surgery_extra_organ_overlay
 
 		if(name == "chest" && !issynth(owner))
-			extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "stomach", layer = SURGERY_LAYER +1) //stomach
-			. += extra_organ_overlay
+			surgery_extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "stomach", layer = SURGERY_LAYER +1) //stomach
+			. += surgery_extra_organ_overlay
 
 		//Add the rest of the organs.
 		if(name == "head" || name == "chest" || name == "groin")
 			for(var/datum/internal_organ/organ as anything in internal_organs)
 				if(name == "head")
 					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
+					surgery_extra_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
+					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
+					if(surgery_organ_overlay && organ)
+						if(organ.damage < 0)
+							surgery_organ_damage_overlay.icon_state += "[organ.name]_hematoma"
+							surgery_organ_damage_overlay.icon_state += owner?.species.blood_color
+						if(organ && organ.damage <= BONECHIPS_MAX_DAMAGE)
+							surgery_extra_bone_overlay.icon_state += "[organ.name]_bonechips"
 				else if(name == "chest")
+					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
+					surgery_organ_damage_overlay.icon_state = "[organ.name]"
 					if(organ)
 						if(organ.name == "heart" || organ.name == "liver")
 							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
 						else
 							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
+						if(organ.organ_status & ORGAN_BRUISED)
+							surgery_organ_damage_overlay.color = "#00000033"
+						else if(organ.organ_status & ORGAN_BROKEN)
+							surgery_organ_damage_overlay.color = "#00000066"
 				else if(name == "groin")
 					if(surgery_status & INCISION_PELVIS_HIDDEN)
 						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
@@ -1524,7 +1556,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		surgery_bone_overlay = null
 		surgery_ib_overlay = null
 		surgery_organ_overlay = null
-		extra_organ_overlay = null
+		surgery_extra_organ_overlay = null
+		surgery_extra_bone_overlay = null
+		surgery_organ_damage_overlay = null
 ////////////////////
 
 ////////////////////

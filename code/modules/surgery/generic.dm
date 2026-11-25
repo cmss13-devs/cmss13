@@ -692,7 +692,9 @@
 	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
 		if(int_organ && int_organ.damage > 0)
 			int_organ.take_damage(dam_amt,0)
+			target.update_surgery_overlays()
 
+	target.update_surgery_overlays()
 	log_interact(user, target, "[key_name(user)] failed to move [key_name(target)]'s [internals_type] away from the [surgery.affected_limb.cavity].")
 
 //------------------------------------
@@ -850,6 +852,7 @@
 	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
 		if(int_organ && int_organ.damage > 0)
 			int_organ.take_damage(dam_amt,0)
+			target.update_surgery_overlays()
 
 	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)

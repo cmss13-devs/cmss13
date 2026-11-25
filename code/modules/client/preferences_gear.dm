@@ -1294,6 +1294,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/storage/box/pdt_kit
 	fluff_cost = 3
 
+/datum/gear/misc/elastic_band
+	display_name = "Elastic Band"
+	path = /obj/item/jungle_mag_binders/elastic_band
+	fluff_cost = 3 // maybe the cost will make them curious (one can dream)
+
 /datum/gear/misc/sunscreen_stick
 	display_name = "USCM issue sunscreen"
 	path = /obj/item/facepaint/sunscreen_stick

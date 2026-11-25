@@ -61,6 +61,54 @@
 "an" = (
 /turf/open/auto_turf/snow/layer1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"as" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 10
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"at" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = 4;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"au" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin{
+	pixel_x = -14;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"av" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "az" = (
 /obj/structure/machinery/cryopod/no_store{
 	pixel_y = 13
@@ -890,17 +938,6 @@
 	pixel_x = 9
 	},
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
-"jf" = (
-/obj/structure/machinery/cm_vending/sorted/marine_food{
-	pixel_y = 16;
-	wrenchable = 0;
-	density = 0;
-	name = "\improper Food Vendor";
-	desc = "Contains replica military prepared meals.";
-	pixel_x = 10
-	},
-/turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ji" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -2212,15 +2249,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/shiva/radiator_tile2,
 /area/adminlevel/ert_station/fax_response_station)
-"xj" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light,
@@ -2419,23 +2447,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/red/northwest,
-/area/adminlevel/ert_station/fax_response_station)
-"zw" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/obj/item/paper_bin{
-	pixel_x = -14;
-	pixel_y = 5
-	},
-/obj/item/tool/pen/red/clicky{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "zy" = (
 /obj/structure/bed/chair/comfy{
@@ -2920,17 +2931,6 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/red,
-/area/adminlevel/ert_station/fax_response_station)
-"DL" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_x = 4;
-	wrenchable = 0;
-	prices = list();
-	pixel_y = 16;
-	density = 0;
-	wires = 12
-	},
-/turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "DP" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -6786,7 +6786,7 @@ wl
 gX
 xK
 TW
-zw
+au
 wZ
 wZ
 Di
@@ -6866,7 +6866,7 @@ wl
 gX
 xK
 wZ
-xj
+av
 wZ
 wZ
 wg
@@ -6947,7 +6947,7 @@ gX
 xK
 xK
 xK
-jf
+as
 TW
 rX
 AQ
@@ -6987,7 +6987,7 @@ gX
 xK
 NV
 xK
-DL
+at
 TW
 fo
 pl

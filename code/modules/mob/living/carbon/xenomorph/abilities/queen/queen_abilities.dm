@@ -124,13 +124,17 @@
 	if(!queued_node)
 		return
 
+
 	// Build turfs (walls) before objects (doors, and others)
 	// This is because 1. Walls are the most important resin construction, 2. Walls are necessary for doors
 	if((queued_node.resin_type in typesof(/datum/resin_construction/resin_obj)))
 		for(var/obj/effect/alien/resin/building_node/other_node in queen_owner.current_building_nodes)
 			if(other_node.resin_type in typesof(/datum/resin_construction/resin_turf))
 				queued_node = other_node
-				return
+
+	if(queued_node.temp_disable && (length(queen_owner.current_building_nodes) > 1))
+		var/index_of_node = queen_owner.current_building_nodes[queued_node]
+		queued_node = queen_owner.current_building_nodes[index_of_node + 1]
 
 	// Shove the new node to the back of the list, in case it's a door and we fail to make it later
 	LAZYREMOVE(queen_owner.current_building_nodes, queued_node)

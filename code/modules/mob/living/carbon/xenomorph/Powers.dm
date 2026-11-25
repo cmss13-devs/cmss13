@@ -282,7 +282,7 @@
 	var/obj/effect/client_image_holder/resin_building_node/node_image
 	/// If the node is an ovipositor node that queues up the next one.
 	var/ovi_node = FALSE
-	/// If node is temporarily disabled due to an unsupported turf.
+	/// If node is temporarily disabled due to an unsupported turf. Removes and readds fill spots via the set proc.
 	var/temp_disable = FALSE
 
 /obj/effect/alien/resin/building_node/Initialize(mapload, planter, datum/resin_construction/resin_type)
@@ -366,9 +366,6 @@
 		qdel(src)
 		return
 
-	if(linked_node.temp_disable)
-		return
-
 	try_fill_node(A)
 
 /obj/effect/fill_spot/proc/try_fill_node(atom/movable/A)
@@ -448,8 +445,10 @@
 /obj/effect/alien/resin/building_node/proc/set_temp_disable(set_to = TRUE)
 	temp_disable = set_to
 	if(temp_disable)
+		clear_fill_spots()
 		node_image.alpha = 127
 	else
+		setup_fill_spots()
 		node_image.alpha = 255
 
 /obj/effect/client_image_holder/resin_building_node

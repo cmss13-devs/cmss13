@@ -429,6 +429,27 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "mk210"
 
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+	)
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG

@@ -79,6 +79,7 @@
 	var/datum/internal_organ/brain/patient_brain = target.internal_organs_by_name["brain"]
 	if(patient_brain)
 		patient_brain.heal_damage(patient_brain.damage)
+		target.update_surgery_overlays()
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
@@ -155,6 +156,7 @@
 	else if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases."))
 
+	target.update_surgery_overlays()
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -165,6 +167,7 @@
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with [tool]!"))
 
 	patient_brain.take_damage(10, FALSE)
+	target.update_surgery_overlays()
 	log_interact(user, target, "[key_name(user)] failed to mend the hematoma in [key_name(target)]'s brain with [tool], aborting [surgery].")
 
 	return FALSE

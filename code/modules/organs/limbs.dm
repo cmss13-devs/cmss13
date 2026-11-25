@@ -1503,32 +1503,41 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		if(name == "head" || name == "chest" || name == "groin")
 			for(var/datum/internal_organ/organ as anything in internal_organs)
 				if(name == "head")
-					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
-					surgery_extra_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
-					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
-					if(surgery_organ_overlay && organ)
-						if(organ.damage < 0)
-							surgery_organ_damage_overlay.icon_state += "[organ.name]_hematoma"
-							surgery_organ_damage_overlay.icon_state += owner?.species.blood_color
-						if(organ && organ.damage <= BONECHIPS_MAX_DAMAGE)
-							surgery_extra_bone_overlay.icon_state += "[organ.name]_bonechips"
-				else if(name == "chest")
-					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
-					surgery_organ_damage_overlay.icon_state = "[organ.name]"
-					if(organ)
+					if(surgery_status & INCISION_BONE_OPENED)
+						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
+						if(organ.damage > 0)
+							surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "[organ.name]_hematoma", layer = SURGERY_LAYER +3)
+							surgery_organ_damage_overlay.color = owner?.species.blood_color
+						if(organ.damage >= BONECHIPS_MAX_DAMAGE)
+							surgery_extra_bone_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "[organ.name]_bonechips", layer = SURGERY_LAYER +2)
+
+				if(name == "chest" || name == "groin")
+					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi')
+					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "damaged_[organ.name]")
+
+					if(organ.organ_status & ORGAN_LITTLE_BRUISED)
+						surgery_organ_damage_overlay.color = "#00000033"
+					else if(organ.organ_status & ORGAN_BRUISED)
+						surgery_organ_damage_overlay.color = "#00000066"
+					else if(organ.organ_status & ORGAN_BROKEN)
+						surgery_organ_damage_overlay.color = "#00000099"
+
+					if(name == "chest")
 						if(organ.name == "heart" || organ.name == "liver")
-							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
+							surgery_organ_overlay.layer = SURGERY_LAYER +2
+							surgery_organ_damage_overlay.layer = SURGERY_LAYER +2
 						else
-							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
-						if(organ.organ_status & ORGAN_BRUISED)
-							surgery_organ_damage_overlay.color = "#00000033"
-						else if(organ.organ_status & ORGAN_BROKEN)
-							surgery_organ_damage_overlay.color = "#00000066"
-				else if(name == "groin")
-					if(surgery_status & INCISION_PELVIS_HIDDEN)
-						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
-					else if(surgery_status & INCISION_PELVIS_EXPOSED)
-						surgery_organ_overlay = null
+							surgery_organ_overlay.layer = SURGERY_LAYER +1
+							surgery_organ_damage_overlay.layer = SURGERY_LAYER +1
+					else if(name == "groin")
+						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi')
+						surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "damaged_[organ.name]")
+						if(surgery_status & INCISION_PELVIS_HIDDEN)
+							surgery_organ_overlay.layer = SURGERY_LAYER +2
+							surgery_organ_damage_overlay.layer = SURGERY_LAYER +2
+						else if(surgery_status & INCISION_PELVIS_EXPOSED)
+							surgery_organ_overlay = null
+							surgery_organ_damage_overlay = null
 
 				if(surgery_organ_overlay && organ)
 					surgery_organ_overlay.icon_state = "[organ.name]"
@@ -1537,6 +1546,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 						surgery_organ_overlay.icon_state += "_r"
 
 				. += surgery_organ_overlay
+				. += surgery_organ_damage_overlay
+				. += surgery_extra_bone_overlay
 
 // SET UP INTERNALLY BLEEDING OVERLAYS
 		if(surgery_status & INCISION_INT_BLEEDING) //internally bleeding limbs can only be identified after widening the incision

@@ -488,11 +488,6 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
-"abR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
 "abS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
@@ -10060,11 +10055,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
-"hzj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/maintenance/security/south)
 "hzm" = (
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/security)
@@ -45184,7 +45174,7 @@ aby
 aOg
 aOg
 dda
-abR
+abC
 hiE
 mCF
 abz
@@ -45366,7 +45356,7 @@ mCF
 aOg
 xGV
 gCh
-abR
+abC
 mCF
 mCF
 aOg
@@ -55696,7 +55686,7 @@ ouy
 eVy
 gUX
 eVy
-hzj
+uTv
 iyv
 tTU
 jqw

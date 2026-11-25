@@ -255,14 +255,6 @@ Current Problems:
 		to_chat(user, SPAN_WARNING("[src] only accepts magazines!"))
 		return FALSE
 
-/mob/verb/debugslop()
-	set name = "debugslop"
-
-	new /obj/item/jungle_mag_binders/elastic_band(get_turf(usr))
-	new /obj/item/ammo_magazine/rifle/ap(get_turf(usr))
-	new /obj/item/ammo_magazine/smg/m39/heap(get_turf(usr))
-	new /obj/item/ammo_magazine/rifle/pre_bundled(get_turf(usr))
-
 /datum/component/jungle_magazine/proc/remove_magazine(mob/user)
 	//* Three Cases: 1) Remove parent magazine - Ejects everything and removes component
 	//*              2) Remove attached magazine - Ejects attached magazine, allowing for fresh mags

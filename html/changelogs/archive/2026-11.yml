@@ -468,3 +468,98 @@
       Crippling Strike Tail Strike, Toxic Slash and Toxic Slash Tail Strike Xenomorph
       abilities.
   - imageadd: Added a big and small dust cloud effect for Xenomorph movement abilities.
+2026-11-24:
+  Doc12693420, Verbs, BonniePandora:
+  - rscadd: Adds a new "movielike" APC, ported from PVE. Complete with a smaller interior,
+      and removes the need for a gunner, leaving the driving and shooting to one person.
+  - rscadd: Along with the above is a redone medical APC to match it.
+  - rscadd: a new RECON variant of the APC, complete with a surgical/medical theatre
+      and a TOC
+  - rscadd: on request of maintainers, replaces the HTML groundside operations console
+      in the ARC with a TGUI version (like the one in the CIC)
+  Drathek:
+  - balance: Hive buff danger calculation now adds up total marine role weight groundside
+      vs total marine weight
+  - code_imp: Updated abandon_on_hijack to skip anyone OOB and simplified some other
+      hivebuff checks
+  - rscdel: Removed unused code handling limit of larva spawned automatically from
+      pylons
+  - refactor: Calculate_role_weight is refactored into just a variable defined on
+      the job
+  - bugfix: Fixed more ways for machinery component_parts to keep lingering hardrefs
+  Puckaboo2:
+  - code_imp: Checking whether the patient had enough brain damage to initiate bone
+      chip removal surgery is now second instead of last in the priority checklist.
+  - code_imp: More surgical steps will alleviate a patient's pain after they're completed.
+  - qol: You can apply bleeders after opening a patient's incision, after opening
+      and closing ribs, during implant/removal surgery, and during bone repair surgery.
+  - qol: You can close a patient after widening a patient's incision, after closing
+      ribs, and after applying bone gel to fractured or sawed bones.
+  - qol: An awake patient can tell if their brain damage is significant enough during
+      surgery after their hematoma has been mended; they will receive text that says
+      they feel something rattling in their skull. If a doctor tries to skip bone
+      chip removal, the patient can advocate for themselves.
+  - bugfix: You no longer need to use surgical line twice to close a patient up while
+      they have existing injuries.
+  - bugfix: Using surgical lines to abort a surgery or complete a surgery will ACTUALLY
+      close the patient up.
+  - bugfix: Removes duplicate surgical steps that caused strings of text like "suture
+      the incision, close the incision early, suture the incision early, or cauterize
+      the incision" when using an incorrect tool.
+  - bugfix: During surgery, you can brute force open a broken ribcage without needing
+      the saw again.
+  - bugfix: Suturing an incision stops any existing external bleeding.
+  - soundtweak: Tweaks the duration of the bone gel application sound effect so it
+      is not overlapping when a synth operates.
+  TrollerNoob:
+  - rscadd: The Almayer's Aerospace fleet's expansion continues!
+  - rscadd: Added a falling shell effect for most CAS ammo types.
+  - balance: PGU-105 30mm Anti-tank ammo crate fires volleys 25% faster and now fires
+      50 times per volley, up from 40. It can now pierce metal roofs on direct fire.
+  - balance: GBU-67 'Keeper II' min and max accuracy decreased to 2 and 3 tiles, making
+      it much more accurate. It can now pierce metal roofs on direct fire.
+  - balance: BLU-200 'Dragon's Breath' pull range lowered by 1, now has 2 miniature
+      explosions.
+  - balance: HPU-1 Paradrop Deployment System's cost increased from 50 to 150.
+  - qol: You can now lock a destination on the Dropship Flight Console by pressing
+      the lock icon. This will automatically select that destination on refuel, includes
+      flyby.
+  - qol: Re-ordered Dropship Flight Console's door lock buttons to be more intuitive.
+      Left button locks left door, middle button locks middle door, right button locks
+      right door.
+  - qol: You can now use your movement keys to offset the CAS camera. You must be
+      buckled into the pilot seat.
+  - qol: Firemission input steps now save when uninstalling equipment. You no longer
+      have to re-input them each time.
+  - qol: You can now refill Minirocket ammo while they're installed without having
+      to unload the ammo.
+  - qol: Dropship Part Fabricator now categorizes equipment and ammo by where they
+      can be installed.
+  - qol: Fulton now has an audible and text cue whenever a fulton is launched while
+      in flight.
+  - qol: Medevac now has an audible and text cue whenever a stretcher is activated
+      while in flight.
+  - qol: Paradrop now has audible and visual cues to better let marines know when
+      it's time to jump.
+  - qol: AN/AAQ-178 Weapon Targeting System can now be toggled on and off while mid-flight,
+      letting you forgo the effects tactically.
+  - imageadd: Added projectile icon states for each ship ammo type.
+  - imageadd: Added new icon states for the HPU-1 Paradrop Deployment System.
+  - imageadd: Added new icon states for BLU-200 'Dragon's Breath'.
+  - imageadd: Added an on state for the AN/AAQ-178 Weapon Targeting System.
+  - refactor: Refactored fabricator code to get each equipment's mount point in order
+      to categorize them.
+  - refactor: Refactored Minirocket code to use the modern global proc ref.
+  - refactor: Refactored GAU simulation code, now allows looping values less than
+      1 second
+  - code_imp: Changed Cavebreaker from being an Equipment var to an Ammo var, added
+      a Metal Breaker var for metal roofs.
+  - code_imp: Added backend information for the Weapon Console, consisting of equipment
+      data, flight data, firemission data and ceiling data.
+2026-11-25:
+  Cess183:
+  - rscadd: Added "elastic band" to rifleman squad prep, costing 5 points each.
+  - code_imp: Added a "Jungle Style" component for magazines
+  - code_imp: Added a few extra signals for unique action, magazine behaviors
+  - code_imp: Added flags for able to jungle style and able to act as binding item
+  - imageadd: Added elastic band icons made by MinZizka

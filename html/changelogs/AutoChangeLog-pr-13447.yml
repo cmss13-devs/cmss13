@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed errors/inconsistencies with the xeno see through ability"
+  - qol: "Queen ability order is more consistent again between ovi/deovi (and other xenos) and she can use the see through ability on ovi"

@@ -1,0 +1,7 @@
+author: "carlarcCM"
+delete-after: True
+changes:
+  - rscadd: "Activating an elastic band with magazines attached always removes the magazine that's currently inactive first."
+  - qol: "Made its description and examine text more descriptive, so people actually know how to use elastic bands to tie two magazines together."
+  - mapadd: "Added a pre-elastic-bundled magazine to charlie/delta prep on the Almayer, alongside a small amount of spare elastic bands in both preps."
+  - rscadd: "Made elastic bands a 4-point loadout item."

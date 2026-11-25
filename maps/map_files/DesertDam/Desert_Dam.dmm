@@ -31488,12 +31488,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_telecoms)
-"euB" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "euP" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/whitegreen/north,
@@ -37975,7 +37969,6 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "gSD" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/desert/dirt,
@@ -60963,12 +60956,6 @@
 "pRi" = (
 /turf/open/floor/prison/bluecorner/east,
 /area/desert_dam/building/dorms/pool)
-"pRm" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/prison/darkyellow2/west,
-/area/desert_dam/building/mining/workshop)
 "pRn" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	dir = 4;
@@ -183120,7 +183107,7 @@ vPW
 vDK
 vDK
 kRm
-euB
+kRm
 vDK
 aDE
 syX
@@ -183561,7 +183548,7 @@ qaR
 rXL
 vDK
 vDK
-euB
+kRm
 rle
 qKr
 mXA
@@ -187312,7 +187299,7 @@ ksN
 vDK
 vDK
 kRm
-euB
+kRm
 vDK
 lql
 vDK
@@ -188856,7 +188843,7 @@ qVq
 qVq
 gjp
 qVq
-pRm
+qVq
 oeI
 lnD
 hXD

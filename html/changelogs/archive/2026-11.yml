@@ -556,3 +556,10 @@
       a Metal Breaker var for metal roofs.
   - code_imp: Added backend information for the Weapon Console, consisting of equipment
       data, flight data, firemission data and ceiling data.
+2026-11-25:
+  Cess183:
+  - rscadd: Added "elastic band" to rifleman squad prep, costing 5 points each.
+  - code_imp: Added a "Jungle Style" component for magazines
+  - code_imp: Added a few extra signals for unique action, magazine behaviors
+  - code_imp: Added flags for able to jungle style and able to act as binding item
+  - imageadd: Added elastic band icons made by MinZizka

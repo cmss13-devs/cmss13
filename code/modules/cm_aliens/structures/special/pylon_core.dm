@@ -19,7 +19,7 @@
 	var/plasma_stored = 0
 	var/plasma_required_to_repair = 1000
 
-	var/protection_level = TURF_PROTECTION_CAS
+	protection_level = TURF_PROTECTION_CAS
 
 	/// How many lesser drone spawns this pylon is able to spawn currently
 	var/lesser_drone_spawns = 0
@@ -35,6 +35,7 @@
 		return
 
 	icon_state = "pylon"
+
 
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
@@ -196,7 +197,6 @@
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area_name(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
 	activated = TRUE
-	linked_hive.check_if_hit_larva_from_pylon_limit()
 	addtimer(CALLBACK(src, PROC_REF(give_royal_resin)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 /// Looped proc via timer to give larva after time
@@ -209,8 +209,6 @@
 
 	if(linked_hive.buff_points < linked_hive.max_buff_points)
 		linked_hive.buff_points += 1
-
-	linked_hive.check_if_hit_larva_from_pylon_limit()
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core
@@ -324,6 +322,7 @@
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(new_xeno.client)
 			if(new_xeno.client.prefs.toggles_flashing & FLASH_POOLSPAWN)

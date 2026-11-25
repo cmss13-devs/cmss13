@@ -1,8 +1,11 @@
 /datum/xeno_strain/hedgehog
 	name = RAVAGER_HEDGEHOG
-	description = "You lose your empower, charge, scissor cut, and some slash damage in exchange for more explosive resistance. Your resistance scales with your shard count and at 50% grants you immunity to some explosive stuns. You accumulate shards over time and when taking damage. You can use these shards to power three new abilities: Spike Shield which gives you a temporary shield that spits bone shards around you when damaged; Fire Spikes which launches spikes at your target to slow them and deal damage when they move; and Spike Shed which launches all your spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
-	flavor_description = "You will pierce them a million times, show them what it feels like. This one will become my shield."
+	description = "We lose our existing abilities and some slash damage in exchange for more explosive resistance and the ability to gain shards. Our resistance scales with our shard count and at 50% grants us immunity to some explosive stuns. We accumulate shards over time and when taking damage and use these shards to power three new abilities: Spike Shield which gives us a temporary shield that spits bone shards around us when damaged; Fire Spikes, which launches spikes at our target to slow them and deal damage when they move; and Spike Shed, which launches all our spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
+	flavor_description = "It will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
+	explosive_armor_mod = XENO_EXPOSIVEARMOR_MOD_SMALL
+	damage_mod = -XENO_DAMAGE_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
@@ -18,12 +21,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 
 /datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasma_max = 0
+	..() // stat modifiers
 	ravager.small_explosives_stun = TRUE
-	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-
-	ravager.recalculate_everything()
 
 /datum/behavior_delegate/ravager_hedgehog
 	name = "Hedgehog Ravager Behavior Delegate"
@@ -54,7 +53,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You have shed your spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("We have shed our spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
 
 	bound_xeno.speed_modifier -= shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -68,7 +67,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You feel your ability to gather shards return!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("We feel our ability to gather shards return!"))
 
 	bound_xeno.speed_modifier += shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -97,7 +96,7 @@
 	bound_xeno.recalculate_armor()
 	times_armor_buffed = armor_buff_count
 
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_shards = round((shards / max_shards) * 100, 10)
 	if(percentage_shards)
@@ -115,7 +114,7 @@
 
 
 /datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
@@ -200,7 +199,7 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("We need [shard_cost - behavior.shards] more shards!"))
 		return
 	behavior.use_shards(shard_cost)
 
@@ -242,7 +241,7 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("We need [shard_cost - behavior.shards] more shards!"))
 		return
 	behavior.use_shards(shard_cost)
 	behavior.lock_shards()
@@ -262,3 +261,55 @@
 		return behavior.check_shards(shard_cost)
 	else
 		return FALSE
+
+/datum/behavior_delegate/ravager_hedgehog/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	// If the ravager fails RNG, they perform an accidental slash instead!
+	if(bound_xeno.a_intent == INTENT_DISARM && prob(25)) // 1/4 chance
+		if(bound_xeno.claw_restrained())
+			bound_xeno.animation_attack_on(target_carbon)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] almost slashes [target_carbon]!"),
+			SPAN_XENONOTICE("We feel the strongest urge to destroy [target_carbon], but the Queen holds us back!"))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.can_not_harm(target_carbon, check_hive_flags=FALSE)) // We manually check hive_flags later
+			bound_xeno.animation_attack_on(bound_xeno)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+			SPAN_XENONOTICE("We nibble [bound_xeno]."))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.behavior_delegate && bound_xeno.behavior_delegate.handle_slash(bound_xeno))
+			return XENO_NO_DELAY_ACTION
+
+		if(target_carbon.stat == DEAD)
+			to_chat(bound_xeno, SPAN_WARNING("[target_carbon] is dead. We need another target!"))
+			return XENO_NO_DELAY_ACTION
+
+		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
+			var/embryo_allied = FALSE
+			if(target_carbon.status_flags & XENO_HOST)
+				for(var/obj/item/alien_embryo/embryo in target_carbon)
+					if(HIVE_ALLIED_TO_HIVE(bound_xeno.hivenumber, embryo.hivenumber))
+						embryo_allied = TRUE
+						break
+
+			if(embryo_allied)
+				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
+					return XENO_NO_DELAY_ACTION
+				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
+					return XENO_ATTACK_ACTION
+			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+				bound_xeno.animation_attack_on(target_carbon)
+				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+				SPAN_XENONOTICE("Lower our claws! The Queen decreed we can no longer harm hosts!"))
+				return XENO_ATTACK_ACTION
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining [target_carbon] and we slash \him instead..."), message_flags=CHAT_TYPE_XENO_COMBAT)
+		return INTENT_HARM

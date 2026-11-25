@@ -24,9 +24,10 @@
 		var/hue = re.color
 		if(length(hue) != 7)
 			return 0
-		redcolor[i]=hex2num(copytext(hue,2,4))
-		greencolor[i]=hex2num(copytext(hue,4,6))
-		bluecolor[i]=hex2num(copytext(hue,6,8))
+		var/list/color_list = rgb2num(hue)
+		redcolor[i]=color_list[1]
+		greencolor[i]=color_list[2]
+		bluecolor[i]=color_list[3]
 
 	//mix all the colors
 	var/red = mixOneColor(weight,redcolor)
@@ -80,9 +81,10 @@
 		var/hue = re.burncolor
 		if(length(hue) != 7)
 			return 0
-		redcolor[i]=hex2num(copytext(hue,2,4))
-		greencolor[i]=hex2num(copytext(hue,4,6))
-		bluecolor[i]=hex2num(copytext(hue,6,8))
+		var/list/color_list = rgb2num(hue)
+		redcolor[i]=color_list[1]
+		greencolor[i]=color_list[2]
+		bluecolor[i]=color_list[3]
 
 	//mix all the colors
 	var/red = mixOneColor(weight,redcolor)

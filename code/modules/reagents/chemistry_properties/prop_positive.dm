@@ -36,10 +36,22 @@
 	starter = TRUE
 	value = 2
 
-/datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
-	M.heal_limb_damage(0, potency, chemical = TRUE)
+/datum/chem_property/positive/anticorrosive/process(mob/living/target, potency = 1)
+	target.heal_limb_damage(0, potency, chemical = TRUE)
 	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW, chemical = TRUE)
+		target.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW, chemical = TRUE)
+	if(!ishuman(target))
+		return
+	if(potency <= POTENCY_MAX_TIER_1)
+		return
+	var/mob/living/carbon/human/target_human = target
+	if(!length(target_human.limbs_to_process))
+		return
+	for(var/obj/limb/wounded_limb as anything in target_human.limbs_to_process)
+		if(wounded_limb.status & (LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS))
+			wounded_limb.status &= ~(LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS)
+			wounded_limb.heal_damage(0, wounded_limb.burn_healing_threshold)
+			return
 
 /datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damages(0.5 * potency * delta_time, 0, 0.5 * potency * delta_time) //Mixed brute/tox damage
@@ -62,10 +74,11 @@
 	starter = TRUE
 	value = 2
 
-/datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
-	M.heal_limb_damage(potency, 0)
-	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, 0)
+/datum/chem_property/positive/neogenetic/process(mob/living/target, potency = 1)
+	target.heal_limb_damage(potency, 0)
+	if(potency <= CREATE_MAX_TIER_1)
+		return
+	target.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, 0)
 
 /datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BURN)
@@ -289,7 +302,7 @@
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
 	code = "HPP"
-	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions. Forces some negative mutations in plants."
+	description = "Treats deteriorated hepatocytes and damaged tissue in the liver, restoring organ functions. Forces some negative mutations in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -418,7 +431,7 @@
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
 	code = "CDP"
-	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forces mutation of produced chemicals in plants."
+	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forced mutation of produced chemicals in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -667,7 +680,6 @@
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
-		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
 	name = PROPERTY_DEFIBRILLATING
@@ -953,14 +965,14 @@
 /datum/chem_property/positive/explosive/update_reagent()
 	holder.explosive = TRUE
 	holder.power += level
-	holder.falloff_modifier += -3 / level
+	holder.falloff_modifier += -3 / max(level, 1)
 	..()
 
 //properties for CAS matrixes
 /datum/chem_property/positive/photosensitive
 	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
-	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants able to be harvested repeatedly "
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants are able to be harvested repeatedly."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
@@ -1124,7 +1136,7 @@
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modifying yield and mutation."
+	description = "Fixes genetic defects, disfigurements, disabilities. In plants removes compounds modifying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1

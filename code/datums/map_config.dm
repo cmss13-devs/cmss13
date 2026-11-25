@@ -17,6 +17,14 @@
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
 
+	// Crash site configs for shipmaps
+	/// Shipmap: The name of the template to load in the event of a FTL ground crash
+	var/ground_crash_template_name = null // "USS_Almayer_crash.dmm"
+	/// Shipmap: A list of x positions can be the start of a crack in the event of a FTL crash
+	var/list/crack_open_horizontal_positions = null // list(174)
+	/// Shipmap: A list of bounds in the form of minx, maxx, miny, maxy of space that will convert to open space in the event of a FTL crash
+	var/list/open_space_bounds = null // list(22, 311, -13, 113)
+
 	var/webmap_url
 	var/short_name
 
@@ -32,6 +40,7 @@
 
 	var/announce_text = ""
 	var/infection_announce_text = ""
+	var/survive_announce_text = ""
 	var/liaison_briefing = ""
 	var/list/co_briefing_files = list()
 
@@ -42,14 +51,16 @@
 	var/list/survivor_types
 	var/list/survivor_types_by_variant
 
+	var/list/survivor_types_mode_override
+	var/list/survivor_types_by_variant_mode_override
+
 	var/list/synth_survivor_types
 	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
-	var/list/CO_survivor_types_by_variant
-
 	var/list/CO_insert_survivor_types
-	var/list/CO_insert_survivor_types_by_variant
+
+	var/list/colony_joe_types
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -73,6 +84,8 @@
 
 	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
+
+	var/short_sensor_count = 0
 
 /datum/map_config/New()
 	survivor_types = list(
@@ -192,6 +205,14 @@
 
 	map_file = json["map_file"]
 
+	ground_crash_template_name = json["ground_crash_template_name"]
+	if(islist(json["crack_open_horizontal_positions"]))
+		crack_open_horizontal_positions = json["crack_open_horizontal_positions"]
+	if(islist(json["open_space_bounds"]))
+		open_space_bounds = json["open_space_bounds"]
+		if(length(open_space_bounds) != 4 || open_space_bounds[OPEN_SPACE_BOUNDS_MINX] > open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] || open_space_bounds[OPEN_SPACE_BOUNDS_MINY] > open_space_bounds[OPEN_SPACE_BOUNDS_MAXY])
+			log_world("map_config open_space_bounds is invalid!")
+
 	var/dirpath = "maps/"
 	if(override_map)
 		dirpath = "data/"
@@ -241,7 +262,7 @@
 				log_world("[surv_type] isn't a proper typepath, removing from survivor_types list")
 				continue
 		pathed_survivor_types += survivor_typepath
-	survivor_types = pathed_survivor_types.Copy()
+	survivor_types = pathed_survivor_types
 
 	survivor_types_by_variant = list()
 	for(var/surv_type in survivor_types)
@@ -266,7 +287,7 @@
 				log_world("[synth_surv_type] isn't a proper typepath, removing from synth_survivor_types list")
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
-	synth_survivor_types = pathed_synth_survivor_types.Copy()
+	synth_survivor_types = pathed_synth_survivor_types
 
 	synth_survivor_types_by_variant = list()
 	for(var/surv_type in synth_survivor_types)
@@ -291,7 +312,7 @@
 				log_world("[CO_surv_type] isn't a proper typepath, removing from CO_survivor_types list")
 				continue
 		pathed_CO_survivor_types += CO_survivor_typepath
-	CO_survivor_types = pathed_CO_survivor_types.Copy()
+	CO_survivor_types = pathed_CO_survivor_types
 
 	if(islist(json["CO_insert_survivor_types"]))
 		CO_insert_survivor_types = json["CO_insert_survivor_types"]
@@ -308,7 +329,24 @@
 				log_world("[CO_insert_surv_type] isn't a proper typepath, removing from CO_insert_survivor_types list")
 				continue
 		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
-	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
+	CO_insert_survivor_types = pathed_CO_insert_survivor_types
+
+	if(islist(json["colony_joe_types"]))
+		colony_joe_types = json["colony_joe_types"]
+	else if ("colony_joe_types" in json)
+		log_world("map_config colony_joe_types is not a list!")
+		return
+
+	var/list/pathed_colony_joe_types = list()
+	for(var/joe_type in colony_joe_types)
+		var/colony_joe_typepath = joe_type
+		if(!ispath(colony_joe_typepath))
+			colony_joe_typepath = text2path(joe_type)
+			if(!ispath(colony_joe_typepath))
+				log_world("[joe_type] isn't a proper typepath, removing from colony_joe_typepath list")
+				continue
+		pathed_colony_joe_types += colony_joe_typepath
+	colony_joe_types = pathed_colony_joe_types
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
@@ -346,7 +384,7 @@
 	traits = json["traits"]
 	if(islist(traits))
 		for(var/list/ztraits in traits) // Defaults to ground map if not specified
-			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP])
+			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP] && !ztraits[ZTRAIT_BACKGROUND_MAP])
 				ztraits[ZTRAIT_GROUND] = TRUE
 	else if(traits)
 		log_world("map_config traits is not a list!")
@@ -392,6 +430,9 @@
 	if(json["infection_announce_text"])
 		infection_announce_text = json["infection_announce_text"]
 
+	if(json["survive_announce_text"])
+		survive_announce_text = json["survive_announce_text"]
+
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]
 
@@ -410,8 +451,12 @@
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
 
+	if(json["short_sensor_count"])
+		short_sensor_count = text2num(json["short_sensor_count"])
+
 	if(json["nightmare_path"])
 		nightmare_path = json["nightmare_path"]
+
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]
@@ -429,10 +474,10 @@
 			if(!(g in gamemode_names))
 				log_world("map_config has an invalid gamemode name!")
 				return
-			if(g == "Extended") // always allow extended
+			if(g == GAMEMODE_EXTENDED) // always allow extended
 				continue
 			gamemodes += g
-		gamemodes += "Extended"
+		gamemodes += GAMEMODE_EXTENDED
 	else if(!isnull(json["gamemodes"]))
 		log_world("map_config gamemodes is not a list!")
 		return
@@ -441,9 +486,53 @@
 			var/datum/game_mode/G = a
 			gamemodes += initial(G.config_tag)
 
+	if (islist(json["survivor_types_mode_override"]))
+		survivor_types_mode_override = json["survivor_types_mode_override"]
+	else if ("survivor_types_mode_override" in json)
+		log_world("map_config survivor_types_mode_override is not a list!")
+		return
+
+	var/list/pathed_survivor_types_mode_override = list()
+	for(var/mode,options in survivor_types_mode_override)
+		if(!(mode in gamemode_names))
+			log_world("map_config has an invalid survivor_types_mode_override gamemode key!")
+			continue
+		if(mode == GAMEMODE_DISTRESS_SIGNAL)
+			log_world("survivor_types_mode_override should not override [GAMEMODE_DISTRESS_SIGNAL]! Use survivor_types instead.")
+		pathed_survivor_types_mode_override[mode] = list()
+		for(var/surv_type in options)
+			var/survivor_typepath = surv_type
+			if(!ispath(survivor_typepath))
+				survivor_typepath = text2path(surv_type)
+				if(!ispath(survivor_typepath))
+					log_world("[surv_type] isn't a proper typepath, removing from survivor_types_mode_override list")
+					continue
+			pathed_survivor_types_mode_override[mode] += survivor_typepath
+	survivor_types_mode_override = pathed_survivor_types_mode_override
+
+	survivor_types_by_variant_mode_override = list()
+	for(var/mode,options in survivor_types_mode_override)
+		survivor_types_by_variant_mode_override[mode] = list()
+		for(var/surv_type in options)
+			var/datum/equipment_preset/survivor/surv_equipment = surv_type
+			var/survivor_variant = initial(surv_equipment.survivor_variant)
+			if(!survivor_types_by_variant_mode_override[mode][survivor_variant])
+				survivor_types_by_variant_mode_override[mode][survivor_variant] = list()
+			survivor_types_by_variant_mode_override[mode][survivor_variant] += surv_type
+
 	defaulted = FALSE
 	return TRUE
 #undef CHECK_EXISTS
+
+/// Returns survivor_types respecting any survivor_types_mode_override for the current mode
+/datum/map_config/proc/get_relevant_survivor_types()
+	var/list/data = survivor_types_mode_override[GLOB.master_mode]
+	return data || survivor_types
+
+/// Returns survivor_types respecting any survivor_types_mode_override for the current mode
+/datum/map_config/proc/get_relevant_survivor_types_by_variant()
+	var/list/data = survivor_types_by_variant_mode_override[GLOB.master_mode]
+	return data || survivor_types_by_variant
 
 /datum/map_config/proc/GetFullMapPaths()
 	var/dirpath = "maps/[map_path]"

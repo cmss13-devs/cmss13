@@ -7,6 +7,14 @@
 	ambience_exterior = AMBIENCE_TRIJENT
 	minimap_color = MINIMAP_AREA_COLONY
 
+/area/desert_dam/oob
+	name = "Out Of Bounds"
+	icon_state = "unknown"
+	requires_power = FALSE
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NOBURROW
+
 //INTERIOR
 // areas under rock
 /area/desert_dam/interior
@@ -261,6 +269,10 @@
 	name = "Garage"
 	icon_state = "green"
 	ceiling = CEILING_METAL
+
+/area/desert_dam/interior/dam_interior/elevator_maint
+	name = "Elevator Maintenance Shaft"
+	icon_state = "yellow"
 
 /area/desert_dam/interior/caves
 	name = "Caves"
@@ -1076,6 +1088,16 @@
 	name = "Medical Valley"
 	icon_state = "valley"
 	unoviable_timer = FALSE
+	always_unpowered = 0
+
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing
+	name = "Medical Valley Elevator Landing"
+	icon_state = "valley"
+	unoviable_timer = FALSE
+	always_unpowered = FALSE
+	power_light = TRUE
+	power_equip = TRUE
+	power_environ = TRUE
 
 /area/desert_dam/exterior/valley/valley_hydro
 	name = "Hydro Valley"
@@ -1085,6 +1107,7 @@
 	name = "Crash Site Valley"
 	icon_state = "yellow"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	always_unpowered = 0
 
 /area/desert_dam/exterior/valley/north_valley_dam
 	name = "North Dam Valley"
@@ -1102,6 +1125,14 @@
 	name = "Wilderness Valley"
 	icon_state = "central"
 
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing
+	name = "Wilderness Valley Elevator Landing"
+	icon_state = "central"
+	always_unpowered = FALSE
+	power_light = TRUE
+	power_equip = TRUE
+	power_environ = TRUE
+
 //Rivers
 /area/desert_dam/exterior/river
 	name = "River"
@@ -1114,10 +1145,10 @@
 	var/turf/open/gm/river/desert/R
 	if(filtered)
 		for(R in src)
-			R.toxic = 0
+			R.toxic = WATER_TOXIC_NO
 	else
 		for(R in src)
-			R.toxic = 1
+			R.toxic = WATER_TOXIC_YES
 	R.update_icon()
 	if(Next_areas && !(src in Next_areas)) //Shouldn't ever happen but just to be safe
 		for(var/area/desert_dam/exterior/river/A in Next_areas)

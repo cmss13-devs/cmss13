@@ -340,6 +340,11 @@
 			qdel(src)
 	return FALSE
 
+/obj/structure/machinery/fuelpump/handle_vehicle_bump(obj/vehicle/multitile/vehicle)
+	visible_message(SPAN_DANGER("[vehicle] can't destroy [src]!"))
+	playsound(vehicle, 'sound/effects/metal_crash.ogg', 35)
+	return FALSE
+
 /obj/structure/machinery/cm_vending/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -474,6 +479,8 @@
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1
 		I.forceMove(loc)
+	component_parts.Cut()
+	component_parts = null
 
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -583,7 +590,7 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
+			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]", TRUE, loc.z)
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushign friendlies
 
@@ -630,7 +637,7 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
+			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]", TRUE, loc.z)
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies
 
@@ -649,7 +656,7 @@
 	var/is_knocked_down = FALSE
 	//whether xeno takes damage
 	var/takes_damage = FALSE
-	//whether vehicle is being "stopped in it's tracks"
+	//whether vehicle is being "stopped in its tracks"
 	var/blocked = FALSE
 	//whether vehicle receives momentum penalty
 	var/momentum_penalty = FALSE
@@ -671,8 +678,8 @@
 				momentum_penalty = TRUE
 
 		if(blocked)
-			visible_message(SPAN_DANGER("\The [src] digs it's claws into the ground, anchoring itself in place and halting \the [V] in it's tracks!"),
-			SPAN_DANGER("You dig your claws into the ground, stopping \the [V] in it's tracks!"))
+			visible_message(SPAN_DANGER("\The [src] digs its claws into the ground, anchoring itself in place and halting \the [V] in its tracks!"),
+			SPAN_DANGER("You dig your claws into the ground, stopping \the [V] in its tracks!"))
 			return FALSE
 
 	else
@@ -770,11 +777,11 @@
 /mob/living/carbon/xenomorph/defender/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fortify)
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),
-			SPAN_DANGER("You dig your claws into the ground, stopping [V] in it's tracks!"))
+			visible_message(SPAN_DANGER("[src] digs its claws into the ground, anchoring itself in place and halting [V] in its tracks!"),
+			SPAN_DANGER("You dig your claws into the ground, stopping [V] in its tracks!"))
 			return FALSE
 		else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, slowing [V]'s movement!"),
+			visible_message(SPAN_DANGER("[src] digs its claws into the ground, slowing [V]'s movement!"),
 			SPAN_DANGER("You dig your claws into the ground, slowing [V]'s movement!"))
 			var/mob_moved = step(src, V.last_move_dir)
 			V.move_momentum = floor(V.move_momentum/3)
@@ -805,7 +812,7 @@
 
 	if(iscrusher(A))
 		var/mob/living/carbon/xenomorph/crusher/C = A
-		if(!C.throwing)
+		if(!HAS_TRAIT(C, TRAIT_LAUNCHED))
 			return
 		var/do_move = TRUE
 		if(health > 0)

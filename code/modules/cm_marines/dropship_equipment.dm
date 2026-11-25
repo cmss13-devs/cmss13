@@ -8,20 +8,24 @@
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
 	var/shorthand
 
-	var/list/equip_categories //on what kind of base this can be installed.
+	/// Bitflags for the categories of attach point on which this equipment can be installed
+	var/compatible_category_flags = NONE
 	var/obj/effect/attach_point/ship_base //the ship base the equipment is currently installed on.
 	var/uses_ammo = FALSE //whether it uses ammo
 	var/obj/structure/ship_ammo/ammo_equipped //the ammo currently equipped.
 	var/is_weapon = FALSE //whether the equipment is a weapon usable for dropship bombardment.
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console //the weapons console of the dropship we're installed on.
 	var/is_interactable = FALSE //whether they get a button when shown on the shuttle console's equipment list.
+	/// Whether this equipment fires missiles.
+	var/is_missile = FALSE
 	var/obj/docking_port/mobile/marine_dropship/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
 	var/faction_exclusive //if null all factions can print it
-
+	/// Whether installed ammo can be replenished without first being unloaded.
+	var/stackable_ammo = FALSE
 
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
@@ -37,6 +41,11 @@
 		linked_console = null
 	. = ..()
 
+/obj/structure/dropship_equipment/update_health(damage)
+	health = min(initial(health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -62,54 +71,110 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = I
-		if(PC.loaded)
+/obj/structure/dropship_equipment/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/powerloader_clamp))
+		if(check_pickup_blocked(user) & COMPONENT_PICKUP_CANCELED_ACID) //acided
+			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
+			balloon_alert(user, "its covered in acid!")
+			return
+
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
+		if(powerloader_clamp.loaded)
 			if(ammo_equipped)
+				if(stackable_ammo && istype(powerloader_clamp.loaded, /obj/structure/ship_ammo) && ammo_equipped.type == powerloader_clamp.loaded.type && ammo_equipped.ammo_count < ammo_equipped.max_ammo_count)
+					var/obj/structure/ship_ammo/powerloader_ammo = powerloader_clamp.loaded
+					var/obj/structure/ship_ammo/loaded_ammo = ammo_equipped
+					if(!do_after(user, 1 DECISECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+						to_chat(user, SPAN_WARNING("You stop topping off [src] with the ammo."))
+						return TRUE
+					if(powerloader_clamp.loaded != powerloader_ammo || ammo_equipped != loaded_ammo || loaded_ammo.ammo_count >= loaded_ammo.max_ammo_count)
+						return TRUE
+					var/ammo_to_add = min(powerloader_ammo.ammo_count, loaded_ammo.max_ammo_count - loaded_ammo.ammo_count)
+					loaded_ammo.ammo_count += ammo_to_add
+					powerloader_ammo.ammo_count -= ammo_to_add
+					playsound(src, 'sound/machines/hydraulics_1.ogg', 40, TRUE)
+					if(powerloader_ammo.ammo_count <= 0)
+						powerloader_clamp.loaded = null
+						powerloader_clamp.update_icon()
+						qdel(powerloader_ammo)
+					else
+						powerloader_ammo.update_icon()
+						if(powerloader_ammo.ammo_name == "rocket")
+							powerloader_clamp.update_icon("ds_rocket")
+						else
+							powerloader_clamp.update_icon("ds_ammo")
+					to_chat(user, SPAN_NOTICE("You top off [src] with the ammo."))
+					update_equipment()
+					return TRUE
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo)
-				load_ammo(PC, user) //it handles on it's own whether the ammo fits
+				load_ammo(powerloader_clamp, user) //it handles on it's own whether the ammo fits
 				return
 
 		else
 			if(uses_ammo && ammo_equipped)
-				unload_ammo(PC, user)
+				unload_ammo(powerloader_clamp, user)
 			else
-				grab_equipment(PC, user)
+				grab_equipment(powerloader_clamp, user)
 		return TRUE
 
-/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
-	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
+	if(iswelder(item))
+		try_repair(item, user, -50)
+
+/obj/structure/dropship_equipment/proc/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	if(health == initial(health))
+		to_chat(user, SPAN_WARNING("[src] is in working condition."))
+		return FALSE
+	if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return FALSE
+	if(user.action_busy)
+		return FALSE
+	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+		to_chat(user, SPAN_WARNING("You are not trained to fix [src]..."))
+		return FALSE
+	if(!(welder.remove_fuel(2, user)))
+		return FALSE
+	playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		return FALSE
+	update_health(amount)
+	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
+	SPAN_NOTICE("You repair damaged parts of [src]."))
+
+	return TRUE
+
+/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
+	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
 		return
-	var/obj/structure/ship_ammo/SA = PC.loaded
-	if(SA.equipment_type != type)
-		to_chat(user, SPAN_WARNING("[SA] doesn't fit in [src]."))
+	var/obj/structure/ship_ammo/ship_ammo = powerloader_clamp.loaded
+	if(ship_ammo.equipment_type != type)
+		to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 		return
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	var/point_loc = ship_base.loc
-	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!ship_base || ship_base.loc != point_loc)
 		return
-	if(!ammo_equipped && PC.loaded == SA && PC.linked_powerloader && PC.linked_powerloader.buckled_mob == user)
-		SA.forceMove(src)
-		PC.loaded = null
+	if(!ammo_equipped && powerloader_clamp.loaded == ship_ammo && powerloader_clamp.linked_powerloader && powerloader_clamp.linked_powerloader.buckled_mob == user)
+		ship_ammo.forceMove(src)
+		powerloader_clamp.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You load [SA] into [src]."))
-		ammo_equipped = SA
+		powerloader_clamp.update_icon()
+		to_chat(user, SPAN_NOTICE("You load [ship_ammo] into [src]."))
+		ammo_equipped = ship_ammo
 		update_equipment()
 
-/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/point_loc = ship_base ? ship_base.loc : null
-	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(point_loc && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!ammo_equipped || !PC.linked_powerloader || PC.linked_powerloader.buckled_mob != user)
+	if(!ammo_equipped || !powerloader_clamp.linked_powerloader || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
@@ -117,13 +182,13 @@
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
-			PC.grab_object(user, ammo_equipped, "ds_rocket")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_rocket")
 		else
-			PC.grab_object(user, ammo_equipped, "ds_ammo")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
-/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
@@ -136,17 +201,18 @@
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
+	if(!powerloader_clamp.linked_powerloader || powerloader_clamp.loaded || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
-	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
+	powerloader_clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
-		ship_base.installed_equipment = null
-		ship_base = null
 		if(linked_shuttle)
+			on_removed_from_shuttle()
 			SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
 			linked_shuttle = null
 			if(linked_console && linked_console.selected_equipment == src)
 				linked_console.selected_equipment = null
+		ship_base.installed_equipment = null
+		ship_base = null
 	update_equipment()
 
 /obj/structure/dropship_equipment/update_icon()
@@ -163,6 +229,9 @@
 /obj/structure/dropship_equipment/proc/on_arrival()
 	return
 
+/obj/structure/dropship_equipment/proc/on_removed_from_shuttle()
+	return
+
 /obj/structure/dropship_equipment/proc/equipment_interact(mob/user)
 	if(is_interactable)
 		if(linked_console.selected_equipment)
@@ -174,11 +243,10 @@
 
 /// Turret holder for dropship automated sentries
 /obj/structure/dropship_equipment/sentry_holder
-	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
+	compatible_category_flags = DROPSHIP_CATEGORY_WEAPON|DROPSHIP_CATEGORY_CREW_WEAPON
 	name = "\improper A/A-32-P Sentry Defense System"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
-	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 200
@@ -194,6 +262,21 @@
 	if(!deployed_turret)
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
+	health = deployed_turret.health
+
+/obj/structure/dropship_equipment/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
+	health = min(initial(deployed_turret.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
+
+/obj/structure/dropship_equipment/sentry_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_turret.update_health(amount)
 
 /obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
 	. = ..()
@@ -336,6 +419,7 @@
 
 /obj/structure/dropship_equipment/sentry_holder/Destroy()
 	if(deployed_turret)
+		deployed_turret.deployment_system = null
 		QDEL_NULL(deployed_turret)
 	. = ..()
 
@@ -345,7 +429,7 @@
 	name = "\improper MTU-4B Door Gunner Hardpoint System"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
-	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
+	compatible_category_flags = DROPSHIP_CATEGORY_WEAPON|DROPSHIP_CATEGORY_CREW_WEAPON
 	icon_state = "mg_system"
 	point_cost = 50
 	shorthand = "MG"
@@ -359,6 +443,21 @@
 	if(!deployed_mg)
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
+	health = deployed_mg.health
+
+/obj/structure/dropship_equipment/mg_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_mg.update_health(damage, pass_forward)
+	health = min(initial(deployed_mg.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
+
+/obj/structure/dropship_equipment/mg_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_mg.update_health(amount)
 
 /obj/structure/dropship_equipment/mg_holder/Destroy()
 	QDEL_NULL(deployed_mg)
@@ -485,7 +584,7 @@
 
 /obj/structure/dropship_equipment/fuel
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
-	equip_categories = list(DROPSHIP_FUEL_EQP)
+	compatible_category_flags = DROPSHIP_CATEGORY_FUEL
 
 
 /obj/structure/dropship_equipment/fuel/update_equipment()
@@ -517,7 +616,7 @@
 //================= ELECTRONICS =================//
 
 /obj/structure/dropship_equipment/electronics
-	equip_categories = list(DROPSHIP_ELECTRONICS)
+	compatible_category_flags = DROPSHIP_CATEGORY_ELECTRONICS
 
 /obj/structure/dropship_equipment/electronics/chaff_launcher
 	name = "\improper AN/ALE-203 Chaff Launcher"
@@ -582,12 +681,33 @@
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800
+	is_interactable = TRUE
+	var/system_enabled = FALSE
+
+/obj/structure/dropship_equipment/electronics/targeting_system/equipment_interact(mob/user)
+	if(!ship_base)
+		to_chat(user, SPAN_WARNING("[src] must be installed before it can be operated."))
+		return
+
+	system_enabled = !system_enabled
+	if(system_enabled)
+		to_chat(user, SPAN_NOTICE("You activate [src]."))
+		icon_state = "targeting_system_on"
+	else
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		icon_state = "targeting_system_installed"
 
 /obj/structure/dropship_equipment/electronics/targeting_system/update_equipment()
 	if(ship_base)
 		icon_state = "[initial(icon_state)]_installed"
 	else
+		system_enabled = FALSE
 		icon_state = initial(icon_state)
+
+/obj/structure/dropship_equipment/electronics/targeting_system/ui_data(mob/user)
+	. = list()
+	.["name"] = name
+	.["enabled"] = system_enabled
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper AN/AVD-60 LZ detector"
@@ -630,7 +750,7 @@
 
 //unfinished and unused
 /obj/structure/dropship_equipment/adv_comp
-	equip_categories = list(DROPSHIP_COMPUTER)
+	compatible_category_flags = DROPSHIP_CATEGORY_COMPUTER
 	point_cost = 0
 
 /obj/structure/dropship_equipment/adv_comp/update_equipment()
@@ -650,7 +770,7 @@
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
-	equip_categories = list(DROPSHIP_WEAPON)
+	compatible_category_flags = DROPSHIP_CATEGORY_WEAPON
 	bound_width = 32
 	bound_height = 64
 	uses_ammo = TRUE
@@ -664,7 +784,7 @@
 	/// Delay between firing, in deciseconds
 	var/firing_delay = 20
 	/// True if this weapon can only be fired in Fire Missions (not Direct)
-	var/fire_mission_only = TRUE
+	var/fire_mission_only = FALSE
 
 /obj/structure/dropship_equipment/weapon/update_equipment()
 	if(ship_base)
@@ -702,7 +822,23 @@
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, mob/user = usr)
 	set waitfor = 0
+
+	if(fire_mission_only)
+		to_chat(user, SPAN_WARNING("[src] can only be used in a fire mission!"))
+		return
+
+	var/offset_x = 0
+	var/offset_y = 0
+
+	if(linked_console)
+		offset_x += linked_console.direct_x_offset_value
+		offset_y += linked_console.direct_y_offset_value
+
 	var/turf/target_turf = get_turf(selected_target)
+	if(!target_turf)
+		return
+	target_turf = locate(target_turf.x + offset_x, target_turf.y + offset_y, target_turf.z)
+
 	if(firing_sound)
 		playsound(loc, firing_sound, 70, 1)
 	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
@@ -713,40 +849,110 @@
 	var/ammo_warn_sound_volume = SA.warning_sound_volume
 	deplete_ammo()
 	last_fired = world.time
-	if(linked_shuttle)
-		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
-			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy and reduce travelling time.
-			ammo_max_inaccuracy = max(ammo_max_inaccuracy -3, 1)
-			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
-			break
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
-	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
-		var/total_seconds = max(floor(ammo_travelling_time/10),1)
-		for(var/i in 0 to total_seconds)
-			sleep(10)
-			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
-				ammo_accuracy_range++ //accuracy decreases
-
-	// clamp back to maximum inaccuracy
-	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
+	if(targeting_system_enabled())
+		ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy and reduce travelling time.
+		ammo_max_inaccuracy = max(ammo_max_inaccuracy -3, 1)
+		ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
+	var/obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay = null
+	if(impact)
+		impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
+		if(GLOB.huds[MOB_HUD_DROPSHIP])
+			for(var/mob/pilot as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+				if(pilot)
+					impact_overlay.update_visibility_for_mob(pilot)
 
-	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
-		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
-		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
-		for(var/i in 0 to total_seconds)
-			sleep(1 SECONDS)
-			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser disappears, it will land where it is telegraphed to land
+	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
+	if(SA.laser_guided && istype(selected_target, /obj/effect/overlay/temp/laser_target/tactical))
+		var/obj/effect/overlay/temp/laser_target/tactical/mark = selected_target
+		if(mark.marked_target)
+			guide_missile(mark, SA, user, ammo_travelling_time, ammo_max_inaccuracy, impact, impact_overlay)
+			return
+	if(ammo_travelling_time)
+		var/total_seconds = max(floor(ammo_travelling_time/10),1)
+		for(var/i = 0 to total_seconds)
+			sleep(10)
+			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
+				ammo_accuracy_range++ //accuracy decreases
+				ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
+				if(impact_overlay)
+					impact_overlay.remove_from_all_clients()
+					qdel(impact_overlay)
+					impact_overlay = null
+				possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+				impact = pick(possible_turfs)
+				if(impact)
+					impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
+					if(GLOB.huds[MOB_HUD_DROPSHIP])
+						for(var/mob/pilot as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+							if(pilot)
+								impact_overlay.update_visibility_for_mob(pilot)
+
+	// clamp back to maximum inaccuracy
+	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
+	if(!impact)
+		possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+		impact = pick(possible_turfs)
 
 	if(ammo_warn_sound)
-		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
-	new /obj/effect/overlay/temp/blinking_laser (impact)
-	sleep(10)
+		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, TRUE, 15)
+	new /obj/effect/overlay/temp/blinking_laser(impact)
+
+	SA.create_impact_visual(impact)
+
+	sleep(1 SECONDS)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
+	QDEL_NULL(impact_overlay)
+
+/// Reacquire only the original mark. Losing it sends the missile toward its last known position.
+/obj/structure/dropship_equipment/weapon/proc/guide_missile(obj/effect/overlay/temp/laser_target/tactical/mark, obj/structure/ship_ammo/ammo, mob/user, travel_time, lost_accuracy, turf/impact, obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay)
+	var/mob/living/target = mark.marked_target
+	var/turf/last_target_turf = get_turf(mark)
+	// Preserve the initial scatter
+	var/offset_x = impact.x - last_target_turf.x
+	var/offset_y = impact.y - last_target_turf.y
+	mark.change_incoming_missiles(1)
+	to_chat(target, SPAN_HIGHDANGER("Something is incoming from above! Find cover quickly!"))
+	playsound(target, 'sound/effects/IncomingRocket.ogg', 70, TRUE)
+	var/lock_lost = FALSE
+	var/warning_time = world.time + travel_time
+	var/arrival_time = warning_time + 1 SECONDS
+	var/obj/effect/overlay/temp/blinking_laser/impact_warning
+	var/warning_started = FALSE
+	while(TRUE)
+		if(!lock_lost)
+			if(QDELETED(mark) || !mark.can_track_target() || !mark.signal?.valid_signal() || !cas_direct_fire_visible(target))
+				lock_lost = TRUE
+				impact = pick(RANGE_TURFS(lost_accuracy, last_target_turf))
+				if(!QDELETED(mark))
+					mark.change_incoming_missiles(-1)
+			else
+				last_target_turf = get_turf(target)
+				impact = locate(clamp(last_target_turf.x + offset_x, 1, world.maxx), clamp(last_target_turf.y + offset_y, 1, world.maxy), last_target_turf.z)
+		if(!QDELETED(impact_overlay))
+			impact_overlay.update_guidance(impact, !lock_lost)
+		if(!warning_started && world.time >= warning_time && !QDELETED(ammo))
+			warning_started = TRUE
+			if(ammo.warning_sound)
+				playsound(impact, ammo.warning_sound, ammo.warning_sound_volume, TRUE, 15)
+			impact_warning = new(impact)
+		if(!QDELETED(impact_warning))
+			impact_warning.forceMove(impact)
+		if(world.time >= arrival_time)
+			break
+		sleep(min(0.2 SECONDS, arrival_time - world.time))
+	QDEL_NULL(impact_warning)
+	QDEL_NULL(impact_overlay)
+	if(!lock_lost && !QDELETED(mark))
+		mark.change_incoming_missiles(-1)
+	if(QDELETED(ammo) || !impact || !cas_direct_fire_visible(impact) || protected_by_pylon(TURF_PROTECTION_CAS, impact))
+		return
+	ammo.source_mob = user
+	ammo.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
@@ -759,18 +965,19 @@
 	// no warning sound and no travel time
 	deplete_ammo()
 	last_fired = world.time
-	if(linked_shuttle)
-		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
-			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy
-			break
+	if(targeting_system_enabled())
+		ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
-	sleep(3)
+
+	SA.create_impact_visual(impact)
+
+	sleep(0.3 SECONDS)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -800,6 +1007,7 @@
 	firing_delay = 5
 	point_cost = 600
 	shorthand = "MSL"
+	is_missile = TRUE
 
 /obj/structure/dropship_equipment/weapon/rocket_pod/deplete_ammo()
 	ammo_equipped = null //nothing left to empty after firing
@@ -823,6 +1031,7 @@
 	firing_delay = 10 //1 seconds
 	point_cost = 600
 	shorthand = "RKT"
+	stackable_ammo = TRUE
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -870,7 +1079,7 @@
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	bound_height = 32
-	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
+	compatible_category_flags = DROPSHIP_CATEGORY_CREW_WEAPON //fits inside the central spot of the dropship
 	point_cost = 200
 	fire_mission_only = FALSE
 	shorthand = "LCH"
@@ -889,7 +1098,7 @@
 	name = "\improper RMU-4M Medevac System"
 	shorthand = "Medevac"
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
-	equip_categories = list(DROPSHIP_CREW_WEAPON)
+	compatible_category_flags = DROPSHIP_CATEGORY_CREW_WEAPON
 	icon_state = "medevac_system"
 	point_cost = 300
 	is_interactable = TRUE
@@ -898,6 +1107,7 @@
 	var/busy_winch
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
+	var/list/datum/weakref/known_stretchers = list()
 
 /obj/structure/dropship_equipment/medevac_system/upp
 	name = "\improper RMU-4M Medevac System UPP"
@@ -951,6 +1161,26 @@
 
 		var/key_name = strip_improper("[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])")
 		.[key_name] = MS
+
+/// Notifies the installed system when an active stretcher gains a patient.
+/obj/structure/dropship_equipment/medevac_system/proc/notify_new_stretcher(obj/structure/bed/medevac_stretcher/new_stretcher)
+	if(!ship_base)
+		return
+	if(faction_exclusive != new_stretcher.faction)
+		return
+	if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL)
+		return
+
+	var/datum/weakref/stretcher_ref = WEAKREF(new_stretcher)
+	if(stretcher_ref in known_stretchers)
+		return
+
+	known_stretchers += stretcher_ref
+	playsound(src, 'sound/CPRbot/CPRbot_beep.ogg', 75, TRUE, 16, falloff = 16)
+	visible_message(SPAN_NOTICE("[src] beeps as it detects a new medevac stretcher beacon!"), null, 15)
+
+/obj/structure/dropship_equipment/medevac_system/proc/forget_stretcher(obj/structure/bed/medevac_stretcher/stretcher)
+	known_stretchers -= WEAKREF(stretcher)
 
 /obj/structure/dropship_equipment/medevac_system/proc/can_medevac(mob/user)
 	if(!linked_shuttle)
@@ -1188,12 +1418,13 @@
 	name = "\improper RMU-19 Fulton Recovery System"
 	shorthand = "Fulton"
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
-	equip_categories = list(DROPSHIP_CREW_WEAPON)
+	compatible_category_flags = DROPSHIP_CATEGORY_CREW_WEAPON
 	icon_state = "fulton_system"
 	point_cost = 200
 	is_interactable = TRUE
 	var/fulton_cooldown
 	var/busy_winch
+	var/list/datum/weakref/known_fultons = list()
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
 
@@ -1201,11 +1432,19 @@
 	name = "\improper UPP RMU-19 Fulton Recovery System"
 	faction_exclusive = FACTION_UPP
 
+/obj/structure/dropship_equipment/fulton_system/Destroy()
+	GLOB.active_fulton_systems -= src
+	. = ..()
+
 /obj/structure/dropship_equipment/fulton_system/update_equipment()
 	if(ship_base)
 		icon_state = "fulton_system_deployed"
+		monitor_existing_fultons()
+		GLOB.active_fulton_systems |= src
 	else
 		icon_state = "fulton_system"
+		known_fultons.Cut()
+		GLOB.active_fulton_systems -= src
 
 
 /obj/structure/dropship_equipment/fulton_system/proc/automate_interact(mob/user, fulton_choice)
@@ -1285,6 +1524,30 @@
 		else
 			recovery_object = "Empty"
 		.["[recovery_object]"] = fulton
+
+/// Records fultons which were deployed before this system was installed.
+/obj/structure/dropship_equipment/fulton_system/proc/monitor_existing_fultons()
+	known_fultons.Cut()
+	for(var/obj/item/stack/fulton/fulton in GLOB.deployed_fultons)
+		if(faction_exclusive == fulton.faction)
+			known_fultons += WEAKREF(fulton)
+
+/// Notifies the installed system when a new compatible fulton is deployed.
+/obj/structure/dropship_equipment/fulton_system/proc/notify_new_fulton(obj/item/stack/fulton/new_fulton)
+	if(!ship_base)
+		return
+	if(faction_exclusive != new_fulton.faction)
+		return
+	if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL)
+		return
+
+	var/datum/weakref/fulton_ref = WEAKREF(new_fulton)
+	if(fulton_ref in known_fultons)
+		return
+
+	known_fultons += fulton_ref
+	playsound(src, 'sound/machines/ping.ogg', 50, TRUE, 16, falloff = 16)
+	visible_message(SPAN_NOTICE("[src] pings as it detects a retrievable fulton recovery device!"), null, 15)
 
 /obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
 	if(!can_fulton(user))
@@ -1369,11 +1632,41 @@
 /obj/structure/dropship_equipment/paradrop_system
 	name = "\improper HPU-1 Paradrop Deployment System"
 	shorthand = "PDS"
-	equip_categories = list(DROPSHIP_CREW_WEAPON)
-	icon_state = "rappel_module_packaged"
-	point_cost = 50
+	compatible_category_flags = DROPSHIP_CATEGORY_CREW_WEAPON
+	icon_state = "paradrop_module_packaged"
+	point_cost = 150
 	combat_equipment = FALSE
 	var/system_cooldown
+	var/signal_registered = FALSE
+
+/obj/structure/dropship_equipment/paradrop_system/Destroy()
+	if(linked_shuttle && signal_registered)
+		UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
+		signal_registered = FALSE
+	. = ..()
+
+/obj/structure/dropship_equipment/paradrop_system/proc/on_shuttle_mode_change(source, new_mode)
+	SIGNAL_HANDLER
+	update_icon_for_mode(new_mode)
+
+/obj/structure/dropship_equipment/paradrop_system/on_removed_from_shuttle()
+	if(!signal_registered)
+		return
+	UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
+	signal_registered = FALSE
+
+/obj/structure/dropship_equipment/paradrop_system/proc/update_icon_for_mode(shuttle_mode)
+	if(!ship_base)
+		return
+
+	switch(shuttle_mode)
+		if(SHUTTLE_IDLE, SHUTTLE_RECHARGING, SHUTTLE_IGNITING)
+			icon_state = "paradrop_hatch_idle"
+		if(SHUTTLE_CALL, SHUTTLE_RECALL, SHUTTLE_PREARRIVAL)
+			if(linked_shuttle?.paradrop_signal)
+				icon_state = "paradrop_hatch_open"
+			else
+				icon_state = "paradrop_hatch_closed"
 
 /obj/structure/dropship_equipment/paradrop_system/ui_data(mob/user)
 	. = list()
@@ -1382,10 +1675,30 @@
 
 /obj/structure/dropship_equipment/paradrop_system/update_equipment()
 	if(ship_base)
-		icon_state = "rappel_hatch_closed"
+		if(linked_shuttle && !signal_registered)
+			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(on_shuttle_mode_change))
+			signal_registered = TRUE
+		if(linked_shuttle)
+			update_icon_for_mode(linked_shuttle.mode)
+		else
+			icon_state = "paradrop_hatch_idle"
 		density = FALSE
 	else
-		icon_state = "rappel_module_packaged"
+		icon_state = "paradrop_module_packaged"
+
+/obj/structure/dropship_equipment/paradrop_system/proc/on_signal_lock()
+	if(!(linked_shuttle?.mode in list(SHUTTLE_CALL, SHUTTLE_RECALL, SHUTTLE_PREARRIVAL)))
+		return
+	icon_state = "paradrop_hatch_open"
+	playsound(src, 'sound/machines/chime.ogg', 25, TRUE)
+	visible_message(SPAN_NOTICE("[src] chimes as the paradrop hatch opens."))
+
+/obj/structure/dropship_equipment/paradrop_system/proc/on_signal_lost()
+	if(!(linked_shuttle?.mode in list(SHUTTLE_CALL, SHUTTLE_RECALL, SHUTTLE_PREARRIVAL)))
+		return
+	icon_state = "paradrop_hatch_closed"
+	playsound(src, 'sound/machines/ding_short.ogg', 25, TRUE)
+	visible_message(SPAN_WARNING("[src] alerts as the paradrop hatch closes."))
 
 /obj/structure/dropship_equipment/paradrop_system/attack_hand(mob/living/carbon/human/user)
 	return
@@ -1400,13 +1713,24 @@
 	// no warning sound and no travel time
 	last_fired = world.time
 
-	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments)
+	if(targeting_system_enabled())
 		ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
-	sleep(3)
+
+	SA.create_impact_visual(impact)
+
+	sleep(0.3 SECONDS)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
+
+/obj/structure/dropship_equipment/weapon/proc/targeting_system_enabled()
+	if(!linked_shuttle)
+		return FALSE
+	for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
+		if(TS.system_enabled)
+			return TRUE
+	return FALSE

@@ -1,47 +1,36 @@
-
-
-
 //Randomly-equipped mercenaries. May be friendly or hostile to the USCM, hostile to xenos.
 /datum/emergency_call/mercs
 	name = "Freelancers (Squad)"
 	mob_max = 8
 	probability = 20
-
+	hostility = null // Random in New if null
 
 /datum/emergency_call/mercs/New()
 	. = ..()
-	hostility = pick(75;FALSE,25;TRUE)
-	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	if(isnull(hostility))
+		hostility = pick(75;FALSE,25;TRUE)
 	if(hostility)
+		arrival_message = "Lovely ship you've got there. Arikara class, huh? Don't mind if we do. \n\nThis is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress. Prepare your valuables for boarding."
 		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Warlord says. Ensure your survival at all costs."
 	else
+		arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Warlord says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/friendly //if admins want to specifically call in friendly ones
 	name = "Friendly Freelancers (Squad)"
 	mob_max = 8
 	probability = 0
-
-/datum/emergency_call/mercs/friendly/New()
-	. = ..()
 	hostility = FALSE
-	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Warlord says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/hostile //ditto
 	name = "Hostile Freelancers (Squad)"
 	mob_max = 8
 	probability = 0
-
-/datum/emergency_call/mercs/hostile/New()
-	. = ..()
 	hostility = TRUE
-	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Warlord says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as a colonist seeking work at one of the established colonies."))
-	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
+	to_chat(H, SPAN_BOLD("The withdrawal of United American forces in the early 2180s, the system fell into disarray."))
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
@@ -97,10 +86,11 @@
 /datum/emergency_call/heavy_mercs/New()
 	. = ..()
 	hostility = pick(75;FALSE,25;TRUE)
-	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
+		arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding. We've heard your distress and are currently preparing to ransack you for your very lives. Prepare for boarding."
 		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 	else
+		arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/hostile
@@ -109,7 +99,7 @@
 /datum/emergency_call/heavy_mercs/hostile/New()
 	. = ..()
 	hostility = TRUE
-	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding. We've heard your distress and are currently preparing to ransack you for your very lives. Prepare for boarding."
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/friendly
@@ -123,7 +113,7 @@
 
 /datum/emergency_call/heavy_mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as an experienced miner seeking work at one of the established colonies."))
-	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
+	to_chat(H, SPAN_BOLD("The withdrawal of United American forces in the early 2180s, the system fell into disarray."))
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)

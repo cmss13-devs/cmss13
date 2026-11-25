@@ -48,6 +48,10 @@
 	modifier_name = "Blood Optimizations"
 	modifier_desc = "Blood dries instantly, footsteps cannot get bloodied."
 
+/datum/gamemode_modifier/disable_bullet_casing
+	modifier_name = "Disable Casing Ejection"
+	modifier_desc = "Bullet casings don't eject for guns that have them, except during commanding officer executions and ceiling fire."
+
 /datum/gamemode_modifier/defib_past_armor
 	modifier_name = "Strong Defibrillators"
 	modifier_desc = "Allows defibrillators to ignore armor when reviving."
@@ -120,6 +124,16 @@
 			continue
 		cur_area.is_resin_allowed = enabled ? TRUE : initial(cur_area.is_resin_allowed)
 
+/datum/gamemode_modifier/continue_on_ground_crash
+	modifier_name = "Continue on Hijack Ground Crash"
+	modifier_desc = "Enable this modifier to not trigger Xeno Major on ground crash."
+
+/datum/gamemode_modifier/continue_on_ground_crash/set_active(enabled)
+	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+		return ..(active)
+	return ..()
+
 /datum/gamemode_modifier/mortar_laser_warning
 	modifier_name = "Mortar Telegraphing"
 	modifier_desc = "Shows a visual warning of where a mortar will hit."
@@ -148,7 +162,7 @@
 
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
-	modifier_desc = "Prevents firing guns and throwing granades."
+	modifier_desc = "Prevents firing guns and throwing grenades."
 
 /datum/gamemode_modifier/more_crit
 	modifier_name = "Increased Crit Threshold"

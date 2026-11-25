@@ -29,7 +29,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/darkred2/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "ad" = (
@@ -84,6 +84,14 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"ai" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/synth,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
 "aj" = (
 /turf/closed/wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -147,14 +155,14 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/shard,
 /obj/item/shard,
 /turf/open/floor/prison/red/west,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "aM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -440,9 +448,9 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "cZ" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
 	pixel_y = 1
@@ -640,7 +648,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/barricade/deployable{
 	damage_state = 2;
@@ -680,7 +688,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/tool/stamp{
 	pixel_x = -7;
 	pixel_y = 7
@@ -764,9 +772,9 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost)
 "eT" = (
@@ -842,9 +850,9 @@
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "ft" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -957,10 +965,10 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "gj" = (
@@ -1382,7 +1390,7 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	icon_state = "grime3"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "ki" = (
@@ -1461,9 +1469,9 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/shard,
 /turf/open/floor/prison/red/west,
 /area/lv759/indoors/twe_souter_outpost/reception)
@@ -1690,7 +1698,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/shard,
 /obj/item/shard,
 /turf/open/floor/strata/multi_tiles/west,
@@ -1732,7 +1740,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "mu" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/almayer,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "mv" = (
@@ -1874,8 +1882,8 @@
 /turf/closed/wall/hybrisa/marhsalls/reinforced,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "nd" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/shard,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -2173,9 +2181,9 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "ou" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
@@ -2235,8 +2243,8 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "pY" = (
@@ -2495,6 +2503,7 @@
 	pixel_x = -10;
 	pixel_y = 8
 	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/commander,
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "tr" = (
@@ -2643,7 +2652,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "uS" = (
@@ -2773,10 +2782,10 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "wL" = (
@@ -2819,8 +2828,8 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -2829,10 +2838,10 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/device/m56d_post,
 /obj/structure/barricade/deployable{
 	damage_state = 2;
@@ -3009,7 +3018,7 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "zU" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -3186,7 +3195,7 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "BT" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -3204,9 +3213,9 @@
 	pixel_y = 22;
 	pixel_x = 2
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/darkred2/northwest,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "BY" = (
@@ -3246,7 +3255,7 @@
 	pixel_x = -10;
 	pixel_y = -2
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "CS" = (
@@ -3262,7 +3271,7 @@
 	dir = 4
 	},
 /obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "CY" = (
@@ -3274,9 +3283,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Dg" = (
@@ -3419,10 +3428,10 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/west,
@@ -3829,14 +3838,14 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/red/east,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "Ij" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost)
@@ -4203,13 +4212,13 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/item/device/m56d_gun,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "MX" = (
@@ -4452,10 +4461,10 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
 	pixel_y = 1
@@ -4491,7 +4500,7 @@
 	pixel_x = 7;
 	pixel_y = 16
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "Rc" = (
@@ -4725,10 +4734,10 @@
 /obj/structure/pipes/standard/manifold/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "Ul" = (
@@ -4788,7 +4797,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "UH" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -4812,8 +4821,8 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "Vj" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/rmc_f90,
 /obj/structure/bed/stool{
 	pixel_x = -6;
@@ -4884,8 +4893,8 @@
 	dir = 8;
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/lv759/indoors/twe_souter_outpost)
@@ -4999,8 +5008,8 @@
 	dir = 8;
 	pixel_y = -4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
 /obj/item/shard,
 /obj/item/shard,
@@ -5048,7 +5057,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost)
 "Xi" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -5201,8 +5210,8 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 6
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "Zm" = (
@@ -5946,7 +5955,7 @@ lH
 Kl
 GE
 hi
-hi
+ai
 GE
 hi
 hi

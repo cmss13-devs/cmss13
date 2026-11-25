@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - maptweak: "The LZ1 northern communications array on Chances Claim has had a new path opened up to its north. The intention for this change is to make holding the array more challenging for the Marines, and to give Xenomorphs a new attack route to siege the array. This new path also opens a new attack route for both factions to use."
-  - maptweak: "Fixes a duplicated multiz room on Chances Claim (the off-map sniper spawn)."

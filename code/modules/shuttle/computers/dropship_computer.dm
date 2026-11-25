@@ -3,7 +3,7 @@
 	desc = "A flight computer that can be used for autopilot or long-range flights."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_SENIOR)
 	unacidable = TRUE
 	explo_proof = TRUE
 	needs_power = FALSE
@@ -33,6 +33,7 @@
 
 	/// If this computer should respect the faction variable of destination LZ
 	var/use_factions = TRUE
+	COOLDOWN_DECLARE(dropship_alarm)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/upp
 	icon_state = "console_upp"
@@ -103,7 +104,7 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
 			name = "Remote"
@@ -127,9 +128,25 @@
 			units = "minutes"
 		to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] [units]."))
 		return UI_CLOSE
+	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
+		var/turf/our_location = get_turf(src)
+		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
+		if(!shuttle)
+			if(is_mainship_level(our_location.z))
+				to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+				return UI_CLOSE
+			return .
+		var/turf/shuttle_location = get_turf(shuttle)
+		if(is_mainship_level(shuttle_location.z) || (shuttle_location.z != our_location.z && is_mainship_level(our_location.z)))
+			to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+			if(can_change_shuttle)
+				shuttleId = null
+				update_static_data(user)
+				return .
+			return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_state(mob/user)
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(shuttle?.is_hijacked)
 		return GLOB.never_state
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -137,7 +154,7 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_static_data(mob/user)
 	. = ..(user)
 	compatible_landing_zones = get_landing_zones()
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	// we convert the time to seconds for rendering to ui
 	if(shuttle)
 		.["max_flight_duration"] = shuttle.callTime / 10
@@ -170,7 +187,7 @@
 		return TRUE
 
 	// if the dropship has crashed don't allow more interactions
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(!shuttle)
 		tgui_interact(user)
 		return
@@ -221,7 +238,7 @@
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
 
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(linked_lz)
 		var/obj/docking_port/stationary/landing_zone = SSshuttle.getDock(linked_lz)
 		var/obj/docking_port/mobile/maybe_dropship = landing_zone.get_docked()
@@ -242,17 +259,19 @@
 
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
+			shuttle.withdrawal_launch_override = SShijack.withdrawal_end_time && !SShijack.ground_claimed
 			var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 			if(result != DOCKING_SUCCESS)
+				shuttle.withdrawal_launch_override = FALSE
 				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [landing_zone.name]."),xeno.hivenumber,XENO_GENERAL_ANNOUNCE)
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
 		if(shuttle.destination && shuttle.destination.id != linked_lz)
-			to_chat(xeno, "The shuttle not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
+			to_chat(xeno, "The shuttle is not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
 			return
 		if(shuttle.mode == SHUTTLE_CALL)
 			to_chat(xeno, "The shuttle is in flight. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
@@ -266,16 +285,20 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
+
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
 	if(!shuttleId || !SSshuttle.getShuttle(shuttleId, FALSE))
 		var/list/alternatives = alternative_shuttles()
 		shuttleId = pick(alternatives)["id"]
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-
-	// If the attacking xeno isn't the queen.
-	if(xeno.hive_pos != XENO_QUEEN)
-		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
+	// If the attacking xeno isn't the queen, king or predalien.
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
+	// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()
 			xeno.animation_attack_on(src)
@@ -291,6 +314,10 @@
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
+
+	if(SShijack.ground_claimed)
+		to_chat(xeno, SPAN_XENONOTICE("The queen has chosen not to pursue the tallhosts to their skyhive."))
+		return
 
 	if(is_remote)
 		groundside_alien_action(xeno)
@@ -319,6 +346,11 @@
 		SScmtv.spectate_event("Dropship Locked", src)
 		return
 
+	// Only the queen should have the authority to start hijack.
+	if(xeno.caste_type != XENO_CASTE_QUEEN)
+		to_chat(xeno, SPAN_XENODANGER("We shouldn't be tampering with the controls any further."))
+		return
+
 	if(dropship_control_lost)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
@@ -333,6 +365,22 @@
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
 			to_chat(xeno, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 			return
+		if(istype(SSticker.mode, /datum/game_mode/colonialmarines) && SSticker.current_state == GAME_STATE_PLAYING)
+			var/choice = tgui_alert(xeno, "Pursue the tallhosts to their skyhive, or ground the dropship and claim a grounside victory?", "Hive Victory", list("Hijack", "Claim ground victory", "Cancel"))
+			if(choice != "Hijack" && choice != "Claim ground victory")
+				return
+			if(choice == "Claim ground victory")
+				if(!is_ground_level(z))
+					return
+				if(!SShijack.is_groundside_clear())
+					to_chat(xeno, SPAN_XENODANGER("Too many tallhosts still live upon these lands. Drive them OUT!"))
+					return
+				if(SShijack.withdrawal_end_time)
+					to_chat(xeno, SPAN_XENONOTICE("The tallhosts are already fleeing with their skyhive."))
+					return
+				SShijack.withdrawal_available = TRUE
+				SShijack.start_withdrawal(automatic = TRUE)
+				return
 		hijack(xeno)
 		return
 
@@ -351,29 +399,36 @@
 	// select crash location
 	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", GLOB.almayer_ship_sections , timeout = 10 SECONDS)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", GLOB.almayer_ship_sections, timeout = 10 SECONDS)
 	if(!result)
 		return
 	if(!user.Adjacent(source_turf) && !force)
 		return
-	if(dropship.is_hijacked)
+	if(dropship.is_hijacked || SShijack.ground_claimed)
 		return
+	if(!force)
+		if(!is_ground_level(z))
+			return
+		if(SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished || SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
+			return
 
 	var/datum/dropship_hijack/almayer/hijack = new()
-	SShijack.call_shuttle()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
+	SShijack.on_call_shuttle()
 	hijack.target_crash_site(result)
 
 	dropship.crashing = TRUE
 	dropship.is_hijacked = TRUE
 
 	hijack.fire()
-	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
-	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
-	addtimer(CALLBACK(src, PROC_REF(hijack_general_quarters)), 10 SECONDS)
+	var/ares_message = "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot."
+	marine_announcement(ares_message, "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+	log_ares_flight("Unknown", ares_message)
+	playsound(src, 'sound/misc/queen_alarm.ogg')
+	addtimer(CALLBACK(SShijack, TYPE_PROC_REF(/datum/controller/subsystem/hijack, hijack_general_quarters)), 10 SECONDS)
+
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL
 	if(istype(xeno))
@@ -381,34 +436,11 @@
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME, TIMER_UNIQUE)
 	hive.bless_on_hijack()
-	var/original_evilution = hive.evolution_bonus
-	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
-	if(hive.living_xeno_queen)
-		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
-		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
-		if(!hive.living_xeno_queen.queen_aged)
-			hive.living_xeno_queen.make_combat_effective()
-	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
+	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME, TIMER_UNIQUE)
 
 	// Notify the yautja too so they stop the hunt
-	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
-	playsound(src, 'sound/misc/queen_alarm.ogg')
-
-	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
-		var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
-		colonial_marines.add_current_round_status_to_end_results("Hijack")
-
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	if(GLOB.security_level < SEC_LEVEL_RED)
-		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
-	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
-		return FALSE
-	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
-	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
-	return TRUE
+	elder_overseer_message("The serpent Queen has commanded the landing shuttle to depart.")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)
@@ -422,7 +454,7 @@
 	update_icon()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	. = list()
 	.["shuttle_id"] = shuttle?.id
 	.["shuttle_mode"] = shuttle?.mode
@@ -479,14 +511,14 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(disabled || (shuttle && shuttle.is_hijacked))
 		switch(action)
 			if ("change_shuttle")
 				var/new_shuttle = params["new_shuttle"]
 				return set_shuttle(new_shuttle)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
 	if (shuttle)
 		var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
 		if(comp.dropship_control_lost)
@@ -501,7 +533,7 @@
 			if(!shuttle)
 				return FALSE
 			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
-				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
+				to_chat(user, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
 
 			var/is_optimised = FALSE
@@ -586,6 +618,10 @@
 				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				return
+			if(SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return
 
 			shuttle.automated_hangar_id = almayer_lz
 			shuttle.automated_lz_id = ground_lz
@@ -620,10 +656,14 @@
 			if(!shuttle)
 				return FALSE
 			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
-				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				to_chat(user, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				return TRUE
+			if(!(COOLDOWN_FINISHED(src, dropship_alarm)))
+				to_chat(user, SPAN_WARNING("The Launch Announcement Alarm can not be restarted yet."))
 				return TRUE
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE
+			COOLDOWN_START(src, dropship_alarm, 6 SECONDS)
 			return TRUE
 		if ("stop_playing_launch_announcement_alarm")
 			if(!shuttle)
@@ -681,3 +721,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/toc
+	name = "dropship control screen"
+	desc = "A screen on the TOC computer for controlling the dropship linked to it. Has an abbreviated version of the flight controls and data."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "toc_shuttle"
+	is_remote = TRUE

@@ -12,12 +12,17 @@ For detailed troubleshooting instructions and other tips, visit the
 To install the [Git hooks], open the `tools/hooks/` folder and double-click
 `Install.bat`. Linux users run `tools/hooks/install.sh`.
 
+> Linux note: If you get an error like:
+> `./tools/hooks/../bootstrap/python: not found`
+> You must update the line endings of the `tools/bootstrap/python` file to LF.
+
+
 ## Manual Use
 
 If using a Git GUI which is not compatible with the hooks:
 
-* Before committing, double-click `Run Before Committing.bat`
-* When a merge has map conflicts, double-click `Resolve Map Conflicts.bat`
+* Before committing, double-click `Run Before Committing.bat` (Linux: `run_before_committing_no_hooks_linux.sh`)
+* When a merge has map conflicts, double-click `Resolve Map Conflicts.bat` (Linux: `resolve_map_conflicts_no_hooks_linux.sh`)
 
 The console will show whether the operation succeeded.
 

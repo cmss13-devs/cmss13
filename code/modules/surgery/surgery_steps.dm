@@ -1,7 +1,7 @@
 /datum/surgery_step
 	var/name
 	/**Description of the surgery used for need-different-tool messages,
-	format: (You could/can't )["sever the bone in the patient's limb"]( with \the [tool], or )[next step desc]. Can't refer to outside vars as step datums are global.**/
+	format: (You could/can't )["sever the bone in the patient's limb"]( with [tool], or )[next step desc]. Can't refer to outside vars as step datums are global.**/
 	var/desc
 
 	/**Associative list, tools and their step time multiplier. tools_typecache is assigned from from first to last, so if you have a
@@ -22,8 +22,11 @@
 	var/time = 10
 	///Whether this step continuously repeats as long as a criteria is met. If TRUE, consider setting skip_step_criteria() or using a failure() override to return TRUE to allow it to be canceled or skipped.
 	var/repeat_step = FALSE
-	///preop means "in Progress" sound
+	///preop means "in Progress" sound. Var is only used if all tools use the same sound. Otherwise, use custom_preop_sound
 	var/preop_sound
+	var/custom_preop_sound
+	var/custom_success_sound
+	var/custom_failure_sound
 	///Sound of success
 	var/success_sound
 	///failure >:(
@@ -78,6 +81,107 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	return TRUE
 
+///This is for surgery steps that have different sounds for different tools after initiating a step because hearing a bone saw while you're using a fire-axe to chop away at a ribcage was a thing of the past.
+/datum/surgery_step/proc/use_custom_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	var/held_tool = tool.type
+	if((tool.type in SURGERY_TOOLS_INCISION) && (!istype(src, /datum/surgery_step/cut_muscle))) //cut_muscle uses its own playsound.
+		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
+			custom_preop_sound = 'sound/surgery/ims.ogg'
+		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
+			custom_preop_sound = 'sound/surgery/laserscalpel1.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
+
+	else if((tool.type in SURGERY_TOOLS_SEVER_BONE) && (!istype(src, /datum/surgery_step/saw_off_limb))) //saw_off_limb has its own playsound.
+		if(held_tool == /obj/item/tool/surgery/circular_saw)
+			custom_preop_sound = 'sound/surgery/saw.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/notsaw.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_BONE_MEND)
+		if(held_tool == /obj/item/tool/screwdriver)
+			custom_preop_sound = 'sound/items/Screwdriver.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
+		if(held_tool == /obj/item/tool/surgery/synthgraft)
+			custom_preop_sound = 'sound/surgery/suture1.ogg'
+		else if(held_tool == /obj/item/stack/medical/ointment)
+			custom_preop_sound = 'sound/handling/bottle_cap_screw.ogg'
+		else
+			custom_preop_sound = 'sound/handling/clothingrustle1.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
+		if(held_tool == /obj/item/tool/surgery/bonegel)
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/suture1.ogg'
+
+	else if((tool.type in SURGERY_TOOLS_SUTURE) && (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
+		if(held_tool == /obj/item/tool/surgery/FixOVein)
+			custom_preop_sound = 'sound/surgery/fixovein.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/suture1.ogg'
+
+	else
+		var/tools_lit = list(
+			/obj/item/tool/lighter,
+			/obj/item/clothing/mask/cigarette,
+			/obj/item/tool/weldingtool,
+			)
+		if((tool.type in SURGERY_TOOLS_CAUTERIZE) && (tool.type in SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND))
+			if(tool.type in tools_lit)
+				if(tool.heat_source)
+					if((held_tool == /obj/item/clothing/mask/cigarette || held_tool == /obj/item/tool/lighter))
+						custom_preop_sound = 'sound/surgery/cigarettelighter.ogg'
+					else if(held_tool == /obj/item/tool/weldingtool)
+						custom_preop_sound = 'sound/surgery/weldingtool.ogg'
+			else
+				custom_preop_sound = 'sound/surgery/cautery1.ogg'
+
+	if(held_tool == tool.type)
+		playsound(get_turf(target), custom_preop_sound, vol = 40, sound_range = 1)
+
+
+/datum/surgery_step/proc/use_custom_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	var/held_tool = tool.type
+
+	if(tool.type in SURGERY_TOOLS_SEVER_BONE)
+		if(istype(src, /datum/surgery_step/sever_prosthetic_clamps))
+			custom_success_sound = 'sound/effects/buckle.ogg'
+		else
+			custom_success_sound = 'sound/surgery/hemostat2.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_BONE_MEND)
+		if(held_tool == /obj/item/tool/screwdriver)
+			custom_success_sound = 'sound/items/Screwdriver2.ogg'
+		else
+			custom_success_sound = 'sound/handling/bottle_cap_screw.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
+		if(held_tool == /obj/item/tool/surgery/synthgraft)
+			custom_success_sound = 'sound/surgery/suture2.ogg'
+		else if(held_tool == /obj/item/stack/medical/ointment)
+			custom_success_sound = 'sound/handling/ointment_spreading.ogg'
+		else
+			custom_success_sound = 'sound/handling/bandage.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
+		if(held_tool == /obj/item/tool/surgery/bonegel)
+			custom_success_sound = 'sound/handling/bottle_cap_screw.ogg'
+		else
+			custom_success_sound = 'sound/surgery/suture2.ogg'
+
+	else if((tool.type in SURGERY_TOOLS_SUTURE))
+		if(held_tool == /obj/item/tool/surgery/FixOVein)
+			custom_success_sound = 'sound/surgery/hemostat2.ogg'
+		else
+			custom_success_sound = 'sound/surgery/suture2.ogg'
+
+	if(held_tool == tool.type)
+		playsound(get_turf(target), custom_success_sound, vol = 40, sound_range = 1)
+
 ///The proc that actually performs the step.
 /datum/surgery_step/proc/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	var/tool_type = tool_check(user, tool, surgery) //A boolean, a key to the tools list for duration multipliers, and a faster method than istype() for steps to test tools.
@@ -101,8 +205,16 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	if(surgery_limb)
 		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 		if(blocker)
-			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 			return
+
+		if(surgery_limb.status & LIMB_SPLINTED && surgery.invasiveness != SURGERY_DEPTH_SURFACE)
+			if(surgery_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+				to_chat(user, SPAN_WARNING("The splint [target] is wearing on their [surgery_limb.display_name] restricts your access to the surgical site, and must be manually removed!"))
+				return
+			surgery_limb.status &= ~LIMB_SPLINTED
+			playsound(get_turf(target), 'sound/items/splintbreaks.ogg', 20)
+			user.visible_message(SPAN_DANGER("The splint on [target]'s [surgery_limb.display_name] comes apart!"))
 
 	var/step_duration = time
 	var/self_surgery
@@ -144,28 +256,28 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
-			message += "[pick("performing surgery", "working")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
+			message += "[pick("performing surgery", "working", "operating")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool is[pick("n't ideal", " not the best")]"
+				message += "this tool [pick("is perfectly serviceable, but less efficient",  "takes some extra patience to work with", "is a bit different than what you're accustomed to using", "could be better, but considering the alternatives, it's fine")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool is[pick("n't suitable", " a bad fit", " difficult to use")]"
+				message += "this tool [pick("is an acceptable substitute, but quite inefficient", "tests your patience and dexterity", "is unorthodox for executing this step", "feels odd in your hand, but it works, you suppose")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "this tool [pick("has more favorable applications elsewhere", "is frustrating to work with", "is not appropriate for this surgical step", "could cause harm within unskilled hands")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "this tool [pick("has better uses literally anywhere else", "should never be used for this purpose", "makes you long for the feel of any other instrument", "will almost certainly cause harm within unskilled hands")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
-				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
+				message += "[pick("you feel the need to double check your steps while working", "it's tricky to perform complex surgeries", "you would feel more confident of your pacing if you weren't working")] [pick("in the field", "outside of your element", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "rough", "crude")] conditions"
+				message += "[pick("you feel nervous as you manipulate your tools", "you feel insecure and unsure of yourself", "you feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "awful", "utterly unsuitable")] conditions"
+				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are mortified, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a secure bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
 				failure_penalties += 2
 
 		if(length(message))
@@ -198,7 +310,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			advance = TRUE
 			play_failure_sound(user, target, target_zone, tool, surgery)
 
-	else if(target.stat == CONSCIOUS && prob(pain_failure_chance)) //Pain can cause a step to fail.
+	else if(target.stat == CONSCIOUS && prob(pain_failure_chance) && !isxeno(target)) //Pain can cause a step to fail.
 		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
 				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the pain interrupt doesn't happen instantly.
 		to_chat(user, SPAN_DANGER("[target] moved during the surgery! Use anesthetics or painkillers!"))
@@ -238,10 +350,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		tool.update_icon() // in order to not reset shit too far.
 
 	if(advance)
-		if(skipped) //Skipped previous step.
-			surgery.status += 2
-		else
-			surgery.status++
+		surgery.status += max(skipped + 1, 1)
 		if(surgery.status > length(surgery.steps))
 			complete(target, surgery)
 
@@ -258,9 +367,12 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 /// Plays Preop Sounds
 /datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(!preop_sound)
+	if(preop_sound)
+		playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
+	else if (!preop_sound)
+		use_custom_preop_sound(user, target, target_zone, tool, surgery)
+	else if (!custom_preop_sound)
 		return
-	playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
 
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -269,9 +381,12 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 /// Plays the selected success sound
 /datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(!success_sound)
+	if(success_sound)
+		playsound(get_turf(target), success_sound, vol = 40, sound_range = 1)
+	else if (!success_sound)
+		use_custom_success_sound(user, target, target_zone, tool, surgery)
+	else if (!custom_success_sound) //for examples like laser scalpels not making cautery sizzle noises after not making a bloodless incisions.
 		return
-	playsound(get_turf(target), success_sound, vol = 40, sound_range = 1)
 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/

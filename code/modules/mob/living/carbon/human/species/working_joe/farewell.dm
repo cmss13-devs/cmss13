@@ -161,3 +161,10 @@
 	say_message = "Now, where was I?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/wish_i_could_help
+	key = "wishicouldhelp"
+	sound = 'sound/voice/joe/daniel/i_wish_i_could_help_you.ogg'
+	say_message = "I wish I could help you further."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

@@ -91,7 +91,7 @@
 			current_container_volume = 0
 		desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 		return
-	cause_data = create_cause_data(initial(name), user)
+	cause_data = create_cause_data(initial(name), user, src)
 	return TRUE
 
 /obj/item/explosive/update_icon()
@@ -147,7 +147,7 @@
 				to_chat(user, SPAN_NOTICE("You lock the empty assembly."))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 			creator = user
-			cause_data = create_cause_data(initial(name), user)
+			cause_data = create_cause_data(initial(name), user, src)
 			assembly_stage = ASSEMBLY_LOCKED
 		else if(assembly_stage == ASSEMBLY_LOCKED)
 			to_chat(user, SPAN_NOTICE("You unlock the assembly."))
@@ -217,7 +217,7 @@
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
 		reagents.source_mob = WEAKREF(cause_mob)
-		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [ADMIN_VERBOSEJMP(src)]")
 
 	if(length(containers) < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer

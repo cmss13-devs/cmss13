@@ -62,7 +62,7 @@
 
 /mob/living/simple_animal/small/mouse/rat/pet/marvin
 	name = "Marvin"
-	desc = "A sleek well kept rat with a tiny collar around its neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	desc = "A sleek well kept rat with a tiny collar around its neck, it must belong to someone. For a rodent it appears remarkably clean and hygienic."
 	body_color = "black"
 	icon_state = "rat_black"
 	holder_type = /obj/item/holder/rat/pet/marvin

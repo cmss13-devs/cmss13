@@ -1,6 +1,6 @@
 /obj/structure/machinery/door/airlock/sandstone/runed
 	name = "\improper Runed Sandstone Airlock"
-	icon = 'icons/obj/structures/doors/doorrunedsand.dmi'
+	icon = 'icons/obj/structures/doors/hunter/ancient_temple_door.dmi'
 	mineral = "runed sandstone"
 	no_panel = TRUE
 	not_weldable = TRUE
@@ -11,10 +11,10 @@
 	stat = 0
 	heavy = TRUE
 	masterkey_resist = TRUE
-	openspeed = 4 SECONDS
+	openspeed = 1.7 SECONDS
 	unacidable = TRUE//Walls can still be melted or blown up.
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters so no abuse from marines.
-	color = "#b29082"
+	color = null
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, loud = 0)
 	if(!in_range(src, user))
@@ -125,6 +125,7 @@
 		change_filler_opacity(opacity)
 
 	operating = DOOR_OPERATING_IDLE
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
 
 /obj/structure/machinery/door/airlock/sandstone/runed/close(forced = TRUE)
 	if(operating && !forced)
@@ -175,6 +176,8 @@
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)
+
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
 /obj/structure/machinery/door/airlock/sandstone/runed/lock(forced = FALSE)
 	if(operating && !forced)
@@ -253,4 +256,5 @@
 	damage_cap = HEALTH_WALL
 
 /obj/structure/machinery/door/airlock/sandstone/runed/dark
-	color = "#2E1E21"
+	icon = 'icons/obj/structures/doors/hunter/colorable_ancient_temple_door.dmi'
+	color = "#4a4641"

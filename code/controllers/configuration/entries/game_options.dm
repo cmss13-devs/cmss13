@@ -1,29 +1,4 @@
-/datum/config_entry/keyed_list/probability
-	key_mode = KEY_MODE_TEXT
-	value_mode = VALUE_MODE_NUM
-
-/datum/config_entry/keyed_list/probability/ValidateListEntry(key_name)
-	return key_name in config.modes
-
-/datum/config_entry/keyed_list/max_pop
-	key_mode = KEY_MODE_TEXT
-	value_mode = VALUE_MODE_NUM
-
-/datum/config_entry/keyed_list/max_pop/ValidateListEntry(key_name)
-	return key_name in config.modes
-
-/datum/config_entry/keyed_list/min_pop
-	key_mode = KEY_MODE_TEXT
-	value_mode = VALUE_MODE_NUM
-
-/datum/config_entry/keyed_list/min_pop/ValidateListEntry(key_name, key_value)
-	return key_name in config.modes
-
-
 /datum/config_entry/flag/emojis
-
-/datum/config_entry/string/alert_delta
-	config_entry_value = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
 
 /datum/config_entry/number/revival_brain_life
 	config_entry_value = -1
@@ -32,14 +7,6 @@
 
 /datum/config_entry/number/movedelay //Used for modifying movement speed for mobs.
 	abstract_type = /datum/config_entry/number/movedelay
-
-/datum/config_entry/number/movedelay/run_delay
-	config_entry_value = 0
-	integer = FALSE
-
-/datum/config_entry/number/movedelay/walk_delay
-	config_entry_value = 0
-	integer = FALSE
 
 /datum/config_entry/number/organ_health_multiplier
 	config_entry_value = 1
@@ -50,59 +17,22 @@
 /datum/config_entry/flag/limbs_can_break
 	config_entry_value = TRUE
 
-/datum/config_entry/number/revive_grace_period
-	config_entry_value = 3000
-	min_val = 0
-
 /datum/config_entry/flag/bones_can_break
 	config_entry_value = TRUE
 
 /datum/config_entry/flag/flesh_can_eschar
 	config_entry_value = TRUE
 
-/datum/config_entry/flag/allow_synthetic_gun_use
-
 /datum/config_entry/flag/remove_gun_restrictions
 
-/datum/config_entry/flag/jobs_have_minimal_access
-
-/datum/config_entry/number/minimal_access_threshold //If the number of players is larger than this threshold, minimal access will be turned on.
-	config_entry_value = 10
-	min_val = 0
-
 /datum/config_entry/flag/humans_need_surnames
-
-/datum/config_entry/flag/allow_ai
-
-/datum/config_entry/flag/allow_ai_multicam // allow ai multicamera mode
-
-/datum/config_entry/flag/fun_allowed //a lot of LRP features
-
-/datum/config_entry/number/min_xenos
-	config_entry_value = 5
-	min_val = 1
-
-/datum/config_entry/number/crash_larvapoints_required
-	config_entry_value = 9
-	min_val = 1
-
-/datum/config_entry/number/distress_larvapoints_required
-	config_entry_value = 8
-	min_val = 1
 
 /datum/config_entry/keyed_list/lobby_music
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_TEXT
 
-/datum/config_entry/flag/distress_ert_allowed
-	config_entry_value = TRUE
-
 /datum/config_entry/flag/events_disallowed
 	config_entry_value = FALSE
-
-/datum/config_entry/flag/aggressive_changelog
-
-/datum/config_entry/flag/continous_rounds
 
 /datum/config_entry/flag/ert_admin_call_only
 
@@ -117,10 +47,6 @@
 /datum/config_entry/string/nightmare_path
 	config_entry_value = "maps/Nightmare/"
 
-/datum/config_entry/flag/events_disallowed
-	config_entry_value = FALSE
-
-
 ///Used to determine how many extra larva you want per burst. Supports fractions. See /datum/hive_status/proc/increase_larva_after_burst()
 /datum/config_entry/number/extra_larva_per_burst
 	config_entry_value = 0
@@ -128,7 +54,13 @@
 
 ///Used to determine how many extra larva you want per burst if nested. Supports fractions. See /datum/hive_status/proc/increase_larva_after_burst()
 /datum/config_entry/number/extra_larva_per_nested_burst
-	config_entry_value = 1
+	config_entry_value = 0.5
+	integer = FALSE
+
+///Used to determine how many extra larva are granted on survivor perma death during the first hour.
+///Supports fractions. See /datum/job/civilian/survivor/proc/grant_larva_on_death()
+/datum/config_entry/number/larva_for_surv_death
+	config_entry_value = 0.5
 	integer = FALSE
 
 /datum/config_entry/number/embryo_burst_timer
@@ -138,7 +70,7 @@
 
 /datum/config_entry/number/whiskey_required_players
 	min_val = 0
-	config_entry_value = 140
+	config_entry_value = 120
 	integer = TRUE
 
 /datum/config_entry/number/nuclear_lock_marines_percentage
@@ -147,7 +79,7 @@
 	max_val = 100
 	integer = TRUE
 
-/// The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+/// The rate of comms clarity percent decay for challenges per fire of SSradio (30 SECONDS)
 /datum/config_entry/number/announcement_clarity_decay
 	min_val = 0
 	config_entry_value = 2.5
@@ -205,3 +137,26 @@
 	config_entry_value = 95
 	max_val = 100
 	integer = TRUE
+
+/// How likely a Predator Survivor is to spawn without a hunt round.
+/datum/config_entry/number/pred_survivor_huntless_chance
+	min_val = 0
+	config_entry_value = 10
+	max_val = 100
+
+/// For YAUTJA_SURV_HUNT: Whether the predator survivor is JOB_BADBLOOD (otherwise JOB_STRANDED_PRED)
+/datum/config_entry/number/pred_survivor_badblood_weight
+	min_val = 0
+	config_entry_value = 50
+	max_val = 100
+
+/// For YAUTJA_SURV_NO_HUNT: Whether the predator survivor is JOB_BADBLOOD (otherwise JOB_STRANDED_PRED)
+/datum/config_entry/number/pred_survivor_badblood_weight_huntless
+	min_val = 0
+	config_entry_value = 75
+	max_val = 100
+
+/// How many spawn_positions and total_slots for a predator survivor
+/datum/config_entry/number/pred_survivor_slots
+	min_val = 0
+	config_entry_value = 1

@@ -31,6 +31,8 @@
 	var/flags_obj = NO_FLAGS
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
+	/// lets us know if the item is an objective or not
+	var/is_objective = FALSE
 
 	vis_flags = VIS_INHERIT_PLANE
 
@@ -83,11 +85,6 @@
 
 		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
 			enable_pixel_scaling()
-
-/obj/Entered(atom/movable/moved_obj, atom/old_loc)
-	. = ..()
-
-	SEND_SIGNAL(moved_obj, COMSIG_MOVABLE_ENTERED_OBJ, src, old_loc)
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)

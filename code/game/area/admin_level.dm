@@ -137,6 +137,13 @@
 	name = "HMS Patna Hangerbay"
 	icon_state = "yellow"
 
+/area/adminlevel/ert_station/yautja_station
+	name = "Yautja Prime High Orbit"
+	icon_state = "red"
+	base_lighting_alpha = 155
+	base_lighting_color = "#ffc49c"
+	flags_area = AREA_NOBURROW|AREA_YAUTJA_GROUNDS
+
 /area/adminlevel/ert_station/shuttle_dispatch
 	name = "Shuttle Dispatch Station"
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC

@@ -202,6 +202,9 @@
 
 	var/datum/map_template/shuttle/roundstart_template
 	var/json_key
+	var/disabled = FALSE
+	var/list/landing_lights = list()
+	var/landing_lights_on = FALSE
 
 /obj/docking_port/stationary/register(replace = FALSE)
 	. = ..()
@@ -242,6 +245,7 @@
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#f00")
 	#endif
+	link_landing_lights()
 
 /obj/docking_port/stationary/unregister()
 	. = ..()
@@ -250,6 +254,10 @@
 /obj/docking_port/stationary/Destroy(force)
 	if(force)
 		unregister()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.linked_port = null
+	if(landing_lights)
+		landing_lights.Cut()
 	. = ..()
 
 /obj/docking_port/stationary/Moved(atom/oldloc, dir, forced)
@@ -276,25 +284,61 @@
 /obj/docking_port/stationary/proc/on_crash()
 	return
 
+/// Called when a new shuttle is about to arrive
+/obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle, landing_sound)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_PREARRIVAL, arriving_shuttle)
+	if(!landing_lights_on)
+		turn_on_landing_lights()
+		if(landing_sound)
+			playsound(return_center_turf(), landing_sound, 60, 0, falloff=4)
+
 /// Called when a new shuttle arrives
 /obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
-	return
-
-/// Called when a new shuttle is about to arrive
-/obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_ARRIVAL, arriving_shuttle)
+	turn_off_landing_lights()
 
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_IGNITION, departing_shuttle)
+	turn_on_landing_lights()
 
 /// Called when a shuttle is about to complete undocking from this stationary dock (already physically gone)
 /obj/docking_port/stationary/proc/on_departure(obj/docking_port/mobile/departing_shuttle)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_DEPARTURE, departing_shuttle)
+	turn_off_landing_lights()
 
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
 	. = locate(/obj/docking_port/mobile) in loc
+
+/obj/docking_port/stationary/proc/link_landing_lights()
+	var/list/coords = return_coords()
+	var/scan_range = 3
+	var/x0 = coords[1] - scan_range
+	var/y0 = coords[2] - scan_range
+	var/x1 = coords[3] + scan_range
+	var/y1 = coords[4] + scan_range
+
+	for(var/xscan = x0; xscan < x1; xscan++)
+		for(var/yscan = y0; yscan < y1; yscan++)
+			var/turf/searchspot = locate(xscan, yscan, src.z)
+			for(var/obj/structure/machinery/landinglight/light in searchspot)
+				landing_lights += light
+				light.linked_port = src
+
+/obj/docking_port/stationary/proc/turn_on_landing_lights()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.turn_on()
+	landing_lights_on = TRUE
+
+/obj/docking_port/stationary/proc/turn_off_landing_lights()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.turn_off()
+	landing_lights_on = FALSE
 
 /obj/docking_port/stationary/transit
 	name = "In Transit"
@@ -377,6 +421,7 @@
 	var/crashing = FALSE
 
 	var/shuttle_flags = NONE
+	var/dock_failures = 0
 
 #define WORLDMAXX_CUTOFF (world.maxx + 1)
 #define WORLDMAXY_CUTOFF (world.maxx + 1)
@@ -541,6 +586,9 @@
 	if(!istype(S))
 		return SHUTTLE_NOT_A_DOCKING_PORT
 
+	if(S.disabled)
+		return SHUTTLE_DOCK_DISABLED
+
 	if(istype(S, /obj/docking_port/stationary/transit))
 		return SHUTTLE_CAN_DOCK
 
@@ -591,7 +639,7 @@
 	set_idle()
 
 //call the shuttle to destination S
-/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S)
+/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S, force)
 	if(!check_dock(S))
 		WARNING("check_dock failed on request for [src]")
 		return
@@ -621,6 +669,11 @@
 			setTimer(ignitionTime)
 		else
 			stack_trace("Called request() with mode: [mode].")
+			if(force)
+				destination = S
+				set_mode(SHUTTLE_IGNITING)
+				on_ignition()
+				setTimer(ignitionTime)
 
 // called on entering the igniting state
 /obj/docking_port/mobile/proc/on_ignition()
@@ -630,10 +683,15 @@
 		playsound(return_center_turf(), ignition_sound, 60, 0, falloff=4)
 	return
 
-/obj/docking_port/mobile/proc/on_prearrival()
+/obj/docking_port/mobile/proc/on_start_prearrival()
 	if(destination)
-		destination.on_prearrival(src)
+		if(destination.landing_lights_on)
+			return //Return early if the lights are on, something went wrong and called twice.
+		destination.on_prearrival(src, landing_sound)
 	playsound(return_center_turf(), landing_sound, 60, 0)
+	return
+
+/obj/docking_port/mobile/proc/on_prearrival()
 	return
 
 /obj/docking_port/mobile/proc/on_crash()
@@ -779,6 +837,7 @@
 			if(prearrivalTime && mode != SHUTTLE_PREARRIVAL)
 				set_mode(SHUTTLE_PREARRIVAL)
 				setTimer(prearrivalTime)
+				on_start_prearrival()
 				return
 			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)
@@ -956,15 +1015,14 @@
 	else
 		. = "unknown"
 
-
-// attempts to locate /obj/structure/machinery/computer/shuttle with matching ID inside the shuttle
+/// attempts to locate /obj/structure/machinery/computer/shuttle with matching ID in the shuttle's areas
 /obj/docking_port/mobile/proc/getControlConsole()
-	for(var/place in shuttle_areas)
-		var/area/shuttle/shuttle_area = place
-		for(var/obj/structure/machinery/computer/shuttle/S in shuttle_area)
-			if(S.shuttleId == id)
-				return S
+	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
+		for(var/obj/structure/machinery/computer/shuttle/computer in shuttle_area)
+			if(computer.shuttleId == id)
+				return computer
 	return null
+
 /*
 /obj/docking_port/mobile/proc/hyperspace_sound(phase, list/areas)
 	var/s

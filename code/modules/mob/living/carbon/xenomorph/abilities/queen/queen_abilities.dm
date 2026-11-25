@@ -8,7 +8,7 @@
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
 	xeno_cooldown = 5 MINUTES
-	cooldown_message = "You are ready to grow an ovipositor again."
+	cooldown_message = "We are ready to grow an ovipositor again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
@@ -25,6 +25,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 8 SECONDS
+	cooldown_message = "If we have the stores, we can heal one of our children again."
 
 /datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"
@@ -33,7 +34,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
-	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	cooldown_message = "We feel our throat muscles vibrate. We are ready to screech again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
@@ -45,12 +46,14 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 12 SECONDS
+	cooldown_message = "If we have the stores, we can can heal one of our children again."
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"
 	plasma_cost = 50
 	xeno_cooldown = 10 SECONDS
+	macro_path = /mob/living/carbon/xenomorph/proc/hive_message
 
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
@@ -59,7 +62,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 MINUTES
 	plasma_cost = 200
-	cooldown_message = "You feel your anger return. You are ready to gut again."
+	cooldown_message = "We feel our anger return. We are ready to gut again."
 
 /datum/action/xeno_action/activable/expand_weeds
 	name = "Expand Weeds (50)"
@@ -123,6 +126,7 @@
 	if(boost_duration > 0)
 		boosted = TRUE
 		xeno_cooldown = 0
+		xeno_cooldown_interrupt_penalty = 3 SECONDS // still punish the queen when interrupted
 		plasma_cost = 0
 		build_speed_mod = 1
 		thick = TRUE // Allow queen to remotely thicken structures.
@@ -131,51 +135,17 @@
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
 	xeno_cooldown = 3 SECONDS
+	xeno_cooldown_interrupt_penalty = 1 SECONDS // lower the penalty as we now have cooldown applied as well
 	plasma_cost = 100
 	boosted = FALSE
 	thick = FALSE
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
-		to_chat(owner, SPAN_XENOHIGHDANGER("Your boosted building has been disabled!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("Our boosted building has been disabled!"))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS
-
-/datum/action/xeno_action/activable/bombard/queen
-	// Range and other config
-	interrupt_flags = NO_FLAGS
-	xeno_cooldown = 4 SECONDS
-
-	charges = 0
-
-/datum/action/xeno_action/activable/bombard/queen/give_to(mob/living/carbon/xenomorph/queen/Q)
-	. = ..()
-	if(!Q.ovipositor)
-		hide_from(Q)
-	RegisterSignal(Q, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
-
-/datum/action/xeno_action/activable/bombard/queen/remove_from(mob/living/carbon/xenomorph/X)
-	. = ..()
-	UnregisterSignal(X, list(
-		COMSIG_QUEEN_MOUNT_OVIPOSITOR,
-		COMSIG_QUEEN_DISMOUNT_OVIPOSITOR,
-	))
-
-/datum/action/xeno_action/activable/bombard/queen/proc/handle_mount_ovipositor(mob/living/carbon/xenomorph/queen/Q)
-	SIGNAL_HANDLER
-	unhide_from(Q)
-
-/datum/action/xeno_action/activable/bombard/queen/proc/handle_dismount_ovipositor(mob/living/carbon/xenomorph/queen/Q)
-	SIGNAL_HANDLER
-	hide_from(Q)
-
-/datum/action/xeno_action/activable/bombard/queen/get_bombard_source()
-	var/mob/hologram/queen/H = owner?.client?.get_eye()
-	if(istype(H))
-		return H
-	return owner
 
 /datum/action/xeno_action/activable/place_queen_beacon
 	name = "Place Queen Beacon"

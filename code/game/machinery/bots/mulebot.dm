@@ -769,24 +769,6 @@
 /obj/structure/machinery/bot/mulebot/alter_health()
 	return get_turf(src)
 
-
-// called from mob/living/carbon/human/Crossed()
-// when mulebot is in the same loc
-/obj/structure/machinery/bot/mulebot/proc/RunOver(mob/living/carbon/human/H)
-	src.visible_message(SPAN_DANGER("[src] drives over [H]!"))
-	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
-
-	var/damage = rand(5,15)
-	H.apply_damage(2*damage, BRUTE, "head")
-	H.apply_damage(2*damage, BRUTE, "chest")
-	H.apply_damage(0.5*damage, BRUTE, "l_leg")
-	H.apply_damage(0.5*damage, BRUTE, "r_leg")
-	H.apply_damage(0.5*damage, BRUTE, "l_arm")
-	H.apply_damage(0.5*damage, BRUTE, "r_arm")
-
-	H.add_splatter_floor(loc, 1)
-	bloodiness += 4
-
 // player on mulebot attempted to move
 /obj/structure/machinery/bot/mulebot/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE))

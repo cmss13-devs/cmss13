@@ -8,6 +8,9 @@
 
 	..()
 
+	// Eye blur can wear off while the client is outside the body which permanently leaves stale HUD effects
+	update_eye_blur()
+
 	GLOB.living_player_list |= src
 
 	if(LAZYLEN(pipes_shown)) //ventcrawling, need to reapply pipe vision

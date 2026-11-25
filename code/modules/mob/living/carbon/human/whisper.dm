@@ -70,11 +70,11 @@
 	listening |= src
 
 	//ghosts
-	for (var/mob/M in GLOB.dead_mob_list) //does this include players who joined as observers as well?
-		if (!(M.client))
+	for(var/mob/possible_listening_mob in GLOB.dead_mob_list) //does this include players who joined as observers as well?
+		if(!(possible_listening_mob.client))
 			continue
-		if((M.stat == DEAD || isobserver(M)) && M.client && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
-			listening |= M
+		if((possible_listening_mob.stat == DEAD || isobserver(possible_listening_mob)) && (possible_listening_mob.client?.prefs?.toggles_chat & CHAT_GHOSTEARS))
+			listening |= possible_listening_mob
 
 	//Pass whispers on to anything inside the immediate listeners.
 	for(var/mob/L in listening)
@@ -102,22 +102,19 @@
 	var/speech_bubble_test = say_test(message)
 	show_speech_bubble(listening, "[bubble_icon][speech_bubble_test]")
 
-	var/not_dead_speaker = (stat != DEAD)
-	for(var/mob/M in listening)
-		M.hear_say(message, verb, speaking, alt_name, italics, src)
+	for(var/mob/possible_listening_mob in listening)
+		possible_listening_mob.hear_say(message, verb, speaking, alt_name, italics, src)
 		langchat_speech(message, listening, speaking, langchat_color, FALSE, LANGCHAT_DEFAULT_POP, list("langchat_italic"))
 
 	if (length(eavesdropping))
 		var/new_message = stars(message) //hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
-		for(var/mob/M in eavesdropping)
-			M.hear_say(new_message, verb, speaking, alt_name, italics, src)
+		for(var/mob/possible_listening_mob in eavesdropping)
+			possible_listening_mob.hear_say(new_message, verb, speaking, alt_name, italics, src)
 			langchat_speech(message, listening, speaking, langchat_color, FALSE, LANGCHAT_DEFAULT_POP, list("langchat_italic"))
 
-	spawn(30)
-		if(not_dead_speaker)
-			log_say("[name != "Unknown" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
+	log_say("[name != "Unknown" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [ckey]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 
 	if (length(watching))
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"
-		for (var/mob/M in watching)
-			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
+		for (var/mob/possible_listening_mob in watching)
+			possible_listening_mob.show_message(rendered, SHOW_MESSAGE_AUDIBLE)

@@ -67,6 +67,7 @@ It DOES NOT control where your bullets go, that's scatter and projectile varianc
 */
 
 #define SCATTER_AMOUNT_NEURO 45
+#define SCATTER_AMOUNT_DISSOLVER 30
 #define SCATTER_AMOUNT_TIER_1 15
 #define SCATTER_AMOUNT_TIER_2 10
 #define SCATTER_AMOUNT_TIER_3 8
@@ -150,6 +151,9 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_SHOTGUN_COLONY 1.6 SECONDS // Used by the HG shotguns.
 #define FIRE_DELAY_TIER_SHOTGUN_COMBAT 1.4 SECONDS // Replaces previous combat shotgun value which was Tier_5 (7)*2 ...Wow that's confusing.
 #define FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD 0.6 SECONDS // For adminspawn ERTs, MARSOC, etc.
+
+/// Grenade launcher delays
+#define FIRE_DELAY_TIER_GL 3.2 SECONDS // delay for the base grenade launcher type
 
 /// General Delay Tiers
 #define FIRE_DELAY_TIER_1 12
@@ -263,6 +267,10 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define AMMO_SPEED_TIER_5 5
 #define AMMO_SPEED_TIER_6 6
 #define AMMO_SPEED_TIER_7 7
+#define AMMO_SPEED_TIER_8 8
+#define AMMO_SPEED_TIER_9 9
+#define AMMO_SPEED_TIER_10 10
+#define AMMO_SPEED_INSTANT 300
 
 /*
 ////ARMOR PENETRATION////

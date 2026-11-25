@@ -143,6 +143,7 @@
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
 	client.screen.Cut()
+	client.render_plates_shown = alist()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
@@ -224,7 +225,8 @@
 	if(pulling)
 		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		var/mob/M = pulling
-		pulling.pulledby = null
+		if(pulling.pulledby == src)
+			pulling.pulledby = null
 		pulling = null
 
 		grab_level = 0
@@ -257,6 +259,11 @@
 	if(!client)
 		return
 
+	if(istype(client.get_eye(), /mob/hologram))
+		var/mob/hologram/eye = client.get_eye()
+		eye.change_level()
+		return
+
 	if(client.view != world.view)
 		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
 		return
@@ -279,5 +286,9 @@
 		return
 
 	var/mob/hologram/look_up/observed_hologram = new(above, src)
+	observed_hologram.invisibility = null
+	observed_hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	observed_hologram.alpha = 127
+	observed_hologram.lighting_alpha = 127
 
 	observed_atom = observed_hologram

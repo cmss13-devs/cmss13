@@ -98,7 +98,7 @@
 		M.last_damage_data = create_cause_data(initial(name), user)
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [M.name] ([M.key]). Reagents: [contained]</font>")
-		msg_admin_attack("[user.name] ([user.ckey]) splashed [M.name] ([M.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		msg_admin_attack("[user.name] ([user.ckey]) splashed [M.name] ([M.ckey]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		visible_message(SPAN_WARNING("[target] has been splashed with something by [user]!"))
 		reagents.reaction(target, TOUCH)
@@ -470,6 +470,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/random
 	var/tier
+	is_objective = TRUE
 
 /obj/item/reagent_container/glass/beaker/vial/random/Initialize()
 	. = ..()
@@ -483,6 +484,13 @@
 	if(random_chem)
 		reagents.add_reagent(random_chem, 30)
 		update_icon()
+	else
+		is_objective = FALSE
+
+/obj/item/reagent_container/glass/beaker/vial/random/on_reagent_change()
+	. = ..()
+	if(!reagents?.total_volume)
+		is_objective = FALSE
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
@@ -682,6 +690,29 @@
 		overlays += filling
 	..()
 
+/obj/item/reagent_container/glass/pressurized_canister/verb/flush_canister()
+	set category = "Object"
+	set name = "Flush Canister"
+	set desc = "Flush the pressurized reagent canister to empty its reagents."
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
+		return
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+		return
+
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	reagents.clear_reagents()
+	update_icon()
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."

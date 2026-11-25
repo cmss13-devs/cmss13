@@ -13,7 +13,7 @@
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	aim_slowdown = 0
 	flags_equip_slot = SLOT_WAIST
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
@@ -131,6 +131,8 @@
 	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
 	fired_flare.mouse_opacity = FALSE
+	fired_flare.explo_proof = TRUE
+	fired_flare.anchored = TRUE
 	fired_flare.fuel = 3 MINUTES
 	fired_flare.light_range = 6
 	fired_flare.light_power = 3
@@ -146,6 +148,7 @@
 
 /obj/item/weapon/gun/flare/get_examine_text(mob/user)
 	. = ..()
+	. += SPAN_NOTICE("You can fire a loaded flare into the sky with <b>Unique Action</b>.")
 	if(last_signal_flare_name)
 		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")
 

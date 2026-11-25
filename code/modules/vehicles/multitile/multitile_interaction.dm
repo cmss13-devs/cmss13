@@ -107,15 +107,15 @@
 				entrance_used = entrance
 				break
 		if(entrance_used) //if we are at a door, throw it in, else do nothing.
-			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
-			SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
+			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of [src]."),
+			SPAN_WARNING("You take position to throw [nade] through the door of [src]."))
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
 			if(mob_x != user.x - x || mob_y != user.y - y)
 				return
 
-			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
-			SPAN_WARNING("You throw [nade] through the door of the [src]."))
+			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of [src]!"),
+			SPAN_WARNING("You throw [nade] through the door of [src]."))
 
 			user.drop_held_item()
 			interior.enter(nade, entrance_used)
@@ -250,6 +250,7 @@
 	health = initial(health)
 	lighting_holder.set_light_range(vehicle_light_range)
 	toggle_cameras_status(TRUE)
+	update_movement_sound()
 	update_icon()
 	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 	return

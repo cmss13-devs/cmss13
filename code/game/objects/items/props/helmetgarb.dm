@@ -66,12 +66,6 @@
 	desc = "Lucky for you, but not the rabbit, didn't really do it much good."
 	icon_state = "rabbitsfoot"
 
-/obj/item/prop/helmetgarb/rosary
-	name = "rosary"
-	desc = "Jesus Saves Lives!"
-	icon_state = "rosary"
-	item_state_slots = list(WEAR_AS_GARB = "rosary")
-
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
 	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."
@@ -140,19 +134,19 @@
 		RegisterSignal(src, COMSIG_CELL_TRY_RECHARGING, PROC_REF(cell_try_recharge))
 		RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, PROC_REF(on_power_out))
 
-/obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
+/obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/inner_inv)
 	..()
 
-	if(!istype(S))
+	if(!istype(inner_inv))
 		return
 
 	remove_attached_item()
 
-	var/obj/item/MO = S.master_object
-	if(!istype(MO, /obj/item/clothing/head/helmet/marine) && !istype(MO, /obj/item/clothing/head/cmcap)) // Do not bother if it's not a helmet or at least a hat
+	var/obj/item/helm = inner_inv.master_object
+	if(!istype(helm, /obj/item/clothing/head/helmet/marine) && !istype(helm, /obj/item/clothing/head/cmcap) && !istype(helm, /obj/item/clothing/head/headset)) // Do not bother if it's not a helmet or at least a hat
 		return
 
-	attached_item = MO
+	attached_item = helm
 
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
 	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(toggle_check))
@@ -541,7 +535,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
@@ -553,7 +547,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
@@ -594,6 +588,8 @@
 	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
 	///The human who spawns with the photo
 	var/datum/weakref/owner
+	///Have we Registered a signal already
+	var/register_attempted
 	///The belonging human name
 	var/owner_name
 	///The belonging human faction
@@ -603,14 +599,34 @@
 
 /obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
-	if(!owner)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
+/obj/item/prop/helmetgarb/family_photo/on_enter_storage(obj/item/storage/inventory)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		var/mob/living/carbon/human/human_user
+		var/atom/container_on_human = inventory.loc
+		var/depth_limit
+		while(!ishuman(container_on_human) && depth_limit < 2)
+			container_on_human = container_on_human.loc
+			depth_limit++
+		human_user = container_on_human
+		if(human_user)
+			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
+
+/obj/item/prop/helmetgarb/family_photo/dropped(mob/user)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the family photo to the human it spawns with, needs var/source for signals
 /obj/item/prop/helmetgarb/family_photo/proc/set_owner(datum/source)
 	SIGNAL_HANDLER
-	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	UnregisterSignal(source, COMSIG_POST_VANITY_UPDATE)
 	var/mob/living/carbon/human/user = source
 	owner = WEAKREF(user)
 	owner_name = user.name

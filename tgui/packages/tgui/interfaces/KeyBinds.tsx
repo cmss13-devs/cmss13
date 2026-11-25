@@ -1,5 +1,10 @@
 import type { Placement } from '@popperjs/core';
-import { Component, useState } from 'react';
+import {
+  Component,
+  type KeyboardEvent,
+  type MouseEvent,
+  useState,
+} from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -10,7 +15,11 @@ import {
   Input,
   Section,
 } from 'tgui/components';
-import { globalEvents } from 'tgui/events';
+import {
+  globalEvents,
+  type KeyEvent,
+  type MouseButtonEvent,
+} from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
 import { replaceRegexChars } from './helpers';
@@ -32,6 +41,7 @@ const KEY_CODE_TO_BYOND = {
   PAGEDOWN: 'Southeast',
   PAGEUP: 'Northeast',
   RIGHT: 'East',
+  TAB: 'Tab',
   ' ': 'Space',
   UP: 'North',
 };
@@ -62,10 +72,14 @@ type Data = {
 
 type CustomKeybind = {
   keybinding?: string;
+  key?: string;
+  key_mods?: string;
   type?: string;
   contents?: string | string[];
   when_xeno?: boolean;
   when_human?: boolean;
+  when_yautja?: boolean;
+  when_synth?: boolean;
 };
 
 export const KeyBinds = (props) => {
@@ -500,12 +514,16 @@ const CustomKeybinds = (props: {
                   return {
                     ...keybind,
                     keybinding: kb,
+                    key: keys[0],
+                    key_mods: mods,
                   };
                 }
 
                 return {
                   ...pending,
                   keybinding: kb,
+                  key: keys[0],
+                  key_mods: mods,
                 };
               });
             }}
@@ -561,6 +579,54 @@ const CustomKeybinds = (props: {
             Humans
           </Button.Checkbox>
         </Flex.Item>
+        <Flex.Item ml={1} grow>
+          <Button.Checkbox
+            checked={pendingKeybind?.when_yautja ?? keybind?.when_yautja}
+            fluid
+            onClick={() => {
+              setPendingKeybind((pending) => {
+                const currentValue =
+                  pending?.when_yautja ?? keybind?.when_yautja ?? false;
+                if (!pending) {
+                  return {
+                    ...keybind,
+                    when_yautja: !currentValue,
+                  };
+                }
+                return {
+                  ...pending,
+                  when_yautja: !currentValue,
+                };
+              });
+            }}
+          >
+            Yautjas
+          </Button.Checkbox>
+        </Flex.Item>
+        <Flex.Item ml={1} grow>
+          <Button.Checkbox
+            checked={pendingKeybind?.when_synth ?? keybind?.when_synth}
+            fluid
+            onClick={() => {
+              setPendingKeybind((pending) => {
+                const currentValue =
+                  pending?.when_synth ?? keybind?.when_synth ?? false;
+                if (!pending) {
+                  return {
+                    ...keybind,
+                    when_synth: !currentValue,
+                  };
+                }
+                return {
+                  ...pending,
+                  when_synth: !currentValue,
+                };
+              });
+            }}
+          >
+            Synths
+          </Button.Checkbox>
+        </Flex.Item>
       </Flex>
       {pendingKeybind && (
         <Flex align="center" mt={1}>
@@ -580,10 +646,14 @@ const CustomKeybinds = (props: {
                 act('set_custom_keybinds', {
                   index: index + 1,
                   keybind: pendingKeybind.keybinding,
+                  key: pendingKeybind.key,
+                  key_mods: pendingKeybind.key_mods,
                   keybind_type: pendingKeybind.type?.toLowerCase(),
                   contents: pendingKeybind.contents,
                   when_xeno: pendingKeybind.when_xeno ?? false,
                   when_human: pendingKeybind.when_human ?? false,
+                  when_yautja: pendingKeybind.when_yautja ?? false,
+                  when_synth: pendingKeybind.when_synth ?? false,
                 });
                 setPendingKeybind(undefined);
               }}
@@ -734,8 +804,15 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     };
   }
 
-  preventPassthrough(key) {
+  preventPassthrough(key: KeyEvent) {
     key.event.preventDefault();
+  }
+
+  preventPassthroughMouse(mouse: MouseButtonEvent) {
+    if (mouse.code < 3) {
+      return;
+    }
+    mouse.event.preventDefault();
   }
 
   doFinish() {
@@ -751,7 +828,7 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     clearInterval(this.timer);
   }
 
-  handleKeyPress(e) {
+  handleKeyPress(e: KeyboardEvent) {
     const { keysDown } = this.state;
 
     e.preventDefault();
@@ -779,6 +856,30 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     });
   }
 
+  handleMousePress(e: MouseEvent) {
+    const { keysDown } = this.state;
+
+    if (e.button < 3) {
+      return;
+    }
+
+    e.preventDefault();
+
+    let pressedButton = 'xbutton' + (e.button - 2); // button 3 is xbutton1 in byond
+
+    this.finishTimerStart(600);
+
+    // Prevents repeating
+    if (keysDown[pressedButton] && e.type === 'mousedown') {
+      return;
+    }
+
+    keysDown[pressedButton] = e.type === 'mousedown';
+    this.setState({
+      keysDown: keysDown,
+    });
+  }
+
   finishTimerStart(time) {
     clearInterval(this.timer);
     this.timer = setInterval(() => this.doFinish(), time);
@@ -793,6 +894,9 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     globalEvents.on('keydown', this.preventPassthrough);
     globalEvents.on('key', this.preventPassthrough);
     globalEvents.on('keyup', this.preventPassthrough);
+    globalEvents.on('mousedown', this.preventPassthroughMouse);
+    globalEvents.on('mouseup', this.preventPassthroughMouse);
+    globalEvents.on('mousebutton', this.preventPassthroughMouse);
   }
 
   doBlur() {
@@ -803,6 +907,9 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     globalEvents.off('keydown', this.preventPassthrough);
     globalEvents.off('key', this.preventPassthrough);
     globalEvents.off('keyup', this.preventPassthrough);
+    globalEvents.off('mousedown', this.preventPassthroughMouse);
+    globalEvents.off('mouseup', this.preventPassthroughMouse);
+    globalEvents.off('mousebutton', this.preventPassthroughMouse);
   }
 
   render() {
@@ -823,6 +930,7 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
         onFocus={() => this.doFocus()}
         onBlur={() => this.doBlur()}
         onKeyDown={(e) => this.handleKeyPress(e)}
+        onMouseDown={(e) => this.handleMousePress(e)}
       >
         {focused
           ? Object.keys(keysDown)

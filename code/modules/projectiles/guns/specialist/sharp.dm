@@ -19,7 +19,7 @@
 	auto_retrieval_slot = WEAR_J_STORE
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_VERY_SLOW
+	wield_delay = WEAPON_DELAY_VERY_SLOW
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -51,21 +51,6 @@
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
-
-
-/obj/item/weapon/gun/rifle/sharp/unload_chamber(mob/user)
-	if(!in_chamber)
-		return
-	var/found_handful
-	for(var/obj/item/ammo_magazine/handful/handful in user.loc)
-		if(handful.default_ammo == in_chamber.ammo.type && handful.caliber == caliber && handful.current_rounds < handful.max_rounds)
-			found_handful = TRUE
-			handful.current_rounds++
-			handful.update_icon()
-			break
-	if(!found_handful)
-		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
-		new_handful.generate_handful(in_chamber.ammo.type, caliber, 5, 1, type)
 
 /obj/item/weapon/gun/rifle/sharp/able_to_fire(mob/living/user)
 	. = ..()

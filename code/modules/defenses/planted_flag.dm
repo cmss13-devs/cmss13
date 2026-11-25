@@ -31,18 +31,14 @@
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
 
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(turf_changed))
-
 	if(turned_on)
 		apply_area_effect()
 		start_processing()
 
-	range_bounds = SQUARE(x, y, PLANTED_FLAG_RANGE)
 	update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Destroy()
 	. = ..()
-	range_bounds = null
 	deactivate_signal()
 
 /obj/structure/machinery/defenses/planted_flag/update_icon()
@@ -91,23 +87,11 @@
 	apply_area_effect()
 
 /obj/structure/machinery/defenses/planted_flag/proc/apply_area_effect()
-	if(!range_bounds)
-		range_bounds = SQUARE(x, y, area_range)
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(!targets)
-		return
-
+	var/list/atom/movable/targets = SSmapgrids.get_movables_in_region(z, x - area_range, x + area_range, y - area_range, y + area_range)
 	for(var/mob/living/carbon/human/H in targets)
-		if(!(H.get_target_lock(faction_group)))
-			continue
-
-		apply_buff_to_player(H)
-
-/obj/structure/machinery/defenses/planted_flag/proc/turf_changed()
-	SIGNAL_HANDLER
-	if(range_bounds)
-		QDEL_NULL(range_bounds)
+		if((H.get_target_lock(faction_group)))
+			apply_buff_to_player(H)
 
 /obj/structure/machinery/defenses/planted_flag/proc/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 1.5 SECONDS)
@@ -222,7 +206,7 @@
 	if(!M.x && !M.y && !M.z)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
+	var/list/atom/movable/targets = SSmapgrids.get_movables_in_region(M.z, M.x - area_range, M.x + area_range, M.y - area_range, M.y + area_range)
 	targets |= M
 
 	for(var/mob/living/carbon/human/H in targets)

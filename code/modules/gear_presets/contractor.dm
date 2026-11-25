@@ -384,7 +384,7 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
-/datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/new_human, randomise)
+/datum/equipment_preset/synth/contractor/duty/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()
@@ -416,7 +416,7 @@
 	new_human.g_eyes = colors[eye_color][2]
 	new_human.b_eyes = colors[eye_color][3]
 
-/datum/equipment_preset/contractor/duty/synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/contractor/duty/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1

@@ -1,0 +1,110 @@
+/obj/effect/blocker
+	anchored = TRUE
+	density = FALSE
+	opacity = FALSE
+	unacidable = TRUE
+	alpha = 0
+	layer = UNDER_WATER_PLATFORMS_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	flags_atom = NO_ZFALL
+	icon = 'icons/landmarks.dmi'
+	icon_state = "map_blocker"
+
+/obj/effect/blocker/water
+	var/flooded_alpha = 180
+	var/dispersing = FALSE
+	var/disperse_group = 1
+	var/spread_delay = 0.5 SECONDS
+	var/list/water_sounds = list('sound/effects/slosh.ogg')
+	var/created_depth = WATER_DEPTH_SHALLOW
+	var/water_type = /turf/open/gm/river/desert/tyrargo/deep
+
+/obj/effect/blocker/water/Initialize(mapload, ...)
+	. = ..()
+	if(water_type)
+		var/turf/settings = water_type
+		icon = settings.icon
+		icon_state = settings.icon_state
+		var/turf/open/water_path = water_type
+		var/water_type_icon = initial(water_path.icon)
+		SSwater_overlays.generate_water_overlay(list(water_type_icon), water_type, created_depth)
+
+/obj/effect/blocker/water/proc/drain_spread(from_dir = 0)
+	if(!dispersing)
+		return
+	for(var/obj/effect/blocker/water/neighboring_water in orange(1, src)) // this won't check directions that don't even have water
+		var/direction = get_dir(src, neighboring_water)
+		if(direction == from_dir)
+			continue // doesn't check backwards to avoid recursion
+		if(neighboring_water.disperse_group != src.disperse_group)
+			continue // only spread to our same group. do this before calculating delay
+
+		var/effective_spread_delay = spread_delay
+		if(direction & (direction - 1)) // diagonal direction
+			effective_spread_delay *= sqrt(2) // this const-folds, there is no runtime cost to sqrt as opposed to a constant
+
+		spawn(effective_spread_delay) // this could use a timer, but in 516.1676 and later i believe spawn is actually more performant
+			neighboring_water.drain_spread(turn(direction,180), from_dir)
+	drain()
+
+/obj/effect/blocker/water/proc/disperse_spread(from_dir = 0)
+	if(dispersing)
+		return
+
+	for(var/obj/effect/blocker/water/neighboring_water in orange(1, src)) // this won't check directions that don't even have water to begin with
+		var/direction = get_dir(src, neighboring_water)
+		if(direction == from_dir)
+			continue // doesn't check backwards
+		if(neighboring_water.disperse_group != src.disperse_group)
+			continue // only spread to our same group. do this before calculating delay
+
+		var/effective_spread_delay = spread_delay
+		if(direction & (direction - 1)) // diagonal direction
+			effective_spread_delay *= sqrt(2) // this const-folds, there is no runtime cost to sqrt as opposed to a constant
+
+		spawn(effective_spread_delay) // this could use a timer, but in 516.1676 and later i believe spawn is actually more performant
+			neighboring_water.disperse_spread(turn(direction,180))
+	disperse(from_dir)
+
+/obj/effect/blocker/water/proc/drain()
+	dispersing = FALSE
+	animate(src, alpha = initial(alpha), time = 6 SECONDS)
+	var/turf/location = get_turf(src)
+	location.is_weedable = initial(location.is_weedable)
+	if(istype(location, /turf/open))
+		var/turf/open/open_location = location
+		open_location.stop_being_water()
+
+
+/obj/effect/blocker/water/proc/disperse(from_dir)
+	dispersing = TRUE
+	if(prob(30))
+		var/sound = pick(water_sounds)
+		playsound(loc, sound, 10, 1)
+	for(var/obj/effect/alien/weeds/weeds_to_clean in loc)
+		qdel(weeds_to_clean)
+
+	for(var/obj/effect/alien/resin/resin in loc)
+		qdel(resin)
+	for(var/obj/structure/mineral_door/resin/resin in loc)
+		resin.Dismantle(TRUE)
+	if(istype(loc, /turf/closed/wall/resin))
+		var/turf/closed/wall/resin/resin = loc
+		resin.dismantle_wall(TRUE)
+	for(var/obj/flamer_fire/fire in loc)
+		qdel(fire)
+
+	for(var/obj/item/item in loc)
+		if(item.anchored)
+			continue
+		if(prob(70))
+			item.throw_atom((get_step(loc,turn(from_dir,180))),1)
+
+	animate(src, alpha = flooded_alpha, easing = BACK_EASING | EASE_OUT, time = 4 SECONDS)
+	update_icon()
+	var/turf/location = get_turf(src)
+	location.is_weedable = NOT_WEEDABLE
+	if(water_type && istype(location, /turf/open))
+		var/turf/open/open_location = location
+		open_location.become_water(created_depth, water_type)

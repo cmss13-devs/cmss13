@@ -122,3 +122,21 @@
 	containertype = /obj/structure/closet/crate/secure/weyland
 	containername = "IFF tag crate"
 	group = "Research"
+
+/datum/supply_packs/ares_autodoc_check //same name as the proc for convenience of finding it :D
+	name = "ARES Emergency Autodoc Supplies"
+	contains = list(
+		/obj/item/research_upgrades/autodoc, // IB
+		/obj/item/research_upgrades/autodoc, // IB
+		/obj/item/research_upgrades/autodoc/tier2, // Bone Frac
+		/obj/item/research_upgrades/autodoc/tier2, // Bone Frac
+		/obj/item/research_upgrades/autodoc/tier3, // Organ
+		/obj/item/research_upgrades/autodoc/tier3, // Organ
+		/obj/item/research_upgrades/autodoc/tier4, // Larva
+		/obj/item/research_upgrades/autodoc/tier4, // Larva
+	)
+	buyable = 0
+	containertype = /obj/structure/closet/crate/secure/phoron
+	cost = 0
+	group = "Research"
+

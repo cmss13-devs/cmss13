@@ -21,13 +21,14 @@
 	icon_state = "m2c"
 	item_state = "m2c"
 	max_rounds = 125
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 
 /obj/item/ammo_magazine/m2c/t37
-	name = "T37 Ammunition Box (7.62x54mmR rounds)"
-	desc = "A box of 125, 7.62x54mmR rounds for the UPP T37 Medium Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the T37."
-	caliber = "7.62x54mmR"
+	name = "T37 Ammunition Box (12x28mm rounds)"
+	desc = "A box of 125, 12x28mm caseless rounds for the UPP T37 Medium Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the T37."
+	caliber = "12x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/machineguns.dmi'
 	icon_state = "t37"
 	item_state = "t37"
@@ -57,7 +58,7 @@
 	desc = "The disassembled M2C HMG, with its telescopic tripods folded up and unable to fire."
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
@@ -65,6 +66,8 @@
 	)
 	icon_state = "M2C_gun_mount"
 	item_state = "M2C_gun_mount"
+	pixel_x = -5
+	hud_offset = -5
 	var/rounds = 0
 	var/overheat_value = 0
 	var/anti_cadehugger_range = 1
@@ -88,6 +91,11 @@
 
 	icon_state = icon_name
 
+/obj/item/device/m2c_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
+	if(rounds && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
+		. += SPAN_NOTICE("It has [rounds] round\s out of 125 rounds.")
+
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, turf/rotate_check, turf/open/OT, list/ACR)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return FALSE
@@ -101,12 +109,13 @@
 	if(!area.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return
-	if(OT.density || !isturf(OT) || !OT.allow_construction)
+	if(OT.density || !isturf(OT) || !OT.allow_construction  || !OT.validate_deployment(TURF_DEPLOYABLE_GUN))
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
+
 	for(var/obj/structure/potential_blocker in rotate_check)
 		if(potential_blocker.density)
 			to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's \a [potential_blocker] behind you!"))
@@ -210,6 +219,7 @@
 	rounds_max = 125
 	ammo = /datum/ammo/bullet/machinegun/auto
 	fire_delay = 0.1 SECONDS
+	gun_has_gamemode_skin = FALSE
 	var/grip_dir = null
 	var/fold_time = 1.5 SECONDS
 	var/repair_time = 5 SECONDS
@@ -472,9 +482,6 @@
 //ATTACK WITH BOTH HANDS COMBO
 
 /obj/structure/machinery/m56d_hmg/auto/attack_hand(mob/living/user)
-	if(..())
-		return TRUE
-
 	try_mount_gun(user)
 
 // DISASSEMBLY
@@ -489,7 +496,7 @@
 
 	if(over_object == user && in_range(src, user))
 		if(stationary)
-			to_chat(user, SPAN_WARNING("You cannot disassemble the [src], it is stationary!"))
+			to_chat(user, SPAN_WARNING("You cannot disassemble [src], it is stationary!"))
 			return
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
@@ -619,7 +626,7 @@
 
 /obj/structure/machinery/m56d_hmg/auto/t37
 	name = "\improper T37 Medium Machinegun"
-	desc = "A deployable, medium machine gun. The T37 is a UPP machinegun that fires 7.62x64mmR rounds. Unlike the USCM M2C counterpart, it has a much slower firerate in favor of sustained fire. Due to the quality of the design, it has a tendency to explode if it sustains too much damage. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	desc = "A deployable, medium machine gun. The T37 is a UPP machinegun that fires 12x28mm caseless rounds. Unlike the USCM M2C counterpart, it has a much slower firerate in favor of sustained fire. Due to the quality of the design, it has a tendency to explode if it sustains too much damage. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/hmg.dmi'
 	icon_state = "t37"
 	icon_full = "t37"

@@ -286,7 +286,7 @@
 
 /obj/item/prop/magazine/book/borntokill
 	name = "\improper Born to Kill"
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for it's bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
+	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for its bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
 	icon_state = "book_green"
 	item_state = "book_green"
 
@@ -392,3 +392,80 @@
 	else
 		bound_height = 96
 		bound_width = 192
+
+/obj/structure/prop/invuln/dense/cliff_wall
+	name = "Cliff Wall"
+	desc = "Massive cliff wall, seems impassable."
+	icon = 'icons/obj/structures/props/natural/huge_canyon.dmi'
+	icon_state = "canyon_wall"
+	layer = OBJ_LAYER
+
+/obj/structure/prop/invuln/dense/cliff_wall/alt
+	icon_state = "canyon_wall_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/short
+	icon_state = "canyon_wall_short"
+
+/obj/structure/prop/invuln/dense/cliff_wall/short_alt
+	icon_state = "canyon_wall_short_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/left_long
+	icon_state = "canyon_wall_long_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/left_short
+	icon_state = "canyon_wall_short_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/right_long
+	icon_state = "canyon_wall_long_right"
+
+/obj/structure/prop/invuln/dense/cliff_wall/right_short
+	icon_state = "canyon_wall_short_right"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable
+	icon = 'icons/obj/structures/props/natural/huge_canyon_colorable.dmi'
+	icon_state = "canyon_wall"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/alt
+	icon_state = "canyon_wall_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/short
+	icon_state = "canyon_wall_short"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/short_alt
+	icon_state = "canyon_wall_short_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/left_long
+	icon_state = "canyon_wall_long_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/left_short
+	icon_state = "canyon_wall_short_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/right_long
+	icon_state = "canyon_wall_long_right"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/right_short
+	icon_state = "canyon_wall_short_right"
+
+// Fake railings
+
+/obj/structure/prop/fake/railing
+	name = "handrail"
+	desc = "A railing, for your hands. Woooow."
+	icon = 'icons/obj/structures/handrail.dmi'
+	icon_state = "handrail_strata"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = FALSE
+
+/obj/structure/prop/fake/railing/update_icon()
+	overlays.Cut()
+	switch(dir)
+		if(SOUTH)
+			layer = ABOVE_MOB_LAYER
+		if(NORTH)
+			layer = initial(layer) - 0.01
+		else
+			layer = initial(layer)
+
+/obj/structure/prop/fake/railing/strata
+	icon_state = "handrail_strata"

@@ -135,7 +135,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "aaA" = (
-/obj/item/ammo_casing/shell{
+/obj/effect/decal/cleanable/ammo_casing/shell{
 	icon_state = "shell_9_1"
 	},
 /turf/open/floor/prison,
@@ -155,7 +155,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "aaE" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "aaF" = (
@@ -248,7 +248,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gib4"
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5_1"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -257,7 +257,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},
@@ -386,6 +386,86 @@
 	icon_state = "wy27"
 	},
 /area/fiorina/oob)
+"abr" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/oob)
+"abs" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abt" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/reagent_container/food/snacks/xenoburger,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abu" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abv" = (
+/obj/item/weapon/gun/flamer/survivor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abw" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abx" = (
+/obj/effect/landmark/corpsespawner/chef,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"aby" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abz" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abB" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
+"abC" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
+"abD" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -686,7 +766,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "anl" = (
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/upgradeable/engineer,
 /obj/structure/closet,
 /obj/item/restraint/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
@@ -1002,8 +1082,8 @@
 "axA" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = -10
 	},
@@ -1249,7 +1329,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "aHK" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_1"
 	},
 /turf/open/floor/prison/sterile_white/southwest,
@@ -1454,7 +1534,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "aOT" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -1517,7 +1597,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/power_ring)
 "aRt" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5_1"
 	},
 /turf/open/floor/plating/prison,
@@ -1552,7 +1632,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "aTe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "aTx" = (
@@ -1941,7 +2021,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "bkQ" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_7_1"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -2014,7 +2094,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "bne" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "bnh" = (
@@ -2241,7 +2321,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/oob)
 "bxe" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -2544,7 +2624,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "bIz" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -2569,9 +2649,9 @@
 "bJb" = (
 /obj/structure/closet/cabinet,
 /obj/item/device/encryptionkey/WY,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "bJn" = (
@@ -3002,7 +3082,7 @@
 /area/fiorina/station/lowsec/east)
 "caX" = (
 /obj/structure/inflatable/popped/door,
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_1"
 	},
 /turf/open/floor/prison/sterile_white/southwest,
@@ -3115,7 +3195,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/lowsec/east)
 "cfG" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -3440,7 +3520,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/structure/machinery/m56d_hmg/mg_turret/dropship{
+/obj/structure/machinery/m56d_hmg/mg_turret{
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/north,
@@ -3610,7 +3690,7 @@
 /turf/open/floor/prison/whitepurplecorner,
 /area/fiorina/station/research_cells/west)
 "cCh" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},
@@ -3705,7 +3785,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "cFg" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -3797,16 +3877,8 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells/west)
 "cIQ" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 8
 	},
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/station/park)
@@ -3946,7 +4018,7 @@
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "cPh" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_6"
 	},
 /turf/open/floor/prison/yellow/north,
@@ -4040,7 +4112,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/disco/east_disco)
 "cRZ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -4075,7 +4147,7 @@
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/lz/near_lzI)
 "cTE" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_1"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -4551,7 +4623,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/east)
 "doe" = (
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "doq" = (
@@ -4921,7 +4993,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "dDI" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -5190,7 +5262,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec/showers_laundry)
 "dQW" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	dir = 8;
 	icon_state = "cartridge_2"
 	},
@@ -5219,15 +5291,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
-"dRO" = (
-/obj/effect/acid_hole{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to seperate rooms.";
-	name = "metal wall"
-	},
-/area/fiorina/oob)
 "dSM" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkpurplefull2,
@@ -5612,7 +5675,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "ehy" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "eio" = (
@@ -5620,7 +5683,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco/east_disco)
 "eja" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_6_1"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -5840,7 +5903,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/station/telecomm/lz1_cargo)
 "erh" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_1"
 	},
 /turf/open/floor/prison/darkyellow2,
@@ -5925,12 +5988,9 @@
 /turf/open/floor/prison/yellow/east,
 /area/fiorina/station/lowsec/east)
 "euz" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/stack/three{
 	dir = 4;
-	pixel_y = 4
+	stacked_size = 2
 	},
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/fiorina/station/medbay)
@@ -6122,7 +6182,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "eAM" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -6165,7 +6225,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/lz/near_lzII)
 "eDp" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -6318,7 +6378,7 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4;
 	pixel_x = -7
 	},
@@ -6400,7 +6460,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/disco/east_disco)
 "eLB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -6587,7 +6647,7 @@
 /turf/open/floor/prison/greenblue/southeast,
 /area/fiorina/station/botany)
 "eSF" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -6790,7 +6850,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "eZr" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "eZK" = (
@@ -7002,7 +7062,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco/east_disco)
 "fjo" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5_1"
 	},
 /obj/effect/decal/medical_decals{
@@ -7102,16 +7162,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/aux_engi)
 "fpq" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 8
 	},
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/fiorina/station/medbay)
@@ -7195,7 +7247,7 @@
 /area/fiorina/tumor/aux_engi)
 "fun" = (
 /obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_6_1"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -7736,7 +7788,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "fQB" = (
-/obj/item/ammo_casing/shell{
+/obj/effect/decal/cleanable/ammo_casing/shell{
 	icon_state = "shell_9_1"
 	},
 /obj/effect/spawner/random/gun/shotgun/highchance,
@@ -7955,7 +8007,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "fYY" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_6"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -7969,7 +8021,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "fZd" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -8363,7 +8415,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "grA" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -8625,7 +8677,7 @@
 /area/fiorina/station/park)
 "gAs" = (
 /obj/structure/platform/metal/almayer,
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 2;
 	icon_state = "casing_5"
 	},
@@ -8643,13 +8695,13 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/fiorina/station/research_cells/east)
 "gAQ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "gBe" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "gBw" = (
@@ -8963,7 +9015,7 @@
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/fiorina/station/chapel)
 "gPV" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_8"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -9101,7 +9153,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/flight_deck)
 "gWq" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_1"
 	},
 /obj/structure/bed/chair/office/light{
@@ -9120,8 +9172,8 @@
 "gXd" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -9681,15 +9733,15 @@
 "hrz" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -9769,7 +9821,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "htO" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 8;
 	icon_state = "casing_6"
 	},
@@ -10431,7 +10483,7 @@
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/telecomm/lz1_cargo)
 "hTh" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -10572,7 +10624,7 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
@@ -11047,7 +11099,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "irE" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
 /turf/open/floor/prison/darkyellow2/east,
@@ -11421,8 +11473,8 @@
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -11749,7 +11801,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "iTt" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "iTE" = (
@@ -12276,7 +12328,7 @@
 /turf/open/floor/almayer/plate,
 /area/fiorina/tumor/ship)
 "jpx" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_8"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -12777,7 +12829,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "jKz" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -12798,7 +12850,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco/east_disco)
 "jLC" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	dir = 8;
 	icon_state = "cartridge_2"
 	},
@@ -12829,7 +12881,7 @@
 /turf/open/floor/almayer/plate,
 /area/fiorina/tumor/ship)
 "jNi" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 2;
 	icon_state = "casing_5"
 	},
@@ -13185,7 +13237,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec/east)
 "kbi" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},
@@ -13328,7 +13380,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "kid" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_8"
 	},
 /obj/structure/surface/table/reinforced/prison{
@@ -13415,7 +13467,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
 "klB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "klC" = (
@@ -13489,7 +13541,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/oob)
 "kob" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_2"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -13972,7 +14024,7 @@
 /area/fiorina/tumor/aux_engi)
 "kIh" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -14450,7 +14502,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "laz" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -14498,7 +14550,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/disco/east_disco)
 "lcm" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -15052,7 +15104,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "lxT" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 8;
 	icon_state = "casing_6"
 	},
@@ -15120,7 +15172,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "lzP" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	dir = 8;
 	icon_state = "cartridge_2"
 	},
@@ -15179,7 +15231,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/station/telecomm/lz1_cargo)
 "lBI" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5_1"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -16886,6 +16938,10 @@
 /area/fiorina/station/civres_blue)
 "mTM" = (
 /obj/item/tool/warning_cone,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mUd" = (
@@ -17131,7 +17187,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
 "nez" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_5"
 	},
@@ -17166,7 +17222,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
 "nfh" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -17786,7 +17842,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "nCV" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_7_1"
 	},
 /turf/open/floor/prison/sterile_white/southwest,
@@ -17854,7 +17910,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "nFc" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_1"
 	},
 /obj/effect/landmark/survivor_spawner,
@@ -18321,7 +18377,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "nXE" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_6_1"
 	},
 /obj/item/weapon/gun/smg/mp5,
@@ -19309,7 +19365,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/tumor/aux_engi)
 "oGR" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -19523,7 +19579,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "oOV" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 22
 	},
 /turf/open/floor/almayer,
@@ -19670,7 +19726,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "oWG" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},
@@ -20157,7 +20213,7 @@
 /area/fiorina/station/power_ring)
 "pse" = (
 /obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_5"
 	},
@@ -20813,7 +20869,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "pWX" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
 /obj/item/clothing/suit/armor/vest/security,
@@ -21808,7 +21864,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/lowsec/east)
 "qGe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -22259,7 +22315,7 @@
 /turf/open/floor/prison/yellow/southwest,
 /area/fiorina/station/disco/east_disco)
 "qUC" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 2;
 	icon_state = "casing_5"
 	},
@@ -22661,7 +22717,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "rpT" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
 /turf/open/floor/prison/darkyellow2/west,
@@ -22706,7 +22762,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/research_cells/basketball)
 "rrD" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -23133,8 +23189,8 @@
 "rMT" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -23332,7 +23388,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
 "rTd" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
 /turf/open/floor/prison/whitegreen/west,
@@ -23364,14 +23420,14 @@
 "rUQ" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 17;
 	pixel_y = 21
 	},
@@ -23452,7 +23508,7 @@
 /area/fiorina/station/lowsec/east)
 "rYY" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	can_block_movement = 0;
 	pixel_y = 22
 	},
@@ -24138,7 +24194,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 8;
 	icon_state = "casing_6"
 	},
@@ -24425,7 +24481,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "sJy" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_9_1"
 	},
 /turf/open/floor/prison/yellowcorner/west,
@@ -24792,7 +24848,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells/west)
 "sXa" = (
-/obj/structure/machinery/filtration/console,
+/obj/structure/machinery/filtration_console,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "sXe" = (
@@ -24821,7 +24877,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "sYy" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_1"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -25022,7 +25078,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "tgK" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "tgL" = (
@@ -25061,7 +25117,7 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/civres_blue)
 "thV" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "tii" = (
@@ -25516,14 +25572,14 @@
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/chapel)
 "tyt" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	dir = 8;
 	icon_state = "cartridge_2"
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/fiorina/station/flight_deck)
 "tyC" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -26460,7 +26516,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "unp" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -26537,7 +26593,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "uqd" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
@@ -26950,7 +27006,7 @@
 /turf/open/floor/prison/yellow/northwest,
 /area/fiorina/station/lowsec/showers_laundry)
 "uJG" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_10_1"
 	},
 /turf/open/floor/prison/sterile_white/southwest,
@@ -27072,7 +27128,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "uNs" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "uNB" = (
@@ -27194,7 +27250,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "uSX" = (
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "uTb" = (
@@ -27463,7 +27519,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "vdn" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_2"
 	},
 /turf/open/floor/prison/sterile_white/southwest,
@@ -27789,7 +27845,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/station/power_ring)
 "voV" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_6_1"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -27819,7 +27875,7 @@
 /turf/open/ice/noweed,
 /area/fiorina/station/research_cells/basketball)
 "vrA" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -27870,7 +27926,7 @@
 /area/fiorina/station/civres_blue)
 "vtk" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_casing/shell{
+/obj/effect/decal/cleanable/ammo_casing/shell{
 	icon_state = "shell_9_1"
 	},
 /obj/structure/barricade/metal{
@@ -28110,8 +28166,8 @@
 "vCL" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -28435,7 +28491,7 @@
 /area/fiorina/station/lowsec/showers_laundry)
 "vRF" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "vRH" = (
@@ -29350,7 +29406,7 @@
 /turf/open/floor/prison/floorscorched1,
 /area/fiorina/station/chapel)
 "wGb" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_1"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -29476,7 +29532,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "wKx" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -30267,7 +30323,7 @@
 /turf/open/floor/prison/green,
 /area/fiorina/station/transit_hub)
 "xrH" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -30816,7 +30872,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/central_ring)
 "xTf" = (
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "xTD" = (
@@ -37209,7 +37265,7 @@ yhu
 yhu
 uNM
 baC
-baC
+abr
 tan
 ble
 hvL
@@ -54182,7 +54238,7 @@ qhk
 oPU
 eLu
 mTM
-gyJ
+abB
 cME
 cME
 rJh
@@ -54605,8 +54661,8 @@ oPU
 oMu
 oPU
 eLu
-cME
-cPq
+abD
+abC
 cME
 cME
 cME
@@ -69958,7 +70014,7 @@ tPB
 vUP
 kIO
 pvD
-dRO
+pvD
 pvD
 pvD
 cKa
@@ -75064,9 +75120,9 @@ jii
 mPW
 cpP
 aFK
-qGn
-qGn
-aFK
+abu
+abu
+abs
 fnD
 oUg
 oUg
@@ -75275,10 +75331,10 @@ pUG
 jii
 puE
 hTf
-qGn
-eqQ
-eqQ
-qGn
+abz
+abx
+abv
+abt
 pbp
 qGn
 pbp
@@ -75487,9 +75543,9 @@ jii
 wHV
 puE
 cJv
-eqQ
-eqQ
-eqQ
+abA
+aby
+abw
 eqQ
 eqQ
 eqQ

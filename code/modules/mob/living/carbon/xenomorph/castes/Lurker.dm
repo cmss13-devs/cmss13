@@ -25,6 +25,7 @@
 	heal_resting = 1.5
 
 	minimum_evolve_time = 9 MINUTES
+	organ_type = /obj/item/organ/xeno/lurker
 
 	minimap_icon = "lurker"
 
@@ -34,13 +35,12 @@
 	desc = "A beefy, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Lurker Walking"
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 2
-	organ_value = 2000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -52,6 +52,8 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2
@@ -67,6 +69,15 @@
 	skull = /obj/item/skull/lurker
 	pelt = /obj/item/pelt/lurker
 
+/obj/item/organ/xeno/lurker
+	name = "lurker heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 2000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_TACHYCARDIA
+
+
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
 
@@ -79,6 +90,12 @@
 
 	// State
 	var/next_slash_buffed = FALSE
+
+/datum/behavior_delegate/lurker_base/get_slash_icon_state()
+	return next_slash_buffed ? "crippling_strike" : ..()
+
+/datum/behavior_delegate/lurker_base/get_tail_strike_icon_state(default_state)
+	return next_slash_buffed ? "crippling_strike_tail" : ..()
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
@@ -195,6 +212,10 @@
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
 
 
+/datum/action/xeno_action/activable/pounce/lurker/register_launch_effects(mob/living/carbon/xenomorph/xeno)
+	if(!HAS_TRAIT(xeno, TRAIT_CLOAKED))
+		return ..()
+
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!istype(xeno))
@@ -245,7 +266,6 @@
 		return ..()
 
 	button.icon_state = "template_active"
-	xeno.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
 	animate(xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 
@@ -279,7 +299,6 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
 	button.icon_state = "template_xeno"
-	xeno.update_icons()
 
 	xeno.speed_modifier += speed_buff
 	xeno.recalculate_speed()

@@ -27,6 +27,8 @@
 	var/datum/tacmap_holder/map_holder
 	///Is drawing enabled
 	var/drawing
+	///Is this tacmap embedded in parent UI
+	var/is_embedded = FALSE
 
 
 /datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update, drawing)
@@ -57,24 +59,32 @@
 /datum/component/tacmap/proc/move_tacmap_up()
 	targetted_zlevel++
 	var/list/_interactees = interactees.Copy()
+	var/list/had_popout = list()
 	for(var/mob/interactee in _interactees)
+		if(SStgui.get_open_ui(interactee, src))
+			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
+		if(interactee in had_popout)
+			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
 	var/list/_interactees = interactees.Copy()
+	var/list/had_popout = list()
 	for(var/mob/interactee in _interactees)
+		if(SStgui.get_open_ui(interactee, src))
+			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
+		if(interactee in had_popout)
+			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
@@ -94,9 +104,16 @@
 		user.client.remove_from_screen(user_objects["drawing_actions"])
 		user.client.remove_from_screen(user_objects["close_button"])
 
-		// Clean up drawing tool references
+		// Remove ceiling protection toggle action when CIC tactical map closes
+		var/datum/action/minimap_ceiling/ceiling_action = user_objects["ceiling_action"]
+		if(ceiling_action)
+			ceiling_action.hidden = TRUE
+			user.update_action_buttons()
+
+		// Clean up drawing tool references and mark CIC minimap inactive
 		var/atom/movable/screen/minimap/user_map = user_objects["map"]
 		user_map?.active_draw_tool = null
+		user_map?.is_cic_minimap = FALSE
 
 	interactees -= user
 	user.client.mouse_pointer_icon = null
@@ -116,6 +133,11 @@
 	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client)
 	var/atom/movable/screen/exit_map/user_close_button = new(null, src)
 
+	// Apply drawing overlays to minimap
+	if(drawing)
+		user_map.is_cic_minimap = TRUE
+		user_map.update_drawing_overlay(show_cic_drawings = TRUE)
+
 	var/list/atom/movable/screen/user_drawing_actions = list()
 	for(var/path in drawing_tools)
 		user_drawing_actions += new path(null, targetted_zlevel, minimap_flag, user_map, src)
@@ -128,13 +150,35 @@
 	if(user.client.prefs?.show_minimap_ceiling_protection)
 		user_map.update_ceiling_overlay(user.client)
 
+	// Give ceiling protection toggle action when CIC tactical map opens
+	var/datum/action/minimap_ceiling/ceiling_action
+	for(var/datum/action/minimap_ceiling/existing_action in user.actions)
+		ceiling_action = existing_action
+		ceiling_action.hidden = FALSE
+		ceiling_action.update_button_icon()
+		// Position the ceiling action right after the minimap action button
+		user.actions.Remove(ceiling_action)
+		for(var/datum/action/minimap/minimap_action in user.actions)
+			var/minimap_index = user.actions.Find(minimap_action)
+			if(minimap_index)
+				user.actions.Insert(minimap_index + 1, ceiling_action)
+			else
+				user.actions.Add(ceiling_action)
+			break
+		user.update_action_buttons()
+		break
+
 	// Store references for cleanup
 	if(!interactees[user])
-		interactees[user] = list("map" = user_map, "close_button" = user_close_button, "drawing_actions" = user_drawing_actions)
+		interactees[user] = list("map" = user_map, "close_button" = user_close_button, "drawing_actions" = user_drawing_actions, "ceiling_action" = ceiling_action)
 
 	user.client.using_main_tacmap = TRUE
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
+	// For embedded tacmap, delegate to parent's UI status
+	if(is_embedded)
+		return parent.ui_status(user, state)
+
 	if(get_dist(parent, user) > 1)
 		return UI_CLOSE
 
@@ -181,10 +225,15 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 /datum/tacmap_holder
 	var/map_ref
 	var/atom/movable/screen/minimap/map
+	var/owns_map = FALSE
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE, client/for_client, uncached = FALSE)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing, for_client=for_client, uncached=uncached)
+	owns_map = !!for_client || uncached
+
+	if(!map)
+		return
 
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
@@ -194,5 +243,8 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	map.transform = transform
 
 /datum/tacmap_holder/Destroy()
-	map = null
+	if(owns_map)
+		QDEL_NULL(map)
+	else
+		map = null
 	return ..()

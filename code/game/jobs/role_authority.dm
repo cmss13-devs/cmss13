@@ -13,18 +13,6 @@ use roles_by_path as it is an accurate account of every specific role path (with
 */
 GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
-#define GET_RANDOM_JOB 0
-#define BE_MARINE 1
-#define RETURN_TO_LOBBY 2
-#define BE_XENOMORPH 3
-
-#define NEVER_PRIORITY 0
-#define HIGH_PRIORITY 1
-#define MED_PRIORITY 2
-#define LOW_PRIORITY 3
-
-#define SHIPSIDE_ROLE_WEIGHT 0.25
-
 GLOBAL_VAR_INIT(players_preassigned, 0)
 
 /proc/guest_jobbans(job)
@@ -112,7 +100,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 		squads += S
 		squads_by_type[S.type] = S
 
-//#undef FACTION_TO_JOIN
 
 /*
 Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
@@ -131,6 +118,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(!J)
 			continue
 		roles_for_mode[role_name] = J
+
+	// Also shuffle survivors since some are tied together
+	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL|JOB_SURVIVOR_UNLIMITED
+	var/list/shuffled_snowflakes = shuffle(snowflakes)
+	for(var/i in 1 to length(snowflakes))
+		var/old_index = roles_for_mode.Find(snowflakes[i])
+		var/new_index = roles_for_mode.Find(shuffled_snowflakes[i])
+		if(old_index && new_index)
+			roles_for_mode.Swap(old_index, new_index)
 
 	// Also register game mode specific mappings to standard roles
 	role_mappings = list()
@@ -190,22 +186,29 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
-	if(istype(XJ))
+	if(istype(XJ) && !isnull(XJ.scaled))
 		XJ.set_spawn_positions(GLOB.players_preassigned)
 
-	// Limit the number of SQUAD MARINE roles players can roll initially
+	// Limit the number of SQUAD MARINE roles players can roll initially (somereason)
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
-	if(istype(SMJ))
+	if(istype(SMJ) && !isnull(SMJ.scaled))
 		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
-	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
-	if(istype(SJ))
-		SJ.set_spawn_positions(GLOB.players_preassigned)
+	// Set initial squad caps
+	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
+	if(istype(engi_job)) // This job will handle a null scaled
+		engi_job.set_spawn_positions(GLOB.players_preassigned)
+	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
+	if(istype(medic_job)) // This job will handle a null scaled
+		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
-	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
-	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
+	// Set survivor starting amount based on marines assigned
+	for(var/job_name, job_datum in temp_roles_for_mode)
+		if(istype(job_datum, /datum/job/civilian/survivor))
+			var/datum/job/civilian/survivor/surv_job_datum = job_datum
+			if(!isnull(surv_job_datum.scaled))
+				surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
+			surv_job_datum.create_landmark_lists()
 
 	var/chance = trim(file2text("data/predchance.txt"))
 	if(chance)
@@ -217,14 +220,34 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ))
+		if(istype(PJ) && !isnull(PJ.scaled))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
+		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
+		if(istype(pred_surv) && !isnull(pred_surv.scaled))
+			pred_surv.set_spawn_positions(YAUTJA_SURV_HUNT)
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
+
+	var/huntless_chance = CONFIG_GET(number/pred_survivor_huntless_chance)
+	if(!(SSticker.mode.flags_round_type & MODE_PREDATOR) && prob(huntless_chance))//Very rare but it could happen on a non-pred round.
+		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
+		if(istype(pred_surv) && !isnull(pred_surv.scaled))
+			pred_surv.set_spawn_positions(YAUTJA_SURV_NO_HUNT)
+			log_debug("YAUTJA SURV: Triggered with no Hunt Round at [huntless_chance]%.")
 
 	chance += 20
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
+
+	var/joe_chance = trim(file2text("data/colonyjoechance.txt"))
+	if(joe_chance)
+		joe_chance = text2num(joe_chance)
+	else
+		joe_chance = 20
+		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)
+
+	if(prob(joe_chance) && !Check_WO() && length(SSmapping.configs[GROUND_MAP].colony_joe_types) != 0)
+		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -251,11 +274,23 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = null
 
-	// Now we take spare unfilled xeno slots and make them larva NEW
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
-		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+	if(istype(hive))
+		// Now we take spare unfilled xeno slots and make them larva
+		if(istype(XJ))
+			hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) + (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+			SSticker.mode.latejoin_tally += XJ.calculate_remainder_spawn_positions(GLOB.players_preassigned + alternate_option_assigned)
+			if(SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= SSticker.mode.latejoin_larva_drop_early)
+				SSticker.mode.latejoin_larva_used += SSticker.mode.latejoin_larva_drop_early
+				hive.stored_larva++
+			hive.hive_ui.update_burrowed_larva()
+
+		// No roundstart queen? We need a drone to evolve (and will refund their larva)
+		var/datum/job/antag/xenos/queen/queen_job = temp_roles_for_mode[JOB_XENOMORPH_QUEEN]
+		if(queen_job && queen_job.current_positions == 0)
+			if(hive.allow_queen_evolve)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children it is time. Evolve a queen and thrive.", hive.hivenumber, QUEEN_MOTHER_ANNOUNCE), (/datum/caste_datum/drone::minimum_evolve_time - 5 SECONDS))
+				hive.RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, TYPE_PROC_REF(/datum/hive_status, grant_extra_larva_on_queen))
 
 	/*===============================================================*/
 
@@ -269,7 +304,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
 		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_XENO, unassigned_players)
-		// Assigning special roles second. (survivor, predator)
+		// Assigning special roles second. (survivor, predator) tho they are in random order from setup_candidates_and_roles
 		assigned += assign_initial_roles(priority, roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL), unassigned_players)
 		// Assigning command third.
 		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_COMMAND, unassigned_players)
@@ -295,14 +330,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			log_debug("Error setting up jobs, no job datum set for: [job].")
 			continue
 
-		var/role_weight = calculate_role_weight(J)
 		for(var/M in unassigned_players)
 			var/mob/new_player/NP = M
 			if(!(NP.client.prefs.get_job_priority(J.title) == priority))
 				continue //If they don't want the job. //TODO Change the name of the prefs proc?
 
 			if(assign_role(NP, J))
-				assigned += role_weight
+				assigned += J.role_weight
 				unassigned_players -= NP
 				// -1 check is not strictly needed here, since standard marines are
 				// supposed to have an actual spawn_positions number at this point
@@ -315,23 +349,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(count)
 		return assigned
 	return roles_to_iterate
-
-/**
-* Calculate role balance weight for one person joining as that role. This weight is used
-* when calculating the number of xenos both roundstart and burrowed larva they get for
-* people late joining. This weight also controls the size of local wildlife population,
-* survivors and the number of roundstart Squad Rifleman slots.
-*/
-/datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
-	if(!J)
-		return 0
-	if(GLOB.ROLES_MARINES.Find(J.title))
-		return 1
-	if(GLOB.ROLES_XENO.Find(J.title))
-		return 1
-	if(J.title == JOB_SURVIVOR)
-		return 1
-	return SHIPSIDE_ROLE_WEIGHT
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
 	. = roles_to_iterate
@@ -361,12 +378,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin))
+		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M, latejoin))
 			M.job = J.title
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=FALSE, faction, ignore_positions=FALSE)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
@@ -377,8 +394,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
-	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
-		return FALSE
+	if(!ignore_positions)
+		if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+			return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
 	if(faction && faction != J.faction_menu)
@@ -421,14 +439,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	message_admins("[key_name(user)] freed the [job.title] job slot[squad ? " in [squad.name] Squad" : ""].")
 	return TRUE
 
-/datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
-	if(!istype(J))
-		return 0
-	if(amount < J.current_positions) //we should be able to slot everyone
-		return 0
-	J.total_positions = amount
-	J.total_positions_so_far = amount
-	return 1
+/datum/authority/branch/role/proc/modify_role(datum/job/job, amount)
+	if(!istype(job))
+		return FALSE
+	if(amount < job.current_positions && amount != -1) //we should be able to slot everyone
+		return FALSE
+	job.total_positions = amount
+	job.total_positions_so_far = amount
+	return TRUE
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.
 /datum/authority/branch/role/proc/reset_roles()
@@ -436,7 +454,20 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		M.job = null
 
 
-/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
+/datum/authority/branch/role/proc/get_latejoin_squads(datum/job/job)
+	var/default_role = GET_DEFAULT_ROLE(job.title)
+	if(!(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) || !((default_role in GLOB.job_squad_roles) || (default_role in GLOB.ROLES_MARINES_ANTAG)))
+		return
+	var/list/available_squads = list()
+	var/datum/equipment_preset/job_preset = GLOB.equipment_presets.gear_path_presets_list[job.gear_preset]
+	for(var/datum/squad/squad in squads)
+		if(!squad.roundstart || !squad.usable || squad.name == "Root" || squad.faction != job_preset?.faction)
+			continue
+		var/squad_name = squad.equivalent_name || squad.name
+		available_squads[squad_name] = squad
+	return available_squads
+
+/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join, datum/squad/selected_squad, preferred_squad_override)
 	if(!istype(new_mob) || !istype(new_job))
 		return
 
@@ -451,7 +482,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
 
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
-		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
+		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title], new_human.client)
 
 	var/job_whitelist = new_job.title
 	var/whitelist_status = new_job.get_whitelist_status(new_human.client)
@@ -473,7 +504,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_job.generate_entry_conditions(new_human) //Do any other thing that relates to their spawn.
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-		randomize_squad(new_human)
+		if(selected_squad)
+			selected_squad.put_marine_in_squad(new_human)
+		else
+			randomize_squad(new_human, preferred_squad_override = preferred_squad_override)
 	if(!late_join)
 		prioritize_specialist(new_human)
 
@@ -520,6 +554,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			pod.go_in_cryopod(new_human, silent = TRUE)
 			break
 
+	new_human.assigned_equipment_preset?.equip_spawn_lore(new_human)
+
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()
 
@@ -531,7 +567,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	SSround_recording.recorder.track_player(new_human)
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, preferred_squad_override)
 	if(!human)
 		return
 
@@ -561,15 +597,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
 
-	var/preferred_squad = human.client?.prefs?.preferred_squad
+	var/preferred_squad = isnull(preferred_squad_override) ? human.client?.prefs?.preferred_squad : preferred_squad_override
 	if(preferred_squad == "None")
 		preferred_squad = null
 
 	var/datum/squad/lowest
 	for(var/datum/squad/squad in mixed_squads)
-		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
-			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
-				continue
+		var/open_slots = squad.get_joinable_role_slots(slot_check, skip_limit)
+		if(!isnull(open_slots) && open_slots <= 0)
+			continue
 
 		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))

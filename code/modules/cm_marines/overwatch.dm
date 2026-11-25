@@ -16,7 +16,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/current_squad
 	var/datum/squad/squad
 	var/state = 0
-	var/no_skill_req // should the computer require the OW skill to use
+	/// If skill check is forgone.
+	var/no_skill_req
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
@@ -27,10 +28,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/y_bomb = 0
 	var/z_bomb = 0
 	var/living_marines_sorting = FALSE
-	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
-	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
-	var/z_hidden = 0 //which z level is ignored when showing marines.
-	var/marine_filter = list() // individual marine hiding control - list of string references
+	/// The overwatch computer is busy launching an OB/SB, lock controls
+	var/busy_lockout = FALSE
+	/// If dead marines in the squad are listed
+	var/dead_hidden = FALSE
+	/// The z level ignored when showing marines.
+	var/z_hidden = 0
+	/// individual marine hiding control - list of string references
+	var/marine_filter = list()
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 	var/obj/structure/orbital_cannon/current_orbital_cannon
@@ -42,9 +47,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/freq = CRYO_FREQ
 
-	///List of saved coordinates, format of ["x", "y", "z", "comment"]
+	/// List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()
-	///Currently selected UI theme
+	/// Currently selected UI theme
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
 	var/ob_cannon_safety = FALSE
@@ -53,6 +58,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/add_pmcs = FALSE
 	var/show_command_squad = FALSE
 	var/tgui_interaction_distance = 1
+
+	var/list/invalid_turfs = list(/turf/open/space, /turf/open_space, /turf/open/slippery)
 
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
@@ -80,7 +87,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		ob_cannon_safety = GLOB.ob_cannon_safety
 
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE, drawing=TRUE)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	GLOB.active_overwatch_consoles -= src
@@ -353,6 +360,40 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				leader_count++
 				marine_count--
 
+	for(var/obj/structure/overwatch_camera_tripod/tripod_camera as anything in GLOB.deployed_tripod_cameras) // add cameras to list o' marines
+		if(current_squad && current_squad.name != "Root")
+			if(!tripod_camera.squad || tripod_camera.squad != current_squad) // tldr: show cameras in root squad if placed by non-squad marines
+				continue
+		if(!tripod_camera.camera || !tripod_camera.camera.can_use()) // skip broken (code) or damaged (in-game) cameras
+			continue // ToDO: There should be an error log if camera is missing camera comp.
+		if(!tripod_camera.loc) // skip null location cameras
+			continue // ToDO: Error Log if camera has no LOC
+		var/turf/camera_turf = get_turf(tripod_camera)
+		if(!camera_turf)
+			continue // ToDO: Error Log if camera has no turf.
+		switch(z_hidden)
+			if(HIDE_ALMAYER)
+				if(is_mainship_level(camera_turf.z))
+					continue
+			if(HIDE_GROUND)
+				if(is_ground_level(camera_turf.z))
+					continue
+		var/area/camera_area = get_area(tripod_camera)
+		var/camera_area_name = camera_area ? sanitize_area(camera_area.name) : "Unknown"
+		var/list/camera_data = list(
+			"name" = tripod_camera.label,
+			"state" = "Active",
+			"has_helmet" = TRUE, // can't click the button in OW if set to false
+			"role" = "Tripod Camera",
+			"acting_sl" = "", // not sure if i need to null these or not
+			"fteam" = "",
+			"distance" = "N/A",
+			"area_name" = camera_area_name,
+			"ref" = REF(tripod_camera),
+			"rank" = "",
+		)
+		data["marines"] += list(camera_data)
+
 	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
 	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
 
@@ -472,6 +513,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
+	pack_radio_data(data)
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -518,6 +560,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
 	var/list/data = list()
 
+	pack_radio_data(data)
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -543,7 +586,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["ob_safety"] = ob_cannon_safety
 		if(current_orbital_cannon.tray.warhead)
 			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
-	if(GLOB.almayer_aa_cannon.protecting_section)
+	if(GLOB.almayer_aa_cannon?.protecting_section)
 		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
 
 	data["marines"] = list()
@@ -556,6 +599,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
+	data["hijack_plan"] = SShijack.hijack_plan
+	data["sd_unlocked"] = SShijack.sd_unlocked
+	data["hijack_started"] = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND
+	data["can_select_hijack_plan"] = allowed(user) && SShijack.can_select_hijack_plan()
+	data["withdrawal_available"] = SShijack.withdrawal_available
+	data["withdrawal_end_time"] = SShijack.withdrawal_end_time
+	data["can_start_withdrawal"] = allowed(user) && SShijack.can_start_withdrawal()
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
@@ -656,7 +706,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("sl_message")
 			if(current_squad)
-				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader:", "SL Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader - it cannot be garbled:", "SL Message"))
 				if(input)
 					current_squad.transmit_alert("", input, "", "Squad Leader Message:", user, only_leader=TRUE) //message, adds username, only to leader
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
@@ -753,7 +803,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
 				else
-					handle_supplydrop()
+					handle_supplydrop(user)
 
 		if("save_coordinates")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
@@ -778,47 +828,62 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(!params["target_ref"])
 				return
-			if(current_squad)
-				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+			if(!current_squad)
+				return
 
-				if(!istype(cam_target))
-					return
+			var/atom/target_ref = locate(params["target_ref"])
+			var/obj/structure/machinery/camera/new_cam = null
+			var/obj/item/new_holder = null
+			var/atom/cam_target = null
 
-				var/obj/item/new_holder = cam_target.get_camera_holder()
-				var/obj/structure/machinery/camera/new_cam
+			if(ishuman(target_ref)) // not strict since synths can be placed in OW squads
+				var/mob/living/carbon/human/Human = target_ref
+				cam_target = Human
+				new_holder = Human.get_camera_holder()
 				if(new_holder)
 					new_cam = new_holder.get_camera()
-				if(user.interactee != src) //if we multitasking
-					user.set_interaction(src)
-					if(cam == new_cam) //if we switch to a console that is already watching this cam
-						return
-				if(!new_cam || !new_cam.can_use())
-					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
-				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
-					for(var/datum/weakref/user_ref in concurrent_users)
-						var/mob/concurrent = user_ref.resolve()
-						if(!concurrent)
-							continue
-						stop_watching_camera(concurrent)
+			else if(istype(target_ref, /obj/structure/overwatch_camera_tripod))
+				var/obj/structure/overwatch_camera_tripod/tripod_camera = target_ref
+				if(tripod_camera.camera)
+					new_cam = tripod_camera.camera
+					cam_target = tripod_camera
+			else
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Invalid target.")]")
+				return
+
+			if(user.interactee != src) //if we multitasking
+				user.set_interaction(src)
+				if(cam == new_cam) //if we switch to a console that is already watching this cam
+					return
+			if(!new_cam || !new_cam.can_use())
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this target!")]")
+			else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view.")]")
+				for(var/datum/weakref/user_ref in concurrent_users)
+					var/mob/concurrent = user_ref.resolve()
+					if(!concurrent)
+						continue
+					stop_watching_camera(concurrent)
+					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+				disconnect_holder()
+				cam = null
+			else if(user.client.view != GLOB.world_view_size)
+				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+			else
+				for(var/datum/weakref/user_ref in concurrent_users)
+					var/mob/concurrent = user_ref.resolve()
+					if(!concurrent)
+						continue
+					if(cam)
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-					disconnect_holder()
-					cam = null
-				else if(user.client.view != GLOB.world_view_size)
-					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
-				else
-					for(var/datum/weakref/user_ref in concurrent_users)
-						var/mob/concurrent = user_ref.resolve()
-						if(!concurrent)
-							continue
-						if(cam)
-							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-						start_watching_camera(concurrent, new_cam)
+					start_watching_camera(concurrent, new_cam)
+					if(cam_target)
 						set_onscreen_text(concurrent, cam_target)
-						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
-					if(camera_holder)
-						disconnect_holder()
-					cam = new_cam
+					concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
+				if(camera_holder)
+					disconnect_holder()
+				cam = new_cam
+				if(new_holder)
 					connect_holder(new_holder)
 
 		if("change_operator")
@@ -974,6 +1039,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
+			if(SShijack.in_ftl)
+				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+				return FALSE
+
+			if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+				return FALSE
+
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
@@ -1042,6 +1115,22 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
 			. = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("withdrawal_start")
+			if(!allowed(ui.user))
+				return FALSE
+			return SShijack.start_withdrawal()
+
+		if("hijack_plan")
+			if(!allowed(ui.user))
+				return FALSE
+			return SShijack.select_hijack_plan(params["plan"])
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER
@@ -1124,7 +1213,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		selected_sl.comm_title = "aSL"
 	ADD_TRAIT(selected_sl, TRAIT_ACTING_LEAD, TRAIT_SOURCE_SQUAD_LEADER)
 
-	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer)
 	switch(faction)
 		if (FACTION_UPP)
 			sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)
@@ -1349,7 +1438,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
 		return
 
-	if(busy)
+	if(busy_lockout)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
@@ -1361,6 +1450,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
+	if(current_orbital_cannon.action_queued)
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon is busy processing another bombardment!")]")
+		return
+
 	var/x_coord = deobfuscate_x(x_bomb)
 	var/y_coord = deobfuscate_y(y_bomb)
 	var/z_coord = deobfuscate_z(z_bomb)
@@ -1369,30 +1462,30 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
-	var/turf/T = locate(x_coord, y_coord, z_coord)
+	var/turf/targetted_turf = locate(x_coord, y_coord, z_coord)
 
-	if(isnull(T) || istype(T, /turf/open/space))
+	if(isnull(targetted_turf) || is_type_in_list(targetted_turf, invalid_turfs))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
-	if(protected_by_pylon(TURF_PROTECTION_OB, T))
+	if(protected_by_pylon(TURF_PROTECTION_OB, targetted_turf))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
 		return
 
-	var/area/A = get_area(T)
+	var/area/targetted_area = get_area(targetted_turf)
 
-	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
+	if(istype(targetted_area) && CEILING_IS_PROTECTED(targetted_area.ceiling, CEILING_DEEP_UNDERGROUND))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return
 
-
 	//All set, let's do this.
-	busy = TRUE
+	busy_lockout = TRUE
+	current_orbital_cannon.action_queued = TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
-	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), T), 2 SECONDS)
+	playsound(targetted_turf,'sound/effects/alert.ogg', 25, 1)  //Placeholder
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), targetted_turf), 2 SECONDS)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, begin_fire)), 6 SECONDS)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, T), 6 SECONDS + 6)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, targetted_turf), 6 SECONDS + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/human in GLOB.alive_mob_list)
@@ -1403,30 +1496,31 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 
-/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/T)
-	if(!T)
+/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/targetted_turf)
+	if(!targetted_turf)
 		return
 
 	var/ob_name = lowertext(current_orbital_cannon.tray.warhead.name)
 	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
-	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
+	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(targetted_turf)] has been fired!", source = targetted_turf, alert_overlay = warhead_appearance, extra_large = TRUE)
 
-	SScmtv.spectate_event("Orbital Bombardment", T, 40 SECONDS, zoom_out = TRUE)
+	SScmtv.spectate_event("Orbital Bombardment", targetted_turf, 40 SECONDS, zoom_out = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X:[obfuscate_x(targetted_turf.x)], Y:[obfuscate_y(targetted_turf.y)], Z:[obfuscate_z(targetted_turf.z)] in [get_area(targetted_turf)]")
 
-	busy = FALSE
-	if(istype(T))
-		current_orbital_cannon.fire_ob_cannon(T, user, current_squad)
+	if(istype(targetted_turf))
+		current_orbital_cannon.fire_ob_cannon(targetted_turf, user, current_squad)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
+	busy_lockout = FALSE
+	current_orbital_cannon.action_queued = FALSE
 
-/obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
+/obj/structure/machinery/computer/overwatch/proc/handle_supplydrop(mob/user)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(!usr)
+	if(!user)
 		return
 
-	if(busy)
+	if(busy_lockout)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
@@ -1443,17 +1537,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
-	var/turf/T = locate(x_coord, y_coord, z_coord)
-	if(!T)
+	var/turf/targetted_turf = locate(x_coord, y_coord, z_coord)
+	if(!targetted_turf)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
 
-	var/area/A = get_area(T)
+	var/area/A = get_area(targetted_turf)
 	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 
-	if(istype(T, /turf/open/space) || T.density)
+	if(is_type_in_list(targetted_turf, invalid_turfs) || targetted_turf.density)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
@@ -1461,21 +1555,19 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Get Requisitions to close the crate!")]")
 		return
 
-	busy = TRUE
+	busy_lockout = TRUE
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
 	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
-	if(ismob(usr))
-		var/mob/M = usr
-		M.count_niche_stat(STATISTICS_NICHE_CRATES)
+	user.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)
-	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply], Z[z_supply].", usr.real_name)
+	pod.launch(targetted_turf)
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X:[obfuscate_x(targetted_turf.x)], Y:[obfuscate_y(targetted_turf.y)], Z:[obfuscate_z(targetted_turf.z)].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
-	busy = FALSE
+	busy_lockout = FALSE
 
 /obj/structure/machinery/computer/overwatch/proc/start_watching_camera(mob/watcher, atom/target)
 	watcher.reset_view(target)
@@ -1495,10 +1587,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 
+	RegisterSignal(watcher.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(clear_overwatch_overlay), TRUE)
+
 /obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
-	watcher.reset_view(null)
-	set_onscreen_text(watcher, null)
-	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	watcher.reset_view(null) // This will call the below proc via the above registered signal
+	//Why so complicated? Many things may reset our view (resisting being the most common one)
+
+/obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(client/watcher)
+	SIGNAL_HANDLER
+	UnregisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW)
+	set_onscreen_text(watcher.mob, null)
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.mob.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	if(!plane_controller)
 		return
 
@@ -1510,6 +1609,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.remove_filter("overwatch_overlay4")
 	plane_controller.remove_filter("overwatch_overlay5")
 	plane_controller.remove_filter("overwatch_overlay6")
+
 
 /obj/structure/machinery/computer/overwatch/proc/set_onscreen_text(mob/watcher, atom/target)
 	if(target == null)
@@ -1550,6 +1650,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		var/living_part = "<span class='langchat' style='color: [health_color]'>[health_status]</span>"
 
 		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part + living_part
+
+	else if(istype(target, /obj/structure/overwatch_camera_tripod)) // on-screen text - in theory you can't click on a downed camera
+		var/obj/structure/overwatch_camera_tripod/tripod = target
+		var/area/current_area = get_area(tripod)
+		var/area_name = current_area ? sanitize_area(current_area.name) : "Unknown"
+		var/name_part = "<span class='langchat langchat_yell'>[tripod.label]</span><br>"
+		var/location_part = "<span class='langchat' style='font-size: 7px;'>[area_name]</span><br>"
+		var/job_part = "<span class='langchat' style='font-size: 6px;'>Tripod Camera</span>"
+		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part
 
 /obj/structure/machinery/computer/overwatch/almayer
 	density = FALSE
@@ -1657,6 +1766,42 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
 	squad = SQUAD_UPP_4
+
+/obj/structure/machinery/computer/overwatch/proc/get_radio_clarity()
+	var/ground_z = length(SSmapping.levels_by_trait(ZTRAIT_GROUND)) ? SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] : null
+	if(ground_z in SSradio.last_command_zs)
+		return 100
+	var/current_clarity = SSradio.faction_coms_clarity[faction]
+	if(!current_clarity)
+		current_clarity = CONFIG_GET(number/announcement_max_clarity)
+	return current_clarity
+
+/obj/structure/machinery/computer/overwatch/proc/pack_radio_data(list/data)
+	var/clarity = get_radio_clarity()
+	data["radio_clarity"] = clarity
+	if(clarity >= 80)
+		data["clarity_color"] = "good"
+		data["clarity_status"] = "STABLE"
+	else if(clarity >= 45)
+		data["clarity_color"] = "average"
+		data["clarity_status"] = "DEGRADED"
+	else
+		data["clarity_color"] = "bad"
+		data["clarity_status"] = "CRITICAL BLACKOUT"
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/apc
+	name = "TOC Overwatch Console"
+	desc = "The Tactical Operations Center overwatch console. Many different screens make up the display. A large scribbled text is next to one of the monitors.. WARNING: THE SHIPS GROUNDSIDE OPERATIONS CONSOLE MUST NOT BE LOGGED IN AT THE SAME TIME!"
+	icon = 'icons/obj/structures/machinery/toc.dmi'
+	icon_state = "toc"
+	bound_width = 64
+	bound_height = 32
+	layer = ABOVE_TABLE_LAYER
+	density = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

@@ -64,17 +64,18 @@
 	caliber = ".44 sabot"
 
 /obj/item/ammo_magazine/revolver/upp
-	name = "\improper ZHNK-72 speed loader (7.62x38mmR)"
-	desc = "A 7-round 7.62x38mmR revolver speed loader."
+	name = "\improper ZHNK-72 speed loader (9x36mm)"
+	desc = "A 7-round 9x36mm revolver speed loader."
+	desc_lore = "The 9x36mm cartridge is the Union's primary non-military cartridge, somewhere in between a pistol and intermediate rifle cartridge. The cartridge is seen most often in the hands of the various police forces and member states of the Union, and is used in an eclectic selection of various revolvers, carbines, varmit rifles."
 	default_ammo = /datum/ammo/bullet/revolver/upp
-	caliber = "7.62x38mmR"
+	caliber = "9x36mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/revolvers.dmi'
 	icon_state = "zhnk72loader"
 	gun_type = /obj/item/weapon/gun/revolver/upp
 
 /obj/item/ammo_magazine/revolver/upp/shrapnel
-	name = "\improper ZHNK-72 shrapnel-shot speed loader (7.62x38mmR)"
-	desc = "This speedloader contains seven 'shrapnel-shot' bullets, cheap recycled casings picked up off the ground and refilled with gunpowder and random scrap metal. Acts similarly to flechette."
+	name = "\improper ZHNK-72 shrapnel-shot speed loader (9x36mm)"
+	desc = "This speedloader contains seven 'shrapnel-shot' bullets, cheap recycled casings picked up off the ground and refilled with gunpowder and random scrap metal. They're brutally effective against unarmored opponents, and quite effective at finding weak-points and open spots against armored ones."
 	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
 	icon_state = "zhnk72loader_shrapnel"
 
@@ -165,14 +166,17 @@
 
 	var/list/rounds_in_cylinder = list()
 	for(var/ammo_path in chamber_contents)
-		if(ammo_path != "empty" && ammo_path != "blank")
+		if(ammo_path != "empty")
 			rounds_in_cylinder[ammo_path]++
 
 	var/first_put = TRUE
 	for(var/ammo_path in rounds_in_cylinder)
-		var/obj/item/ammo_magazine/handful/new_handful = new()
+		var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
+		if(!bullet)
+			continue
+		var/obj/item/ammo_magazine/handful/new_handful = new bullet.handful_type()
 		var/amount = rounds_in_cylinder[ammo_path]
-		new_handful.generate_handful(ammo_path, caliber, max_rounds, amount, gun_type)
+		new_handful.generate_handful(ammo_path, caliber, amount, gun_type)
 		if(first_put && user)
 			user.put_in_hands(new_handful) // only put the first one in their hands
 			first_put = FALSE
@@ -202,7 +206,7 @@
 
 /obj/item/ammo_magazine/internal/revolver/upp
 	default_ammo = /datum/ammo/bullet/revolver/upp
-	caliber = "7.62x38mmR"
+	caliber = "9x36mm"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/upp
 

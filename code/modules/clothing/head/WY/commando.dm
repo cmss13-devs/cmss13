@@ -15,6 +15,8 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	anti_hug = 6
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/damaged
 	name = "damaged W-Y Commando helmet"

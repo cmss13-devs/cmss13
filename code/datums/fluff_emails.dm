@@ -17,7 +17,7 @@
 					<br>
 					<br>
 					Maybe that reserve grunt in Echo Company just about gutted himself with one of our blades in his bunk,
-					and maybe one of them accidently got flashed in front of one of the officers during a 'disagreement',
+					and maybe one of them accidentally got flashed in front of one of the officers during a 'disagreement',
 					but neither of those things are 'explicitly' OUR faults.
 					<br>
 					<br>
@@ -149,7 +149,7 @@
 					Thanks for sending the report in, we've been mulling over the data you sent over.
 					We've updated the design for the prototype which solves most of the problems everyone has encountered.
 					This one looks more promising than the last one.
-					And as much as everyone wants this done and shippped, I don't think this is going to be issued en masse for a good while.
+					And as much as everyone wants this done and shipped, I don't think this is going to be issued en masse for a good while.
 				</html>
 				"}
 

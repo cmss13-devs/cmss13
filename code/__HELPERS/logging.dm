@@ -19,10 +19,14 @@
 // Log categories
 #define LOG_CATEGORY_NOT_FOUND "invalid_category"
 
+//wrapper macros for easier grepping
 #define DIRECT_OUTPUT(A, B) A << B
-#define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
+#define DIRECT_INPUT(A, B) A >> B
+#define SEND_IMAGE(target, image) DIRECT_OUTPUT(target, image)
 #define SEND_SOUND(target, sound) DIRECT_OUTPUT(target, sound)
+#define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
+#define READ_FILE(file, text) DIRECT_INPUT(file, text)
 
 //This is an external call, "true" and "false" are how rust parses out booleans
 #define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
@@ -93,7 +97,8 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	for(var/client/client in GLOB.admins)
 		if(CLIENT_IS_STAFF(client))
 			if(client.prefs.toggles_chat & CHAT_DEBUGLOGS)
-				to_chat(client, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
+				var/rendered = SPAN_DEBUG_NOTICE("[SPAN_PREFIX("DEBUG:")] [SPAN_MESSAGE("[text]")]")
+				to_chat(client, rendered, type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)
@@ -305,6 +310,8 @@ GLOBAL_PROTECT(config_error_log)
 	WRITE_LOG(GLOB.mapping_log, text)
 	SEND_TEXT(world.log, text)
 
+/// Logs to Admin Log without sending to in-game admins.
+/// Upstream compatibility proc, don't double up with our message_admins that also logs
 /proc/log_admin_private(text)
 	log_admin(text)
 

@@ -151,7 +151,7 @@
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state = "redbullet" //Red bullets to indicate friendly fire restriction
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER|AMMO_NO_DEFLECT
 
 	accurate_range = 22
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
@@ -242,6 +242,7 @@
 	accurate_range = 12
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_6
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/cartridge
 
 /datum/ammo/bullet/minigun/New()
 	..()
@@ -266,6 +267,7 @@
 	damage = 45 //7.62x51 is scary
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/cartridge
 
 /datum/ammo/bullet/pkp
 	name = "machinegun bullet"

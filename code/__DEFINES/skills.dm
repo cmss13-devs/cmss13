@@ -87,10 +87,11 @@
 
 //surgery skill
 #define SKILL_SURGERY_DEFAULT 0 //Can't do surgery
-#define SKILL_SURGERY_NOVICE 1 //Can use autodocs and perform basic surgery (Nurses, Medics, PO)
-#define SKILL_SURGERY_TRAINED 2 //Can do all surgeries (Doctors)
-#define SKILL_SURGERY_EXPERT 3
-#define SKILL_SURGERY_MAX 3
+#define SKILL_SURGERY_NOVICE 1 //Can use autodocs and perform basic surgery (Medics, PO)
+#define SKILL_SURGERY_ASSISTANT 2 //Can do all surgeries, but slowly and more penalties for using ghetto tools (Nurses)
+#define SKILL_SURGERY_TRAINED 3 //Can do all surgeries (Doctors)
+#define SKILL_SURGERY_EXPERT 4
+#define SKILL_SURGERY_MAX 4
 //higher levels means faster surgery.
 
 
@@ -141,10 +142,10 @@
 
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
-#define SKILL_LEAD_TRAINED 1 //Team leaders, departmental heads, junior officers
-#define SKILL_LEAD_SKILLED 2 //Combat-tested enlisted personnel, such as SLs
-#define SKILL_LEAD_EXPERT 3 //Combat-tested or combat directive Officers, like SOs
-#define SKILL_LEAD_MASTER 4 //XO, CO, basically any senior officer
+#define SKILL_LEAD_TRAINED 1 //Junior leadership roles and officers not primarily trained in leadership
+#define SKILL_LEAD_SKILLED 2 //Leadership roles with expereince such as SLs
+#define SKILL_LEAD_EXPERT 3 //Specifically trained in managerial leadership such as department heads or SOs
+#define SKILL_LEAD_MASTER 4 //Senior leadership roles or managerial roles expecting to see combat
 #define SKILL_LEAD_MAX 4
 
 //overwatch skill

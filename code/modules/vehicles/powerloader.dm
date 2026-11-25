@@ -1,7 +1,7 @@
 /obj/vehicle/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader"
 	icon = 'icons/obj/vehicles/powerloader.dmi'
-	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
+	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first released on January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
 	anchored = TRUE
@@ -19,6 +19,11 @@
 	var/wreckage = /obj/structure/powerloader_wreckage
 	var/obj/item/powerloader_clamp/PC_left
 	var/obj/item/powerloader_clamp/PC_right
+	light_system = HYBRID_LIGHT
+	light_power = 8
+	light_range = 4
+	light_color = LIGHT_COLOR_ORANGE
+	light_mask_type = /atom/movable/lighting_mask/rotating
 
 //--------------------GENERAL PROCS-----------------
 
@@ -34,6 +39,8 @@
 	PC_right.icon_state = "loader_clamp_right"
 
 	. = ..()
+
+	set_light_on(FALSE)
 
 /obj/vehicle/powerloader/Destroy()
 	qdel(PC_left)
@@ -67,10 +74,26 @@
 				buckled_mob.pixel_x = -7
 			else
 				buckled_mob.pixel_x = 0
+	if(light && light.our_mask)
+		var/offset_x
+		var/offset_y = 26
+		switch(dir)
+			if(SOUTH)
+				offset_x = 0
+			if(NORTH)
+				offset_x = 0
+			if(EAST)
+				offset_x = 6
+			if(WEST)
+				offset_x = -6
+		var/matrix/new_matrix = light.our_mask.get_matrix(light.our_mask.radius)
+		new_matrix.Translate(offset_x, offset_y)
+		light.our_mask.apply_matrix(new_matrix)
 
 /obj/vehicle/powerloader/explode()
 	new wreckage(loc)
 	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
+	set_light_on(FALSE)
 	..()
 
 //--------------------INTERACTION PROCS-----------------
@@ -134,10 +157,17 @@
 			unbuckle()
 			return
 			//can't use the powerloader without both clamps equipped
+		set_light_on(TRUE)
 	else
 		move_delay = initial(move_delay)
 		icon_state = open_state
 		M.drop_held_items() //drop the clamp when unbuckling
+		set_light_on(FALSE)
+
+/obj/vehicle/powerloader/set_light_on(new_value)
+	. = ..()
+	if(.)
+		handle_rotation()
 
 //verb
 /obj/vehicle/powerloader/verb/enter_powerloader(mob/M)
@@ -387,7 +417,7 @@
 
 /obj/vehicle/powerloader/jd
 	name = "\improper John Deere 4300 Power Loader"
-	desc = "The John Deere 4300 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
+	desc = "The John Deere 4300 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first released on January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
 	icon_state = "powerloader_open_jd"
 	base_state = "powerloader_jd"
 	open_state = "powerloader_open_jd"
@@ -400,7 +430,7 @@
 
 /obj/vehicle/powerloader/ft
 	name = "\improper Ferret Heavy Industries Mk4 Power Loader"
-	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago."
+	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first released on January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago."
 	icon_state = "powerloader_open_ft"
 	base_state = "powerloader_ft"
 	open_state = "powerloader_open_ft"

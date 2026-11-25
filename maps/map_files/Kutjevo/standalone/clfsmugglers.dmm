@@ -22,6 +22,14 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
+"ad" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/kutjevo,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
+"ae" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/kutjevo,
+/turf/open/floor/almayer,
+/area/kutjevo/interior/colony/clf_shuttle)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -942,11 +950,11 @@
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "Rp" = (
 /obj/structure/surface/table,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "RB" = (
@@ -2357,7 +2365,7 @@ tZ
 cf
 cf
 cf
-cf
+ad
 cf
 zp
 Ok
@@ -2789,7 +2797,7 @@ SV
 QI
 YQ
 Nk
-RW
+ae
 Qy
 Ni
 YQ

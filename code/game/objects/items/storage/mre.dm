@@ -12,7 +12,7 @@
 	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 4
-	max_w_class = 0
+	max_w_class = SIZE_SMALL
 	use_sound = "rip"
 	var/trash_item = /obj/item/trash/uscm_mre
 	var/icon_closed = "mealpack"
@@ -127,6 +127,7 @@
 	. = ..()
 	isopened = FALSE
 	icon_state = icon_closed
+	set_can_hold()
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
 
 /obj/item/storage/box/mre/proc/try_forced_folding(datum/source, mob/user)
@@ -137,12 +138,22 @@
 
 	if(locate(/obj/item/mre_food_packet) in src)
 		return
+	if(locate(/obj/item/reagent_container/food/snacks) in src)
+		return
 
 	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
 	storage_close(user)
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
 	new trash_item(user.loc)
 	qdel(src)
+
+/obj/item/storage/box/mre/proc/set_can_hold()
+	for(var/obj/item/item in contents)
+		can_hold += item.type
+		if(istype(item, /obj/item/mre_food_packet))
+			var/obj/item/mre_food_packet/food_packet = item
+			if(food_packet.contents_food)
+				can_hold += food_packet.contents_food
 
 /obj/item/storage/box/mre/update_icon()
 	if(!isopened)
@@ -248,7 +259,7 @@
 
 /obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
-	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civilian and private markets."
+	desc = "First Strike Ration, produced by the same manufacturer that produces MREs for UA militaries, but oriented on a civilian and private markets."
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"
@@ -266,7 +277,7 @@
 
 /obj/item/storage/box/mre/wy
 	name = "\improper W-Y brand ration pack"
-	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
+	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"
 	icon_opened = "wy_mealpackopened"
@@ -329,7 +340,7 @@
 	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/storage/box/mre/upp/choose_utencil()
-	new /obj/item/tool/kitchen/utensil/pspoon(src)
+	new /obj/item/tool/kitchen/utensil/spoon/plastic(src)
 
 /obj/item/storage/box/mre/upp/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/waterbottle/upp(src)

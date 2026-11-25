@@ -6,9 +6,9 @@
 	name = "alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
 	)
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
@@ -42,35 +42,17 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
-	var/thrall = FALSE //Used to affect icon generation.
+	var/random_icon = TRUE //Used to affect icon generation.
 
 	///A list of all intrinsic mask actions
 	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony")
 	..()
 	forceMove(location)
-	if(thrall)
+	if(!random_icon)
+		LAZYSET(item_state_slots, WEAR_FACE, icon_state)
 		return
-
-	if(legacy != "None")
-		switch(legacy)
-			if("Dragon")
-				icon_state = "pred_mask_elder_tr"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
-				return
-			if("Swamp")
-				icon_state = "pred_mask_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
-				return
-			if("Enforcer")
-				icon_state = "pred_mask_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
-				return
-			if("Collector")
-				icon_state = "pred_mask_elder_n"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
-				return
 
 	if(mask_number > 17)
 		mask_number = 1
@@ -236,7 +218,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
 	item_state_slots = list(WEAR_FACE = "thrallmask_ebony")
-	thrall = TRUE
+	random_icon = FALSE
 
 /obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()
 	set category = "Thrall.Utility"
@@ -273,14 +255,73 @@
 	name = "ancient alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
 
+/obj/item/clothing/mask/gas/yautja/hunter/scalable
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	anti_hug = 30
+
+	var/repair_status = YAUTJA_REPAIR_DAMAGED
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/get_examine_text(mob/user)
+	. = ..()
+	switch(repair_status)
+		if(YAUTJA_REPAIR_DAMAGED)
+			. += SPAN_RED("It has been worn from long use and poor maintenance.")
+		if(YAUTJA_REPAIR_REINFORCED)
+			. += SPAN_GREEN("It has been reinforced to be more protective.")
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood
+	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
+	)
+	icon_state = "pred_mask_bb_patchwork"
+	random_icon = FALSE
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/patchwork_alt
+	icon_state = "pred_mask_bb_patchworkalt"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/lunatic
+	icon_state = "pred_mask_bb_lunatic"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/scav
+	icon_state = "pred_mask_bb_scav"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/scav_alt
+	icon_state = "pred_mask_bb_scavalt"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/venator
+	icon_state = "pred_mask_bb_venator"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/commando
+	icon_state = "pred_mask_bb_commando"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/commando_alt
+	icon_state = "pred_mask_bb_commandoalt"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/bane
+	icon_state = "pred_mask_bb_bane"
+
+// emissary mask
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/emissary
+	icon_state = "pred_mask_bb_emissary_classic"
+
+
+
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
 	name = "alien stone mask"
 	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
 	)
 	icon_state = "pred_mask1_ebony"
 
@@ -320,3 +361,25 @@
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null
 	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient
+	name = "ornate ancient alien mask"
+	desc = "An ornate ancient faceplate of an aged alloy, once worn by a revered hunter. Though tarnished by time, its craftsmanship remains exquisite - a fusion of artistry and deadly function."
+	icon = 'icons/obj/items/hunter/pred_mask.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
+	)
+	icon_state = "pred_mask_ancient_redglow"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_redglow")
+	random_icon = FALSE
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient/hollow
+	icon_state = "pred_mask_ancient"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient")
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient/no_glow
+	icon_state = "pred_mask_ancient_white"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_white")

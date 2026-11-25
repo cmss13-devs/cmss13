@@ -379,7 +379,7 @@
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/current_storage = wear_suit
-			if(istype(current_storage) && current_storage.pockets.storage_slots)
+			if(istype(current_storage) && (current_storage.pockets.storage_slots || isnull(current_storage.pockets.storage_slots)))
 				current_storage.pockets.attempt_item_insertion(equipping_item, disable_warning, src)
 				wear_suit.update_icon()
 
@@ -418,7 +418,7 @@
 			r_store.update_icon()
 
 		else
-			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
+			to_chat(src, SPAN_DANGER("You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPED_ITEM, equipping_item, slot)

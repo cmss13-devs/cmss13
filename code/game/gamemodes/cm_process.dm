@@ -56,11 +56,32 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(length(predators))
+	var/dat = ""
+	if(length(yautja_hunters))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Hunting Party was:")
+		for(var/entry in yautja_hunters)
+			dat += "<br>[entry] was [yautja_hunters[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_hunters[entry]["Status"]])")]"
+	if(length(yautja_youngbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Young-Bloods were:")
+		for(var/entry in yautja_youngbloods)
+			dat += "<br>[entry] was [yautja_youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_youngbloods[entry]["Status"]])")]"
+	if(length(yautja_stranded))
+		dat += SPAN_ROUNDBODY("<br><br>The Stranded Yautja were:")
+		for(var/entry in yautja_stranded)
+			dat += "<br>[entry] was [yautja_stranded[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_stranded[entry]["Status"]])")]"
+	if(length(yautja_badbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Bad-Bloods were:")
+		for(var/entry in yautja_badbloods)
+			dat += "<br>[entry] was [yautja_badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_badbloods[entry]["Status"]])")]"
+	if(dat)
+		to_world("[dat]")
+
+/datum/game_mode/proc/declare_completion_announce_colony_joes()
+	if(length(colony_joes))
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+		dat += SPAN_ROUNDBODY("<br>The Colony Working Joes were:")
+		for(var/entry in colony_joes)
+			dat += "<br>[entry] was [colony_joes[entry]["Name"]] [SPAN_BOLDNOTICE("([colony_joes[entry]["Status"]])")]"
 		to_world("[dat]")
 
 
@@ -195,39 +216,70 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 		GLOB.last_human_bioscan = world.time
 		GLOB.bioscan_data.ares_bioscan(FALSE)
 
-
+/// Counts xenos without checking if they're a hive that can delay the round or if they're in an area ignored by bioscan
 /datum/game_mode/proc/count_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_xenos = 0
-	for(var/i in GLOB.living_xeno_list)
-		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
+	for(var/mob/living/carbon/xenomorph/current as anything in GLOB.living_xeno_list)
+		var/turf/xeno_loc = get_turf(current)
+		if(!xeno_loc)
+			continue
+
+		var/in_z_levels = (xeno_loc.z in z_levels)
+		if(!in_z_levels && SSinterior.in_interior(xeno_loc))
+			var/datum/interior/current_interior = SSinterior.get_interior_by_coords(xeno_loc.x, xeno_loc.y, xeno_loc.z)
+			if(current_interior?.exterior?.loc)
+				xeno_loc = current_interior.exterior.loc
+				in_z_levels = (xeno_loc.z in z_levels) && !should_block_game_interaction(xeno_loc)
+
+		if(in_z_levels && !istype(current.loc, /turf/open/space) && !istype(current.loc, /area/adminlevel/ert_station/fax_response_station))
+			if(should_block_game_interaction(current))
+				continue
 			num_xenos++
+
 	return num_xenos
 
+/datum/game_mode/proc/count_humans_and_xenos_debug() // TODO: Remove this
+	return count_humans_and_xenos(SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND)))
+
+/// Counts living mobs in the form of list(humans,xenos) that aren't hosts or in an area that avoids bioscan (if non-human) and can delay the round
 /datum/game_mode/proc/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_humans = 0
 	var/num_xenos = 0
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
-			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
-				var/mob/living/carbon/human/H = M
-				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
+	for(var/mob/current as anything in GLOB.alive_mob_list)
+		var/turf/person_loc = get_turf(current)
+		if(!person_loc)
+			continue
+
+		var/in_z_levels = (person_loc.z in z_levels)
+		if(!in_z_levels && SSinterior.in_interior(person_loc))
+			var/datum/interior/current_interior = SSinterior.get_interior_by_coords(person_loc.x, person_loc.y, person_loc.z)
+			if(current_interior?.exterior?.loc)
+				person_loc = current_interior.exterior.loc
+				in_z_levels = (person_loc.z in z_levels) && !should_block_game_interaction(person_loc)
+
+		if(in_z_levels && !istype(person_loc.loc, /turf/open/space) && !istype(person_loc.loc, /area/adminlevel/ert_station/fax_response_station))
+			if(should_block_game_interaction(current))
+				continue
+
+			if(ishuman(current) && !isyautja(current) && !(current.status_flags & XENO_HOST) && !iszombie(current))
+				var/mob/living/carbon/human/current_human = current
+				if((current_human.species?.name == "Human" || current_human.is_important) && !current_human.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
-				var/area/A = get_area(M)
-				if(isxeno(M))
-					var/mob/living/carbon/xenomorph/xeno = M
+				var/area/area = get_area(current)
+				if(isxeno(current))
+					var/mob/living/carbon/xenomorph/xeno = current
 					if(!xeno.counts_for_roundend)
 						continue
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
 					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
+					if (area.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
-				else if(iszombie(M))
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
+				else if(iszombie(current))
+					if (area.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 
@@ -263,6 +315,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_WY = 0
 	var/num_UPP = 0
 	var/num_CLF = 0
+	var/num_TWE = 0
 	var/num_headcount = 0
 
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -280,12 +333,16 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 			num_CLF++
 			num_headcount++
 			continue
+		if(current_human.faction in FACTION_LIST_TWE)
+			num_TWE++
+			num_headcount++
+			continue
 		if(current_human.faction == FACTION_MARINE)
 			num_marines++
 			num_headcount++
 			continue
 		num_headcount++
-	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"total_headcount" = num_headcount)
+	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"TWE_headcount" = num_TWE,"total_headcount" = num_headcount)
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

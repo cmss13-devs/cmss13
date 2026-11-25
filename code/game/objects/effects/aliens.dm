@@ -50,6 +50,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	var/stun_duration = 1
+	var/initial_hit_damage = 20
 	var/damage_amount = 20
 	var/fire_level_to_extinguish = 13
 
@@ -122,7 +123,7 @@
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
 				apply_spray(M)
-				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, initial_hit_damage), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -133,7 +134,7 @@
 		if (istype(loc, /turf/open))
 			var/turf/open/scorch_turf_target = loc
 			if(scorch_turf_target.scorchable)
-				scorch_turf_target.scorch(damage_amount)
+				scorch_turf_target.scorch(initial_hit_damage)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -253,6 +254,37 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
+/obj/effect/xenomorph/spray/despoiler
+	icon_state = "acid2-strong"
+	damage_amount = 30
+	time_to_live = 2 SECONDS
+	stun_duration = 0
+
+/obj/effect/xenomorph/spray/despoiler/apply_spray(mob/living/carbon/carbon)
+	. = ..()
+	var/datum/effects/acid/acid_effect = locate() in carbon.effects_list
+
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(carbon)
+
+/obj/effect/xenomorph/spray/despoiler/empowered
+	stun_duration = 1
+
+/obj/effect/xenomorph/spray/despoiler/empowered/apply_spray(mob/living/carbon/carbon)
+	var/datum/component/acid_immunity/immunity = carbon.GetComponent(/datum/component/acid_immunity)
+
+	if(immunity)
+		return
+
+	. = ..()
+	// Prevent empowered acid spam
+	carbon.AddComponent(/datum/component/acid_immunity, 3 SECONDS)
+	var/datum/effects/acid/acid_effect = locate() in carbon.effects_list
+
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(carbon)
+
+	acid_effect.enhance_acid()
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
@@ -305,6 +337,7 @@
 	/// How much fuel the acid drains from the flare every acid tick
 	var/flare_damage = 600
 	var/barricade_damage = 40
+	var/module_damage = 20
 	var/in_weather = FALSE
 
 	/// Set when attempting to clear acid off of an item with extinguish_acid() to prevent an item being extinguished multiple times in a tick.
@@ -316,6 +349,7 @@
 	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
 	flare_damage = 180
+	module_damage = 10
 	icon_state = "acid_weak"
 
 //Superacid
@@ -324,6 +358,7 @@
 	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
 	flare_damage = 2250
+	module_damage = 40
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
@@ -333,9 +368,13 @@
 		ticks_left = 7 // Turf take twice as long to take down.
 	else if(istype(acid_t, /obj/structure/barricade))
 		ticks_left = 9
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		if(module.ship_base)
+			ticks_left = 10
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
-	RegisterSignal(acid_t, COMSIG_ITEM_PICKUP, PROC_REF(attempt_pickup))
+	RegisterSignal(acid_t, COMSIG_MOVABLE_PRE_PICKUP, PROC_REF(attempt_pickup))
 	RegisterSignal(acid_t, COMSIG_MOVABLE_MOVED, PROC_REF(move_acid))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 	START_PROCESSING(SSoldeffects, src)
@@ -358,10 +397,10 @@
 		return
 	forceMove(new_loc)
 
-/// Called by COMSIG_ITEM_PICKUP when an item is attempted to be picked up but has acid
+/// Called by COMSIG_MOVABLE_PRE_PICKUP to signal that acid_t can't be picked up because of acid
 /obj/effect/xenomorph/acid/proc/attempt_pickup()
 	SIGNAL_HANDLER
-	return COMSIG_ITEM_PICKUP_CANCELLED
+	return COMPONENT_PICKUP_CANCELED_ACID
 
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
@@ -382,7 +421,7 @@
 		visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 		return NONE
 	var/obj/structure/barricade/cade = acid_t
-	cade.take_acid_damage(barricade_damage)
+	cade.corrosive_acid_act(barricade_damage)
 	return (5 SECONDS)
 
 /obj/effect/xenomorph/acid/proc/handle_flashlight()
@@ -392,19 +431,33 @@
 	flare.fuel -= flare_damage
 	return (rand(15, 25) SECONDS) * acid_delay
 
+/obj/effect/xenomorph/acid/proc/handle_dropship_module()
+	var/obj/structure/dropship_equipment/module = acid_t
+	module.update_health(module_damage)
+	return (5 SECONDS) * acid_delay
+
+/obj/effect/xenomorph/acid/proc/handle_fuelpump()
+	var/obj/structure/machinery/fuelpump/pump = acid_t
+	pump.update_health(barricade_damage)
+	return (5 SECONDS)
+
 /obj/effect/xenomorph/acid/process(delta_time)
 	remaining -= delta_time * (1 SECONDS)
 	if(remaining > 0)
 		return
 	ticks_left -= 1
 
-	var/return_delay = NONE
+	var/return_delay = (rand(20, 30) SECONDS) * acid_delay
 	if(istype(acid_t, /obj/structure/barricade))
 		return_delay = handle_barricade()
 	else if(istype(acid_t, /obj/item/device/flashlight/flare))
 		return_delay = handle_flashlight()
-	else
-		return_delay = (rand(20, 30) SECONDS) * acid_delay
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		if(module.ship_base) //If its not installed then we dont give it any special handling
+			return_delay = handle_dropship_module()
+	else if(istype(acid_t, /obj/structure/machinery/fuelpump))
+		return_delay = handle_fuelpump()
 
 	if(!ticks_left)
 		finish_melting()
@@ -435,10 +488,11 @@
 			visible_message(SPAN_XENODANGER("[acid_t] loses its shine as the acid bubbles against it."))
 			acid_gun.has_second_wind = FALSE
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
-			qdel(src)
-			return
+		else
+			visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
+			qdel(acid_t)
 
-	if(istype(acid_t, /turf))
+	else if(istype(acid_t, /turf))
 		visible_message(SPAN_XENODANGER("[acid_t] is terribly damaged by the acid covering it!"))
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
@@ -447,7 +501,7 @@
 			var/turf/turf = acid_t
 			turf.ScrapeAway()
 
-	else if (istype(acid_t, /obj/structure/girder))
+	else if(istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
 		visible_message(SPAN_XENODANGER("[acid_t] collapses and falls in on itself as the acid melts its frame!"))
 		girder.dismantle()
@@ -459,13 +513,32 @@
 
 	else if(istype(acid_t, /obj/structure/barricade))
 		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
-		pass() // Don't delete it, just damaj
+		// Don't delete it, just damaj
+
+	else if(istype(acid_t, /obj/structure/machinery/fuelpump))
+		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
+
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		visible_message(SPAN_XENODANGER("[acid_t] is ravaged by the acid that covered it!"))
+		if(!module.ship_base)
+			qdel(acid_t)
+
+	else if(istype(acid_t, /obj/structure/platform))
+		var/obj/structure/platform/P = acid_t
+		if(P.explo_proof)
+			visible_message(SPAN_XENODANGER("[P] sizzles but remains intact against the acid!"))
+			qdel(src)
+			return
+		visible_message(SPAN_XENODANGER("[P] cracks and fragments as the acid sizzles against it!"))
+		P.broken()
 
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		qdel(acid_t)
+
 	qdel(src)
 
 /obj/effect/xenomorph/acid/extinguish_acid()
@@ -509,8 +582,10 @@
 			..(loc)
 		else
 			qdel(src)
+			return
 	else
 		qdel(src)
+		return
 
 	addtimer(CALLBACK(src, PROC_REF(damage_mobs)), time_before_damage)
 	addtimer(CALLBACK(src, PROC_REF(make_smoke)), time_before_smoke)
@@ -538,8 +613,7 @@
 	icon_state = "boiler_bombard_heavy"
 
 /obj/effect/xenomorph/boiler_bombard/proc/make_smoke()
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, create_cause_data(initial(source_xeno?.caste_type), source_xeno))
-	S.time_to_live = smoke_duration
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, create_cause_data(initial(source_xeno?.caste_type), source_xeno), smoke_duration)
 	S.spread_speed = smoke_duration + 5 // No spreading
 
 	qdel(src)
@@ -560,19 +634,131 @@
 /obj/effect/xenomorph/xeno_telegraph/red
 	color = COLOR_DARK_RED
 
+/obj/effect/xenomorph/xeno_telegraph/yellow
+	color = "#799657"
+
 /obj/effect/xenomorph/xeno_telegraph/brown
 	color = COLOR_BROWN
 
 /obj/effect/xenomorph/xeno_telegraph/green
 	color = COLOR_LIGHT_GREEN
 
-/// This has a brown icon state and does not have a color overlay by default.
-/obj/effect/xenomorph/xeno_telegraph/abduct_hook
+/obj/effect/xenomorph/xeno_telegraph/retrieve_hook
+	icon_state = "xeno_telegraph_retrieve_hook_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/perimeter
+	icon = 'icons/mob/xenos/telegraph_perimeter.dmi'
+	icon_state = "0"
+
+/// AoE telegraph for moves bigger than 3x3
+/proc/show_radial_telegraph(turf/center, list/affected_tiles, radius, telegraph_type, duration, outline_color)
+	if(!center)
+		return
+	if(radius <= 1)
+		for(var/turf/tile in affected_tiles)
+			new telegraph_type(tile, duration)
+		return
+
+	var/obj/effect/xenomorph/xeno_telegraph/attack/emblem = new telegraph_type(center, duration)
+	emblem.underlays.Cut()
+	emblem.transform = matrix().Scale(2)
+	emblem.appearance_flags |= PIXEL_SCALE
+
+	var/list/footprint = list(center)
+	for(var/turf/tile in affected_tiles)
+		footprint |= tile
+	for(var/turf/tile as anything in footprint)
+		var/exposed_edges = NONE
+		for(var/direction in GLOB.cardinals)
+			if(!(get_step(tile, direction) in footprint))
+				exposed_edges |= direction
+		if(exposed_edges)
+			var/obj/effect/xenomorph/xeno_telegraph/perimeter/edge = new(tile, duration, outline_color)
+			edge.icon_state = "[exposed_edges]"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/Initialize()
+	. = ..()
+	underlays += get_border()
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/show_on_target(mob/living/target)
+	pixel_x = -target.pixel_x
+	pixel_y = -target.pixel_y
+	appearance_flags |= RESET_COLOR
+	target.vis_contents += src
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/get_border()
+	var/static/mutable_appearance/red_border
+	if(isnull(red_border))
+		red_border = create_border(list("#373737" = "#6D0002", "#434343" = "#850001", "#565656" = "#AC0000", "#7E7E7E" = "#EB4210"))
+	return red_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/create_border(list/palette)
+	var/icon/border = icon(icon, "xeno_telegraph_attack_base")
+	for(var/shade in palette)
+		border.SwapColor(shade, palette[shade])
+	return mutable_appearance(border)
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/get_border()
+	var/static/mutable_appearance/brown_border
+	if(isnull(brown_border))
+		brown_border = create_border(list("#373737" = "#6D3300", "#434343" = "#853E00", "#565656" = "#AC4F00", "#7E7E7E" = "#D79600"))
+	return brown_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
-/// This has a brown icon state and does not have a color overlay by default.
-/obj/effect/xenomorph/xeno_telegraph/lash
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop
+	icon_state = "xeno_telegraph_high_gallop_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/stomp
+	icon_state = "xeno_telegraph_stomp_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/lash
 	icon_state = "xeno_telegraph_lash"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace
+	icon_state = "xeno_telegraph_caustic_embrace_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace/get_border()
+	var/static/mutable_appearance/olive_border
+	if(isnull(olive_border))
+		olive_border = create_border(list("#373737" = "#334025", "#434343" = "#5A6F40", "#565656" = "#68814B", "#7E7E7E" = "#769255"))
+	return olive_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/empower
+	icon_state = "xeno_telegraph_empower_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate
+	icon_state = "xeno_telegraph_eviscerate_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/pierce
+	icon_state = "xeno_telegraph_pierce_tail"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/pierce/tip
+	icon_state = "xeno_telegraph_pierce_anim"
+
+/proc/show_pierce_telegraph(turf/previous_turf, list/turf/path, reached_tiles)
+	for(var/index in 1 to reached_tiles)
+		var/turf/path_turf = path[index]
+		var/telegraph_type = index == reached_tiles ? /obj/effect/xenomorph/xeno_telegraph/attack/pierce/tip : /obj/effect/xenomorph/xeno_telegraph/attack/pierce
+		var/obj/effect/xenomorph/xeno_telegraph/attack/pierce/segment = new telegraph_type(path_turf, 0.6 SECONDS)
+		segment.setDir(get_dir(previous_turf, path_turf))
+		previous_turf = path_turf
+
+/obj/effect/xenomorph/xeno_telegraph/attack/prae_dash
+	icon_state = "xeno_telegraph_prae_dash_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/flurry
+	icon_state = "xeno_telegraph_flurry_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut
+	icon_state = "xeno_telegraph_scissor_cut_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut/empowered/get_border()
+	var/static/mutable_appearance/amber_border
+	if(isnull(amber_border))
+		amber_border = create_border(list("#373737" = "#D79600", "#434343" = "#E4A615", "#565656" = "#F5BA31", "#7E7E7E" = "#F7CF5F"))
+	return amber_border
 
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"
@@ -623,10 +809,6 @@
 				else
 					new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/trap in H.effects_list)
-				if (trap.cause_data && trap.cause_data.resolve_mob() == linked_xeno)
-					found = trap
-					break
 			if(found)
 				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else
@@ -640,25 +822,3 @@
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
 	deal_damage()
 	qdel(src)
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
-	var/total_hits = 0
-	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
-
-	for (var/mob/living/carbon/human in loc)
-		if (human.stat == DEAD)
-			continue
-
-		if(human.ally_of_hivenumber(hivenumber))
-			continue
-
-		total_hits++
-
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
-
-	trap.reduce_cooldown(total_hits*4 SECONDS)
-
-	return ..()

@@ -56,6 +56,15 @@
 	var/mob/dead/observer/activator = owner
 	activator.join_as_yautja()
 
+/datum/action/join_colony_joe
+	name = "Join as a Colony Working Joe"
+	action_icon_state = "join_joe"
+
+/datum/action/join_colony_joe/action_activate()
+	. = ..()
+	var/mob/dead/observer/activator = owner
+	activator.join_as_colony_joe()
+
 /datum/action/observer_action/view_crew_manifest
 	name = "View Crew Manifest"
 	action_icon_state = "view_crew_manifest"

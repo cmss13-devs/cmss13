@@ -223,6 +223,9 @@
 	if(usr.is_mob_incapacitated() || get_dist(usr, src) > 1 || usr.blinded || !usr.client)
 		return
 
+	// Don't look if click drags are overrided
+	if (usr.client?.prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE && !HAS_TRAIT(usr, TRAIT_OVERRIDE_CLICKDRAG) && usr.a_intent & (INTENT_HARM | INTENT_DISARM))
+		return
 
 	if(isliving(usr))
 		var/mob/living/living_usr = usr
@@ -386,6 +389,10 @@
 	down = locate(/obj/structure/ladder) in SSmapping.get_turf_below(get_turf(src))
 
 	update_icon()
+
+/obj/structure/ladder/multiz/yautja
+	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/ladder/yautja
 	name = "ladder"

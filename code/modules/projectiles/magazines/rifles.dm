@@ -19,6 +19,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/m41a
+	flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 	ammo_band_icon = "+m41a_band"
 	ammo_band_icon_empty = "+m41a_band_e"
 
@@ -290,6 +291,7 @@
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	flags_magazine = AMMUNITION_REFILLABLE
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
 
@@ -319,21 +321,18 @@
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
 	desc = "A semi-rectangular holo-targeting box magazine for the M41AE2 Heavy Pulse Rifle."
 	default_ammo = /datum/ammo/bullet/rifle/holo_target
-	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
 /obj/item/ammo_magazine/rifle/lmg/ap
 	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
 	desc = "A semi-rectangular armor-piercing box magazine for the M41AE2 Heavy Pulse Rifle."
 	default_ammo = /datum/ammo/bullet/rifle/ap
-	max_rounds = 300
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/lmg/heap
 	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
 	desc = "A semi-rectangular box magazine for the M41AE2 Heavy Pulse Rifle. This one contains the standard armor-piercing explosive tipped round of the USCM."
 	default_ammo = /datum/ammo/bullet/rifle/heap
-	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
@@ -341,9 +340,9 @@
 //UPP TYPE 71 RIFLE
 
 /obj/item/ammo_magazine/rifle/type71
-	name = "\improper Type 71 magazine (5.45x39mm)"
-	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
-	caliber = "5.45x39mm"
+	name = "\improper Type 71 magazine (10x27mm)"
+	desc = "A 10x27mm high-capacity casket magazine for the Type 71 rifle."
+	caliber = "10x27mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "type71"
 	ammo_band_icon = "+type71_band"
@@ -353,14 +352,14 @@
 	gun_type = /obj/item/weapon/gun/rifle/type71
 
 /obj/item/ammo_magazine/rifle/type71/ap
-	name = "\improper Type 71 AP magazine (5.45x39mm)"
-	desc = "An armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	name = "\improper Type 71 AP magazine (10x27mm)"
+	desc = "An armor-piercing 10x27mm high-capacity casket magazine for the Type 71 rifle."
 	default_ammo = /datum/ammo/bullet/rifle/type71/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/type71/heap
-	name = "\improper Type 71 HEAP magazine (5.45x39mm)"
-	desc = "A standard high-explosive armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	name = "\improper Type 71 HEAP magazine (10x27mm)"
+	desc = "A standard high-explosive armor-piercing 10x27mm high-capacity casket magazine for the Type 71 rifle."
 	default_ammo = /datum/ammo/bullet/rifle/type71/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
@@ -495,6 +494,21 @@
 	desc = "An ABR-40 magazine loaded with holo-targeting ammunition, primarily utilized to highlight hunting targets for easier target capture. Theoretically cross-compatible with an L42A battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/holo_target/hunting
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
+
+
+//M20A
+/obj/item/ammo_magazine/rifle/m20a
+	name = "\improper M20A magazine (10x24mm)"
+	desc = "A 10mm assault rifle magazine."
+	caliber = "10x24mm"
+	icon_state = "m20a"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/m20a
+	w_class = SIZE_MEDIUM
+	ammo_band_icon = "+m20a_band"
+	ammo_band_icon_empty = "+m20a_band_e"
+
 
 //-------------------------------------------------------
 // NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE

@@ -1,0 +1,3 @@
+/obj/item/tool/kitchen/utensil/pknife : /obj/item/tool/kitchen/utensil/knife/plastic{@OLD}
+/obj/item/tool/kitchen/utensil/pfork : /obj/item/tool/kitchen/utensil/fork/plastic{@OLD}
+/obj/item/tool/kitchen/utensil/pspoon : /obj/item/tool/kitchen/utensil/spoon/plastic{@OLD}

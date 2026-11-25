@@ -17,6 +17,7 @@
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	max_range = 24 //So S8 users don't have their bullets magically disappaer at 22 tiles (S8 can see 24 tiles)
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/cartridge
 
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
@@ -147,6 +148,35 @@
 	penetration= ARMOR_PENETRATION_TIER_7
 	shell_speed = AMMO_SPEED_TIER_6
 
+
+/datum/ammo/bullet/rifle/m4ra/custom_tracker
+	name = "A19 HV tracking round"
+	shrapnel_chance = 0
+	damage_falloff = 0
+	flags_ammo_behavior = AMMO_BALLISTIC
+	accurate_range_min = 4
+
+	damage = 55
+	scatter = -SCATTER_AMOUNT_TIER_8
+	penetration= ARMOR_PENETRATION_TIER_7
+	shell_speed = AMMO_SPEED_TIER_6
+
+/datum/ammo/bullet/rifle/m4ra/custom_tracker/on_hit_mob(mob/target_mob, obj/projectile/fired_projectile)
+	. = ..()
+
+	if(!isliving(target_mob))
+		return
+	if(!fired_projectile || !fired_projectile.firer)
+		return
+
+	var/mob/living/shot_target = target_mob
+	var/mob/living/shooting_mob = fired_projectile.firer
+
+	if(shot_target.faction == shooting_mob.faction)
+		return
+
+	shot_target.AddComponent(/datum/component/tracking_bullets, shooting_mob)
+
 /datum/ammo/bullet/rifle/m4ra/incendiary
 	name = "A19 high velocity incendiary bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -193,7 +223,6 @@
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
-
 	damage = 55
 
 /datum/ammo/bullet/rifle/type71

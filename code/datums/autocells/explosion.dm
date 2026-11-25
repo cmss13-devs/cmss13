@@ -45,6 +45,8 @@
 	var/reflection_power_multiplier = 0.4
 	/// Whether the damage is considered to be from an environmental source
 	var/enviro = FALSE
+	/// Whether the explosion has been smothered
+	var/smothered = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0
@@ -79,20 +81,31 @@
 /datum/automata_cell/explosion/death()
 	if(shockwave)
 		qdel(shockwave)
+	exploded_atoms.Cut()
 
-// Compare directions. If the other explosion is traveling in the same direction,
-// the explosion is amplified. If not, it's weakened
-/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/E)
+/datum/automata_cell/explosion/propagate(dir)
+	var/datum/automata_cell/explosion/new_cell = ..()
+	new_cell?.exploded_atoms += exploded_atoms
+	return new_cell
+
+// Attempts to merge explosions. Will compare directions to determine effects on power.
+// If the other explosion is traveling in the same direction, the explosion is amplified.
+// If not, it's weakened
+// Returns TRUE if this explosion survived.
+/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/other)
+	if(QDELETED(other))
+		return TRUE
+
 	// Non-merging explosions take priority
-	if(!should_merge)
+	if(!should_merge || !other.should_merge)
 		return TRUE
 
 	// The strongest of the two explosions should survive the merge
 	// This prevents a weaker explosion merging with a strong one,
 	// the strong one removing all the weaker one's power and just killing the explosion
-	var/is_stronger = (power >= E.power)
-	var/datum/automata_cell/explosion/survivor = is_stronger ? src : E
-	var/datum/automata_cell/explosion/dying = is_stronger ? E : src
+	var/is_stronger = (power >= other.power)
+	var/datum/automata_cell/explosion/survivor = is_stronger ? src : other
+	var/datum/automata_cell/explosion/dying = is_stronger ? other : src
 
 	// Two epicenters merging, or a new epicenter merging with a traveling wave
 	if((!survivor.direction && !dying.direction) || (survivor.direction && !dying.direction))
@@ -109,10 +122,13 @@
 	// Two waves traveling the same direction amplifies the explosion
 	if(survivor.direction == dying.direction)
 		survivor.power += dying.power
+		survivor.exploded_atoms |= dying.exploded_atoms
 
 	// Two waves travling towards each other weakens the explosion
 	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
+
+	qdel(dying)
 
 	return is_stronger
 
@@ -145,19 +161,19 @@
 		return
 	// The resistance here will affect the damage taken and the falloff in the propagated explosion
 	var/resistance = max(0, in_turf.get_explosion_resistance(direction))
-	for(var/atom/A in in_turf)
-		resistance += max(0, A.get_explosion_resistance())
+	for(var/atom/thing in in_turf)
+		resistance += max(0, thing.get_explosion_resistance())
 
 	// Blow stuff up
 	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
-	for(var/atom/A in in_turf)
-		if(A in exploded_atoms)
+	for(var/atom/thing in in_turf)
+		if(thing.gc_destroyed)
 			continue
-		if(A.gc_destroyed)
+		if(thing in exploded_atoms)
 			continue
-		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
-		exploded_atoms += A
-		log_explosion(A, src)
+		exploded_atoms += thing
+		INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
+		log_explosion(thing, src)
 
 	var/reflected = FALSE
 
@@ -172,6 +188,9 @@
 			power *= reflection_power_multiplier
 		else
 			power -= resistance
+
+	if(smothered)
+		power -= power_falloff * EXPLOSION_SMOTHER_FALLOFF_MULTIPLIER // Smothered explosions have higher falloff!
 
 	if(power <= 0)
 		qdel(src)
@@ -194,28 +213,34 @@
 		if(new_power <= 0)
 			continue
 
-		var/new_falloff = power_falloff
-		// Handle our falloff function.
-		switch(falloff_shape)
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
-				new_falloff += new_falloff * dir_falloff
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
-				new_falloff += (new_falloff*0.5) * dir_falloff
+		var/datum/automata_cell/explosion/new_cell = propagate(dir)
+		if(!QDELETED(new_cell))
+			var/new_falloff = power_falloff
+			// Handle our falloff function.
+			switch(falloff_shape)
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
+					new_falloff += new_falloff * dir_falloff
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
+					new_falloff += (new_falloff*0.5) * dir_falloff
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON)
+					if(new_cell.in_turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
+						new_falloff += new_falloff * dir_falloff
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON)
+					if(new_cell.in_turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
+						new_falloff += (new_falloff*0.5) * dir_falloff
 
-		var/datum/automata_cell/explosion/E = propagate(dir)
-		if(E)
-			E.power = new_power
-			E.power_falloff = new_falloff
-			E.falloff_shape = falloff_shape
-			E.explosion_cause_data = explosion_cause_data
+			new_cell.power = new_power
+			new_cell.power_falloff = new_falloff
+			new_cell.falloff_shape = falloff_shape
+			new_cell.explosion_cause_data = explosion_cause_data
 
 			// Set the direction the explosion is traveling in
-			E.direction = dir
+			new_cell.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
-				E.delay = 1
+				new_cell.delay = 1
 
-			setup_new_cell(E)
+			setup_new_cell(new_cell)
 
 	// We've done our duty, now die pls
 	qdel(src)
@@ -231,20 +256,20 @@ When the cell processes, we simply don't blow up atoms that were tracked
 as having entered the turf.
 */
 
-/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/A)
+/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/thing)
 	// Once is enough
-	if(A in exploded_atoms)
+	if(thing.gc_destroyed)
+		return
+	if(thing in exploded_atoms)
 		return
 
-	exploded_atoms += A
+	exploded_atoms += thing
 
 	// Note that we don't want to make it a directed ex_act because
 	// it could toss them back and make them get hit by the explosion again
-	if(A.gc_destroyed)
-		return
-
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
-	log_explosion(A, src)
+	// so we indicate this with a direction < 0
+	INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), power, -1, explosion_cause_data, 0, enviro)
+	log_explosion(thing, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
@@ -255,6 +280,44 @@ as having entered the turf.
 
 	if(!epicenter)
 		return
+
+	var/cause = explosion_cause_data?.resolve_cause() // What caused the explosion?
+	var/containable = istype(cause, /obj/item/explosive/grenade) // Is the cause containable? (currently, only grenades)
+	var/smothered = FALSE // Given to automata_cell/explosion later to check against
+
+	if(containable)
+		var/obj/item/explosive/grenade/cause_grenade = cause
+		var/obj/item/explosive/grenade/high_explosive/airburst/cause_airburst = cause_grenade
+		if(istype(cause_grenade) && !istype(cause_airburst) && power < EXPLOSION_DANGEROUS_POWER)
+			// An alive human or xenomorph lying flat on the epicenter smothers the blast with their body.
+			for(var/mob/living/blocker in epicenter)
+				if(blocker.resting && blocker.stat == CONSCIOUS && blocker.a_intent ==  INTENT_DISARM)
+					if(blocker.mob_size == MOB_SIZE_XENO_VERY_SMALL) // Could be interesting to see allowed tbh
+						continue
+
+					for(var/mob/shielded_mob in range(EXPLOSION_SMOTHER_MESSAGE_TRIGGER_RANGE, epicenter))
+						if(shielded_mob == blocker || shielded_mob.stat == DEAD)
+							continue
+						var/gender_object_pronoun = blocker.gender == MALE ? "himself" : blocker.gender == PLURAL ? "herself" : "themselves"
+						var/gender_possessive_pronoun = blocker.gender == MALE ? "his" : blocker.gender == PLURAL ? "her" : "their"
+						epicenter.visible_message(SPAN_HIGHDANGER("<b>[blocker]</b> throws [gender_object_pronoun] onto the grenade to shield [gender_possessive_pronoun] fellow [ishuman(blocker) ? "people" : "sisters"]!"), null, 7)
+						break
+
+					// Simulates additional shrapnel damage, trying to do this in create_shrapnel() causes the mob to die before the exposion ever happens (since shrapnel is created after the explosion)
+					var/obj/item/explosive/grenade/high_explosive/cause_grenade_high_explosive = cause_grenade
+					if(istype(cause_grenade_high_explosive))
+						for(var/i=0;i<round(cause_grenade_high_explosive.shrapnel_count * EXPLOSION_SMOTHER_SHRAPNEL_PERCENT);i++)
+							var/obj/projectile/S = new(epicenter, explosion_cause_data)
+							S.generate_bullet(new cause_grenade_high_explosive.shrapnel_type)
+							S.projectile_flags |= PROJECTILE_SHRAPNEL
+							blocker.bullet_act(S, null)
+
+					blocker.take_overall_damage(power * EXPLOSION_SMOTHER_DAMAGE_MULTIPLIER) // Adds ontop of the already existing explosive damage from face-tanking
+					if((power >= EXPLOSION_DANGEROUS_POWER - 30) && blocker.health < 300)
+						blocker.gib() // goodbye cruel world
+
+					smothered = TRUE
+					break
 
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
@@ -286,7 +349,7 @@ as having entered the turf.
 	if(QDELETED(E))
 		return
 
-	if(power >= 150) //shockwave for anything over 150 power
+	if(power >= EXPLOSION_DANGEROUS_POWER) //shockwave for anything over 150* power
 		new /obj/effect/shockwave(epicenter, power/60)
 
 	E.power = power
@@ -295,8 +358,9 @@ as having entered the turf.
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
 	E.enviro = enviro
+	E.smothered = smothered
 
-	if(power >= 100) // powerful explosions send out some special effects
+	if(power >= 100 && !smothered) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
 
@@ -330,11 +394,11 @@ as having entered the turf.
 		affected.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
 		firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
 
-		var/ff_msg = "[key_name(firing_mob)] blew up [key_name(affected)] with \a [explosion_source] in [get_area(location)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP LOC</a>) [ADMIN_JMP_USER(firing_mob)] [ADMIN_PM(firing_mob)]"
+		var/ff_msg = "[key_name(firing_mob)] blew up [key_name(affected)] with \a [explosion_source] in [get_area(location)] [ADMIN_JUMP_COORDS(location.x, location.y, location.z)] [ADMIN_JMP_USER(firing_mob)] [ADMIN_PM(firing_mob)]"
 		var/ff_living = TRUE
 		if(affected.stat == DEAD)
 			ff_living = FALSE
-		msg_admin_ff(ff_msg, ff_living)
+		msg_admin_ff(ff_msg, ff_living, firing_mob.loc.z)
 
 		if(ishuman(firing_mob))
 			var/mob/living/carbon/human/attacking_human = firing_mob

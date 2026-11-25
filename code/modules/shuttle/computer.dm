@@ -9,6 +9,8 @@
 	var/shuttleId
 	var/possible_destinations = list()
 	var/admin_controlled
+	/// Whether this computer can function even during FTL or on a ground crash
+	var/ignore_ftl_or_crash = FALSE
 
 /obj/structure/machinery/computer/shuttle/proc/is_disabled()
 	return FALSE
@@ -104,6 +106,7 @@
 
 	/// if the ERT that used this shuttle has returned home
 	var/mission_accomplished = FALSE
+	var/ui_theme = "crtlobby"
 
 /obj/structure/machinery/computer/shuttle/ert/broken
 	name = "nonfunctional shuttle control console"
@@ -173,7 +176,7 @@
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 
-	if(ert.distress_beacon && ishuman(user))
+	if(ert.distress_beacon && length(ert.distress_beacon.members) && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/obj/item/card/id/id = human_user.get_active_hand()
 		if(!istype(id))
@@ -192,14 +195,24 @@
 		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
 		ui.open()
 
-
 /obj/structure/machinery/computer/shuttle/ert/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
-
+	if(!ignore_ftl_or_crash && SShijack.in_ftl) // Ever ERT can go to ground map return hijack_status check
+		var/turf/our_location = get_turf(src)
+		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+		if(!shuttle)
+			if(is_mainship_level(our_location.z))
+				to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+				return UI_CLOSE
+			return .
+		var/turf/shuttle_location = get_turf(shuttle)
+		if(is_mainship_level(shuttle_location.z) || (shuttle_location.z != our_location.z && is_mainship_level(our_location.z)))
+			to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+			return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -246,6 +259,7 @@
 			"error" = can_dock,
 		)
 		.["destinations"] += list(dockinfo)
+	.["ui_theme"] = ui_theme
 
 /obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -326,6 +340,19 @@
 		return TRUE
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/shuttle/ert/attack_alien(mob/living/carbon/xenomorph/xeno)
+	// If the attacking xeno isn't the queen or predalien.
+	if(IS_XENO_DROPSHIP_CAPABLE(xeno))
+		xeno.animation_attack_on(src)
+		disabled = TRUE
+		to_chat(xeno, SPAN_XENONOTICE("We slash at [src], rendering it inoperable!"))
+		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
+	else
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+	return XENO_NONCOMBAT_ACTION
+
+
 /obj/structure/machinery/computer/shuttle/ert/small
 	name = "transport shuttle"
 	desc = "A transport shuttle flight computer."
@@ -358,6 +385,77 @@
 			continue
 		. += list(dock)
 
+/obj/structure/machinery/computer/shuttle/ert/alamo
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/alamo/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
+		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/hunter
+	name = "flight console"
+	desc = "An advanced alien flight console."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "console_shuttle"
+	ui_theme = "ntos_spooky"
+
+/obj/structure/machinery/computer/shuttle/ert/hunter/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/yautja))
+			. += list(dock)
+			continue
+
+		if(!is_mainship_level(dock.z))
+			continue
+
+		if(dock.is_external)
+			continue
+
+		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/hunter/proc/resync_landing_zones()
+	compatible_landing_zones = get_landing_zones()
+
+/obj/structure/machinery/computer/shuttle/ert/hunter/tgui_interact(mob/user, datum/tgui/ui)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this terminal."))
+		return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "NavigationShuttle", "Hunter Navigation Computer")
+		ui.open()
+
+/obj/structure/machinery/computer/shuttle/ert/pred_mcaste
+	name = "flight console"
+	desc = "An advanced alien flight console."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "console_shuttle"
+
+// as preds don't have standard IDs (it's in their bracer) we check for a user's knowledge of pred tech instead
+/obj/structure/machinery/computer/shuttle/ert/pred_mcaste/tgui_interact(mob/user, datum/tgui/ui)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	if(ert.distress_beacon && ishuman(user))
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+			to_chat(user, SPAN_WARNING("The console's interface is awash with strange symbols. You have no idea how to operate this thing."))
+			balloon_alert(user, "???")
+			return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
+		ui.open()
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."
@@ -379,6 +477,7 @@
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+
 	if(lifeboat.status == LIFEBOAT_LOCKED)
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
@@ -405,8 +504,10 @@
 			SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
 		override_being_removed = FALSE
 		return
-	else if(lifeboat.status == LIFEBOAT_INACTIVE)
+
+	if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
+
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
@@ -424,7 +525,17 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
-				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+				var/turf/shuttle_location = get_turf(lifeboat)
+				if(!ignore_ftl_or_crash && is_mainship_level(shuttle_location.z))
+					if(SShijack.in_ftl)
+						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
+						return
+
+					if(SShijack.crashed || !SShijack.escape_possible)
+						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
+						return
+
+				if(!SShijack.sd_detonated && (SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE || SShijack.current_progress < SShijack.early_launch_required_progress))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
@@ -464,7 +575,7 @@
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION
-		if(lifeboat.mode == SHUTTLE_CALL)
+		if(lifeboat.forced_launch || lifeboat.mode == SHUTTLE_CALL)
 			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
 			return XENO_NO_DELAY_ACTION
 
@@ -472,7 +583,7 @@
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(lifeboat.status == LIFEBOAT_LOCKED)
 				return XENO_NO_DELAY_ACTION
-			if(lifeboat.mode == SHUTTLE_CALL)
+			if(lifeboat.forced_launch || lifeboat.mode == SHUTTLE_CALL)
 				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
 				return XENO_NO_DELAY_ACTION
 			lifeboat.status = LIFEBOAT_LOCKED

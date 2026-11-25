@@ -33,7 +33,7 @@
 /datum/paygrade/civilian/associateprofessor
 	paygrade = PAY_SHORT_CCMOB
 	name = "Associate Professor"
-	prefix = "Assoc. Prof."
+	prefix = "Asc. Prof."
 	pay_multiplier = 3.5
 
 /datum/paygrade/civilian/professor
@@ -46,7 +46,7 @@
 /datum/paygrade/civilian/regentsprofessor
 	paygrade = PAY_SHORT_CCMOD
 	name = "Regents Professor"
-	prefix = "Regents Prof."
+	prefix = "Rgts. Prof."
 	pay_multiplier = 4
 	officer_grade = GRADE_OFFICER
 

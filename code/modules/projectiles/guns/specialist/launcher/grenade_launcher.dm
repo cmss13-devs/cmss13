@@ -25,7 +25,7 @@
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_SLOW
+	wield_delay = WEAPON_DELAY_SLOW
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.close(user) so they don't still have the screen open!
 	var/open_chamber = TRUE
@@ -46,7 +46,7 @@
 /obj/item/weapon/gun/launcher/grenade/set_gun_config_values()
 	..()
 	recoil = RECOIL_AMOUNT_TIER_4 //Same as m37 shotgun.
-
+	set_fire_delay(FIRE_DELAY_TIER_GL)
 
 /obj/item/weapon/gun/launcher/grenade/on_pocket_insertion() //Plays load sfx whenever a nade is put into storage.
 	playsound(usr, reload_sound, 25, 1)
@@ -200,7 +200,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
 				human_user.remember_dropped_object(fired)
-				fired.fingerprintslast = key_name(user)
+				fired.fingerprintslast = user.ckey
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
@@ -214,9 +214,10 @@
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
+/obj/item/weapon/gun/launcher/grenade/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	return FALSE
 
-
-//Doesn't use these. Listed for reference.
+//Doesn't use these. Listed for reference. - Really should just actually write these out so it can use Autofire
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()
 	return
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()
@@ -289,9 +290,6 @@
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
@@ -316,9 +314,6 @@
 /obj/item/weapon/gun/launcher/grenade/m81/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4 * 1.5)
 
 /obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
@@ -349,9 +344,6 @@
 	is_lobbing = TRUE
 	internal_slots = 3
 
-/obj/item/weapon/gun/launcher/grenade/m84/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m84/able_to_fire(mob/living/user)
 	. = ..()
@@ -365,7 +357,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/m85a1//m85a1 variant for marines
 	name = "\improper M85A1 grenade launcher"
-	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertice to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
+	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi-automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertise to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "m85a1"
 	item_state = "m85a1"

@@ -1,12 +1,15 @@
 /// This is the main proc. It instantly moves our mobile port to stationary port `new_dock`.
 /obj/docking_port/mobile/proc/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force=FALSE)
-	if(new_dock.get_docked() == src)
+	if(new_dock?.get_docked() == src)
 		remove_ripples()
 		return DOCKING_SUCCESS
 
 	if(!force)
 		if(!check_dock(new_dock))
 			remove_ripples()
+			if(destination && dock_failures++ > 4)
+				destination = null
+				message_admins("Shuttle [src] repeatedly failed to initiate_docking and is being forced to a null destination!")
 			return DOCKING_BLOCKED
 		if(!canMove())
 			remove_ripples()
@@ -75,10 +78,15 @@
 	if(!force)
 		if(!check_dock(new_dock))
 			remove_ripples()
+			if(destination && dock_failures++ > 4)
+				destination = null
+				message_admins("Shuttle [src] repeatedly failed to initiate_docking and is being forced to a null destination!")
 			return DOCKING_BLOCKED
 		if(!canMove())
 			remove_ripples()
 			return DOCKING_IMMOBILIZED
+
+	dock_failures = 0
 
 	// Moving to the new location will trample the ripples there at the exact
 	// same time any mobs there are trampled, to avoid any discrepancy where
@@ -207,4 +215,3 @@
 			continue
 		var/turf/oldT = moved_atoms[moved_object]
 		moved_object.lateShuttleMove(oldT, movement_force, movement_direction)
-

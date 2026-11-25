@@ -46,6 +46,7 @@ $cia: hsl(16, 75%, 60%);
 $provost: hsl(355, 93%, 32%);
 $yautja: hsl(133, 74%, 46%);
 $hyperdyne: hsl(23, 100%, 55%);
+$army: hsl(170, 47%, 36%);
 
 $_channel_map: (
   'say': $say,
@@ -95,6 +96,7 @@ $_channel_map: (
   'pmc-cct': $pmc,
   'pmc-cmd': $pmc,
   'specops': $pmc,
+  'army': $army,
   'pmc': $pmc,
   'cia': $cia,
   'provost': $provost,

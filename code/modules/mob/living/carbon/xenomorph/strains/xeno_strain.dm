@@ -16,6 +16,26 @@
 	/// Typepath of the [/datum/behavior_delegate] to add.
 	var/behavior_delegate_type
 
+	/// How much phero strength is modified by this strain. Applied in parent of apply_strain.
+	var/phero_mod = 0
+	/// How much slash damage is modified by this strain. Applied in parent of apply_strain.
+	var/damage_mod = 0
+	/// How much health is modified by this strain. Applied in parent of apply_strain.
+	var/health_mod = 0
+	/// How much armor is modified by this strain. Applied in parent of apply_strain.
+	var/armor_mod = 0
+	/// How much expolosive armor is modified by this strain. Applied in parent of apply_strain.
+	var/explosive_armor_mod = 0
+	/// How much speed is modified by this strain. Applied in parent of apply_strain.
+	var/speed_mod = 0
+	/// How much attack speed is modified by this strain (lower faster). Applied in parent of apply_strain.
+	var/attack_speed_mod = 0
+	/// How much plasma pool is modified by this strain. Applied in parent of apply_strain.
+	var/plasma_mod = 0
+
+	/// Regen multiplier that is modified by this strain. Applied in parent of apply_strain.
+	var/regen_mult = 1
+
 /**
  * Add this strain to `xeno`, replacing their actions and behavior holder.
  *
@@ -46,6 +66,7 @@
 		xeno.behavior_delegate.add_to_xeno()
 
 	apply_strain(xeno)
+	xeno.recalculate_everything()
 
 	xeno.update_icons()
 	xeno.hive.hive_ui.update_xeno_info()
@@ -62,13 +83,23 @@
  * Called when the strain is first added to the player.
  */
 /datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
-	// Override with custom behaviour.
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	xeno.phero_modifier += phero_mod
+	xeno.damage_modifier += damage_mod
+	xeno.health_modifier += health_mod
+	xeno.armor_modifier += armor_mod
+	xeno.explosivearmor_modifier += explosive_armor_mod
+	xeno.speed_modifier += speed_mod
+	xeno.attack_speed_modifier += attack_speed_mod
+	xeno.plasmapool_modifier += plasma_mod
+
+	xeno.regeneration_multiplier = regen_mult
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
 	set desc = "Purchase a strain for yourself"
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain())
@@ -106,7 +137,7 @@
 /mob/living/carbon/xenomorph/verb/reset_strain()
 	set name = "Reset Strain"
 	set desc = "Reset your strain."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain(reset = TRUE))
@@ -138,6 +169,17 @@
 	log_strain("[new_xeno.name] reset their strain.")
 	COOLDOWN_START(new_xeno, next_strain_reset, 40 MINUTES)
 
+/mob/living/carbon/xenomorph/verb/strain_info()
+	set name = "Strain Information"
+	set desc = "Gives information about your strain."
+	set category = "Alien.Essentials"
+
+	// Checks if user has a strain.
+	if(!strain)
+		return
+
+	to_chat(src, SPAN_XENOANNOUNCE(strain.description))
+
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)
 	if(!length(caste.available_strains) || !check_state(TRUE))
@@ -148,7 +190,7 @@
 		return FALSE
 
 	if(!strain && reset)
-		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
+		to_chat(src, SPAN_WARNING("We must first pick a strain before resetting it."))
 		return FALSE
 
 	if(is_zoomed)
@@ -171,7 +213,7 @@
 		to_chat(src, SPAN_WARNING("We must be at full health to take a strain."))
 		return FALSE
 
-	if(agility || fortify || crest_defense || stealth)
+	if(fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_WARNING("We cannot take a strain while in this stance."))
 		return FALSE
 

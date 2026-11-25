@@ -109,14 +109,19 @@
 	mob.animate_movement = NO_STEPS
 
 	var/atom/movable/screen/plane_master/openspace_backdrop/open_space_shadow = locate() in screen
-	var/atom/movable/screen/plane_master/open_space/open_space_blur = locate() in screen
+	var/list/open_space_blurs = list()
+	for(var/atom/movable/screen/plane_master/open_space/open_space_blur in screen)
+		open_space_blurs += open_space_blur
+
 	switch(multi_z_effects)
 		if("All")
 			open_space_shadow.Hide()
-			open_space_blur.Hide()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.Hide()
 		if("Dropshadow + Blur")
 			open_space_shadow.Hide()
-			open_space_blur.remove_filters()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.remove_filters()
 		if("Dropshadow")
 			open_space_shadow.Hide()
 
@@ -157,17 +162,19 @@
 			cur_x = min(cur_x, width_inside)
 		if(cur_y == height_inside)
 			break
-		cur_x = half_chunk_size
+		cur_x = half_chunk_size + offset_x
 		cur_y += chunk_size
 		cur_y = min(cur_y, height_inside)
 
 	switch(multi_z_effects)
 		if("All")
 			open_space_shadow.Show()
-			open_space_blur.Show()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.Show()
 		if("Dropshadow + Blur")
 			open_space_shadow.Show()
-			open_space_blur.add_filters()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.add_filters()
 		if("Dropshadow")
 			open_space_shadow.Show()
 
@@ -176,7 +183,7 @@
 		mob.hud_used.show_hud(HUD_STYLE_STANDARD)
 	mob.animate_movement = SLIDE_STEPS // Initial is incorrect
 
-	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
+	to_chat(mob, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()

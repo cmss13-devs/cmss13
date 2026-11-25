@@ -159,9 +159,9 @@
 /obj/item/explosive/grenade/high_explosive/airburst/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+	if(isturf(hit_atom) && hit_atom.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(ismob(hit_atom))
@@ -205,7 +205,7 @@
 
 /obj/item/explosive/grenade/incendiary/impact
 	name = "\improper 40mm incendiary grenade"
-	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as an incendiary grenade, watch your fire."
 	icon_state = "grenade_40mm_inc"
 	det_time = 0
 	item_state = "grenade_fire"
@@ -225,11 +225,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
@@ -260,9 +260,9 @@
 /obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+	if(isturf(hit_atom) && hit_atom.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(explosion_power)
@@ -368,11 +368,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
@@ -547,6 +547,8 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
+	msg_admin_attack("[key_name(user)] has deployed \a [name] in landmine mode in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z])", src.loc.x, src.loc.y, src.loc.z)
+	planted.cause_data = create_cause_data(initial(name), user, src)
 	planted.activate_sensors()
 	planted.iff_signal = user.faction // assuring IFF is set
 	planted.pixel_x += rand(-5, 5)
@@ -727,11 +729,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)

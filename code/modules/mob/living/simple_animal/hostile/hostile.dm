@@ -60,6 +60,8 @@
 		return FALSE
 	if(WEAKREF(target) in friends)
 		return FALSE
+	if (HAS_TRAIT(target, TRAIT_CLOAKED))
+		return FALSE
 	return target
 
 /mob/living/simple_animal/hostile/proc/Found(atom/A)

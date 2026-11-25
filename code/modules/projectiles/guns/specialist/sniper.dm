@@ -14,7 +14,7 @@
 	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_SLOW
+	wield_delay = WEAPON_DELAY_SLOW
 
 	var/has_aimed_shot = TRUE
 	var/aiming_time = 1.25 SECONDS
@@ -172,12 +172,16 @@
 		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), f_aiming_time, easing = SINE_EASING|EASE_OUT)
 
 	////timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out before the doafter is done. blame sleeps or something
+	SEND_SIGNAL(human, COMSIG_HUMAN_AIMED_SHOT_START)
 
 	if(!do_after(human, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		SEND_SIGNAL(human, COMSIG_HUMAN_AIMED_SHOT_END)
 		target.overlays -= lockon_icon
 		target.overlays -= lockon_direction_icon
 		qdel(laser_beam)
 		return
+
+	SEND_SIGNAL(human, COMSIG_HUMAN_AIMED_SHOT_END)
 
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon
@@ -333,7 +337,7 @@
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
 	force = 12
-	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
+	wield_delay = WEAPON_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
@@ -403,7 +407,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1
 	name = "\improper XM43E1 experimental anti-materiel rifle"
-	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless.\n\nThis weapon can punch through thin metal plating and walls, though it'll lose most of its lethality in the process. It can even work for demolitions, with experienced users known to disassemble segments of solid, reinforced walls in the field with just a single standard magazine of 10x99mm. In lieu of explosives or an engineer, they instead use each of the 8 shots to break down vital structural supports, taking the wall apart in the process."
+	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in heavy 10x99mm,\n\nthis weapon can punch through thin metal plating and walls, though it'll lose most of its lethality in the process. It can even work for demolitions, with experienced users known to disassemble segments of solid, reinforced walls in the field with just a single standard magazine of 10x99mm. In lieu of explosives or an engineer, they instead use each of the 8 shots to break down vital structural supports, taking the wall apart in the process."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
@@ -417,15 +421,15 @@
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga
 	force = 12
-	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
+	wield_delay = WEAPON_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	sniper_beam_type = /obj/effect/ebeam/laser
 	sniper_beam_icon = "laser_beam"
 	sniper_lockon_icon = "sniper_lockon"
-	pixel_x = -4
-	hud_offset = -4
+	pixel_x = -5
+	hud_offset = -5
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
 	. = ..()
@@ -481,7 +485,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
-	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest ammo available, 10x99mm Caseless. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
+	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest, yet trusted ammo available, the AT 10x99mm AP. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/marksman_rifles.dmi'
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
@@ -490,11 +494,13 @@
 	current_mag = /obj/item/ammo_magazine/sniper/elite
 	force = 17
 	zoomdevicename = "scope"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
 	has_aimed_shot = FALSE
+	pixel_x = -2
+	hud_offset = -2
 
 /obj/item/weapon/gun/rifle/sniper/elite/Initialize()
 	. = ..()
@@ -505,6 +511,7 @@
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
@@ -536,11 +543,12 @@
 			PMC_sniper.KnockDown(5)
 			PMC_sniper.Stun(5)
 
-//Type 88 //Based on the actual Dragunov DMR rifle.
+//FPA-299, UPP/rebel sniper rifle
 
 /obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper Type 88 designated marksman rifle"
-	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
+	name = "\improper FPA-299 designated marksman rifle"
+	desc = "The standard issue DMR of the UPP, the FPA-299 is an accurate and powerful rifle, whilst not a true sniper rifle, it greatly exceeds the range and accuracy of similar DMRs used by other nations such as the M4RA and L64 rifles used by the USCM and TWE."
+	desc_lore = "The Fusil de Precisión Avanzado, or the FPA-299, is the current standard DMR of all branches of the UPPAC. It is an exceedingly accurate rifle, and is used by snipers of the UPP more than the actual purpose made anti-material rifle of the Union, the HpG-A. \nMore of an upgrade than an actual new weapon, the design of the FTA-299 is nearly identical to the older FPA-270 DMR of Dog War fame, but with an upscaled 12x28mm cartridge also used by the QYJ-72, in comparision to the older 9x28mm cartridge used by the FPA-270."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88"
 	item_state = "type88"
@@ -570,7 +578,7 @@
 		/obj/item/attachable/bipod,
 	)
 	has_aimed_shot = FALSE
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 	starting_attachment_types = list()
 	sniper_beam_type = null
 	skill_locked = FALSE
@@ -593,5 +601,5 @@
 	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0

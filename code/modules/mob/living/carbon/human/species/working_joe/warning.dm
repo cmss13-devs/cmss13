@@ -15,9 +15,10 @@
 	sound = 'sound/voice/joe/dontdothat.ogg'
 	haz_sound = 'sound/voice/joe/dontdothat_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_nado.ogg'
+	daniel_sound = 'sound/voice/joe/daniel/dont_do_that.ogg'
 	say_message = "Don't do that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE|DANIEL_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_run
 	key = "dontrun"
@@ -351,3 +352,10 @@
 	say_message = "Be quiet."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/cant_permit
+	key = "cant_permit"
+	sound = 'sound/voice/joe/daniel/im_afraid_i_cant.ogg'
+	say_message = "I'm afraid I cannot permit that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

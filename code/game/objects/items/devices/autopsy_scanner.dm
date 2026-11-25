@@ -14,16 +14,6 @@
 	var/target_name = null
 	var/timeofdeath = null
 
-/obj/item/device/autopsy_scanner/Initialize()
-	. = ..()
-
-	LAZYADD(GLOB.objects_of_interest, src)
-
-/obj/item/device/autopsy_scanner/Destroy()
-	. = ..()
-
-	LAZYREMOVE(GLOB.objects_of_interest, src)
-
 /datum/autopsy_data_scanner
 	var/weapon = null // this is the DEFINITE weapon type that was used
 	var/list/organs_scanned = list() // this maps a number of scanned organs to the wounds to those organs with this data's weapon type
@@ -79,6 +69,9 @@
 	for(var/V in O.trace_chemicals)
 		if(O.trace_chemicals[V] > 0 && !chemtraces.Find(V))
 			chemtraces += V
+
+/obj/item/device/autopsy_scanner/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
 
 /obj/item/device/autopsy_scanner/verb/print_data()
 	set category = "Object"

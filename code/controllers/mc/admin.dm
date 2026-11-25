@@ -25,6 +25,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	name = text
 	return src
 
+/obj/effect/statclick/Topic(href, href_list)
+	if(usr.client && usr.client.admin_holder)
+		Action(href_list["action"])
+
+/obj/effect/statclick/proc/Action(action)
+	return
+
 /obj/effect/statclick/debug
 	var/class
 
@@ -42,7 +49,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			class = "unknown"
 
 	usr.client.debug_variables(target)
-	message_admins("Admin [key_name_admin(usr)] is debugging the [target] [class].")
+	message_admins("Admin [key_name_admin(usr)] is debugging [target] [class].")
 	return TRUE
 
 
@@ -62,7 +69,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			new /datum/controller/failsafe()
 			//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
-	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+	message_admins("Admin [key_name_admin(usr)] has restarted \the [controller] controller.")
 
 /client/proc/debug_controller()
 	set category = "Debug.Controllers"
@@ -89,9 +96,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	debug_variables(controller)
 
 	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
-	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
-
-	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+	message_admins("Admin [key_name_admin(usr)] is debugging \the [controller] controller.")
 
 /client/proc/debug_role_authority()
 	set category = "Debug.Controllers"

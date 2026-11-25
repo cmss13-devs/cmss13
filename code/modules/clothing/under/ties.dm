@@ -8,7 +8,7 @@
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ties.dmi'
-	var/list/accessory_icons = list(
+	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
 	)
@@ -22,7 +22,7 @@
 	worn_accessory_slot = 1
 
 /obj/item/clothing/accessory/attack_self(mob/user)
-	if(can_become_accessory)
+	if(flags_obj & OBJ_CAN_ACCESSORIZE)
 		revert_from_accessory(user)
 		return
 	return ..()
@@ -391,7 +391,7 @@
 
 /obj/item/clothing/accessory/medal/gold/cross
 	name = MARINE_MEDAL_GALACTIC_CROSS
-	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
+	desc = "The second-highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
 	icon_state = "ua_cross"
 	awarding_faction = FACTION_MARINE
 
@@ -499,7 +499,7 @@
 
 /obj/item/clothing/accessory/armband/squad
 	name = "squad armband"
-	desc = "An armband in squad colors, worn for ease of idenfication."
+	desc = "An armband in squad colors, worn for ease of identification."
 	icon_state = "armband_squad"
 	var/dummy_icon_state = "armband_%SQUAD%"
 	var/static/list/valid_icon_states
@@ -553,9 +553,8 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "USCM patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
-	icon_state = "uscmpatch"
+	name = "potato patch"
+	desc = "you shouldnt see this, ahelp if you do."
 	icon = 'icons/obj/items/clothing/accessory/patches.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi',
@@ -569,12 +568,19 @@
 	worn_accessory_slot = ACCESSORY_SLOT_PATCH
 	worn_accessory_limit = 4
 
+/obj/item/clothing/accessory/patch/uscmpatch
+	name = "USCM patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
+	icon_state = "uscmpatch"
+	item_state = "uscmpatch_right_shoulder"
+	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_right_shoulder")
+	flags_obj = OBJ_IS_STYLISH
+	style_postfix = list("right_shoulder", "left_shoulder", "right_chest", "left_chest")
+
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
-	item_state_slots = list(WEAR_AS_GARB = "falconspatch")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/devils
 	name = "USCM Solar Devils patch"
@@ -849,6 +855,7 @@
 /obj/item/clothing/accessory/storage/Initialize()
 	. = ..()
 	hold = new hold(src)
+	hold.storage_flags |= STORAGE_FLAGS_POUCH
 
 /obj/item/clothing/accessory/storage/Destroy()
 	QDEL_NULL(hold)
@@ -856,6 +863,8 @@
 
 /obj/item/clothing/accessory/storage/clicked(mob/user, list/mods)
 	if(mods[ALT_CLICK] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		return
+	if(mods[CTRL_CLICK] && loc == user && (hold.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
 		return
 	. = ..()
 
@@ -902,6 +911,11 @@
 	if(.)
 		C.w_class = initial(C.w_class)
 		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+
+/obj/item/clothing/accessory/storage/get_examine_text(mob/user)
+	. = ..()
+	if(hold.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
+		. += "\nCtrl + Click to swap storage drawing method."
 
 /obj/item/storage/internal/accessory/webbing
 	bypass_w_limit = list(
@@ -1226,7 +1240,6 @@
 	max_storage_space = 5
 	can_hold = list(
 		/obj/item/tool/kitchen/utensil/knife,
-		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
@@ -1504,6 +1517,31 @@ Wrist Accessories
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
 
+/obj/item/clothing/accessory/rosary
+	name = "rosary"
+	desc = "Jesus Saves Lives!"
+	icon_state = "rosary"
+	item_state = "rosary_neck"
+	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "rosary")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	flags_obj = OBJ_IS_STYLISH|OBJ_IS_HELMET_GARB
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
+	worn_accessory_limit = 2
+	style_postfix = list("neck", "left_wrist", "right_wrist")
+
+/obj/item/clothing/accessory/rosary/gold
+	name = "golden rosary"
+	desc = "Truly, one can be closest to God when adorned in gold, jewels, and riches whilst flaunting it about."
+	icon_state = "grosary"
+	item_state = "grosary_neck"
+	item_state_slots = list(WEAR_AS_GARB = "grosary")
 
 //TEMPORARY
 
@@ -1540,6 +1578,10 @@ Wrist Accessories
 	name = "urban raincover"
 	icon_state = "raincover_urban"
 
+/obj/item/clothing/accessory/helmet/cover/raincover/snow
+	name = "snow raincover"
+	icon_state = "raincover_snow"
+
 /obj/item/clothing/accessory/helmet/cover/netting
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
@@ -1556,3 +1598,7 @@ Wrist Accessories
 /obj/item/clothing/accessory/helmet/cover/netting/urban
 	name = "urban combat netting"
 	icon_state = "netting_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting/snow
+	name = "snow combat netting"
+	icon_state = "netting_snow"

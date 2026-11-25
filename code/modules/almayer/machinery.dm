@@ -118,6 +118,17 @@
 	on_unset_interaction(source)
 	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
+/obj/structure/machinery/prop/almayer/CICmap/update_icon()
+	if(stat & BROKEN)
+		icon_state = "maptableb"
+	else
+		if(stat & NOPOWER)
+			icon_state = "maptable0"
+			stat |= NOPOWER
+		else
+			icon_state = initial(icon_state)
+			stat &= ~NOPOWER
+
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"
 	desc = "A terminal that displays a map of the current operation location."
@@ -133,6 +144,10 @@
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
 	minimap_flag = MINIMAP_FLAG_PMC
+
+/obj/structure/machinery/prop/almayer/CICmap/toc
+	name = "Tactical Map Display"
+	icon_state = "toc_map"
 
 //Nonpower using props
 

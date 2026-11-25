@@ -5,8 +5,6 @@
 		if("distress")
 			admin_force_distress()
 		if("selfdestruct")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
-				return
 			admin_force_selfdestruct()
 		if("evacuation_start")
 			if(alert(usr, "Are you sure you want to trigger an evacuation?", "Confirmation", "Yes", "No") != "Yes")
@@ -281,6 +279,13 @@
 
 			arm_equipment(spawned_human, job_name, TRUE, FALSE)
 
+			// Ensure created humans get proper minimap integration
+			var/obj/item/device/radio/headset/headset = spawned_human.wear_l_ear
+			if(!headset || !istype(headset, /obj/item/device/radio/headset))
+				headset = spawned_human.wear_r_ear
+			if(headset && istype(headset, /obj/item/device/radio/headset) && headset.minimap_type)
+				headset.add_minimap(spawned_human)
+
 			humans += spawned_human
 
 			if(strip_the_humans)
@@ -311,14 +316,6 @@
 					if(istype(current_item, /obj/item/explosive))
 						qdel(current_item)
 
-				for(var/obj/item/hand_item in spawned_human.hands)
-					if(istype(hand_item, /obj/item/weapon))
-						qdel(hand_item)
-						continue
-
-					if(istype(hand_item, /obj/item/explosive))
-						qdel(hand_item)
-
 		if(play_as)
 			spawned_human.ckey = owner.ckey
 
@@ -333,14 +330,16 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
-			if(ql_prompt == "Yes")
-				quiet_launch = FALSE
+			if(!SShijack.in_ftl)
+				var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
+				if(ql_prompt == "Yes")
+					quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
-			if(ar_prompt == "Yes")
-				announce_receipt = TRUE
+			if(!SShijack.in_ftl)
+				var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
+				if(ar_prompt == "Yes")
+					announce_receipt = TRUE
 
 			var/delete_midless_mobs = FALSE
 			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
@@ -436,14 +435,16 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
-			if(ql_prompt == "Yes")
-				quiet_launch = FALSE
+			if(!SShijack.in_ftl)
+				var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
+				if(ql_prompt == "Yes")
+					quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
-			if(ar_prompt == "Yes")
-				announce_receipt = TRUE
+			if(!SShijack.in_ftl)
+				var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
+				if(ar_prompt == "Yes")
+					announce_receipt = TRUE
 
 			var/delete_midless_mobs = FALSE
 			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)

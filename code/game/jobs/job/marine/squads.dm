@@ -53,6 +53,8 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	/// Roles that can only join this squad through CIC transfers (ASS future proofing)
+	var/list/transfer_only_roles = list()
 	/// Squad roles actual number of players list
 	var/list/roles_in = list()
 	/// Squad headsets default radio frequency
@@ -473,11 +475,7 @@
 
 	if(only_leader)
 		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
-			playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
-			if(squad_leader in targets_to_garble)
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[garbled_text]", /atom/movable/screen/text/screen_text/command_order, message_color)
-			else
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[text]", /atom/movable/screen/text/screen_text/command_order, message_color)
+			squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[text]", /atom/movable/screen/text/screen_text/command_order, message_color)
 		return
 
 	for(var/mob/living/carbon/human/marine in marines_list)
@@ -499,10 +497,7 @@
 		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
 			if(transmitter)
 				squad_leader << sound('sound/effects/tech_notification.ogg')
-			if(squad_leader in targets_to_garble)
-				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][garbled_text]")]", type = MESSAGE_TYPE_RADIO)
-			else
-				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
+			to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 		return
 
 	for(var/mob/living/carbon/human/marine in marines_list)
@@ -583,9 +578,17 @@
 		var/turf/current_turf = get_turf(current_mob)
 		var/is_shipside = is_mainship_level(current_turf?.z)
 		if(!is_shipside && !(current_turf?.z in coms_zs))
-			targets_to_garble += current_mob
+			if(!istype(current_mob.back, /obj/item/storage/backpack/marine/satchel/rto))
+				targets_to_garble += current_mob
 
 	return targets_to_garble
+
+/datum/squad/proc/get_joinable_role_slots(role, skip_limit = FALSE)
+	if(role in transfer_only_roles)
+		return 0
+	if(skip_limit || isnull(roles_cap[role]))
+		return null
+	return max(0, roles_cap[role] - roles_in[role])
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
@@ -817,7 +820,7 @@
 					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[GET_DEFAULT_ROLE(old_lead.job)]
 					old_lead.comm_title = job.gear_preset.role_comm_title
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
-				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer)
 				if(headset)
 					for(var/obj/item/device/encryptionkey/squadlead/acting/key in headset.keys)
 						headset.keys -= key

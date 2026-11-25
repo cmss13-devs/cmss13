@@ -1,8 +1,12 @@
 /datum/xeno_strain/berserker
 	name = RAVAGER_BERSERKER
-	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of five rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every enemy you hit after an immobilizing wind-up."
-	flavor_description = "Unbridled fury fills this one. You will become an extension of my rage."
+	description = "We lose our Empower, Charge, and Scissor Cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make us a terrifying melee monster. By slashing, we heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Our new Apprehend ability increases our movement speed and applies a slow on the next target we slash. Our Clothesline ability flings our target to heal ourselves, even more so if we have a rage stack that will be used up. Finally, Eviscerate unleashes a devastating windmill attack that heals us for every enemy we hit after an immobilizing wind-up."
+	flavor_description = "Unbridled fury fills this one. It will become an extension of my rage."
 	icon_state_prefix = "Berserker"
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
+	health_mod = -XENO_HEALTH_MOD_MED
+	armor_mod = XENO_ARMOR_MOD_VERY_SMALL
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
@@ -18,13 +22,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
 /datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasma_max = 0
-	ravager.health_modifier -= XENO_HEALTH_MOD_MED
-	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
-	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
-
-	ravager.recalculate_everything()
+	..() // stat modifiers
+	ravager.received_phero_caps[XENO_PHERO_FRENZY] = XENO_PHERO_STRENGTH_STRONG - 0.1 // Moderate
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker
@@ -58,7 +57,7 @@
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
 	..()
 
-	if (rage != max_rage && !rage_cooldown_start_time)
+	if(rage != max_rage && !rage_cooldown_start_time)
 		rage = rage + 1
 		bound_xeno.armor_modifier += armor_buff_per_rage
 		bound_xeno.attack_speed_modifier -= attack_delay_buff_per_rage
@@ -67,10 +66,10 @@
 		bound_xeno.recalculate_speed()
 		last_slash_time = world.time
 
-		if (rage == max_rage)
+		if(rage == max_rage)
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max Rage!"))
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max rage!"))
 
 	// HP vamp
 	if(!bound_xeno.on_fire)
@@ -82,15 +81,15 @@
 
 /datum/behavior_delegate/ravager_berserker/on_life()
 	// Compute our current rage (demerit if necessary)
-	if (((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0))
+	if(((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0))
 		decrement_rage()
 
 // Handles internal state from decrementing rage
 /datum/behavior_delegate/ravager_berserker/proc/decrement_rage(amount = 1)
-	if (rage_lock_start_time)
+	if(rage_lock_start_time)
 		return
 	var/real_amount = amount
-	if (amount > rage)
+	if(amount > rage)
 		real_amount = rage
 
 	rage -= real_amount
@@ -106,13 +105,13 @@
 	rage_lock_start_time = world.time
 	var/color = "#00000035"
 	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
-	addtimer(CALLBACK(src, PROC_REF(rage_lock_weaken)), rage_lock_duration/2)
+	addtimer(CALLBACK(src, PROC_REF(rage_lock_weaken)), rage_lock_duration / 2)
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock_weaken()
 	bound_xeno.remove_filter("empower_rage")
 	var/color = "#00000027"
 	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
-	addtimer(CALLBACK(src, PROC_REF(rage_lock_callback)), rage_cooldown_duration/2)
+	addtimer(CALLBACK(src, PROC_REF(rage_lock_callback)), rage_cooldown_duration / 2)
 
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock_callback()
@@ -121,7 +120,7 @@
 	rage_cooldown_start_time = world.time
 	decrement_rage(rage)
 	bound_xeno.remove_filter("berserker_rage")
-	to_chat(bound_xeno, SPAN_XENOWARNING("Our adrenal glands spasm. We cannot gain any rage for [rage_cooldown_duration/10] seconds."))
+	to_chat(bound_xeno, SPAN_XENOWARNING("Our adrenal glands spasm. We cannot gain any rage for [rage_cooldown_duration / 10] seconds."))
 	addtimer(CALLBACK(src, PROC_REF(rage_cooldown_callback)), rage_cooldown_duration)
 	bound_xeno.add_filter("berserker_lockdown", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
 
@@ -130,14 +129,17 @@
 	rage_cooldown_start_time = 0
 	return
 
-/datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isxeno_human(A))
+/datum/behavior_delegate/ravager_berserker/get_slash_icon_state()
+	return next_slash_buffed ? "apprehend" : ..()
+
+/datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
+	if(!isxeno_human(target_carbon))
 		return original_damage
 
-	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [A]!"))
-		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
+	if(next_slash_buffed)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
 	return original_damage
@@ -148,20 +150,13 @@
 /datum/action/xeno_action/onclick/apprehend/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
-		return
-
-	if (!xeno.check_state())
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-	if (istype(behavior))
+	if(istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
 	to_chat(xeno, SPAN_XENODANGER("Our next slash will slow!"))
@@ -180,39 +175,35 @@
 /datum/action/xeno_action/onclick/apprehend/proc/apprehend_off()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.remove_filter("apprehend_on")
-	if (istype(xeno))
+	if(istype(xeno))
 		xeno.speed_modifier += speed_buff
 		xeno.recalculate_speed()
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our speed wane!"))
 
 /datum/action/xeno_action/onclick/apprehend/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-	if (istype(behavior))
+	if(istype(behavior))
 		// In case slash has already landed
-		if (!behavior.next_slash_buffed)
+		if(!behavior.next_slash_buffed)
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer slow enemies!"))
+	to_chat(xeno, SPAN_XENODANGER("We have waited too long! Our slash will no longer slow enemies!"))
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK(xeno)
 
-	if (!xeno.check_state())
-		return
-
-	if (!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
+	if(!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
 		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
-	if (!xeno.Adjacent(affected_atom))
+	if(!xeno.Adjacent(affected_atom))
 		to_chat(xeno, SPAN_XENOWARNING("We must be adjacent to our target!"))
 		return
 
@@ -221,15 +212,15 @@
 	var/fling_distance = fling_dist_base
 	var/debilitate = TRUE // Do we apply neg. status effects to the target?
 
-	if (carbon.mob_size >= MOB_SIZE_BIG)
+	if(carbon.mob_size >= MOB_SIZE_BIG)
 		to_chat(xeno, SPAN_XENOWARNING("We creature is too massive to target."))
 		return
 
-	if (carbon.stat == DEAD)
+	if(carbon.stat == DEAD)
 		return
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-	if (behavior.rage >= 2)
+	if(behavior.rage >= 2)
 		behavior.decrement_rage()
 		heal_amount += additional_healing_enraged
 	else
@@ -238,6 +229,8 @@
 		fling_distance--
 
 	// Damage
+	xeno.flick_attack_overlay(carbon, "clothesline", 0.4 SECONDS)
+	playsound(carbon, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
 	var/obj/limb/head/head = carbon.get_limb("head")
 	if(ishuman(carbon) && head)
 		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
@@ -253,16 +246,16 @@
 	var/turf/turf = get_turf(xeno)
 	var/turf/temp = turf
 
-	for (var/step in 0 to fling_distance-1)
+	for(var/step in 0 to fling_distance-1)
 		temp = get_step(turf, facing)
-		if (!temp)
+		if(!temp)
 			break
 		turf = temp
 
 	carbon.throw_atom(turf, fling_distance, SPEED_VERY_FAST, xeno, TRUE)
 
 	// Negative stat effects
-	if (debilitate)
+	if(debilitate)
 		carbon.AdjustDaze(daze_amount)
 
 	apply_cooldown()
@@ -271,11 +264,10 @@
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!action_cooldown_check() || xeno.action_busy)
+	if(xeno.action_busy)
 		return
 
-	if(!xeno.check_state())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	var/damage = base_damage
 	var/range = 1
@@ -285,7 +277,7 @@
 	var/lifesteal_range =  1
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-	if (behavior.rage == 0)
+	if(behavior.rage == 0)
 		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
 		return
 	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
@@ -295,7 +287,7 @@
 
 	apply_cooldown()
 
-	if (range > 1)
+	if(range > 1)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
 	else
 		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
@@ -303,24 +295,25 @@
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
 
-	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+	var/windup = activation_delay - windup_reduction
+	if(do_after(xeno, windup, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
 		xeno.spin_circle()
 
-		for (var/mob/living/carbon/targets_to_hit in orange(xeno, range))
+		for(var/mob/living/carbon/targets_to_hit in orange(xeno, range))
 			if(!isxeno_human(targets_to_hit) || xeno.can_not_harm(targets_to_hit))
 				continue
 
-			if (targets_to_hit.stat == DEAD)
+			if(targets_to_hit.stat == DEAD)
 				continue
 
-			if (HAS_TRAIT(targets_to_hit, TRAIT_NESTED))
+			if(HAS_TRAIT(targets_to_hit, TRAIT_NESTED))
 				continue
 
 			if(!check_clear_path_to_target(xeno, targets_to_hit))
 				continue
 
-			if (range > 1)
+			if(range > 1)
 				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [targets_to_hit]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [targets_to_hit]!"))
 				targets_to_hit.spawn_gibs()
 				playsound(get_turf(targets_to_hit), 'sound/effects/gibbed.ogg', 30, 1)
@@ -329,16 +322,24 @@
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
+			var/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate/slash = new(targets_to_hit, 0.5 SECONDS)
+			slash.show_on_target(targets_to_hit)
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+
+		var/list/affected_tiles = list()
+		for(var/turf/target_turf in orange(xeno, range))
+			if(check_clear_path_to_target(xeno, target_turf, smash_windows = FALSE))
+				affected_tiles += target_turf
+		show_radial_telegraph(get_turf(xeno), affected_tiles, range, /obj/effect/xenomorph/xeno_telegraph/attack/eviscerate, 0.5 SECONDS, "#EB4210")
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)
 
-	for(var/mob/mob as anything in mobs_in_range)
-		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
+	for(var/mob/target_mob as anything in mobs_in_range)
+		if(target_mob.stat == DEAD || HAS_TRAIT(target_mob, TRAIT_NESTED))
 			continue
 
-		if(xeno.can_not_harm(mob))
+		if(xeno.can_not_harm(target_mob))
 			continue
 
 		valid_count++
@@ -351,3 +352,55 @@
 	xeno.anchored = FALSE
 
 	return ..()
+
+/datum/behavior_delegate/ravager_berserker/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	// If the ravager fails RNG, they perform an accidental slash instead!
+	if(bound_xeno.a_intent == INTENT_DISARM && prob(25)) // 1/4 chance
+		if(bound_xeno.claw_restrained())
+			bound_xeno.animation_attack_on(target_carbon)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] almost slashes [target_carbon]!"),
+			SPAN_XENONOTICE("We feel the strongest urge to destroy [target_carbon], but the Queen holds us back!"))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.can_not_harm(target_carbon, check_hive_flags=FALSE)) // We manually check hive_flags later
+			bound_xeno.animation_attack_on(bound_xeno)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+			SPAN_XENONOTICE("We nibble [bound_xeno]."))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.behavior_delegate && bound_xeno.behavior_delegate.handle_slash(bound_xeno))
+			return XENO_NO_DELAY_ACTION
+
+		if(target_carbon.stat == DEAD)
+			to_chat(bound_xeno, SPAN_WARNING("[target_carbon] is dead. We need another target!"))
+			return XENO_NO_DELAY_ACTION
+
+		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
+			var/embryo_allied = FALSE
+			if(target_carbon.status_flags & XENO_HOST)
+				for(var/obj/item/alien_embryo/embryo in target_carbon)
+					if(HIVE_ALLIED_TO_HIVE(bound_xeno.hivenumber, embryo.hivenumber))
+						embryo_allied = TRUE
+						break
+
+			if(embryo_allied)
+				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
+					return XENO_NO_DELAY_ACTION
+				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
+					return XENO_ATTACK_ACTION
+			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+				bound_xeno.animation_attack_on(target_carbon)
+				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+				SPAN_XENONOTICE("Lower our claws! The Queen decreed we can no longer harm hosts!"))
+				return XENO_ATTACK_ACTION
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining [target_carbon] and we slash \him instead..."), message_flags=CHAT_TYPE_XENO_COMBAT)
+		return INTENT_HARM

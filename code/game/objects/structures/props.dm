@@ -236,6 +236,61 @@
 /obj/structure/prop/dam/wide_boulder/boulder1
 	icon_state = "boulder1"
 
+// Colorable big boulders - to do - replace all other boulders with color var edited versions of these across all maps.
+
+/obj/structure/prop/colorable_rock/boulder
+	icon = 'icons/obj/structures/props/natural/boulder_large.dmi'
+	icon_state = "boulder_large1"
+
+/obj/structure/prop/colorable_rock/boulder/large
+	name = "boulder"
+	desc = "A large rock. It's not cooking anything."
+	icon = 'icons/obj/structures/props/natural/colorable_boulder_large.dmi'
+	icon_state = "boulder_large1"
+	density = TRUE
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/colorable_rock/boulder/large/boulder1
+	icon_state = "boulder_large1"
+
+/obj/structure/prop/colorable_rock/boulder/large/boulder2
+	icon_state = "boulder_large2"
+
+/obj/structure/prop/colorable_rock/boulder/large/boulder3
+	icon_state = "boulder_large3"
+
+/obj/structure/prop/colorable_rock/boulder/wide_boulder
+	name = "boulder"
+	desc = "A large rock. It's not cooking anything."
+	icon = 'icons/obj/structures/props/natural/colorable_boulder_wide.dmi'
+	icon_state = "boulderwide"
+	density = TRUE
+	bound_height = 32
+	bound_width = 64
+
+/obj/structure/prop/colorable_rock/boulder/wide_boulder/wide_boulder1
+	icon_state = "boulderwide"
+
+/obj/structure/prop/colorable_rock/boulder/wide_boulder/wide_boulder2
+	icon_state = "boulderwide2"
+
+/obj/structure/prop/colorable_rock/boulder/small
+	name = "boulder"
+	icon_state = "bouldersmall1"
+	desc = "A large rock. It's not cooking anything."
+	icon = 'icons/obj/structures/props/natural/colorable_boulder_small.dmi'
+	density = TRUE
+
+/obj/structure/prop/colorable_rock/boulder/small/boulder1
+	icon_state = "bouldersmall1"
+
+/obj/structure/prop/colorable_rock/boulder/small/boulder2
+	icon_state = "bouldersmall2"
+
+/obj/structure/prop/colorable_rock/boulder/small/boulder3
+	icon_state = "bouldersmall3"
+
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
 /obj/structure/prop/server_equipment
@@ -302,7 +357,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+		user.visible_message("[user] pries at the control valve on [src]. The entire machine shudders." , "You pry at the control valve on [src]. The machine shudders.")
 
 		Update()
 
@@ -415,7 +470,7 @@
 
 /obj/structure/prop/invuln/static_corpse/afric_zimmer/trooper
 	name = "Unknown Trooper"
-	desc = "What remains of a unknown trooper. May they rest in peace."
+	desc = "What remains of an unknown trooper. May they rest in peace."
 	icon_state = "army_guy"
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
@@ -441,6 +496,7 @@
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
 	icon_state = ""
+	desc = "Separates you from certain death."
 	icon = 'icons/turf/lifeboat.dmi'
 
 #define STATE_COMPLETE 0
@@ -506,8 +562,8 @@
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/frame/full
-	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
+	name = "unlit brazier"
+	desc = "A brazier full of wood, though unlit. Something hot could ignite it."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
@@ -757,6 +813,32 @@
 	icon = 'icons/obj/structures/props/ice_colony/Hula.dmi'
 	icon_state = "Hula_Gal"
 
+/obj/structure/prop/ice_colony/hula_girl/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/prop/ice_colony/hula_girl/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/prop/ice_colony/hula_girl/process() //i got you 4 years later monkey -TrollerNoob
+	var/area/current_area = get_area(src)
+	if(istype(current_area, /area/shuttle))
+		var/obj/docking_port/mobile/found_shuttle = null
+		for(var/obj/docking_port/mobile/shuttle in SSshuttle.mobile)
+			if(get_area(shuttle) == current_area)
+				found_shuttle = shuttle
+				break
+		if(found_shuttle)
+			icon_state = initial(icon_state)
+			switch(found_shuttle.mode)
+				if(SHUTTLE_IGNITING)
+					icon_state = "Hula_Gal_Bounce"
+				if(SHUTTLE_CALL, SHUTTLE_RECALL)
+					icon_state = "Hula_Gal_Wild"
+			return
+	icon_state = initial(icon_state)
+
 /obj/structure/prop/ice_colony/tiger_rug
 	name = "tiger rug"
 	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the rim."
@@ -788,7 +870,7 @@
 
 /obj/structure/prop/holidays/wreath
 	name = "M1 pattern festive needle torus"
-	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
+	desc = "In 2140 after a two different sublevels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
 
 
@@ -846,13 +928,13 @@
 
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf
 	icon_state = "evac_usaf"
-	desc = "High tech, silver coated EVAC-3 aerospace fighter used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your squads collective paycheck. Unfortunately, however, this jet was in the middle of a repair cycle when the nothern defences were breached, nessecitating an evacuation."
+	desc = "High-tech, silver coated EVAC-3 aerospace fighter used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your squads collective paycheck. Unfortunately, however, this jet was in the middle of a repair cycle when the northern defences were breached, necessitating an evacuation."
 
 // USCM Truck
 
 /obj/structure/prop/vehicles/tank/truck
 	name = "M887 Truck"
-	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces. This van appears to be non-functional, likely due to excessive use during the recent oubreak."
+	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces. This van appears to be non-functional, likely due to excessive use during the recent outbreak."
 	icon = 'icons/obj/vehicles/van_prop.dmi'
 	icon_state = "van_base"
 	density = FALSE
@@ -896,7 +978,7 @@
 
 /obj/structure/prop/vehicles/tank/miltruck
 	name = "M255 Armored Half-Track"
-	desc = "UA Military half-track, used by all branches of the United American army, including the US Army and USCM. Comes in multiple different configurations, from being able to haul troops to mounting a mobile mortar. Verstile and cheap. This one appears to be non-functional due to overuse during the recent oubreak."
+	desc = "UA Military half-track, used by all branches of the United American army, including the US Army and USCM. Comes in multiple different configurations, from being able to haul troops to mounting a mobile mortar. Versatile and cheap. This one appears to be non-functional due to overuse during the recent outbreak."
 	icon = 'icons/obj/vehicles/miltruck_prop.dmi'
 	icon_state = "track_base"
 	density = FALSE
@@ -953,7 +1035,7 @@
 
 /obj/structure/prop/vehicles/tank/ifv
 	name = "M34 Marshal IFV"
-	desc = "The M34 Marshal IFV: Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, adopted by the US Army, It's heavier and and more durable then the M570 series the marines use, as the army don't have a need for APCs capable of being transported by dropship."
+	desc = "The M34 Marshal IFV: Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, adopted by the US Army, It's heavier and more durable than the M570 series the marines use, as the army don't have a need for APCs capable of being transported by dropship."
 	icon = 'icons/obj/vehicles/ifv_prop.dmi'
 	icon_state = "ifv_base"
 	density = FALSE
@@ -968,7 +1050,7 @@
 
 /obj/structure/prop/vehicles/tank/bison
 	name = "BISON Automated Transport Vehicle"
-	desc = "The BISON ATV is an remote-controled logistical supply vehicle, intended to assist USCM and US Army rear-line logistic forces in moving supplies. It requires someone to be standing near it for the auto-pilot functions to work. This model is non-functional."
+	desc = "The BISON ATV is a remote-controled logistical supply vehicle, intended to assist USCM and US Army rear-line logistic forces in moving supplies. It requires someone to be standing near it for the autopilot functions to work. This model is non-functional."
 	icon = 'icons/obj/vehicles/bison_prop.dmi'
 	icon_state = "base_closed"
 	density = FALSE
@@ -1167,6 +1249,27 @@
 /obj/structure/prop/turret/missile
 	icon_state = "missile_platform"
 
+// WY/Colonial RT-01
+
+/obj/structure/prop/vehicles/tank/rt01
+	name = "\improper RT-01 Transport"
+	desc = "An eight-wheeled, armored, heavy exploration and transport vehicle."
+	icon = 'icons/obj/vehicles/rt01.dmi'
+	icon_state = "rt01_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/rt01/wheels
+	icon_state = "wheels_0"
+
+/obj/structure/prop/vehicles/tank/rt01/wheels/destroyed
+	icon_state = "wheels_1"
+
+/obj/structure/prop/vehicles/tank/rt01/damaged_frame
+	icon_state = "damaged_frame"
+
 //overhead prop sets
 
 /obj/structure/prop/invuln/overhead
@@ -1265,6 +1368,9 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer
+	layer = ABOVE_TURF_LAYER
+	name = "roof installation"
 
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = TRUE
@@ -1481,6 +1587,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
+	flags_atom = FPRINT|NO_ZFALL
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"

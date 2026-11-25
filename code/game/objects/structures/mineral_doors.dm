@@ -10,6 +10,7 @@
 
 	icon = 'icons/obj/structures/doors/mineral_doors.dmi'
 	icon_state = "metal"
+	tiles_with = list(/turf/closed/wall/mineral)
 
 	var/mineralType = "metal"
 	var/open = FALSE
@@ -225,6 +226,7 @@
 	icon_state = "wood"
 	mineralType = "wood"
 	hardness = 1
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/wood)
 
 /obj/structure/mineral_door/wood/open()
 	isSwitchingStates = TRUE
@@ -261,10 +263,3 @@
 		for(var/i = 1, i <= oreAmount, i++)
 			new/obj/item/stack/sheet/wood(get_turf(src))
 	qdel(src)
-
-//Mapping instance
-/obj/structure/mineral_door/wood/open
-	density = FALSE
-	opacity = FALSE
-	open = TRUE
-	icon_state = "woodopen"

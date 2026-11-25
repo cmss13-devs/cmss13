@@ -154,6 +154,14 @@
 	name = "Colonial Liberation Front Soldier"
 	equip_path = /datum/equipment_preset/corpse/clf
 
+/obj/effect/landmark/corpsespawner/clf/lv1021
+	name = "LV1021 - Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf_lv1021
+
+/obj/effect/landmark/corpsespawner/clf/veteran
+	name = "LV1021 - Colonial Liberation Front Veteran"
+	equip_path = /datum/equipment_preset/corpse/clf_veteran
+
 /obj/effect/landmark/corpsespawner/clf/burst
 	name = "Burst Colonial Liberation Front Soldier"
 	equip_path = /datum/equipment_preset/corpse/clf/burst
@@ -291,6 +299,15 @@
 	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation/burst
 
+// Fire Station
+
+/obj/effect/landmark/corpsespawner/hybrisa/fire_fighter
+	name = "Corpse - Civilian - Fire Protection Specialist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/fire_fighter
+
+/obj/effect/landmark/corpsespawner/hybrisa/tova
+	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/tova
 // Pizza Galaxy
 
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy

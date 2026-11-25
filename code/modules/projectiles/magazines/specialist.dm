@@ -30,30 +30,35 @@
 //XM43E1 Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
 	name = "\improper XM43E1 marksman magazine (10x99mm)"
-	desc = "A magazine of caseless 10x99mm anti-materiel rounds, capable of penetrating through most infantry-level materiel. Depending on what you hit, it might even have enough energy to wound anything behind the target."
+	desc = "A magazine of heavy 10x99mm anti-materiel rounds, capable of penetrating through most infantry-level materiel. Depending on what you hit, it might even have enough energy to wound anything behind the target."
 	max_rounds = 8
 	caliber = "10x99mm"
+	icon_state = "xm43e1"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
 	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
+	ammo_band_icon = "+xm43e1_band" // futureproofing
+	ammo_band_icon_empty = "+xm43e1_band_e"
 
 //M42C magazine
 
 /obj/item/ammo_magazine/sniper/elite
 	name = "\improper M42C marksman magazine (10x99mm)"
 	desc = "A magazine of specialized supersonic 10x99mm anti-tank rounds."
+	icon_state = "xm43e1"
 	default_ammo = /datum/ammo/bullet/sniper/elite
 	gun_type = /obj/item/weapon/gun/rifle/sniper/elite
 	caliber = "10x99mm"
-	icon_state = "m42c"
 	max_rounds = 6
+	ammo_band_icon = "+xm43e1_band"
+	ammo_band_icon_empty = "+xm43e1_band_e"
 
 
 //Type 88 //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
-	name = "\improper Type-88 Magazine (7.62x54mmR)"
-	desc = "A large-caliber 7.62x54mmR magazine for the Type-88 designated marksman rifle."
-	caliber = "7.62x54mmR"
+	name = "\improper FPA-299 Magazine (12x28mm)"
+	desc = "A large-caliber 12x28mm caseless magazine for the Type-88 designated marksman rifle."
+	caliber = "12x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88mag"
 	default_ammo = /datum/ammo/bullet/sniper/upp
@@ -63,18 +68,20 @@
 //M4RA magazines
 
 /obj/item/ammo_magazine/rifle/m4ra/custom
-	name = "\improper A19 HV magazine (10x24mm)"
-	desc = "A high-velocity 10x24mm magazine of A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	name = "\improper A19 HV tracker magazine (10x24mm)"
+	desc = "A high-velocity 10x24mm magazine intended for custom A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds. These bullets will track and relay information to the hud optics when you shoot a target."
 	icon_state = "a19"
-	default_ammo = /datum/ammo/bullet/rifle/m4ra
+	default_ammo = /datum/ammo/bullet/rifle/m4ra/custom_tracker
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 	ammo_band_icon = "+a19_band"
 	ammo_band_icon_empty = "+a19_band_e"
+	caliber = "A19"
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
 	name = "\improper A19 HV incendiary magazine (10x24mm)"
-	desc = "An incendiary magazine of A19 HV rounds for use in the M4RA battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	desc = "An incendiary 10x24mm magazine intended for custom A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
@@ -82,7 +89,7 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
 	name = "\improper A19 HV high impact magazine (10x24mm)"
-	desc = "A high-impact magazine of A19 rounds for use in the M4RA battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	desc = "A high-impact 10x24mm magazine intended for custom A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
@@ -118,7 +125,7 @@
 
 /obj/item/ammo_magazine/smartgun/dirty
 	name = "irradiated M56 smartgun drum"
-	desc = "What at first glance appears to be a standard 500-round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
+	desc = "What at first glance appears to be a standard 500-round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
 	icon_state = "m56_drum_dirty"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
@@ -288,7 +295,7 @@
 	icon_state = "brute_rocket"
 	default_ammo = /datum/ammo/rocket/brute
 	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
-	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personnel, but will put just about any ol' backwater mud-hut right into orbit."
+	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an elliptical radius of several meters. These rockets are known to have reduced lethality to personnel, but will put just about any ol' backwater mud-hut right into orbit."
 
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"
@@ -405,9 +412,9 @@
 
 /obj/item/ammo_magazine/rocket/upp
 	name = "\improper HJRA-12 High-Explosive Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard high-explosive rocket for use against light vehicles or as an anti-personnel grenade."
+	desc = "A rocket for the UPP's HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard high-explosive rocket for use against unarmored vehicles or structures, the most common use cases."
 
-	caliber = "88mm"
+	caliber = "95mm"
 	icon_state = "hjra_explosive"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/rocket_launchers.dmi'
 
@@ -424,24 +431,12 @@
 
 /obj/item/ammo_magazine/rocket/upp/at
 	name = "\improper HJRA-12 Anti-Tank Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard anti-tank rocket designed to disable or destroy hostile armored vehicles."
-
-	caliber = "88mm"
+	desc = "A rocket for the UPP's HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard anti-tank rocket designed to disable or destroy armored vehicles, but the disposable RPG-150 is usually prefered for anti-tank usage."
 	icon_state = "hjra_tank"
-
-	max_rounds = 1
 	default_ammo = /datum/ammo/rocket/ap/anti_tank
-	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
-	reload_delay = 85
 
 /obj/item/ammo_magazine/rocket/upp/incen
-	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is an extreme-intensity incendiary rocket."
-	desc_lore = "This incendiary rocket uses an experimental chemical designated 'R-189' by the UPP. It is designed to melt through fortifications and bunkers but is most commonly used in an anti-personnel role due to over-issuing and the temperatures after use in its intended role leaving behind a cloud of super-heated air, preventing troops' advance."
-	caliber = "88mm"
+	name = "\improper HJRA-12 Thermobaric Rocket"
+	desc = "A rocket for the UPP's HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a thermobaric rocket designed for use against emplacements and structures. A similar load is used in the disposable URO-H launcher."
 	icon_state = "hjra_incen"
-
-	max_rounds = 1
 	default_ammo = /datum/ammo/rocket/wp/upp
-	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
-	reload_delay = 85

@@ -2143,10 +2143,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_civilian)
 "DN" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/desert_dam/exterior/rock)
 "DO" = (
 /obj/effect/decal/warning_stripes{
@@ -2591,7 +2588,7 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = 7;
 	pixel_y = 11;
-	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	desc = "A traffic signal denoting the presence of a landing zone nearby.";
 	name = "\improper landing zone traffic signal"
 	},
 /obj/structure/sign/safety/east{

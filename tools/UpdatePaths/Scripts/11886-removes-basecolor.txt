@@ -1,0 +1,1 @@
+/obj/effect/decal/cleanable/blood@SUBTYPES : /obj/effect/decal/cleanable/blood@SUBTYPES{@OLD; color = @OLD:basecolor; basecolor = @SKIP}

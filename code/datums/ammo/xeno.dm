@@ -23,11 +23,13 @@
 
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
+	icon_state = "sentinel_neurotoxin"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST|AMMO_SKIPS_ALIENS
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
 	var/drain_power = 2
+	var/increment_amount = 5
 	var/datum/callback/neuro_callback
 
 	shell_speed = AMMO_SPEED_TIER_3
@@ -38,71 +40,81 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+/proc/apply_neuro(mob/living/target_mob, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
+	if(skillcheck(target_mob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
+		target_mob.visible_message(SPAN_DANGER("[target_mob] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/human = target_mob
 		if(drain_stims)
-			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
-				H.reagents.remove_reagent(stim.id, drain, TRUE)
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			for(var/datum/reagent/generated/stim in human.reagents.reagent_list)
+				human.reagents.remove_reagent(stim.id, drain, TRUE)
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
+			human.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
-			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
-				H.reagents.remove_reagent(med.id, drain, TRUE)
+			for(var/datum/reagent/medical/med in human.reagents.reagent_list)
+				human.reagents.remove_reagent(med.id, drain, TRUE)
+	if(!apply_effect)
+		return
 
 	if(!apply_effect)
 		return
 
-	if(!isxeno(M))
+	if(!isxeno(target_mob))
 		if(insta_neuro)
-			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
-				M.KnockDown(power)
-				M.Stun(power)
+			if(target_mob.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
+				target_mob.KnockDown(power)
+				target_mob.Stun(power)
 				return
 
-		if(ishuman(M))
-			M.apply_effect(4, SUPERSLOW)
-			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
+		if(ishuman(target_mob))
+			target_mob.apply_effect(4, SUPERSLOW)
+			target_mob.visible_message(SPAN_DANGER("[target_mob]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+		if(ishuman(target_mob))
+			var/mob/living/carbon/human/human = target_mob
+			if(!human.wear_suit || human.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
-				M.KnockDown(power)
-				M.Stun(power)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+			if(target_mob.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
+				target_mob.KnockDown(power)
+				target_mob.Stun(power)
+				target_mob.visible_message(SPAN_DANGER("[target_mob] falls prone."))
 
-/proc/apply_scatter_neuro(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+/proc/apply_scatter_neuro(mob/living/target_mob)
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/human = target_mob
+		if(skillcheck(target_mob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+			target_mob.visible_message(SPAN_DANGER("[target_mob] withstands the neurotoxin!"))
 			return //endurance 5 makes you immune to weak neuro
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
+			human.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
 			return
 
-		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
-		M.Stun(0.7)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+		target_mob.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		target_mob.Stun(0.7)
+		target_mob.visible_message(SPAN_DANGER("[target_mob] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, drain_power, TRUE, TRUE, TRUE)
+/datum/ammo/xeno/toxin/on_hit_mob(mob/target_mob,obj/projectile/projectile)
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/human = target_mob
+		if(human.status_flags & XENO_HOST)
+			neuro_callback.Invoke(human, effect_power, drain_power, TRUE, TRUE, TRUE)
 			return
+		var/datum/effects/sentinel_neuro_stacks/sns = null
+		for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
+			sns = sentinel_neuro_stacks
+			break
 
-	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
+		if (!sns)
+			sns = new /datum/effects/sentinel_neuro_stacks(human)
+		sns.increment_stack_count(increment_amount)
+
+	neuro_callback.Invoke(target_mob, effect_power, drain_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -113,6 +125,7 @@
 
 /datum/ammo/xeno/toxin/queen
 	name = "neurotoxic spit"
+	icon_state = "neurotoxin"
 	spit_cost = 50
 	effect_power = 2
 	drain_power = 4
@@ -120,8 +133,8 @@
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
-/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, drain_power, TRUE, TRUE, FALSE)
+/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/target_mob,obj/projectile/projectile)
+	neuro_callback.Invoke(target_mob, effect_power, drain_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
@@ -159,13 +172,13 @@
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/xeno/acid/on_shield_block(mob/M, obj/projectile/P)
-	burst(M,P,damage_type)
+/datum/ammo/xeno/acid/on_shield_block(mob/target_mob, obj/projectile/projectile)
+	burst(target_mob,projectile,damage_type)
 
-/datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
+/datum/ammo/xeno/acid/on_hit_mob(mob/target_mob, obj/projectile/projectile)
+	if(iscarbon(target_mob))
+		var/mob/living/carbon/carbon = target_mob
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return FALSE
 	..()
 
@@ -175,7 +188,7 @@
 	damage = 30
 	max_range = 6
 
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
 	if(. == FALSE)
 		return
@@ -183,7 +196,123 @@
 	if(acid_effect)
 		acid_effect.prolong_duration()
 		return
-	new /datum/effects/acid(target_mob, P.firer)
+	new /datum/effects/acid(target_mob, projectile.firer)
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit
+	name = "Corrosive spit"
+	spit_cost =  45
+	damage = 45
+	max_range = 8
+	spit_windup = 0.6 SECONDS
+	hits_lying_mobs = TRUE
+	damage_falloff = 0
+	var/portion_loss_per_hit = 0.55
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating, initial_portion_lost_per_hit = portion_loss_per_hit)
+	))
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations
+	portion_loss_per_hit = 0.55
+
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations
+	penetration = 15
+	portion_loss_per_hit = 0.35
+
+
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations
+	penetration = 20
+	portion_loss_per_hit = 0.28
+
+/datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
+	name = "Enzymatic breath"
+	spit_cost = 55
+	damage = 10
+	bonus_projectiles_amount = 4
+	max_range = 5
+	scatter = SCATTER_AMOUNT_DISSOLVER
+	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/spread
+	spit_windup = 1 SECONDS
+
+/datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/spread
+	bonus_projectiles_amount = 0
+
+/datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/on_hit_mob(mob/target_mob, obj/projectile/P)
+	. = ..()
+	if(!istype(target_mob, /mob/living))
+		return
+	var/mob/living/living = target_mob
+	if(!living.superslowed)
+		living.Superslow(1.5)
+	else
+		living.Root(1.5)
+
+
+/datum/ammo/xeno/acid/dissolver_acid_blob
+	name = "Acid blob"
+	damage = 25
+	spit_cost = 65
+	spit_windup = 0.8 SECONDS
+	shell_speed = AMMO_SPEED_TIER_2
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
+	max_range = 5
+	shrapnel_type = /datum/ammo/xeno/acid/dissolver_spread
+	var/direct_stun = 1
+	var/dispersion_angle = 40
+	var/shrapnel_count = 4
+
+
+/datum/ammo/xeno/acid/dissolver_spread
+	name = "Small acid blob"
+	damage = 10
+	max_range = 3
+	var/direct_stun = 1
+
+/datum/ammo/xeno/acid/dissolver_spread/on_hit_mob(mob/target_mob, obj/projectile/projectile)
+	if(!istype(target_mob,/mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/human = target_mob
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		human.KnockDown(direct_stun)
+		acid_effect.enhance_acid()
+
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/projectile)
+	. = ..()
+	spread_acid(target_mob.loc, projectile)
+	if(!istype(target_mob,/mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/human = target_mob
+
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		human.KnockDown(direct_stun)
+		acid_effect.enhance_acid()
+
+
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+	. = ..()
+	spread_acid(target_object.loc, proj_hit)
+
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/target_turf, obj/projectile/projectile)
+	. = ..()
+	if(istype(target_turf, /turf/closed))
+		return
+	spread_acid(target_turf, projectile)
+
+/datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/projectile)
+	. = ..()
+	if(istype(projectile.loc, /turf/closed))
+		return
+	spread_acid(projectile.loc, projectile)
+
+/datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, obj/projectile/proj_hit)
+	create_shrapnel(location, shrapnel_count, proj_hit.dir , dispersion_angle ,shrapnel_type, create_cause_data("dissolver acid blob", proj_hit.firer), FALSE, 100)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -209,43 +338,56 @@
 
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/projectile/P)
-	if (!ishuman(M))
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/target_mob, obj/projectile/projectile)
+	if (!ishuman(target_mob))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/target_human = target_mob
 
 	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in target_human.effects_list)
 		PAS = prae_acid_stacks
 		break
 
 	if (PAS == null)
-		PAS = new /datum/effects/prae_acid_stacks(H)
+		PAS = new /datum/effects/prae_acid_stacks(target_human)
 	else
 		PAS.increment_stack_count()
 
 /datum/ammo/xeno/acid/despoiler
 	name = "corrosive spit"
-	icon_state = "xeno_acid_strong"
-	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
-	accuracy = HIT_ACCURACY_TIER_MAX
+	icon_state = "xeno_acid_lingering"
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER|AMMO_HITS_TARGET_TURF
+	accuracy = HIT_ACCURACY_MULT_TIER_5
+	accurate_range_min_strict = 3
 	accurate_range = 32
-	max_range = 4
-	damage = 35
-	spit_cost = 50
-	scatter = SCATTER_AMOUNT_TIER_6
+	max_range = 7
+	shell_speed = AMMO_SPEED_TIER_2
+	damage = 20
 	var/acid_progression = 10
+
+/datum/ammo/xeno/acid/despoiler/on_hit_turf(turf/turf, obj/projectile/projectile)
+	. = ..()
+	var/hivenumber = XENO_HIVE_NORMAL
+	if(isxeno(projectile.firer))
+		var/mob/living/carbon/xenomorph/xeno = projectile.firer
+		hivenumber = xeno.hivenumber
+
+	var/obj/effect/lingering_acid/acid = locate() in turf
+	if(!acid)
+		new /obj/effect/lingering_acid(turf, hivenumber)
+
+/datum/ammo/xeno_acid/despoiler/do_at_max_range(obj/projectile/projectile)
+	on_hit_turf(get_turf(projectile), projectile)
 
 /datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
 	. = ..()
 	if(. == FALSE)
 		return
 	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
-	if(acid_effect)
-		acid_effect.enhance_acid(super_acid = FALSE)
-	else
-		acid_effect = new /datum/effects/acid/(mob, projectile.firer)
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(mob, projectile.firer)
+	acid_effect.enhance_acid()
 	acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)
 
@@ -253,7 +395,11 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
-		barricade.acid_spray_act()
+		var/datum/effects/acid/acid_effect = locate() in barricade.effects_list
+		if(!acid_effect)
+			barricade.acid_spray_act()
+
+	on_hit_turf(get_turf(target_object), proj_hit)
 
 /datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
 	for(var/mob/living/carbon/human/victim in range(range, mob))
@@ -261,15 +407,12 @@
 		if(!acid_effect)
 			new /datum/effects/acid/(victim, projectile.firer)
 
-
-
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"
 	icon_state = "neuro_glob"
 	ping = "ping_x"
 	debilitate = list(2,2,0,1,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
-	var/datum/effect_system/smoke_spread/smoke_system
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	spit_cost = 200
 	pre_spit_warn = TRUE
 	spit_windup = 5 SECONDS
@@ -279,8 +422,10 @@
 	scatter = SCATTER_AMOUNT_TIER_4
 	shell_speed = 0.75
 	max_range = 16
+	var/datum/effect_system/smoke_spread/smoke_system
 	/// range on the smoke in tiles from center
 	var/smokerange = 4
+	/// The multiplier for the smoke lifetime
 	var/lifetime_mult = 1.0
 
 /datum/ammo/xeno/boiler_gas/New()
@@ -288,8 +433,7 @@
 	set_xeno_smoke()
 
 /datum/ammo/xeno/boiler_gas/Destroy()
-	qdel(smoke_system)
-	smoke_system = null
+	QDEL_NULL(smoke_system)
 	. = ..()
 
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
@@ -321,13 +465,12 @@
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/projectile/proj)
-	var/lifetime_mult = 1.0
 	var/datum/cause_data
 	if(isboiler(proj.firer))
 		cause_data = proj.weapon_cause_data
 	smoke_system.set_up(smokerange, 0, turf, new_cause_data = cause_data)
 	smoke_system.lifetime = 12 * lifetime_mult
-	smoke_system.start()
+	smoke_system.start(do_NOT_delete = TRUE)
 	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
 
@@ -374,15 +517,15 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/target_mob, obj/projectile/projectile)
+	if(iscarbon(target_mob))
+		var/mob/living/carbon/target_carbon = target_mob
+		if((HAS_FLAG(target_carbon.status_flags, XENO_HOST) && HAS_TRAIT(target_carbon, TRAIT_NESTED)) || target_carbon.stat == DEAD || HAS_TRAIT(target_carbon, TRAIT_HAULED))
 			return
-	if(ishuman_strict(M) || isxeno(M))
-		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 3)
-			M.apply_effect(3, SLOW)
+	if(ishuman_strict(target_mob) || isxeno(target_mob))
+		playsound(target_mob, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(target_mob.slowed < 3)
+			target_mob.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -404,15 +547,15 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/target_mob, obj/projectile/projectile)
+	if(iscarbon(target_mob))
+		var/mob/living/carbon/target_carbon = target_mob
+		if((HAS_FLAG(target_carbon.status_flags, XENO_HOST) && HAS_TRAIT(target_carbon, TRAIT_NESTED)) || target_carbon.stat == DEAD || HAS_TRAIT(target_carbon, TRAIT_HAULED))
 			return
-	if(ishuman_strict(M) || isxeno(M))
-		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 6)
-			M.apply_effect(6, SLOW)
+	if(ishuman_strict(target_mob) || isxeno(target_mob))
+		playsound(target_mob, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(target_mob.slowed < 6)
+			target_mob.apply_effect(6, SLOW)
 
 /datum/ammo/xeno/oppressor_tail
 	name = "tail hook"

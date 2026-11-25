@@ -50,7 +50,7 @@
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
 	if(!admin_console && should_block_game_interaction(src))
-		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
+		to_chat(user, SPAN_DANGER("[SPAN_BOLD("Unable to establish a connection")]: You're too far away from the ship!"))
 		return
 	if(inoperable())
 		return
@@ -217,6 +217,17 @@
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null
 	return ..()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/wheeled
+	name = "Mobile Television Set"
+	desc = "An old TV hooked up to a video cassette recorder, bolted onto what appears to be an old roller bed. Only the finest for our Military Police force.\n\nIt could be used to keep perma prisoners entertained."
+	icon_state = "tv_mobile"
+	layer = WINDOW_LAYER
+
+	anchored = FALSE
+	drag_delay = 0
+	deconstructible = FALSE
+	density = TRUE
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_state(mob/user)
 	return GLOB.in_view

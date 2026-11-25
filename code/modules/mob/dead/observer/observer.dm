@@ -33,6 +33,7 @@
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
+	flags_atom = FPRINT|NO_ZFALL
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default
@@ -97,6 +98,11 @@
 		attack_log = body.attack_log //preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+	else if(client?.prefs)
+		restore_ghost_appearance()
+	else
+		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+		see_in_dark = 100
 
 	if(!own_orbit_size)
 		own_orbit_size = 32
@@ -121,12 +127,17 @@
 	minimap = new
 	minimap.give_to(src)
 
+	SSmapgrids.track_movable(src)
+
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+	if(SSticker.mode)
+		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!")), 2 SECONDS)
+		if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("Colony Working Joes are enabled this round! If you are whitelisted, you may join!")), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -182,7 +193,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.set_eye(src)
+	client?.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -318,6 +329,10 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
 		toggle_predator_action()
 
+	if(client.check_whitelist_status(WHITELIST_SYNTHETIC) || client.check_whitelist_status(WHITELIST_JOE))
+		RegisterSignal(SSdcs, COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED, PROC_REF(toggle_colony_joe_action))
+		toggle_colony_joe_action()
+
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 	if(observe_target_mob)
@@ -400,6 +415,9 @@
 					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
+				if("Xeno Effects HUD")
+					the_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 					the_hud.add_hud_to(src, src)
 				if("Hunter HUD")
 					the_hud = GLOB.huds[MOB_HUD_HUNTER]
@@ -712,7 +730,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/carbon/human/target in GLOB.living_mob_list)
+/mob/dead/observer/proc/scan_health(mob/living/target in GLOB.living_mob_list)
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -1293,6 +1311,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_colony_joe()
+	set category = "Ghost.Join"
+	set name = "Join as a Colony Working Joe"
+	set desc = "If you are whitelisted, and it is the right type of round, join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_colony_joe_late_join(src))
+		SSticker.mode.attempt_to_join_as_colony_joe(src)
+
 /mob/dead/verb/join_as_responder()
 	set category = "Ghost.Join"
 	set name = "Join as a Fax Responder"
@@ -1374,7 +1407,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/get_status_tab_items()
 	. = ..()
 	. += ""
-	. += "Game Mode: [GLOB.master_mode]"
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		. += "Game Mode: [GLOB.master_mode]"
 
 	if(!SSticker.HasRoundStarted())
 		var/time_remaining = SSticker.GetTimeLeft()
@@ -1393,17 +1427,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(SSticker.mode?.force_end_at)
 		var/time_left = SSticker.mode.force_end_at - world.time
-		if(time_left >= 0)
-			. += "Hijack Time Left: [DisplayTimeText(time_left, 1)]"
+		if(GLOB.master_mode != GAMEMODE_SURVIVE)
+			if(time_left >= 0)
+				. += "Hijack Time Left: [DisplayTimeText(time_left, 1)]"
+			else
+				. += "Hijack Over"
 		else
-			. += "Hijack Over"
+			if(time_left >= 0)
+				. += "Evacuation Time Left: [DisplayTimeText(time_left, 1)]"
+			else
+				. += "Evacuation Over"
 
 	if(SShijack)
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goal: [eta_status]"
 
-		if(SShijack.sd_unlocked)
+		if(SShijack.sd_unlocked || SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
 	if(client.prefs?.be_special & BE_ALIEN)
@@ -1480,5 +1520,29 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)
+
+/mob/dead/observer/proc/toggle_colony_joe_action()
+	SIGNAL_HANDLER
+
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!key_to_use)
+		return
+
+	if(!SSticker.mode)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_colony_joe_action)))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+		if(locate(/datum/action/join_colony_joe) in actions)
+			return
+
+		var/datum/action/join_colony_joe/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_colony_joe/old_action = locate() in actions
 	if(old_action)
 		qdel(old_action)

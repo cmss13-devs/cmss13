@@ -28,6 +28,7 @@
 
 	required_skill = SKILL_VEHICLE_LARGE
 
+	uses_rubber_tires = TRUE
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	luminosity = 7
@@ -109,6 +110,11 @@
 	else
 		STOP_PROCESSING(SSslowobj, src)
 
+/obj/vehicle/multitile/arc/proc/clear_tacmap()
+	for(var/datum/weakref/xeno as anything in minimap_added)
+		SSminimaps.remove_marker(xeno.resolve())
+		minimap_added.Remove(xeno)
+
 /obj/vehicle/multitile/arc/process()
 	var/turf/arc_turf = get_turf(src)
 	if((health <= 0) || !visible_in_tacmap || !is_ground_level(arc_turf.z))
@@ -116,9 +122,7 @@
 
 	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in hardpoints
 	if(!antenna || (antenna.health <= 0))
-		for(var/datum/weakref/xeno as anything in minimap_added)
-			SSminimaps.remove_marker(xeno.resolve())
-			minimap_added.Remove(xeno)
+		clear_tacmap()
 		return
 
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)

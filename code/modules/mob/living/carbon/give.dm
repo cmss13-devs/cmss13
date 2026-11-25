@@ -34,6 +34,9 @@
 	if(r_hand && l_hand)
 		to_chat(giver, SPAN_WARNING("[src]'s hands are full."))
 		return
+	if(!COOLDOWN_FINISHED(giver, give_item_cooldown))
+		to_chat(giver, SPAN_WARNING("You can not do that again for a while."))
+		return
 	giver.mob_flags |= GIVING
 	if(tgui_alert(src, "[giver] wants to give you \a [I]?", "You are being offered an item", list("Yes", "No"), 10 SECONDS) == "Yes")
 		giver.mob_flags &= ~GIVING
@@ -61,4 +64,5 @@
 				SPAN_NOTICE("You hand [I] to [src]."), null, 4)
 	else
 		giver.mob_flags &= ~GIVING
+		COOLDOWN_START(giver, give_item_cooldown, 4 SECONDS)
 		return

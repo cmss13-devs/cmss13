@@ -362,14 +362,14 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/heavy
+/datum/supply_packs/contraband/seized/deagle
 	name = "Desert Eagle crate (x4 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/weapon/gun/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/deagle,
 	)
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
@@ -418,7 +418,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/bizon
-	name = "Type 64 Submachinegun (x4 magazines included)"
+	name = "PPZ-49/64 Submachinegun (x4 magazines included)"
 	contains = list(
 		/obj/item/weapon/gun/smg/bizon,
 		/obj/item/ammo_magazine/smg/bizon,
@@ -631,12 +631,14 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/toy/inflatable_duck,
-		/obj/item/pamphlet/skill/powerloader,
+		/obj/item/pamphlet/upgradeable/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,
 		/obj/item/pamphlet/language/chinese,
 		/obj/item/pamphlet/language/german,
 		/obj/item/pamphlet/language/spanish,
+		/obj/item/pamphlet/language/scandinavian,
+		/obj/item/pamphlet/language/french,
 	)
 	dollar_cost = 30
 	crate_heat = -2
@@ -883,7 +885,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/bizon
-	name = "Magazines box (Type 64, 10x mags)"
+	name = "Magazines box (PPZ-49/64, 10x mags)"
 	dollar_cost = 40
 	contains = list(/obj/item/ammo_box/magazine/type64)
 	containertype = /obj/structure/largecrate/black_market
@@ -972,7 +974,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
-	contains = list(/obj/item/prop/helmetgarb/rosary)
+	contains = list(/obj/item/clothing/accessory/rosary)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1113,6 +1115,18 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/deep_storage/snow_boots
+	name = "Snow Pattern Combat Boots"
+	contains = list(/obj/item/clothing/shoes/marine/snow)
+	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/deep_storage/urban_boots
+	name = "Urban Pattern Combat Boots"
+	contains = list(/obj/item/clothing/shoes/marine/urban)
+	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
+
 //Weapons
 
 /datum/supply_packs/contraband/deep_storage/type_replica
@@ -1129,7 +1143,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/clf_holdout
 	name = "D18 Holdout Pistol"
-	contains = list(/obj/item/storage/box/clf)
+	contains = list(/obj/item/storage/box/fluff_gun/clf)
 	dollar_cost = 10
 	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
@@ -1253,7 +1267,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				new picked_type(loc)
 			loot_message = SPAN_NOTICE("It's some strange elite gear...?")
 		if(11 to 15)
-			//Type 64
+			//PPZ-49/64
 			new /obj/item/weapon/gun/smg/bizon(loc)
 			new /obj/item/ammo_magazine/smg/bizon(loc)
 			new /obj/item/ammo_magazine/smg/bizon(loc)

@@ -45,3 +45,6 @@
 
 /// Called in /client/proc/PreLogin() after a client's mob has been logged into
 #define COMSIG_CLIENT_LOGGED_IN "client_logged_in"
+
+/// Called when something animates pixel_x/pixel_y on the client : /mob/proc/dizzy_process()
+#define COMSIG_CLIENT_ANIMATING "client_animating"

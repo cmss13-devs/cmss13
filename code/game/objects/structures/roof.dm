@@ -80,6 +80,7 @@
 	var/datum/roof_master_node/linked_master
 
 /obj/effect/roof_node/Crossed(atom/movable/mover, target_dir)
+	..()
 	if(!linked_master)
 		return
 	if(isliving(mover))

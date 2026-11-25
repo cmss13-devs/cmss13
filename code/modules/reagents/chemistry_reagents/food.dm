@@ -218,10 +218,10 @@
 			if(victim.pain.feels_pain)
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
-				victim.AdjustEyeBlur(25)
-				victim.AdjustEyeBlind(10)
-				victim.apply_effect(3, STUN)
-				victim.apply_effect(3, WEAKEN)
+				victim.EyeBlur(25)
+				victim.EyeBlind(10)
+				victim.Stun(3)
+				victim.KnockDown(3)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"
@@ -240,7 +240,7 @@
 	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know, now stay shush
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_ELECTROGENETIC = 7, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
 
 /datum/reagent/thymol //some kind of thyme
@@ -249,7 +249,7 @@
 	description = "Known chemical used in the 20th century as innovative way to combat hookworm parasites and generally all kinds of infections, it was since used as natural pesticide."
 	reagent_state = LIQUID
 	color = "#badb9e" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_ANTIPARASITIC = 1.5)
 
 /datum/reagent/psoralen //cabbage, doesn't make sense but eh
@@ -258,7 +258,7 @@
 	description = "Naturally occurring carcinogenic, used commonly as mutagen for DNA research."
 	reagent_state = LIQUID
 	color = "#c9ca75" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CARCINOGENIC = 6)
 
 /datum/reagent/coniine //carrot
@@ -269,17 +269,18 @@
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#8f947b" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_HYPNOTIC = 7, PROPERTY_HYPOXEMIC = 6, PROPERTY_EXCRETING = 2, PROPERTY_HEPATOPEUTIC = 2)
+
 /datum/reagent/zygacine
 	name = "Zygacine"
 	id = "zygacine"
-	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
+	description = "Causes convulsing of the heart muscles before blocking the contractions entirely."
 	reagent_state = LIQUID
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#aaaaaa" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CARDIOTOXIC = 3)
 
 /datum/reagent/digoxin
@@ -290,7 +291,7 @@
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	color = "#9ec265" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/urishiol
@@ -302,7 +303,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)
 	reagent_state = LIQUID
 	color = "#c0bf90" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_ALLERGENIC = 6, PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/phenol
@@ -313,7 +314,7 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	reagent_state = LIQUID
 	color = "#c095c9" // rgb: 139, 166, 233
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 5)
 
 

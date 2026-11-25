@@ -25,13 +25,15 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 			pixel_x = oldPY
 			pixel_y = (oldPX*(-1))
 
-
 /* ***********************************Object rotate procs*********************************** */
 
 /obj/vehicle/multitile/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	params &= ~ROTATE_OFFSET
 	return ..()
 
+/obj/vehicle/powerloader/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
+	setDir(angle2dir(rotation+dir2angle(dir)))
+	return
 
 /* ***********************************Turf rotate procs*********************************** */
 

@@ -20,6 +20,7 @@
 	xeno_cooldown = 45 SECONDS
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_2
+	cooldown_message = "Our throat has recovered its strength."
 
 	var/daze_length_seconds = 1
 	var/slow_length_seconds = 4
@@ -33,6 +34,7 @@
 	xeno_cooldown = 60 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	cooldown_message = "We are ready to crush, destroy, and kill!"
 
 	var/range = 7
 	var/leaping = FALSE
@@ -46,6 +48,7 @@
 	xeno_cooldown = 60 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_4
+	cooldown_message = "We are ready to become a living hiveshield."
 
 	var/shield_duration = 10 SECONDS
 	var/area_of_effect = 6

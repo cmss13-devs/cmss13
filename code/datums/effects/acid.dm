@@ -23,33 +23,38 @@
 	/// The maximum allowed duration per acid_level
 	var/static/list/tier_max_duarions = list(20, 40, 80)
 
-/datum/effects/acid/New(atom/atom, mob/from = null, last_dmg_source = null, zone = "chest")
-	..(atom, from, last_dmg_source, zone)
-	if(ishuman(atom))
-		var/mob/living/carbon/human/human = atom
-		human.update_effects()
+/datum/effects/acid/New(atom/target_atom, mob/from = null, last_dmg_source = null, zone = "chest")
+	..(target_atom, from, last_dmg_source, zone)
+	if(QDELETED(src))
+		return
+	if(ishuman(target_atom))
+		var/mob/living/carbon/human/target_human = target_atom
+		target_human.update_effects()
 
-	if(isobj(atom))
-		var/obj/obj_target = atom
-		if(istype(obj_target, /obj/structure/barricade))
-			var/obj/structure/barricade/barricade_targer = obj_target
-			obj_dmg_multiplier = barricade_targer.burn_multiplier
-		obj_target.update_icon()
+	else if(isobj(target_atom))
+		var/obj/target_object = target_atom
+		if(istype(target_object, /obj/structure/barricade))
+			var/obj/structure/barricade/target_barricade = target_object
+			obj_dmg_multiplier = target_barricade.burn_multiplier
+		target_object.update_icon()
 
 	handle_weather()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
-/datum/effects/acid/validate_atom(atom/atom)
-	if(istype(atom, /obj/structure/barricade))
+/datum/effects/acid/validate_atom(atom/target_atom)
+	if(istype(target_atom, /obj/structure/barricade))
 		return TRUE
 
-	if(isobj(atom))
+	if(istype(target_atom, /obj/structure/machinery/fuelpump))
+		return TRUE
+
+	if(isobj(target_atom))
 		return FALSE
 
-	if(ishuman(atom))
-		var/mob/living/carbon/human/human = atom
-		if(human.status_flags & XENO_HOST && HAS_TRAIT(human, TRAIT_NESTED) || human.stat == DEAD || HAS_TRAIT(human, TRAIT_HAULED))
+	if(ishuman(target_atom))
+		var/mob/living/carbon/human/target_human = target_atom
+		if(target_human.status_flags & XENO_HOST && HAS_TRAIT(target_human, TRAIT_NESTED) || target_human.stat == DEAD || HAS_TRAIT(target_human, TRAIT_HAULED))
 			return FALSE
 
 	return ..()
@@ -63,6 +68,7 @@
 	affected_mob.last_damage_data = cause_data
 	for(var/i in 1 to hits_multiplier)
 		affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
+
 	increment_duration()
 	return TRUE
 
@@ -81,14 +87,14 @@
 		LAZYREMOVE(affected_atom.effects_list, src)
 
 	if(ishuman(affected_atom))
-		var/mob/living/carbon/human/human = affected_atom
-		human.update_effects()
+		var/mob/living/carbon/human/target_human = affected_atom
+		target_human.update_effects()
 		if(acid_level >= 3)
-			to_chat(human, SPAN_WARNING("Your armor returns to normal."))
+			to_chat(target_human, SPAN_WARNING("Your armor returns to normal."))
 
 	if(isobj(affected_atom))
-		var/obj/obj_target = affected_atom
-		obj_target.update_icon()
+		var/obj/target_object = affected_atom
+		target_object.update_icon()
 	return ..()
 
 /**
@@ -113,11 +119,11 @@
 
 	acid_level++
 	if(acid_level == 2)
-		duration += 20
+		prolong_duration(20)
 		obj_dmg_multiplier = 1.5
 		mob_icon_state_path = "human_acid_enhanced"
 	else if(acid_level > 2)
-		duration += 40
+		prolong_duration(40)
 		mob_icon_state_path = "human_acid_enhanced_super" //need sprite adjustments here
 
 	if(ishuman(affected_atom))

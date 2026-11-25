@@ -2,7 +2,6 @@
 	title = JOB_SO
 	total_positions = 4
 	spawn_positions = 4
-	allow_additional = 1
 	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so
@@ -11,29 +10,29 @@
 /datum/job/command/bridge/set_spawn_positions(count)
 	spawn_positions = so_slot_formula(count)
 
-/datum/job/command/bridge/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = so_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/command/bridge/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : so_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
-
-/datum/job/command/bridge/generate_entry_conditions(mob/living/M, whitelist_status)
+/datum/job/command/bridge/generate_entry_conditions(mob/living/candidate, whitelist_status)
 	. = ..()
 	if(!islist(GLOB.marine_leaders[JOB_SO]))
 		GLOB.marine_leaders[JOB_SO] = list()
-	GLOB.marine_leaders[JOB_SO] += M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	GLOB.marine_leaders[JOB_SO] += candidate
+	RegisterSignal(candidate, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/bridge/proc/cleanup_leader_candidate(mob/M)
+/datum/job/command/bridge/proc/cleanup_leader_candidate(mob/candidate)
 	SIGNAL_HANDLER
-	GLOB.marine_leaders[JOB_SO] -= M
+	GLOB.marine_leaders[JOB_SO] -= candidate
+	if(!length(GLOB.marine_leaders[JOB_SO]))
+		qdel(GLOB.marine_leaders[JOB_SO])
 
 AddTimelock(/datum/job/command/bridge, list(
 	JOB_SQUAD_LEADER = 1 HOURS,

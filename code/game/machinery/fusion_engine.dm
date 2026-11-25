@@ -18,6 +18,7 @@
 	anchored = TRUE
 	density = TRUE
 	throwpass = FALSE
+	needs_power = FALSE
 	power_gen = 50000 //50,000W
 
 	///Whether the reactor is on the ship
@@ -142,12 +143,6 @@
 		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			. += SPAN_INFO("You could overload its safeties with a multitool.")
 
-/obj/structure/machinery/power/power_generator/reactor/power_change()
-	. = ..()
-	if(overloaded)
-		set_overloading(FALSE)
-		visible_message(SPAN_NOTICE("[src]'s overload suddenly ceases as primary power is lost."))
-
 /obj/structure/machinery/power/power_generator/reactor/HasFuel()
 	return fusion_cell && fusion_cell.fuel_amount > 0
 
@@ -252,7 +247,7 @@
 	var/looping = FALSE
 	while(buildstate < BUILDSTATE_DAMAGE_WELD)
 		to_chat(xeno, SPAN_NOTICE("You [looping ? "continue damaging" : "start to damage"] [src]."))
-		if(!do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src))
+		if(!do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, numticks = 20))
 			to_chat(xeno, SPAN_DANGER("You stop damaging [src]."))
 			break
 		xeno.animation_attack_on(src)

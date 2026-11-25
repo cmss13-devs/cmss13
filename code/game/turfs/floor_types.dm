@@ -268,50 +268,61 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
-	var/covered = TRUE
+	covered = TRUE
 	var/covered_icon_state = "catwalk"
+	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_CATWALKED
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 	. = ..()
-
 	icon_state = base_state
-	update_icon()
+	update_overlays()
 
-/turf/open/floor/plating/plating_catwalk/update_icon()
+/turf/open/floor/plating/plating_catwalk/update_overlays()
 	. = ..()
 	if(covered)
-		overlays += image(icon, src, covered_icon_state, CATWALK_LAYER)
+		var/turf/check_turf = get_step(src, NORTH)
+		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in contents
+		var/layer_to_use = CATWALK_LAYER
+		if(layer == UNDER_WATER_TURF_LAYER)
+			if(SSwater_overlays.is_water(check_turf))
+				if(water_blocker && water_blocker.dispersing)
+					layer_to_use = UNDER_WATER_CATWALK_LAYER
+				else
+					layer_to_use = TURF_LAYER
+			else
+				layer_to_use = UNDER_WATER_CATWALK_LAYER
+		overlays += image(icon, src, covered_icon_state, layer_to_use)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(src, 1, type)
 			R.add_to_stacks(usr)
-			covered = FALSE
+			turf_flags &= ~TURF_CATWALKED
+			set_covered(FALSE)
 			to_chat(user, SPAN_WARNING("You remove the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			update_icon()
 			return
 	if(istype(W, /obj/item/stack/catwalk))
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
-			covered = TRUE
+			turf_flags |= TURF_CATWALKED
+			set_covered(TRUE)
 			to_chat(user, SPAN_WARNING("You replace the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			update_icon()
 			return
 	return ..()
 
 /turf/open/floor/plating/plating_catwalk/break_tile()
 	if(covered)
-		covered = 0
+		set_covered(FALSE)
 		update_icon()
 	..()
 
 /turf/open/floor/plating/plating_catwalk/break_tile_to_plating()
 	if(covered)
-		covered = 0
+		set_covered(FALSE)
 		update_icon()
 	..()
 
@@ -1982,7 +1993,7 @@
 	return
 
 /turf/open/floor/almayer/empty/proc/enter_depths(atom/movable/AM)
-	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
+	if(!HAS_TRAIT(AM, TRAIT_LAUNCHED) && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
 		if(!ishuman(AM))
 			qdel(AM)
@@ -2182,8 +2193,18 @@
 	icon_state = "ai_floor3"
 
 // RESEARCH STUFF
+
 /turf/open/floor/almayer/research/containment/entrance
 	icon_state = "containment_entrance"
+
+/turf/open/floor/almayer/research/containment/entrance/north
+	dir = NORTH
+
+/turf/open/floor/almayer/research/containment/entrance/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/entrance/west
+	dir = WEST
 
 /turf/open/floor/almayer/research/containment/floor1
 	icon_state = "containment_floor_1"
@@ -2191,8 +2212,20 @@
 /turf/open/floor/almayer/research/containment/floor2
 	icon_state = "containment_floor_2"
 
+/turf/open/floor/almayer/research/containment/floor2/west
+	dir = WEST
+
 /turf/open/floor/almayer/research/containment/corner
 	icon_state = "containment_corner"
+
+/turf/open/floor/almayer/research/containment/corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/research/containment/corner/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/corner/west
+	dir = WEST
 
 /turf/open/floor/almayer/research/containment/corner1
 	icon_state = "containment_corner_1"
@@ -2209,31 +2242,25 @@
 /turf/open/floor/almayer/research/containment/corner_var1
 	icon_state = "containment_corner_variant_1"
 
-/turf/open/floor/almayer/research/containment/corner_var2
-	icon_state = "containment_corner_variant_2"
-
 /turf/open/floor/almayer/research/containment/corner_var1/north
 	dir = NORTH
 
 /turf/open/floor/almayer/research/containment/corner_var1/east
 	dir = EAST
 
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2
-	icon_state = "containment_corner_variant_2"
-
-/turf/open/floor/almayer/research/containment/corner/north
-	dir = NORTH
-
-/turf/open/floor/almayer/research/containment/corner/east
-	dir = EAST
-
-/turf/open/floor/almayer/research/containment/entrance/west
+/turf/open/floor/almayer/research/containment/corner_var1/west
 	dir = WEST
 
-/turf/open/floor/almayer/research/containment/floor2/north
+/turf/open/floor/almayer/research/containment/corner_var2
+	icon_state = "containment_corner_variant_2"
+
+/turf/open/floor/almayer/research/containment/corner_var2/north
 	dir = NORTH
 
-/turf/open/floor/almayer/research/containment/floor2/west
+/turf/open/floor/almayer/research/containment/corner_var2/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/corner_var2/west
 	dir = WEST
 
 /turf/open/floor/almayer/fake_outerhull
@@ -3469,6 +3496,64 @@
 /turf/open/floor/interior/wood/alt
 	icon_state = "oldwood2"
 
+/turf/open/floor/interior/wood/alt2
+	icon_state = "oldwood3"
+
+/turf/open/floor/interior/wood/damage
+	icon_state = "oldwood-broken"
+
+/turf/open/floor/interior/wood/damage_1
+	icon_state = "oldwood-broken2"
+
+/turf/open/floor/interior/wood/damage_2
+	icon_state = "oldwood-broken3"
+
+/turf/open/floor/interior/wood/damage_3
+	icon_state = "oldwood-broken4"
+
+/turf/open/floor/interior/wood/damage_4
+	icon_state = "oldwood-broken5"
+
+/turf/open/floor/interior/wood/damage_5
+	icon_state = "oldwood-broken6"
+
+/turf/open/floor/interior/wood/damage_6
+	icon_state = "oldwood-broken7"
+
+/turf/open/floor/interior/wood_sat
+	name = "wooden floor"
+	icon_state = "wood"
+	tile_type = /obj/item/stack/tile/wood
+	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
+
+/turf/open/floor/interior/wood_sat/is_wood_floor()
+	return TRUE
+
+/turf/open/floor/interior/wood_sat/alt
+	icon_state = "wood1"
+
+/turf/open/floor/interior/wood_sat/damage
+	icon_state = "wood-broken"
+
+/turf/open/floor/interior/wood_sat/damage_1
+	icon_state = "wood-broken2"
+
+/turf/open/floor/interior/wood_sat/damage_2
+	icon_state = "wood-broken3"
+
+/turf/open/floor/interior/wood_sat/damage_3
+	icon_state = "wood-broken4"
+
+/turf/open/floor/interior/wood_sat/damage_4
+	icon_state = "wood-broken5"
+
+/turf/open/floor/interior/wood_sat/damage_5
+	icon_state = "wood-broken6"
+
+/turf/open/floor/interior/wood_sat/damage_6
+	icon_state = "wood-broken7"
+
+
 /turf/open/floor/interior/tatami
 	name = "tatami flooring"
 	desc = "A type of flooring often used in traditional Japanese-style housing."
@@ -4250,6 +4335,27 @@
 /turf/open/floor/green/north
 	dir = NORTH
 
+/turf/open/floor/green/east
+	dir = EAST
+
+/turf/open/floor/green/south
+	dir = SOUTH
+
+/turf/open/floor/green/west
+	dir = WEST
+
+/turf/open/floor/greencorner
+	icon_state = "greencorner"
+
+/turf/open/floor/greencorner/north
+	dir = NORTH
+
+/turf/open/floor/greencorner/east
+	dir = EAST
+
+/turf/open/floor/greencorner/west
+	dir = WEST
+
 /turf/open/floor/loadingarea
 	icon_state = "loadingarea"
 
@@ -4829,6 +4935,15 @@
 /turf/open/floor/darkgreen2/northwest
 	dir = NORTHWEST
 
+/turf/open/floor/darkgreen2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkgreen2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkgreen2/southeast
+	dir = SOUTHEAST
+
 /turf/open/floor/darkpurple2/northwest
 	dir = NORTHWEST
 
@@ -4837,6 +4952,18 @@
 
 /turf/open/floor/darkyellow2/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/green/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/green/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/green/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/green/southwest
+	dir = SOUTHWEST
 
 /turf/open/floor/green/northwest
 	dir = NORTHWEST
@@ -4939,6 +5066,18 @@
 
 /turf/open/floor/darkbluecorners2
 	icon_state = "darkbluecorners2"
+
+/turf/open/floor/darkbluecorners2/north
+	dir = NORTH
+
+/turf/open/floor/darkbluecorners2/east
+	dir = EAST
+
+/turf/open/floor/darkbluecorners2/south
+	dir = SOUTH
+
+/turf/open/floor/darkbluecorners2/west
+	dir = WEST
 
 /turf/open/floor/darkish
 	icon_state = "darkish"

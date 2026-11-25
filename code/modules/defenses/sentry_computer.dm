@@ -41,9 +41,9 @@
 	var/turf/last_camera_turf
 
 	// radio which broadcasts updates
-	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine
+	var/obj/item/device/radio/marine/transceiver
 	// the hidden mob which voices updates
-	var/mob/living/voice = new /mob/living/silicon
+	var/mob/living/silicon/abstract/voice
 
 	// Stuff needed to render the map
 
@@ -52,6 +52,9 @@
 
 /obj/item/device/sentry_computer/Initialize(mapload)
 	. = ..()
+	transceiver = new
+	voice = new
+
 	if(cell_type)
 		cell = new cell_type()
 		cell.charge = cell.maxcharge
@@ -134,7 +137,7 @@
 
 /**
  * Handler for when a linked sentry has no ammo.
- * @param sentrygun: sentry gun which has ran out of ammo.
+ * @param sentrygun: sentry gun which has run out of ammo.
  */
 /obj/item/device/sentry_computer/proc/handle_empty_ammo(obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name

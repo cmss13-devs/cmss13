@@ -20,7 +20,7 @@
 //***************************************Recipe Generator**********************************************/
 //*****************************************************************************************************/
 
-/datum/chemical_reaction/proc/generate_recipe(list/complexity, list/required_reagents_to_add)
+/datum/chemical_reaction/proc/generate_recipe(list/complexity, list/required_reagents_to_add, additional_ingredients = 0)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -38,7 +38,7 @@
 
 	var/failed_attempts = 0 //safety for if a recipe can not be found
 	//pick components
-	var/desired_amount_of_chems = rand(3, max(min(gen_tier*2, 4),3))
+	var/desired_amount_of_chems = rand(3, max(min(gen_tier*2, 4),3)) + additional_ingredients
 	var/list/cache_reagents_to_add = required_reagents_to_add
 	for(var/i = 1, i <= desired_amount_of_chems, i++)
 		if(i >= 2) //only the first component should have a modifier higher than 1
@@ -118,7 +118,17 @@
 					if(roll<=80)
 						chem_id = pick(GLOB.chemical_gen_classes_list[pick("C1", "C2")])
 					else
-						chem_id = pick(GLOB.chemical_gen_classes_list["H1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["X1"])
+				if(4)
+					if(roll<=80)
+						chem_id = pick(GLOB.chemical_gen_classes_list[pick("C2", "X1")])
+					else
+						chem_id = pick(GLOB.chemical_gen_classes_list["X2"])
+				if(5)
+					if(roll<=80)
+						chem_id = pick(GLOB.chemical_gen_classes_list[pick("X1", "X2")])
+					else
+						chem_id = pick(GLOB.chemical_gen_classes_list["X3"])
 				else
 					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						if (prob(50))
@@ -240,7 +250,9 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE)
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE, depth)
+	if(depth > 5)
+		return
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -324,15 +336,17 @@
 			else
 				property = pick(GLOB.chemical_properties_list["positive"])
 
-	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
-	if (level > P.max_level)
-		level = min(P.max_level, level)
+	var/datum/chem_property/property_check = GLOB.chemical_properties_list[property]
+	if(property_check.rarity == PROPERTY_DISABLED || property_check.rarity == PROPERTY_ADMIN)
+		return add_property(my_property, my_level, value_offset, type_to_add, track_added_properties, depth++)
+	if(level > property_check.max_level)
+		level = min(property_check.max_level, level)
 
 	//Calculate what our chemical value is with our level
 	var/new_value
-	if(isNegativeProperty(P))
+	if(isNegativeProperty(property_check))
 		new_value = -1 * level
-	else if(isNeutralProperty(P))
+	else if(isNeutralProperty(property_check))
 		new_value = floor(-1 * level / 2)
 	else
 		new_value = level
@@ -421,14 +435,15 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
-/datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)
+/datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add, list/locked_chems)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id
 	C.name = name
 	C.gen_tier = gen_tier
-	if(!C.generate_recipe(complexity, required_reagents_to_add))
+	if(!C.generate_recipe(complexity, required_reagents_to_add, additional_ingredients = length(locked_chems)))
 		return //Generating a recipe failed, so return null
+	C.locked_reagents = locked_chems
 	GLOB.chemical_reactions_list[C.id] = C
 
 	C.add_to_filtered_list()

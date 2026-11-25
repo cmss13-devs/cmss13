@@ -116,7 +116,7 @@
 
 /obj/structure/barricade/hesco
 	name = "HESCO barricade"
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to setup."
+	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up."
 	icon_state = "sand_wall"
 	health = 500
 	maxhealth = 500

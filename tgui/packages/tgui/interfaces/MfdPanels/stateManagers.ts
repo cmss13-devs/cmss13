@@ -12,10 +12,10 @@ export const useEquipmentState = (panelId: string) => {
 };
 
 export const fmState = (panelId: string) => {
-  const [data, set] = useSharedState<string | undefined>( // This was originally localState
+  const [data, set] = useSharedState<string | undefined>(
     `${panelId}_selected_fm`,
     undefined,
-  );
+  ); // This was originally localState
   return {
     selectedFm: data,
     setSelectedFm: set,
@@ -31,10 +31,10 @@ export const fmEditState = (panelId: string) => {
 };
 
 export const fmWeaponEditState = (panelId: string) => {
-  const [data, set] = useSharedState<number | undefined>( // This was originally localState
+  const [data, set] = useSharedState<number | undefined>(
     `${panelId}_edit_fm_weapon`,
     undefined,
-  );
+  ); // This was originally localState
   return {
     editFmWeapon: data,
     setEditFmWeapon: set,
@@ -64,22 +64,6 @@ export const useWeaponState = (panelId: string) => {
   return {
     weaponState: data,
     setWeaponState: set,
-  };
-};
-
-export const useFiremissionXOffsetValue = () => {
-  const [data, set] = useSharedState<number>('firemission-x-offset-value', 0);
-  return {
-    fmXOffsetValue: data,
-    setFmXOffsetValue: set,
-  };
-};
-
-export const useFiremissionYOffsetValue = () => {
-  const [data, set] = useSharedState<number>('firemission-y-offset-value', 0);
-  return {
-    fmYOffsetValue: data,
-    setFmYOffsetValue: set,
   };
 };
 

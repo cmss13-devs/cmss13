@@ -94,8 +94,8 @@ SUBSYSTEM_DEF(objectives)
 		message += " (+[earned])"
 	message += "."
 
-	ai_silent_announcement(message, ":v", TRUE)
-	ai_silent_announcement(message, ":t", TRUE)
+	ai_silent_announcement(message, ":v")
+	ai_silent_announcement(message, ":t")
 	log_ares_tech(MAIN_AI_SYSTEM, FALSE, "TECH REPORT", "[round(tree.points, 0.1)] points available.", 0)
 	tree.total_points_last_sitrep = tree.total_points
 

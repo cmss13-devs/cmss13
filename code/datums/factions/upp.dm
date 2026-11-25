@@ -3,18 +3,10 @@
 	faction_tag = FACTION_UPP
 	base_icon_file = 'icons/mob/hud/factions/upp.dmi'
 
-/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/icon/override_icon_file
-	var/hud_icon_state
+/datum/faction/upp/modify_hud_holder_from_data(image/holder, location, job_rank, paygrade, assignment, rank_fallback, rank_override, datum/squad/squad)
+	var/hud_icon_state = null
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
-	var/datum/squad/squad = human.assigned_squad
-
-	var/_role = human.job
-	if(!_role)
-		var/obj/item/card/id/id_card = human.get_idcard()
-		if(id_card)
-			_role = id_card.rank
-	switch(_role)
+	switch(job_rank)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"
 			default_color = TRUE
@@ -55,16 +47,18 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_SUPPLY)
 			hud_icon_state = "log"
-		if(JOB_UPP_COMMISSAR)
+		if(JOB_UPP_COMMISSAR, JOB_UPP_MSS_OFFICER)
 			hud_icon_state = "commi"
+
 	if(hud_icon_state)
-		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
-		holder.overlays += image(file_to_use, human, "upp_background")
-		var/image/rank_icon_image = image(file_to_use, human, "upp_[hud_icon_state]")
+		holder.overlays += image(base_icon_file, location, "upp_background")
+		var/image/rank_icon_image = image(base_icon_file, location, "upp_[hud_icon_state]")
 		if(istype(squad))
-			human.langchat_color = human.assigned_squad.chat_color
+			var/mob/living/carbon/human/human = location
+			if(istype(human))
+				human.langchat_color = squad.chat_color // This really ought to be done elsewhere
 			rank_icon_image.color = squad.equipment_color
-			var/image/squad_circle = image(file_to_use, human, "upp_squad_circle")
+			var/image/squad_circle = image(base_icon_file, location, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
 		else
@@ -77,14 +71,14 @@
 		list("PRIMARY FIREARMS", 0, null, null, null),
 		list("Type 71 Pulse Rifle", 20, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
 		list("Type 71 Pulse Rifle Carbine", 20, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
-		list("Type 64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 23 Riot Shotgun", 20, /obj/item/weapon/gun/shotgun/type23, null, VENDOR_ITEM_REGULAR),
 
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("Type 71 AP Magazine (5.45x39mm)", 15, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
-		list("Type 71 Magazine (5.45x39mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
-		list("Type 64 Helical Magazine (7.62x19mm)", 5, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
+		list("Type 71 AP Magazine (10x27mm)", 15, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
+		list("Type 71 Magazine (10x27mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Helical Magazine (8.6x20mm)", 5, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
 		list("Handful of Heavy Buckshot Shells (8g)", 5, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
@@ -93,9 +87,9 @@
 		list("ZHNK-72 Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("Type 73 Magazine (7.62x25mm Tokarev)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_REGULAR),
-		list("ZHNK-72 Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
-		list("NP92 Magazine (9x18mm Makarov)", 5, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
+		list("Type 73 Magazine (10mm)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (9x30mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
+		list("NP92 Magazine (8.6x20mm)", 5, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
@@ -120,13 +114,13 @@
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("Type 71 Pulse Rifle", 20, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle Carbine", 20, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
-		list("Type 64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 23 Riot Shotgun", 20, /obj/item/weapon/gun/shotgun/type23, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
-		list("Type 71 AP Magazine (5.45x39mm)", 60, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
-		list("Type 71 Magazine (5.45x39mm)", 60, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
-		list("Type 64 Helical Magazine (7.62x19mm)", 60, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
+		list("Type 71 AP Magazine (10x27mm)", 60, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
+		list("Type 71 Magazine (10x27mm)", 60, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
+		list("PPZ-49/64 Helical Magazine (8.6x20mm)", 60, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
 		list("Handful of Heavy Buckshot Shells (8g)", 60, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
@@ -135,9 +129,9 @@
 		list("ZHNK-72 Revolver", 20, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("Type 73 Magazine (7.62x25mm Tokarev)", 40, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_REGULAR),
-		list("NP92 Magazine (9x18mm Makarov)", 40, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
-		list("ZHNK-72 Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 73 Magazine (10mm)", 40, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("NP92 Magazine (8.6x20mm)", 40, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (9x30mmR)", 40, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, null, VENDOR_ITEM_REGULAR),

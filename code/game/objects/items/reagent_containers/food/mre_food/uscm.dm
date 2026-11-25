@@ -132,7 +132,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/feijoada
 	name = "feijoada"
 	icon_state = "brazilian-style feijoada"
-	desc = "A Brazillian dish filled with black beans, different kinds of meat, vegetables and spices. Rich in flavor and very filling."
+	desc = "A Brazilian dish filled with black beans, different kinds of meat, vegetables and spices. Rich in flavor and very filling."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/feijoada/Initialize()
 	. = ..()
@@ -447,7 +447,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/brigadeiro
 	name = "brigadeiro balls"
 	icon_state = "brigadeiro balls"
-	desc = "A traditional Brazillian dessert, made out of condensed milk, cocoa and butter. Allegedly."
+	desc = "A traditional Brazilian dessert, made out of condensed milk, cocoa and butter. Allegedly."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/brigadeiro/Initialize()
 	. = ..()
@@ -459,7 +459,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/strawberrytoaster
 	name = "strawberry toaster pastry"
 	icon_state = "strawberry toaster pastry"
-	desc = "A crunchy biscuit with artifical tasting strawberry jam inside of it. Dry frosting on the top completes the look of a popular breakfast product. Despite the impression, this is actually a toaster pastry: the manufacturer wanted to avoid copyright infringement."
+	desc = "A crunchy biscuit with artificial tasting strawberry jam inside of it. Dry frosting on the top completes the look of a popular breakfast product. Despite the impression, this is actually a toaster pastry: the manufacturer wanted to avoid copyright infringement."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/strawberrytoaster/Initialize()
 	. = ..()

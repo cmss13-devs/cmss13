@@ -172,6 +172,9 @@
 /mob/living/silicon/hear_apollo()
 	return TRUE
 
+/mob/living/silicon/hear_artemis()
+	return TRUE
+
 /mob/living/silicon/rejuvenate()
 	..()
 	SSmob.living_misc_mobs += src
@@ -194,4 +197,6 @@
 				if(!anchored)
 					gib()
 
-	updatehealth()
+/// Abstract version of the silicon, to be used when the mob is just an internal proxy
+/mob/living/silicon/abstract
+	mob_flags = MOB_ABSTRACT

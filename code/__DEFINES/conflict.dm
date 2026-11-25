@@ -12,7 +12,7 @@
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
 // flags_ammo_behaviour
-#define AMMO_EXPLOSIVE (1<<0)
+// (1<<0) was formerly AMMO_EXPLOSIVE. Reuse it only if you must. I encourage you to use components.
 #define AMMO_ACIDIC (1<<1)
 #define AMMO_XENO (1<<2)
 #define AMMO_LASER (1<<3)
@@ -42,7 +42,7 @@
 /// Handles sentry flamers glob
 #define AMMO_FLAME (1<<22)
 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself (This one does not work on mobs)
-#define AMMO_STRIKES_SURFACE_ONLY	(1<<23) 
+#define AMMO_STRIKES_SURFACE_ONLY	(1<<23)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 
@@ -50,6 +50,13 @@
 #define PROJECTILE_SHRAPNEL  (1<<0)
 /// Apply additional effects upon hitting clicked target
 #define PROJECTILE_BULLSEYE  (1<<1)
+/// Reflected projectiles
+#define PROJECTILE_REFLECTED (1<<2)
+
+///Bonus Projectile Check Defines
+#define PROJECTILE_LONE 0
+#define PROJECTILE_ORIGINAL 1
+#define PROJECTILE_BONUS 2
 
 //Gun defines for gun related thing. More in the projectile folder.
 
@@ -76,7 +83,20 @@
 #define GUN_SUPPORT_PLATFORM (1<<16)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<17)
+/// If the gun can do battlefield executions
+#define GUN_BATTLEFIELD_EXECUTION (1<<18)
+/// If the gun can perform tricks
+#define GUN_TRICKSTER (1<<19)
+/// If the gun can perform a warning shot
+#define GUN_CAN_WARNING_SHOT (1<<20)
+/// Ignores the accuracy and scatter penalties from dual wielding.
+#define GUN_AKIMBO_ALLOWED (1<<21)
+/// If it can automatically eject shell casings
+#define GUN_AUTO_EJECT_CASINGS (1<<22)
+/// If it needs to manually eject shell casings (like bolt actions)
+#define GUN_MANUAL_EJECT_CASINGS (1<<23)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
+#define DIMMED_RAIL_LIGHT_MULT 0.85 // As per maintainer request, weapons in the suit slot or back slot will have their rail flashlights dimmed by 25%
 
 #define USES_STREAKS (1<<0)
 #define DANGEROUS_TO_ONEHAND_LEVER (1<<1)
@@ -107,6 +127,8 @@
 #define AMMUNITION_CANNOT_REMOVE_BULLETS (1<<4)
 /// If this magazine can transfer to other magazines of the same type by slapping one with the other
 #define AMMUNITION_SLAP_TRANSFER (1<<5)
+/// If this magazine can be jungle styled
+#define JUNGLE_STYLE_ABLE (1<<6)
 //Slowdown from various armors.
 
 /// How much shoes slow you down by default. Negative values speed you up
@@ -135,15 +157,14 @@
 #define SLOWDOWN_ADS_MINISCOPE_DYNAMIC 1.8
 #define SLOWDOWN_ADS_SUPERWEAPON 2.75
 
-//Wield delays, in milliseconds. 10 is 1 second
-#define WIELD_DELAY_NONE 0
-#define WIELD_DELAY_MIN 1
-#define WIELD_DELAY_VERY_FAST 2
-#define WIELD_DELAY_FAST 4
-#define WIELD_DELAY_NORMAL 6
-#define WIELD_DELAY_SLOW 8
-#define WIELD_DELAY_VERY_SLOW 10
-#define WIELD_DELAY_HORRIBLE 12
+#define WEAPON_DELAY_NONE 0
+#define WEAPON_DELAY_MIN 1
+#define WEAPON_DELAY_VERY_FAST 2
+#define WEAPON_DELAY_FAST 4
+#define WEAPON_DELAY_NORMAL 6
+#define WEAPON_DELAY_SLOW 8
+#define WEAPON_DELAY_VERY_SLOW 10
+#define WEAPON_DELAY_HORRIBLE 12
 
 ///This is how long you must wait to throw again after throwing two things
 #define THROW_DELAY (1.5 SECONDS)
@@ -284,7 +305,7 @@
 #define MOLOTOV_POTENCY_MAX 20
 #define MOLOTOV_TIME_MAX 20
 
-/// A gun filled with this percentage of it's total ammo or lower is considered to have low ammo
+/// A gun filled with this percentage of its total ammo or lower is considered to have low ammo
 #define GUN_LOW_AMMO_PERCENTAGE 0.25
 
 // Fire

@@ -2,8 +2,7 @@
 	title = JOB_SYNTH
 	total_positions = 2
 	spawn_positions = 1
-	allow_additional = 1
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the acting commanding officer"
 	selection_class = "job_synth"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
@@ -50,6 +49,12 @@
 			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/command/council,
 			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/command/council
 			)
+		if("Research")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/research,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/research/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/research/council
+			)
 
 /datum/job/civilian/synthetic/New()
 	. = ..()
@@ -74,16 +79,15 @@
 /datum/job/civilian/synthetic/set_spawn_positions(count)
 	spawn_positions = synth_slot_formula(count)
 
-/datum/job/civilian/synthetic/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = synth_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/civilian/synthetic/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : synth_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 /obj/effect/landmark/start/synthetic

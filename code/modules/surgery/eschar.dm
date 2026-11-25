@@ -9,8 +9,8 @@
 		/datum/surgery_step/graft_exposed_flesh,
 	)
 
-/datum/surgery/eschar_mend/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return L.status & LIMB_ESCHAR
+/datum/surgery/eschar_mend/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return patient_limb.status & LIMB_ESCHAR
 
 /datum/surgery_step/separate_eschar
 	name = "Remove the Eschar"
@@ -36,7 +36,9 @@
 		SPAN_NOTICE("[user] has removed the eschar from your [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."),
 		SPAN_NOTICE("[user] has removed the eschar from [target]'s [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."))
 
-	to_chat(target, SPAN_NOTICE("The air feels cold around the exposed skin on your [surgery.affected_limb.display_name]."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("The air feels cold around the exposed skin on your [surgery.affected_limb.display_name]."))
+
 	log_interact(user, target, "[key_name(user)] has removed the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/separate_eschar/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
@@ -52,15 +54,10 @@
 /datum/surgery_step/graft_exposed_flesh
 	name = "Apply a Graft"
 	desc = "graft and seal the exposed flesh"
-	tools = list(
-		/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/surgery/synthgraft = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/medical/advanced/ointment/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/ointment = SURGERY_TOOL_MULT_AWFUL,
-	)
+	tools = SURGERY_TOOLS_APPLY_GRAFT
 	time = 3 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 	var/use_stack = 1 //uses one stack of burn heal stuff.
 
@@ -96,6 +93,7 @@
 		SPAN_NOTICE("[user] sealed a skin graft over the exposed skin on [target]'s [surgery.affected_limb.display_name]."))
 
 	to_chat(target, SPAN_NOTICE("Your skin is covered and safe. You feel better."))
+
 	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	surgery.affected_limb.status &= ~LIMB_ESCHAR
 	surgery.affected_limb.heal_damage(0, surgery.affected_limb.burn_healing_threshold)

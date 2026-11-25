@@ -281,6 +281,18 @@
 	icon_state = "headbandred"
 	item_state_slots = list(WEAR_AS_GARB = "headbandred")
 
+/obj/item/clothing/head/headband/red/static
+	icon_state = "headbandalpha"
+	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_AS_GARB = "headbandalpha",
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 	item_state_slots = list(WEAR_AS_GARB = "headbandtan")
@@ -332,7 +344,6 @@
 	item_state_slots = list(
 		WEAR_AS_GARB = "headbandrebel", // will be prefixed with either hat_ or helmet_
 	)
-	item_state_slots = null
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/squad
@@ -409,6 +420,73 @@
 	)
 	flags_obj = OBJ_IS_HELMET_GARB
 
+	var/flags_marine_headset = HAT_GARB_OVERLAY
+	var/obj/item/storage/internal/headgear/pockets
+	var/storage_slots = 1
+	var/storage_slots_reserved_for_garb = 2
+	var/storage_max_w_class = SIZE_TINY
+	var/storage_max_storage_space = 4
+
+/obj/item/clothing/head/headset/Initialize(mapload, ...)
+	. = ..()
+
+	helmet_overlays = list() //To make things simple.
+
+	pockets = new(src)
+	pockets.storage_slots = storage_slots + storage_slots_reserved_for_garb
+	pockets.slots_reserved_for_garb = storage_slots_reserved_for_garb
+	pockets.max_w_class = storage_max_w_class
+	pockets.bypass_w_limit = GLOB.allowed_headset_items
+	pockets.max_storage_space = storage_max_storage_space
+
+/obj/item/clothing/head/headset/Destroy()
+	QDEL_NULL(pockets)
+	return ..()
+
+/obj/item/clothing/head/headset/attack_hand(mob/user)
+	if(loc != user)
+		..(user)
+		return
+	if(pockets.handle_attack_hand(user))
+		..()
+
+/obj/item/clothing/head/headset/MouseDrop(over_object, src_location, over_location)
+	if(pockets.handle_mousedrop(usr, over_object))
+		..()
+
+/obj/item/clothing/head/headset/attackby(obj/item/headpiece, mob/user)
+	..()
+	return pockets.attackby(headpiece, user)
+
+/obj/item/clothing/head/headset/on_pocket_insertion()
+	update_icon()
+
+/obj/item/clothing/head/headset/on_pocket_removal()
+	update_icon()
+
+/obj/item/clothing/head/headset/update_icon()
+	helmet_overlays = list() // Rebuild our list every time
+	if(pockets?.contents && (flags_marine_headset & HAT_GARB_OVERLAY))
+		for(var/obj/item/garb_object in pockets.contents)
+			if(garb_object.type in GLOB.allowed_headset_items)
+				var/image/new_overlay = garb_object.get_garb_overlay(GLOB.allowed_headset_items[garb_object.type])
+				helmet_overlays += new_overlay
+
+	if(ismob(loc))
+		var/mob/wearer = loc
+		wearer.update_inv_head()
+
+/obj/item/clothing/head/headset/has_garb_overlay()
+	return flags_marine_headset & HAT_GARB_OVERLAY
+
+GLOBAL_LIST_INIT(allowed_headset_items, list(
+	/obj/item/prop/helmetgarb/helmet_gasmask = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
+))
+
 GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/storage/fancy/cigarettes/emeraldgreen = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/storage/fancy/cigarettes/kpack = PREFIX_HAT_GARB_OVERRIDE,
@@ -444,6 +522,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/clothing/head/headband = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/tan = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/red = PREFIX_HAT_GARB_OVERRIDE, // _hat
+	/obj/item/clothing/head/headband/red/static = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/brown = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/gray = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/intel = PREFIX_HAT_GARB_OVERRIDE, // _hat
@@ -452,6 +531,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_gasmask = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
 ))
 
 /obj/item/clothing/head/cmcap
@@ -513,6 +594,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/Destroy()
 	QDEL_NULL(pockets)
+	return ..()
+
+/obj/item/clothing/head/cmcap/get_pockets()
+	if(pockets)
+		return pockets
 	return ..()
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
@@ -970,7 +1056,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi'
@@ -1077,6 +1163,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 
+/obj/item/clothing/head/beret/clf/guerilla
+	name = "\improper red beret"
+	desc = "A red beret popular with revolutionaries."
+	icon_state = "beret_revolution"
+
 /obj/item/clothing/head/general
 	name = "\improper USCM officer peaked service cap"
 	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."
@@ -1133,7 +1224,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
-	desc = "A formal hat worn by drill sergeants. Police that moustache."
+	desc = "A formal hat worn by drill instructors. Police that moustache."
 	icon_state = "drillhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -1142,7 +1233,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cavalry
 	name = "\improper US cavalry hat"
-	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrence of heroism that is ongoing from as far as 19th century. Even though cavalry divison had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
+	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrance of heroism that is ongoing from as far as 19th century. Even though cavalry division had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
 	icon_state = "cavalry"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(

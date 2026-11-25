@@ -7,32 +7,38 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	damage = 72
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 85
+	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
+	accurate_range = 7
+	handful_type = /obj/item/ammo_magazine/handful/revolver
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/bullet
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
-	damage = 55
+	damage = 70
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
-
-	damage = 35
+	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
-	var/add_thing = 1
+	accurate_range = 7
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
-	. = ..()
-	if(!M || !isliving(M))
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(fired_projectile.distance_travelled > 5 || isyautja(living_mob) || (isxeno(living_mob) && living_mob.mob_size >= MOB_SIZE_BIG))
 		return
-	M.AddComponent(/datum/component/heavy_buildup, 1, 3)
 
+	if(isxeno(living_mob))
+		to_chat(living_mob, SPAN_XENODANGER("We are shaken by the sudden impact!"))
+	else
+		to_chat(living_mob, SPAN_HIGHDANGER("You are shaken by the sudden impact!"))
+
+	living_mob.AddComponent(/datum/component/heavy_buildup)
 
 
 /datum/ammo/bullet/revolver/incendiary
@@ -77,9 +83,9 @@
 	))
 
 /datum/ammo/bullet/revolver/upp
-	name = "heavy revolver bullet"
+	name = "high-powered revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_8
 	damage = 70
 
 
@@ -90,11 +96,12 @@
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/shrapnel
 
 	max_range = 6
 	damage = 40 // + TIER_4 * 3
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_4
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
 	shrapnel_type = /obj/item/shard/shrapnel/upp
@@ -142,10 +149,6 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
-/datum/ammo/bullet/revolver/mateba/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
-
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
@@ -166,7 +169,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	..()

@@ -32,7 +32,16 @@
 #define EXPLOSION_FALLOFF_SHAPE_LINEAR   0
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
+#define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON  3
+#define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON  4
 #define EXPLOSION_MAX_POWER 5000
+
+// Additional explosion defines for smothering and other effects
+#define EXPLOSION_DANGEROUS_POWER 150 // Explosions trigger a shockwave and can not be smothered at and above this power.
+#define EXPLOSION_SMOTHER_FALLOFF_MULTIPLIER 3 // Multiplies the falloff of an explosion cell by this amount each time it propagates.
+#define EXPLOSION_SMOTHER_DAMAGE_MULTIPLIER 2 // Multiplies the power which added ontop again (remember; smothering mobs already take rest-damage).
+#define EXPLOSION_SMOTHER_SHRAPNEL_PERCENT 0.1 // How much shrapnel direct-hits the body-blocking hero? (shrapnel hurts way too much if everything were to hit)
+#define EXPLOSION_SMOTHER_MESSAGE_TRIGGER_RANGE 4 // Needs to have an ally in this range to trigger the message fluff.
 
 //area flags
 
@@ -56,6 +65,8 @@
 #define AREA_NOSECURECADES (1<<8)
 /// Flags the area, preventing the creation of xeno tunnels, overwriting can_dig_xeno_tunnel.
 #define AREA_NOTUNNEL (1<<9)
+/// Flags the area as heavily ventilated clearing most /obj/effect/particle_effect in a few ticks.
+#define AREA_HEAVILY_VENTILATED (1<<10)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

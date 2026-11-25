@@ -413,7 +413,7 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
-/obj/item/weapon/gun/pistol/heavy{
+/obj/item/weapon/gun/pistol/deagle{
 	pixel_y = 8
 	},
 /turf/open/floor/wood,

@@ -88,6 +88,7 @@
 
 
 /obj/item/device/assembly/mousetrap/Crossed(atom/movable/AM)
+	..()
 	if(armed)
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
@@ -95,7 +96,6 @@
 			H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]"))
 		if(ismouse(AM))
 			triggered(AM)
-	..()
 
 
 /obj/item/device/assembly/mousetrap/on_found(mob/finder as mob)
@@ -117,6 +117,8 @@
 	icon_state = "mousetraparmed"
 	armed = 1
 
+/obj/item/device/assembly/mousetrap/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
 
 /obj/item/device/assembly/mousetrap/verb/hide_under()
 	set src in oview(1)

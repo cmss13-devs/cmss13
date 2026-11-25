@@ -55,6 +55,7 @@
 
 	density = FALSE
 	operating = DOOR_OPERATING_IDLE
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
 
 /obj/structure/machinery/door/poddoor/railing/close(forced = FALSE)
 	if(operating)
@@ -74,9 +75,7 @@
 		return
 
 	operating = DOOR_OPERATING_IDLE
-
-/obj/structure/machinery/door/poddoor/railing/open
-	density = FALSE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
 /obj/structure/machinery/door/poddoor/railing/upp
 	id = "supply_elevator_railing_upp"

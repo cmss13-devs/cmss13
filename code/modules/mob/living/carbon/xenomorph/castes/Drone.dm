@@ -34,11 +34,13 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 
 	minimum_evolve_time = 1 MINUTES
 
 	minimap_icon = "drone"
+
+	organ_type = /obj/item/organ/xeno/drone
 
 /datum/caste_datum/drone/New()
 	. = ..()
@@ -52,13 +54,13 @@
 	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
-	plasma_types = list(PLASMA_PURPLE)
+	plasma_types = list(PLASMA_PHEROMONE)
 	tier = 1
-	organ_value = 800
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -8
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -70,12 +72,15 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/drone.dmi'
@@ -84,6 +89,41 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 	skull = /obj/item/skull/drone
 	pelt = /obj/item/pelt/drone
+
+/mob/living/carbon/xenomorph/drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	if(hive && !should_block_game_interaction(src))
+		if(!hive.living_xeno_queen && hive.allow_queen_evolve && !get_action(src, /datum/action/xeno_action/onclick/evolve))
+			var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+			evolve_action.give_to(src)
+		RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_queen))
+
+/// SIGNAL_HANDLER for COMSIG_HIVE_NEW_QUEEN to handle granting/removing evolve button
+/mob/living/carbon/xenomorph/drone/proc/handle_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = get_action(src, /datum/action/xeno_action/onclick/evolve)
+	if(new_queen)
+		// New queen: Remove evolve action if we still need evo
+		if(evolve_action && evolution_stored < evolution_threshold)
+			qdel(evolve_action)
+		return
+	// Queen death: Add evolve action if we don't already have it
+	if(evolve_action)
+		return
+	if(!hive.allow_queen_evolve)
+		return
+	evolve_action = new()
+	evolve_action.give_to(src)
+
+/obj/item/organ/xeno/drone
+	name = "drone heart"
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	research_value = 800
+
+	xeno_organ_flags = XENO_ORGAN_WEAK|XENO_ORGAN_SUPPORT
+
 
 /mob/living/carbon/xenomorph/drone/tutorial
 	AUTOWIKI_SKIP(TRUE)

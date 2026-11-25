@@ -1,5 +1,7 @@
 
 /proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, shrapnel_direction, shrapnel_spread = 45, datum/ammo/shrapnel_type = /datum/ammo/bullet/shrapnel, datum/cause_data/cause_data, ignore_source_mob = FALSE, on_hit_coefficient = 0.15, use_shrapnel_angle = FALSE)
+	if(shrapnel_direction < 0)
+		return // Don't do anything if explicitly directionless
 
 	epicenter = get_turf(epicenter)
 
@@ -20,7 +22,13 @@
 	var/mob/living/mob_lying_on_turf
 	var/atom/source = epicenter
 
+	var/cause_was_grenade = istype(cause_data?.resolve_cause(), /obj/item/explosive/grenade)
+	var/cause_was_airburst = istype(cause_data?.resolve_cause(), /obj/item/explosive/grenade/high_explosive/airburst)
+
 	for(var/mob/living/M in epicenter) //find a mob at the epicenter. Non-prone mobs take priority
+		if(cause_was_grenade && !cause_was_airburst)
+			if(M.resting && M.stat == CONSCIOUS && M.a_intent == INTENT_DISARM) //we got a body-blocking hero in here, explosion() smothering handles shrapnel
+				return
 		if(M.density && !mob_standing_on_turf)
 			mob_standing_on_turf = M
 		else if(!mob_lying_on_turf)
@@ -28,7 +36,6 @@
 
 	if(mob_standing_on_turf && isturf(mob_standing_on_turf.loc))
 		source = mob_standing_on_turf//we designate any mob standing on the turf as the "source" so that they don't simply get hit by every projectile
-
 
 	for(var/i=0;i<shrapnel_number;i++)
 

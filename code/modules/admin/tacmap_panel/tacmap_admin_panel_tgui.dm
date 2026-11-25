@@ -171,7 +171,6 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		if("delete")
 			var/is_uscm = params["uscm"]
 			var/image/selected_drawing_image
-			var/atom/movable/screen/minimap/selected_minimap
 			var/drawn_by
 
 			var/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
@@ -181,12 +180,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 					return TRUE
 				// Clear overlays and labels from all minimaps and reset drawing images
 				for(var/z in ground_zs)
-					for(var/live in 0 to 1)
-						for(var/popup in 0 to 1)
-							selected_minimap = SSminimaps.fetch_minimap_object(z, MINIMAP_FLAG_USCM, live=live, popup=popup, drawing=TRUE)
-							selected_minimap.clear_drawing_overlays()
-							for(var/turf/label as anything in selected_minimap.labelled_turfs)
-								SSminimaps.remove_marker(label)
+					SSminimaps.clear_drawings_and_labels(z, MINIMAP_FLAG_USCM)
 					selected_drawing_image = SSminimaps.get_drawing_image(z, MINIMAP_FLAG_USCM, TRUE)
 					selected_drawing_image?.icon = icon('icons/ui_icons/minimap.dmi')
 					for(var/key in SSminimaps.transmitted_drawings)
@@ -205,12 +199,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 					return TRUE
 				// Clear overlays and labels from all minimaps and reset drawing images
 				for(var/z in ground_zs)
-					for(var/live in 0 to 1)
-						for(var/popup in 0 to 1)
-							selected_minimap = SSminimaps.fetch_minimap_object(z, MINIMAP_FLAG_XENO, live=live, popup=popup, drawing=TRUE)
-							selected_minimap.clear_drawing_overlays()
-							for(var/turf/label as anything in selected_minimap.labelled_turfs)
-								SSminimaps.remove_marker(label)
+					SSminimaps.clear_drawings_and_labels(z, MINIMAP_FLAG_XENO)
 					selected_drawing_image = SSminimaps.get_drawing_image(z, MINIMAP_FLAG_XENO, drawing=FALSE)
 					selected_drawing_image?.icon = icon('icons/ui_icons/minimap.dmi')
 					for(var/key in SSminimaps.transmitted_drawings)

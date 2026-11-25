@@ -776,6 +776,26 @@ SUBSYSTEM_DEF(minimaps)
 		hashed_minimaps[hash] = map
 	return map
 
+/// Clears all drawings and labeled turfs for the provided `zlevel` and `minimap_flags`
+/datum/controller/subsystem/minimaps/proc/clear_drawings_and_labels(zlevel, minimap_flags)
+	var/regex/regex = regex("^[zlevel]-[minimap_flags]-\[01]-\[01]-1") // To include ceiling & cached client (and require drawing)
+	for(var/hash in hashed_minimaps)
+		if(regex.Find(hash))
+			var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
+			map.clear_drawing_overlays()
+			for(var/turf/label as anything in map.labelled_turfs)
+				SSminimaps.remove_marker(label)
+	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies) // Because of uncached client...
+		if(client_map.target != zlevel)
+			continue
+		if(client_map.minimap_flags != minimap_flags)
+			continue
+		if(!client_map.drawing)
+			continue
+		client_map.clear_drawing_overlays()
+		for(var/turf/label as anything in client_map.labelled_turfs)
+			SSminimaps.remove_marker(label)
+
 ///fetches the drawing icon for a minimap flag and returns it, creating it if needed. assumes minimap_flag is ONE flag
 /datum/controller/subsystem/minimaps/proc/get_drawing_image(zlevel, minimap_flag, drawing)
 	var/hash = "[zlevel]-[minimap_flag]"

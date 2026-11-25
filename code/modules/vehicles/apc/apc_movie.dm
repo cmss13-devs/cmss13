@@ -26,7 +26,7 @@
 
 	entrances = list(
 		"right rear" = list(-2, 1),
-		"right front" = list(-2, 0)
+		"right front" = list(-2, 0),
 	)
 
 	seats = list(

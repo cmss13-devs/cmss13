@@ -23,7 +23,7 @@
 
 	entrances = list(
 		"right rear" = list(-2, 1),
-		"right front" = list(-2, 0)
+		"right front" = list(-2, 0),
 	)
 
 /obj/vehicle/multitile/apc/command/movierecon/add_seated_verbs(mob/living/M, seat)

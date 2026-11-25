@@ -1415,7 +1415,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 // SET UP OVERLAYS FOR INCISIONS
 	if(surgery_status & INCISION_MADE) //sets up the initial incision sprite
 		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER)
-		surgery_flesh_overlay.icon_state = "incision_[name]"
+		surgery_flesh_overlay.icon_state = "incision_[icon_name]"
 
 		if(surgery_status & INCISION_BLEEDING)
 			surgery_flesh_overlay.color = owner?.species.incision_color_fresh
@@ -1431,9 +1431,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER)
 		if(issynth(owner))
 			if(name == "groin" || name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk.
-				surgery_flesh_overlay.icon_state = "incision_wide_[name]_s"
+				surgery_flesh_overlay.icon_state = "incision_wide_[icon_name]_s"
 		else
-			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
+			surgery_flesh_overlay.icon_state = "incision_wide_[icon_name]"
 
 		if(surgery_status & INCISION_BLEEDING)
 			if(issynth(owner))
@@ -1455,12 +1455,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		else
 			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) //incision, then bones on top for groin
 
-		surgery_bone_overlay.icon_state = "bone_[name]"
+		surgery_bone_overlay.icon_state = "bone_[icon_name]"
 
 		if(surgery_status & INCISION_BONE_OPENED)
-			surgery_bone_overlay.icon_state = "bone_open_[name]"
+			surgery_bone_overlay.icon_state = "bone_open_[icon_name]"
 		if(surgery_status & INCISION_BONE_CLOSED || surgery_status & INCISION_PELVIS_EXPOSED)
-			surgery_bone_overlay.icon_state = "bone_[name]"
+			surgery_bone_overlay.icon_state = "bone_[icon_name]"
 
 		if(status & LIMB_BROKEN)
 			surgery_bone_overlay.icon_state += "_broken"
@@ -1513,9 +1513,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 			if(issynth(owner))
 				if(name == "chest") //synths have a unique chest cavity shape from humans. Otherwise, every other incision cavity looks the same as humans.
-					surgery_ib_overlay.icon_state = "ib_[name]_s"
+					surgery_ib_overlay.icon_state = "ib_[icon_name]_s"
 			else
-				surgery_ib_overlay.icon_state = "ib_[name]"
+				surgery_ib_overlay.icon_state = "ib_[icon_name]"
 
 			. += surgery_ib_overlay
 

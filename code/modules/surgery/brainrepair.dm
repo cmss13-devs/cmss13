@@ -17,11 +17,11 @@
 	var/datum/internal_organ/brain/patient_brain = patient.internal_organs_by_name["brain"]
 	if(!patient_brain || patient_brain.robotic == ORGAN_ROBOT)
 		return FALSE
+	if(dmg_max && patient_brain.damage > dmg_max) //need to fix the hematoma first
+		return FALSE
 	if(patient.disabilities & (NERVOUS|DISABILITY_MUTE|DISABILITY_DEAF)) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
 		return TRUE
-	if(patient_brain.damage <= dmg_min)
-		return FALSE
-	if(dmg_max && patient_brain.damage > dmg_max)
+	else if(patient_brain.damage <= dmg_min)
 		return FALSE
 	return TRUE
 
@@ -59,12 +59,12 @@
 			SPAN_NOTICE("You pull out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."),
 			SPAN_NOTICE("After you insisted something was still there, [user] pulls out some extra, tiny, loose pieces of bone that were rattling around in your skull."),
 			SPAN_NOTICE("[user] pulls out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."))
-	if(target.sdisabilities & DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!
+	if(target.sdisabilities & DISABILITY_MUTE) //My self esteem emphatically dramatically improved since I was dumb!
 		user.affected_message(target,
 			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented you from speaking."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area."))
-	if(target.sdisabilities & DISABILITY_DEAF) ///Wait, I can hear, now?
+	if(target.sdisabilities & DISABILITY_DEAF) //Wait, I can hear, now?
 		user.affected_message(target,
 			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing your severe tinnitus."),
@@ -123,8 +123,7 @@
 	desc = "mend the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
-
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -147,9 +146,11 @@
 
 	var/datum/internal_organ/brain/patient_brain = target.internal_organs_by_name["brain"]
 	if(patient_brain && patient_brain.damage >= BONECHIPS_MAX_DAMAGE) // severe brain damage won't be fixed by curing the hematoma
-		patient_brain.damage = BONECHIPS_MAX_DAMAGE
+		patient_brain.damage = BONECHIPS_MAX_DAMAGE //there's still chips in there, doc
+		if(target.stat == CONSCIOUS)
+			to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases, but you still feel something rattling in there!"))
 
-	if(target.stat == CONSCIOUS)
+	else if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases."))
 
 	target.pain.recalculate_pain()

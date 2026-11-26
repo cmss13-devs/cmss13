@@ -16,14 +16,14 @@
 			return
 		programmer.visible_message(SPAN_NOTICE("[programmer] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
 		return
-	if(stat == DEAD || hive.is_ally(user))
+	if(stat == DEAD || hive.is_ally(user) || HAS_TRAIT(src, TRAIT_XENO_BRAINDEAD))
 		if(!istype(item, /obj/item/reagent_container/syringe))
 			var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
 			if(current_surgery)
 				if(current_surgery.attempt_next_step(user, item))
 					return
 			else
-				if(initiate_surgery_moment(item, src, "head" , user))
+				if(initiate_surgery_moment(item, src, get_limb("head") , user))
 					return
 		return
 	if(item.type in SURGERY_TOOLS_PINCH)

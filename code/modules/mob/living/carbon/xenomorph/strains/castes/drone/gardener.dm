@@ -29,6 +29,7 @@
 		/obj/effect/alien/resin/fruit/speed,
 		/obj/effect/alien/resin/fruit/plasma
 	)
+	drone.plasma_types += PLASMA_NUTRIENT
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
 

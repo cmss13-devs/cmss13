@@ -170,7 +170,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 					var/datum/game_mode/survive/game_mode = SSticker.mode
 					game_mode.release_the_queen()
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, cause, gibbed)
+	SEND_SIGNAL(src, COMSIG_XENO_DEATH, cause, gibbed)
 	give_action(src, /datum/action/ghost/xeno)
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))

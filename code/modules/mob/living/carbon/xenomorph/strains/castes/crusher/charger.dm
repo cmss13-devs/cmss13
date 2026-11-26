@@ -14,8 +14,13 @@
 
 /datum/xeno_strain/charger
 	name = CRUSHER_CHARGER
+	summary = "Build momentum in a straight line. You gain health and speed, with your strongest armor at the front and your weakest at the rear."
 	description = "In exchange for our shield, a little bit of our armor and damage, our slowdown resist from turrets, our influence under frenzy pheromones, our stomp no longer knocking down talls, and our ability to lock our direction, we gain a considerable amount of health, and our Charge is now manually-controlled and momentum-based; the further we go, the more damage and speed we will gain until we achieve maximum momentum, indicated by our roar. Our slashes now slow our foes, deal AOE to adjacent targets, and they also reduce Charge and Defensive Shield's cooldown for every enemy hit. In addition, our armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, we gain an ability to tumble to pass through enemies and avoid enemy fire, an ability to forcefully move enemies via ramming into them. In addition, our Stomp deals extra damage to knocked down talls but no longer knocks them down, instead creating a disorientating shake to any tall nearby."
 	flavor_description = "Nothing stops this hive. This one will become both the immovable object and the unstoppable force."
+	health_mod = XENO_HEALTH_MOD_LARGE
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
+	armor_mod = -XENO_ARMOR_MOD_SMALL
+	damage_mod = -XENO_DAMAGE_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
@@ -32,17 +37,16 @@
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
 
 /datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
+	..() // stat modifiers
 	crusher.small_explosives_stun = FALSE
-	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
-	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	crusher.armor_modifier -= XENO_ARMOR_MOD_SMALL
-	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	crusher.ignore_aura = XENO_PHERO_FRENZY // no funny crushers going 7 morbillion kilometers per second
-	crusher.phero_modifier = -crusher.caste.aura_strength
-	crusher.recalculate_everything()
+	crusher.ignore_aura = list(XENO_PHERO_FRENZY) // no funny crushers going 7 morbillion kilometers per second
 
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"
+	resource_name = "Momentum"
+	resource_capacity = /datum/action/xeno_action/onclick/charger_charge::max_momentum
+	resource_icon_state = "ready_charge"
+	resource_description = "Keep charging in a straight line to gain speed and impact damage. Collisions cost momentum, and stopping ends the charge."
 
 	var/frontal_armor = 30
 	var/side_armor = 15
@@ -150,7 +154,7 @@
 	var/target = get_step(get_step(Xeno, target_dir), target_dir)
 	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
 	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
-	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
+	launch_with_dash_smoke(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
 
 	apply_cooldown()
 	return ..()

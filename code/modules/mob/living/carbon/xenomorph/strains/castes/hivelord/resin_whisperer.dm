@@ -1,8 +1,10 @@
 /datum/xeno_strain/resin_whisperer
 	name = HIVELORD_RESIN_WHISPERER
+	summary = "Build remotely up to 12 paces away. You gain longer vision but lose plasma capacity and the ability to reinforce resin."
 	description = "We sacrifice our corrosive acid, our ability to secrete thick resin, our ability to reinforce resin secretions, our ability to plant weed nodes outside of weeds, and a fifth of our plasma reserves to enhance our vision and gain a stronger connection to the resin. We can now remotely place resin secretions including weed nodes up to a distance of twelve paces!"
 	flavor_description = "My child, we let the resin guide us. It whispers, so listen closely."
 	icon_state_prefix = "Resin Whisperer"
+	plasma_mod = -(/datum/caste_datum/hivelord::plasma_max * 0.2) // -20% plasma pool
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/plant_weeds,
@@ -18,11 +20,10 @@
 	)
 
 /datum/xeno_strain/resin_whisperer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+	..() // stat modifiers
 	hivelord.viewsize = WHISPERER_VIEWRANGE
-	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
-	hivelord.recalculate_plasma()
 	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
 
 	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_whisperer)
@@ -55,6 +56,7 @@
 	var/care_about_adjacency = TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/whisperer
+	ability_description = "Shape resin at a distance through your connection to the weeds."
 	xeno_cooldown = 1.5 SECONDS // Slower than a drone, faster than a queen.
 	xeno_cooldown_interrupt_penalty = 1 SECONDS // Penalty for being interrupted
 	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.

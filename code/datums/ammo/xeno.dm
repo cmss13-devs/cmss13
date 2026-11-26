@@ -547,6 +547,7 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_7
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
+	var/slow_duration = 3
 
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/target_mob, obj/projectile/projectile)
 	if(iscarbon(target_mob))
@@ -555,8 +556,8 @@
 			return
 	if(ishuman_strict(target_mob) || isxeno(target_mob))
 		playsound(target_mob, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(target_mob.slowed < 3)
-			target_mob.apply_effect(3, SLOW)
+		if(target_mob.slowed < slow_duration)
+			target_mob.apply_effect(slow_duration, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"

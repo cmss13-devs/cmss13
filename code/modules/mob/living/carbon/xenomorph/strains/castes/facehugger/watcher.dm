@@ -1,5 +1,6 @@
 /datum/xeno_strain/watcher
 	name = FACEHUGGER_WATCHER
+	summary = "Scout for hosts at long range. Staying zoomed out protects you from health loss off weeds."
 	description = "We lose our ability to hide in exchange to see further. This enables we to stalk our host from a distance and wait for the perfect opportunity to strike."
 	flavor_description = "No need to hide when we can see the danger."
 
@@ -13,6 +14,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/facehugger_watcher
 
 /datum/xeno_strain/watcher/apply_strain(mob/living/carbon/xenomorph/facehugger/huggy)
+	..() // stat modifiers
 	huggy.viewsize = 10
 	huggy.layer = initial(huggy.layer)
 

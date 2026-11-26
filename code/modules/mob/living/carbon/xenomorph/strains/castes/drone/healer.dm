@@ -1,8 +1,11 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
+	summary = "Spend your own health to heal sisters and grow up to 3 lesser fruits. You gain stronger pheromones but deal less slash damage and tackle less reliably."
 	description = "We lose our choice of resin secretions, a chunk of our slash damage, and we're slightly less capable of tackling hosts in exchange for strong pheromones, increased plasma transfer, the ability to use a bit of our health to plant a maximum of three lesser resin fruits, and, most importantly, we can produce a regenerative resin salve with Apply Salve by using our vital fluids and a fifth of our plasma to heal our sisters. Be wary, this is a dangerous process; we can overexert ourselves to unconsciousness, or even die..."
 	flavor_description = "United we stand, divided we fall. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
+	phero_mod = XENO_PHERO_MOD_LARGE
+	damage_mod = -XENO_DAMAGE_MOD_VERY_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin,
@@ -23,24 +26,21 @@
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
 
 /datum/xeno_strain/healer/apply_strain(mob/living/carbon/xenomorph/drone/drone)
-	drone.phero_modifier += XENO_PHERO_MOD_LARGE
-	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	..() // stat modifiers
 	drone.tackle_chance_modifier -= 5
-
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit/lesser)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/lesser
-
-	drone.recalculate_everything()
 
 /*
 	Improved Plasma Transfer
 */
 
 /datum/action/xeno_action/activable/transfer_plasma/healer //Improved plasma transfer, but not as much as Hivey.
+	ability_description = "Transfer a larger dose of plasma to an adjacent sister."
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_transfer_amount = 100
-	transfer_delay = 15
+	transfer_delay = 1.5 SECONDS
 	max_range = 1
 
 /*
@@ -48,6 +48,8 @@
 */
 
 /datum/action/xeno_action/activable/apply_salve
+	ability_stats_type = /datum/xeno_ability_stats/activable_apply_salve
+	ability_description = "Spend health and plasma to coat a sister in resin that heals her over time."
 	name = "Apply Resin Salve"
 	action_icon_state = "apply_salve"
 	var/health_transfer_amount = 100
@@ -57,6 +59,12 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 0.5 SECONDS
+
+XENO_ABILITY_STATS(activable_apply_salve, datum/action/xeno_action/activable/apply_salve)
+	return list(
+		XENO_STAT_HEALTH(health_transfer_amount, "Base healing"),
+		XENO_STAT_TILES(max_range, "Range"),
+	)
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
 	no_cooldown_msg = TRUE
@@ -206,6 +214,8 @@
 	holder.overlays.Cut()
 
 /datum/action/xeno_action/activable/healer_sacrifice
+	ability_stats_type = /datum/xeno_ability_stats/activable_healer_sacrifice
+	ability_description = "Give your life to transfer health to a wounded sister."
 	name = "Sacrifice"
 	action_icon_state = "screech"
 	var/max_range = 1
@@ -213,6 +223,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
+
+XENO_ABILITY_STATS(activable_healer_sacrifice, datum/action/xeno_action/activable/healer_sacrifice)
+	return list(
+		XENO_STAT_VALUE("Current health transferred", XENO_ABILITY_VALUE(ability, transfer_mod) * 100, "health", "%."),
+	)
 
 /datum/action/xeno_action/verb/verb_healer_sacrifice()
 	set category = "Alien"

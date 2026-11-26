@@ -1,5 +1,17 @@
 /datum/caste_datum/spitter
 	caste_type = XENO_CASTE_SPITTER
+	playstyle = "Fight at range with acid spit and use Spray Acid to cover an approach. Charge Spit trades range for a stronger shot and gives you a brief burst of speed and armor."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/spitter,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/xeno_spit/spitter,
+		/datum/action/xeno_action/onclick/charge_spit,
+		/datum/action/xeno_action/activable/spray_acid/spitter,
+	)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -43,17 +55,6 @@
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 2
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/spitter,
-		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/activable/xeno_spit/spitter,
-		/datum/action/xeno_action/onclick/charge_spit,
-		/datum/action/xeno_action/activable/spray_acid/spitter,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)

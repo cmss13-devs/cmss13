@@ -1,8 +1,12 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
+	summary = "Build acid by slashing prey. You gain health and armor, move more slowly, and can spend your reserves on corrosion or a final explosion."
 	description = "At the cost of a little bit of our speed and all of our current abilities, we gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. When outside of combat, only a limited amount of acid will generate. Our Tail Stab and slashes apply acid to living lifeforms that slowly burns them and fills our acid glands. We also gain Corrosive Acid equivalent to that of a boiler that we can deploy more quickly than any other caste, at the cost of a chunk of our acid reserves with each use. Finally, after a twenty second windup, we can force our body to explode, covering everything near us with acid. The more acid we have stored, the more devastating the explosion will be, but during those twenty seconds before detonation we are slowed and give off several warning signals, which give talls an opportunity to end us before we can detonate. If we successfully explode, we will reincarnate as a larva again!"
 	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5
+	armor_mod = XENO_ARMOR_MOD_MED
+	health_mod = XENO_HEALTH_MOD_ACIDER
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/runner,
@@ -16,13 +20,6 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/runner_acider
 
-/datum/xeno_strain/acider/apply_strain(mob/living/carbon/xenomorph/runner/runner)
-	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	runner.armor_modifier += XENO_ARMOR_MOD_MED
-	runner.health_modifier += XENO_HEALTH_MOD_ACIDER
-
-	runner.recalculate_everything()
-
 /datum/behavior_delegate/runner_acider
 	var/acid_amount = 0
 
@@ -30,7 +27,10 @@
 	var/caboom_trigger
 	var/caboom_last_proc
 
-	var/max_acid = 1000
+	resource_name = "Acid"
+	resource_capacity = 1000
+	resource_icon_state = "corrosive_acid"
+	resource_description = "Acid builds passively up to 400. Attack prey to fill the rest. Spend acid on corrosion or store it for a stronger explosion."
 	var/caboom_timer = 20
 	var/acid_slash_regen_lying = 8
 	var/acid_slash_regen_standing = 14
@@ -69,15 +69,15 @@
 
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)
 	acid_amount += amount
-	if(acid_amount > max_acid)
-		acid_amount = max_acid
+	if(acid_amount > resource_capacity)
+		acid_amount = resource_capacity
 	if(acid_amount < 0)
 		acid_amount = 0
 	update_acid_overlays()
 
 /datum/behavior_delegate/runner_acider/append_to_stat() //The status panel info for Acid Runner is handed here.
 	. = list()
-	. += "Acid: [acid_amount]/[max_acid]"
+	. += "Acid: [acid_amount]/[resource_capacity]"
 	if(acid_amount >= acid_gen_cap)
 		. += "Passive acid generation cap ([acid_gen_cap]) reached"
 	. += "Battle acid generation: [combat_gen_active ? "Active" : "Inactive"]"
@@ -137,8 +137,8 @@
 
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
-	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
-	var/percentage_acid_cap = round((acid_gen_cap /max_acid) * 100, 10)
+	var/percentage_acid = round((acid_amount / resource_capacity) * 100, 10)
+	var/percentage_acid_cap = round((acid_gen_cap /resource_capacity) * 100, 10)
 	if(percentage_acid)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid]")
 	if(acid_amount >= acid_gen_cap)
@@ -250,11 +250,11 @@
 
 	///Simplified image index change.
 	var/perc_index = 0
-	if(acid_amount > max_acid * 0.8)
+	if(acid_amount > resource_capacity * 0.8)
 		perc_index = 3
-	else if(acid_amount > max_acid * 0.5)
+	else if(acid_amount > resource_capacity * 0.5)
 		perc_index = 2
-	else if(acid_amount > max_acid * 0.2)
+	else if(acid_amount > resource_capacity * 0.2)
 		perc_index = 1
 
 	if(perc_index && bound_runner.stat != DEAD)
@@ -345,7 +345,7 @@
 	behavior_delegate.caboom_trigger = FALSE
 	xeno.color = null
 	xeno.set_light_range(0)
-	behavior_delegate.modify_acid(-behavior_delegate.max_acid / 4)
+	behavior_delegate.modify_acid(-behavior_delegate.resource_capacity / 4)
 
 	// Done this way rather than setting to 0 in case something else slowed us
 	// -Original amount set - (time exploding + timer inaccuracy) * how much gets removed per tick / 2
@@ -390,7 +390,7 @@
 
 	face_atom(affected_atom)
 
-	var/wait_time = 10
+	var/wait_time = 1 SECONDS
 
 	var/turf/turf = get_turf(affected_atom)
 

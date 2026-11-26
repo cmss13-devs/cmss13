@@ -1,5 +1,23 @@
 /datum/caste_datum/hivelord
 	caste_type = XENO_CASTE_HIVELORD
+	playstyle = "Build thick resin and reinforce existing defenses. Use Resin Walker to move quickly on weeds and transfer plasma to sisters building or fighting nearby."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/choose_resin, //second macro
+		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
+		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
+		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -61,23 +79,6 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 2
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/choose_resin, //second macro
-		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
-		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
-		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
-		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,

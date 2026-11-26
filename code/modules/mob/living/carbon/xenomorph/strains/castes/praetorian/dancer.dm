@@ -1,9 +1,13 @@
 /datum/xeno_strain/dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = PRAETORIAN_DANCER
+	summary = "Trade armor for speed and evasion. Slashes apply red tags that enhance Impale and Tail Trip. Slashing a target at critical health spreads golden tags, which reset abilities with a slash or enhance Impale or Tail Trip without a cooldown."
 	description = "We lose all acid-based abilities and a small amount of our armor in exchange for increased movement speed, evasion, and unparalleled agility. Our strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how our tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Our new Tail Stab adapts to our intent. When used in Disarm mode, it becomes a blunt, armor-piercing strike. When enemies are brought close to death, yellow tags will spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of our tail abilities, and using a tail trip or impale ability on a yellow-tagged target grants no cooldown penalty."
 	flavor_description = "A performance fit for a Queen, this one will become my instrument of death."
 	icon_state_prefix = "Dancer"
+	armor_mod = -XENO_ARMOR_MOD_VERY_SMALL
+	speed_mod = XENO_SPEED_FASTMOD_TIER_5
+	regen_mult = XENO_REGEN_MULTIPLIER_TIER_7
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -24,14 +28,10 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_dancer
 
 /datum/xeno_strain/dancer/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
-	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
-	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_SHARP
 	prae.dodge_threshold = 6
-	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast with high strength pheromones.
-
-	prae.recalculate_everything()
+	prae.received_phero_caps[XENO_PHERO_RECOVERY] = XENO_PHERO_STRENGTH_STRONG //need to be limited, regens too fast with high strength pheromones.
 
 #define ACTION_CURRENT_TAIL_MODE(X) (X.a_intent == INTENT_DISARM ? "Blunt" : "Normal")
 #define DANCER_YELLOW_TAG_SPREAD_DURATION 7 SECONDS
@@ -399,18 +399,20 @@
 		if(WEST)
 			directional_offset_x = 16
 
-	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(afterimage_location)
-	afterimage.icon = dodge_user.icon
-	afterimage.icon_state = dodge_user.icon_state
-	afterimage.color = dodge_user.color
-	afterimage.layer = dodge_user.layer
-	afterimage.dir = dodge_user.dir
-	afterimage.alpha = 200
-	afterimage.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
-	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
+	new /obj/effect/overlay/afterimage(afterimage_location, dodge_user, directional_offset_x, directional_offset_y)
 
-	addtimer(CALLBACK(afterimage, TYPE_PROC_REF(/obj/effect/overlay/afterimage, fade_out_afterimage)))
+/obj/effect/overlay/afterimage/Initialize(mapload, mob/living/carbon/xenomorph/source_xeno, offset_x = 0, offset_y = 0)
+	. = ..()
+	if(!source_xeno)
+		return INITIALIZE_HINT_QDEL
+	icon = source_xeno.icon
+	icon_state = source_xeno.icon_state
+	color = source_xeno.color
+	layer = source_xeno.layer
+	setDir(source_xeno.dir)
+	pixel_x = source_xeno.pixel_x + offset_x
+	pixel_y = source_xeno.pixel_y + offset_y
+	addtimer(CALLBACK(src, PROC_REF(fade_out_afterimage)))
 
 
 
@@ -447,7 +449,9 @@
 	var/turf/last_turf
 
 /obj/effect/overlay/afterimage
-	name = "Dancer Afterimage"
+	name = "afterimage"
+	alpha = 200
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
 	layer = MOB_LAYER
 	var/fade_step = 0
@@ -503,6 +507,8 @@
 					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
 
+	apply_cooldown()
+
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
@@ -553,7 +559,6 @@
 		target_carbon.apply_effect(daze_duration, DAZE)
 	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)
 
-	apply_cooldown()
 	return ..()
 
 #undef ACTION_CURRENT_TAIL_MODE

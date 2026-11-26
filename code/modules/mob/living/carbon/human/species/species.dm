@@ -72,7 +72,6 @@
 	var/list/abilities = list() // For species-derived or admin-given powers
 
 	var/blood_color = BLOOD_COLOR_HUMAN //Red.
-	//Special color for fresh incisions on organic life forms. Unique to humans and synthetics, right now.
 	var/incision_color_fresh = BLOOD_COLOR_HUMAN
 	var/incision_color_clamped =  "#bf4048"
 	var/flesh_color = "#FFC896" //Pink.

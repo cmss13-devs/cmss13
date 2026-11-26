@@ -1,5 +1,17 @@
 /datum/caste_datum/defender
 	caste_type = XENO_CASTE_DEFENDER
+	playstyle = "Lower your crest to gain armor and resist knockback while moving slowly. Fortify to hold ground, then leave the stance to headbutt targets away or sweep enemies off your flanks."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/slam,
+		/datum/action/xeno_action/onclick/toggle_crest,
+		/datum/action/xeno_action/activable/headbutt,
+		/datum/action/xeno_action/onclick/tail_sweep,
+		/datum/action/xeno_action/activable/fortify,
+	)
 	caste_desc = "A sturdy front line combatant."
 	tier = 1
 
@@ -40,17 +52,6 @@
 	old_x = -16
 	tier = 1
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/slam,
-		/datum/action/xeno_action/onclick/toggle_crest,
-		/datum/action/xeno_action/activable/headbutt,
-		/datum/action/xeno_action/onclick/tail_sweep,
-		/datum/action/xeno_action/activable/fortify,
-	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/defender.dmi'
@@ -192,7 +193,7 @@
 		return
 
 	if(!fendy.crest_defense && distance > 1)
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
+		launch_with_dash_smoke(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking = TRUE)
 		if(!fendy.Adjacent(carbone))
 			return
 
@@ -202,11 +203,11 @@
 
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
 		// -10 damage if their crest is down.
-		var/damage = base_damage - (fendy.crest_defense * 10)
+		var/damage = base_damage - (fendy.crest_defense * lowered_crest_damage_penalty)
 		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
 	var/facing = get_dir(fendy, carbone)
-	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
+	var/headbutt_distance = knockback_distance + (fendy.crest_defense * lowered_crest_extra_knockback) + (fendy.fortify * 2)
 
 	// Hmm today I will kill a marine while looking away from them
 	fendy.face_atom(carbone)
@@ -246,7 +247,6 @@
 	xeno.spin_circle()
 	xeno.emote("tail")
 
-	var/sweep_range = 1
 	for(var/mob/living/carbon/human in orange(sweep_range, get_turf(xeno)))
 		if (!isxeno_human(human) || xeno.can_not_harm(human))
 			continue
@@ -257,11 +257,11 @@
 		step_away(human, xeno, sweep_range, 2)
 		xeno.flick_attack_overlay(human, "punch")
 		human.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-		human.apply_armoured_damage(get_xeno_damage_slash(xeno, 15), ARMOR_MELEE, BRUTE)
+		human.apply_armoured_damage(get_xeno_damage_slash(xeno, base_damage), ARMOR_MELEE, BRUTE)
 		shake_camera(human, 2, 1)
 
 		if(human.mob_size < MOB_SIZE_BIG)
-			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
+			human.apply_effect(get_xeno_stun_duration(human, knockdown_duration), WEAKEN)
 
 		to_chat(human, SPAN_XENOWARNING("You are struck by [xeno]'s tail sweep!"))
 		playsound(human,'sound/weapons/alien_claw_block.ogg', 50, 1)

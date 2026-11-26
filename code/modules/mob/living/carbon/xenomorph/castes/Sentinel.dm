@@ -1,5 +1,17 @@
 /datum/caste_datum/sentinel
 	caste_type = XENO_CASTE_SENTINEL
+	playstyle = "Build neurotoxin on 1 target with spit and Toxic Slash. Draining Bite turns stacks into a longer knockdown, while Catalytic Shock Tailstab spends them for burn damage and can boost your speed and armor."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/sentinel,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/activable/slowing_spit, //first macro
+		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/activable/draining_bite,
+	)
 	tier = 1
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -41,17 +53,6 @@
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 1
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/sentinel,
-		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/activable/slowing_spit, //first macro
-		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
-		/datum/action/xeno_action/activable/draining_bite,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
@@ -86,6 +87,12 @@
 	var/max_buffed_slashes = 3
 	var/buffed_slashes = 0
 	var/increment_amount = 10
+
+/datum/behavior_delegate/sentinel_base/get_slash_icon_state()
+	return buffed_slashes ? "toxic_slash" : ..()
+
+/datum/behavior_delegate/sentinel_base/get_tail_strike_icon_state(default_state)
+	return buffed_slashes ? "toxic_slash_tail" : ..()
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!buffed_slashes)

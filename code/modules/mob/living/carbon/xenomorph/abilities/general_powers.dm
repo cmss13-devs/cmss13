@@ -38,11 +38,11 @@
 			return
 
 		if(node.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists our attempt to uproot it."))
 			return
 
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
-			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
+			to_chat(xeno, SPAN_WARNING("There's a pod here already! We decide to not replace it."))
 			return
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
@@ -460,7 +460,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("We can't secrete any acid into [target]."))
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -478,10 +478,10 @@
 		acid_cost = ACID_COST_LEVEL_3
 
 	if(!check_plasma(acid_cost))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with acid."))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -503,7 +503,7 @@
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
 	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	SPAN_XENOWARNING("We pressurise the resin trap with acid!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_LEVEL_1
@@ -565,6 +565,27 @@
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
+/// Show takeoff smoke on the first tile left during this ability's launch.
+/datum/action/xeno_action/proc/launch_with_dash_smoke(atom/target, range, speed, atom/thrower, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	register_launch_effects(xeno)
+	xeno.throw_atom(target, range, speed, thrower, launch_type = launch_type, pass_flags = pass_flags, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks, tracking = tracking)
+	UnregisterSignal(xeno, COMSIG_MOVABLE_MOVED)
+
+/datum/action/xeno_action/proc/register_launch_effects(mob/living/carbon/xenomorph/xeno)
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(show_dash_smoke))
+
+/datum/action/xeno_action/proc/show_dash_smoke(mob/living/carbon/xenomorph/xeno, atom/old_loc)
+	SIGNAL_HANDLER
+	if(!isturf(old_loc) || old_loc == xeno.loc)
+		return
+	UnregisterSignal(xeno, COMSIG_MOVABLE_MOVED)
+	switch(xeno.tier)
+		if(1, 2)
+			new /obj/effect/overlay/temp/xeno_dash_smoke(old_loc)
+		if(3)
+			new /obj/effect/overlay/temp/xeno_dash_smoke/large(old_loc)
+
 /datum/action/xeno_action/activable/pounce/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -614,12 +635,12 @@
 				turf_in_path = SSmapping.get_turf_below(turf_in_path)
 
 			if(turf_in_path.density && turf_in_path.turf_flags & TURF_HULL)
-				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+				to_chat(xeno, SPAN_WARNING("We can't jump over an object in our path."))
 				return
 
 			for(var/obj/structure/cur_obj in turf_in_path.contents)
 				if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable)
-					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+					to_chat(xeno, SPAN_WARNING("We can't jump over an object in our path."))
 					return
 
 		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -659,7 +680,7 @@
 	xeno.pounce_distance = get_dist(xeno, target)
 	if(xeno.z != target.z)
 		xeno.pounce_distance += 2
-	xeno.throw_atom(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	launch_with_dash_smoke(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking = TRUE)
 	xeno.update_icons()
 
 	additional_effects_always()
@@ -943,7 +964,7 @@
 		return FALSE
 
 	if(choice == XENO_STRUCTURE_CORE && target_area.unoviable_timer)
-		to_chat(xeno, SPAN_WARNING("This area does not feel right for you to build this in."))
+		to_chat(xeno, SPAN_WARNING("This area does not feel right for us to build this in."))
 		qdel(structure_template)
 		return FALSE
 
@@ -1253,6 +1274,8 @@
 
 	stabbing_xeno.tail_stab_animation(target, blunt_stab)
 	stabbing_xeno.animation_attack_on(target)
+	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
+		stab_overlay = stabbing_xeno.behavior_delegate.get_tail_strike_icon_state(stab_overlay)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
 	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * damage_multiplier

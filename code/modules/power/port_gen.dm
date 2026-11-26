@@ -284,6 +284,8 @@ display floor(lastgen) and phorontank amount
 				if(I.reliability < 100)
 					I.crit_fail = 1
 				I.forceMove(src.loc)
+			component_parts.Cut()
+			component_parts = null
 			while ( sheets > 0 )
 				var/obj/item/stack/sheet/G = new sheet_path(src.loc)
 

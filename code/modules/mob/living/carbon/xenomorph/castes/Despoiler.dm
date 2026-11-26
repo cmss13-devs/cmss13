@@ -1,5 +1,18 @@
 /datum/caste_datum/despoiler
 	caste_type = XENO_CASTE_DESPOILER
+	playstyle = "Build Hypertension by taking damage and slashing prey. Stacks increase slash burn damage. Spend a stack on Catalyze to enhance Acid Barrage, Caustic Embrace or Oozing Wounds."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/despoiler,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
+		/datum/action/xeno_action/activable/acid_barrage,
+		/datum/action/xeno_action/activable/pounce/caustic_embrace,
+		/datum/action/xeno_action/onclick/oozing_wounds,
+		/datum/action/xeno_action/onclick/catalyze,
+	)
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -44,18 +57,6 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/despoiler,
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/acid_barrage,
-		/datum/action/xeno_action/activable/pounce/caustic_embrace,
-		/datum/action/xeno_action/onclick/oozing_wounds,
-		/datum/action/xeno_action/onclick/catalyze,
-	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'
 	icon_xenonid = null // if someone makes xenoid sprites in future feel free to
@@ -107,6 +108,10 @@
 
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
+	resource_name = "Hypertension"
+	resource_capacity = 4
+	resource_icon_state = "catalyze"
+	resource_description = "Taking damage and slashing prey build stacks. Spend one stack with Catalyze to enhance your next ability."
 
 	var/next_ability_empowered = FALSE
 	var/image/empowered_overlay
@@ -125,7 +130,7 @@
 
 	if(hypertension >= hypertension_to_stacks_ratio)
 		hypertension -= hypertension_to_stacks_ratio
-		hypertension_stacks = min(4, hypertension_stacks+1)
+		hypertension_stacks = min(resource_capacity, hypertension_stacks+1)
 		xeno.update_hypertension()
 
 /datum/behavior_delegate/despoiler_base/on_life()
@@ -164,7 +169,7 @@
 	var/datum/effects/acid/acid_effect = locate() in target.effects_list
 	if(!acid_effect)
 		return
-	target.apply_armoured_damage(acid_effect.acid_level * 15, ARMOR_BIO, BURN, limb ? limb.name : "chest", acid_effect.acid_level * 10)
+	target.apply_armoured_damage(acid_effect.acid_level * burn_damage_per_acid_level, ARMOR_BIO, BURN, limb ? limb.name : "chest", acid_effect.acid_level * 10)
 
 /datum/action/xeno_action/activable/acid_barrage/on_select(mob/user)
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
@@ -277,15 +282,15 @@
 		for(var/mob/living/carbon/human/target in turf)
 			playsound(target.loc, "acid_strike", 25, 1)
 			var/armor_block_acid = target.getarmor("chest", ARMOR_BIO)
-			var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block_acid)
-			if(n_acid_damage <= 0.34*damage)
+			var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, base_damage, armor_block_acid)
+			if(n_acid_damage <= 0.34*base_damage)
 				to_chat(target, SPAN_WARNING("Your armor absorbs the acid!"))
-			else if(n_acid_damage <= 0.67*damage)
+			else if(n_acid_damage <= 0.67*base_damage)
 				to_chat(target, SPAN_WARNING("Your armor softens the acid!"))
 			target.apply_damage(n_acid_damage, BURN, "chest")
 		if(prob(30))
 			new /obj/effect/lingering_acid(turf, xeno.hivenumber)
-		new /obj/effect/xenomorph/xeno_telegraph/yellow(turf, 2)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace(turf, 0.6 SECONDS)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
@@ -357,13 +362,13 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(delegate.hypertension_stacks < 1)
+	if(delegate.hypertension_stacks < hypertension_cost)
 		to_chat(xeno, SPAN_WARNING("We don't enough acid to do that."))
 		return
 
 	apply_cooldown()
 
-	delegate.hypertension_stacks--
+	delegate.hypertension_stacks -= hypertension_cost
 	delegate.next_ability_empowered = TRUE
 	delegate.empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
 	delegate.empowered_overlay.layer = FLY_LAYER

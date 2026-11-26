@@ -1,4 +1,13 @@
 /datum/action/xeno_action
+	/// Player-facing explanation shown when comparing strain abilities.
+	var/ability_description
+	/// Grabs the ability stats for a datum/xeno_ability_stats
+	var/ability_stats_type
+	/// Representative sprite.
+	var/preview_icon_file
+	var/preview_icon_state
+	/// Equivalent ability when a subtype only changes the macro slot.
+	var/preview_as
 	icon_file = 'icons/mob/hud/actions_xeno.dmi'
 	button_icon_state = "template_xeno"
 	var/plasma_cost = 0
@@ -489,3 +498,112 @@
 
 #define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
 #define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return
+
+/// Type previews and real abilities share the same typed stat declarations
+/proc/get_xeno_ability_stats(datum/action/xeno_action/ability)
+	var/stats_type = initial(ability.ability_stats_type)
+	if(!stats_type)
+		return list()
+	var/datum/xeno_ability_stats/formatter = new stats_type
+	var/list/stats = formatter.get_stats(ability)
+	qdel(formatter)
+	return stats
+
+/// Compatibility for action button descriptions
+/proc/get_xeno_ability_description(datum/action/xeno_action/ability, structured = FALSE)
+	var/description = XENO_ABILITY_VALUE(ability, ability_description)
+	var/list/stats = get_xeno_ability_stats(ability)
+	if(!length(stats))
+		return description
+	var/list/parts = list(description)
+	for(var/list/stat as anything in stats)
+		parts += "\n[stat["label"]]: "
+		parts += stat["parts"]
+	if(structured)
+		return parts
+	var/list/text_parts = list()
+	for(var/part in parts)
+		if(islist(part))
+			var/list/value_part = part
+			text_parts += value_part["text"]
+		else
+			text_parts += part
+	return jointext(text_parts, "")
+
+/datum/action/xeno_action/proc/get_description()
+	return get_xeno_ability_description(src)
+
+/datum/xeno_ability_stats/proc/get_stats(datum/action/xeno_action/ability)
+	return list()
+
+/// A complete stat row
+/proc/xeno_stat_row(label, list/parts)
+	return list("label" = label, "parts" = parts)
+
+/// Numeric values
+/proc/xeno_description_value(value, kind = null)
+	return list("text" = "[value]", "kind" = kind)
+
+/// Melee based attacks
+/datum/xeno_ability_stats/proc/melee_damage(datum/action/xeno_action/ability, datum/caste_datum/caste_type, use_caste_upper = FALSE)
+	var/lower = initial(caste_type.melee_damage_lower)
+	var/upper = initial(caste_type.melee_damage_upper)
+	if(!ispath(ability) && isxeno(ability.owner))
+		var/mob/living/carbon/xenomorph/xeno = ability.owner
+		lower = xeno.melee_damage_lower
+		upper = use_caste_upper ? xeno.caste.melee_damage_upper : xeno.melee_damage_upper
+	if(use_caste_upper || lower == upper)
+		return list(xeno_description_value(upper, "brute"))
+	return list(xeno_description_value(lower, "brute"), " to ", xeno_description_value(upper, "brute"))
+
+/// Acid puddle values per application
+/datum/xeno_ability_stats/proc/spray_stats(obj/effect/xenomorph/spray/spray)
+	var/list/rows = list(
+		XENO_STAT_VALUE("Initial splash bonus burn damage", initial(spray.initial_hit_damage), "burn", "."),
+		XENO_STAT_VALUE("Standing contact burn damage", initial(spray.damage_amount) * initial(spray.standing_damage_multiplier) * 2, "burn", "."),
+		XENO_STAT_VALUE("Prone burn damage per application", initial(spray.damage_amount) * initial(spray.prone_damage_multiplier), "burn", "."),
+		XENO_STAT_VALUE("Puddle lifetime", initial(spray.time_to_live) * 0.1, null, "s."),
+	)
+	if(initial(spray.stun_duration))
+		rows += list(XENO_STAT_VALUE("Knockdown", initial(spray.stun_duration) * GLOBAL_STATUS_MULTIPLIER * 0.1, "crowd_control", "s."))
+	return rows
+
+/datum/xeno_ability_stats/proc/praetorian_acid_stats()
+	return list(
+		XENO_STAT_VALUE("Acid stacks to burst", /datum/effects/prae_acid_stacks::max_stacks, null, "."),
+		XENO_STAT_VALUE("Acid stack burst burn damage", /datum/effects/prae_acid_stacks::proc_damage, "burn", "."),
+	)
+
+/// Baseline action costs and timing
+/proc/get_xeno_ability_costs(datum/action/xeno_action/ability)
+	var/plasma = ispath(ability) ? initial(ability.plasma_cost) : ability.plasma_cost
+	var/cooldown = ispath(ability) ? initial(ability.xeno_cooldown) : ability.xeno_cooldown
+	var/charge = ispath(ability) ? initial(ability.charge_time) : ability.charge_time
+	var/list/parts = list()
+	if(plasma > 0)
+		parts += list(XENO_STAT_VALUE("Base plasma cost", plasma, "plasma", "."))
+	if(cooldown > 0)
+		parts += list(XENO_STAT_VALUE("Base cooldown", cooldown * 0.1, null, "s."))
+	if(charge > 0)
+		parts += list(XENO_STAT_VALUE("Charge time", charge * 0.1, null, "s."))
+	return parts
+
+/// Projectile stats for xeno ammo types
+/datum/xeno_ability_stats/proc/projectile_stats(datum/ammo/ammo)
+	var/damage = initial(ammo.damage)
+	var/range = initial(ammo.max_range)
+	var/damage_kind
+	switch(initial(ammo.damage_type))
+		if(BRUTE)
+			damage_kind = "brute"
+		if(BURN)
+			damage_kind = "burn"
+		if(TOX)
+			damage_kind = "toxin"
+		if(OXY)
+			damage_kind = "oxygen"
+	var/list/parts = list()
+	if(damage > 0)
+		parts += list(XENO_STAT_VALUE("Base [damage_kind || "projectile"] damage per projectile", damage, damage_kind, "."))
+	parts += list(XENO_STAT_VALUE("Projectile range", range, null, " tiles."))
+	return parts

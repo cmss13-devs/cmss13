@@ -1,11 +1,8 @@
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Stack } from 'tgui/components';
 
-import {
-  useFiremissionXOffsetValue,
-  useFiremissionYOffsetValue,
-  useLazeTarget,
-} from '../MfdPanels/stateManagers';
+import { useLazeTarget } from '../MfdPanels/stateManagers';
+import type { TargetContext } from '../MfdPanels/types';
 
 const SvgButton = (props: {
   readonly transform?: string;
@@ -32,24 +29,19 @@ const SvgButton = (props: {
   );
 };
 
-export const Dpad = (props) => {
-  const { act } = useBackend();
+export const Dpad = () => {
+  const { act, data } = useBackend<TargetContext>();
   const { selectedTarget } = useLazeTarget();
 
-  const { fmXOffsetValue, setFmXOffsetValue } = useFiremissionXOffsetValue();
-  const { fmYOffsetValue, setFmYOffsetValue } = useFiremissionYOffsetValue();
-
-  const min_value = -12;
-  const max_value = 12;
-  const updateOffset = (e, xValue, yValue) => {
-    if (xValue < min_value || yValue < min_value) {
+  const minimumOffset = -data.firemission_max_offset;
+  const maximumOffset = data.firemission_max_offset;
+  const updateOffset = (xValue, yValue) => {
+    if (xValue < minimumOffset || yValue < minimumOffset) {
       return;
     }
-    if (xValue > max_value || yValue > max_value) {
+    if (xValue > maximumOffset || yValue > maximumOffset) {
       return;
     }
-    setFmXOffsetValue(xValue);
-    setFmYOffsetValue(yValue);
     act('firemission-dual-offset-camera', {
       target_id: selectedTarget,
       x_offset_value: xValue,
@@ -65,8 +57,11 @@ export const Dpad = (props) => {
             <Stack.Item className="container" />
             <Stack.Item className="container">
               <SvgButton
-                onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue - 1, fmYOffsetValue)
+                onClick={() =>
+                  updateOffset(
+                    data.firemission_x_offset - 1,
+                    data.firemission_y_offset,
+                  )
                 }
               />
             </Stack.Item>
@@ -78,19 +73,25 @@ export const Dpad = (props) => {
             <Stack.Item className="container">
               <SvgButton
                 transform="rotate(90 12.5 12.5)"
-                onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue, fmYOffsetValue + 1)
+                onClick={() =>
+                  updateOffset(
+                    data.firemission_x_offset,
+                    data.firemission_y_offset + 1,
+                  )
                 }
               />
             </Stack.Item>
             <Stack.Item className="container">
-              <Button onClick={() => updateOffset(undefined, 0, 0)} />
+              <Button onClick={() => updateOffset(0, 0)} />
             </Stack.Item>
             <Stack.Item className="container">
               <SvgButton
                 transform="rotate(-90 12.5 12.5)"
-                onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue, fmYOffsetValue - 1)
+                onClick={() =>
+                  updateOffset(
+                    data.firemission_x_offset,
+                    data.firemission_y_offset - 1,
+                  )
                 }
               />
             </Stack.Item>
@@ -102,8 +103,11 @@ export const Dpad = (props) => {
             <Stack.Item className="container">
               <SvgButton
                 transform="rotate(-180 12.5 12.5)"
-                onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue + 1, fmYOffsetValue)
+                onClick={() =>
+                  updateOffset(
+                    data.firemission_x_offset + 1,
+                    data.firemission_y_offset,
+                  )
                 }
               />
             </Stack.Item>

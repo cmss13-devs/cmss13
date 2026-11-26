@@ -17,8 +17,8 @@
 	tools = SURGERY_TOOLS_SUTURE
 	//Suturing incisions closed is distinctly faster than cauterise-swaphand-suture, but slower than cautery alone, meaning it's only better if wanting to both close and suture the incision.
 	time = 3.5 SECONDS
-	preop_sound = 'sound/surgery/suture1.ogg'
-	success_sound = 'sound/surgery/suture2.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/suture_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -43,12 +43,14 @@
 		if("chest")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
 			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."),
 			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures. It stops hurting."),
 			SPAN_NOTICE("[user] closes the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."))
 
+		target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	else
 		user.affected_message(target,
@@ -58,7 +60,10 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
+	complete(target, surgery)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
+	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
+	target.pain.recalculate_pain()
 
 /datum/surgery_step/suture_incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to suture the incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
@@ -91,8 +96,8 @@
 			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."),
 			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures. It stops hurting."),
 			SPAN_NOTICE("[user] closes the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."))
-		complete(target, surgery)
 
+		target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	else
 		user.affected_message(target,
@@ -102,4 +107,7 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
+	complete(target, surgery)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
+	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
+	target.pain.recalculate_pain()

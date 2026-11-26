@@ -5,6 +5,8 @@ import type { DropshipEquipment } from '../DropshipWeaponsConsole';
 export interface ButtonProps {
   children?: ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
+  borderColor?: string;
 }
 
 export type LazeTarget = {
@@ -14,6 +16,9 @@ export type LazeTarget = {
 
 export type TargetContext = {
   targets_data: Array<LazeTarget>;
+  firemission_x_offset: number;
+  firemission_y_offset: number;
+  firemission_max_offset: number;
 };
 
 export type FultonProps = {

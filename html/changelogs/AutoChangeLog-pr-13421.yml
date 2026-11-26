@@ -1,8 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscdel: "Removed unused allow_additional variable for job datums"
-  - admin: "Fixed Adjust Job Slots verb to actually assign latejoin values and job datum code to respect this change"
-  - admin: "Added a way for Adjust Job Slots verb during lobby to reset modifications to a job's slots"
-  - code_imp: "set_spawn_positions should now always reset the spawn count to initial"
-  - code_imp: "Cleaned up some 0/1 usage to TRUE/FALSE"

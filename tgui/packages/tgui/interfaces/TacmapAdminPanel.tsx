@@ -1,10 +1,10 @@
+import { clamp } from 'common/math';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Button, Flex, Section, Stack, Tabs } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { DrawnMap } from './DrawnMap';
-import { clamp } from 'common/math';
 
 const PAGES = [
   {
@@ -137,7 +137,7 @@ export const TacmapAdminPanel = (props) => {
                   icon="chevron-left"
                   width={3}
                   onClick={() => handleAdjustment(-1)}
-                  disabled={currentZ == 0}
+                  disabled={currentZ === 0}
                   textAlign="left"
                 />
               </Flex.Item>
@@ -146,7 +146,7 @@ export const TacmapAdminPanel = (props) => {
                   icon="chevron-right"
                   width={3}
                   onClick={() => handleAdjustment(1)}
-                  disabled={currentZ == ground_zs.length - 1}
+                  disabled={currentZ === ground_zs.length - 1}
                   textAlign="right"
                 />
               </Flex.Item>

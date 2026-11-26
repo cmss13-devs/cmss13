@@ -43,6 +43,7 @@
 
 	/// Used to countdown DANCER_DODGE_TIME.
 	var/dodge_start_time = -1
+
 	/// Check for slashed target that had yellow tag
 	var/spread_slash_triggered = FALSE
 	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
@@ -52,7 +53,7 @@
 
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
-	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet\s."
+	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullets."
 	. += "Yellow Tag Spread Delay: 5 seconds."
 
 	. += "Tail Lance Intent: [ACTION_CURRENT_TAIL_MODE(bound_xeno)]"
@@ -61,8 +62,7 @@
 		. += "Cooldown: 3 seconds."
 
 	if(dodge_start_time != -1)
-		var/time_left = (DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10
-		. += "Dodge Remaining: [time_left] second\s."
+		. += "Dodge Remaining: [(DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10] seconds."
 		return
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()

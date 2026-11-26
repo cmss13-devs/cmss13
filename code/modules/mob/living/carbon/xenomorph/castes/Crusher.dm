@@ -240,6 +240,19 @@
 	/// Utilized to update charging animation.
 	var/is_charging = FALSE
 
+	// Used by append_to_start()
+	var/front_armor = 0
+
+/datum/behavior_delegate/crusher_base/append_to_stat()
+	ats_crusher()
+	. = list()
+	. += "Front Armor: +[is_charging ? front_armor : 0]"
+	. += "Explosion Stun: [bound_xeno.small_explosives_stun ? "Yes" : "No"]"
+
+/datum/behavior_delegate/crusher_base/proc/ats_crusher()
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/ability_action = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	front_armor = ability_action.frontal_armor
+
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/target)
 
 	if (!isxeno_human(target))
@@ -287,15 +300,6 @@
 	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_action(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
 	if (!sAction.action_cooldown_check())
 		sAction.reduce_cooldown(base_cdr_amount)
-
-/datum/behavior_delegate/crusher_base/append_to_stat()
-	. = list()
-	var/shield_total = 0
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
-			shield_total += XS.amount
-
-	. += "Shield: [shield_total]"
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
 	if(HAS_TRAIT(bound_xeno, TRAIT_LAUNCHED) || is_charging) //Let it build up a bit so we're not changing icons every single turf
@@ -372,10 +376,10 @@
 	crusher_delegate.is_charging = FALSE
 	xeno_owner.update_icons()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/xenomorph/X, list/damagedata)
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/xenomorph/xeno, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
-	if(X.dir & REVERSE_DIR(projectile_direction))
+	if(xeno.dir & REVERSE_DIR(projectile_direction))
 		// During the charge windup, crusher gets an extra 15 directional armor in the direction its charging
 		damagedata["armor"] += frontal_armor
 

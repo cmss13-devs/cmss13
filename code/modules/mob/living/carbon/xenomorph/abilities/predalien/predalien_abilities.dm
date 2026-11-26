@@ -27,6 +27,7 @@
 	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
+	var/roar_bonus = FALSE
 
 /datum/action/xeno_action/activable/feral_smash
 	name = "Feral Smash"

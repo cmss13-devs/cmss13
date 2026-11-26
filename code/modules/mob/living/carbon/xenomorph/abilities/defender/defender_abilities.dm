@@ -44,12 +44,19 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 5 SECONDS
 
+	var/armor_buff = 30
+	var/explosion_res = 60
+
 	/// Extra armor when fortified and facing bullets.
 	var/frontal_armor = 5
 	cooldown_message = "We have regained enough stamina to curl up and take damage for our sisters."
 
 /datum/action/xeno_action/activable/fortify/steel_crest
 	frontal_armor = 15
+	armor_buff = 10
+	explosion_res = 60
+
+	var/walk_speed = 3
 
 /datum/action/xeno_action/activable/tail_stab/slam
 	name = "Tail Slam"

@@ -69,6 +69,7 @@
 #define COMSIG_KB_HUMAN_SINGLE_NORMAL_PUSHUP "keybinding_human_single_normal_pushup"
 #define COMSIG_KB_HUMAN_SINGLE_WEAK_PUSHUP "keybinding_human_single_weak_pushup"
 #define COMSIG_KB_HUMAN_PUSHUP_ROUTINE "keybinding_human_pushup_routine"
+#define COMSIG_KB_HUMAN_BLOW_WHISTLE "keybinding_human_blow_whistle"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
@@ -111,6 +112,10 @@
 #define COMSIG_KB_LIVING_LOOKDOWN_DOWN "keybinding_living_lookdown_down"
 #define COMSIG_KB_LIVING_REST_DOWN "keybinding_living_rest_down"
 #define COMSIG_KB_LIVING_CANCEL_CAMERA_VIEW "keybinding_movement_cancel_camera_view"
+#define COMSIG_KB_LIVING_DRAW_CARD "keybinding_draw_card"
+#define COMSIG_KB_LIVING_DRAW_X_CARDS "keybinding_draw_x_cards"
+#define COMSIG_KB_LIVING_DRAW_PILE_CONCEALED "keybinding_draw_pile_concealed"
+#define COMSIG_KB_LIVING_DEAL_CARD "keybinding_deal_card"
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"

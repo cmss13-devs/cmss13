@@ -2,7 +2,6 @@
 	title = JOB_TANK_CREW
 	total_positions = 2
 	spawn_positions = 2
-	allow_additional = TRUE
 	scaled = TRUE
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
@@ -15,7 +14,9 @@
 	else
 		spawn_positions = 0
 
-/datum/job/command/tank_crew/get_total_positions(latejoin = FALSE)
+/datum/job/command/tank_crew/get_total_positions(latejoin)
+	if(isnull(scaled))
+		return ..()
 	if(SStechtree.trees[TREE_MARINE].get_node(/datum/tech/arc).unlocked)
 		return 0
 	if(length(GLOB.clients) >= 200 || total_positions_so_far > 0)

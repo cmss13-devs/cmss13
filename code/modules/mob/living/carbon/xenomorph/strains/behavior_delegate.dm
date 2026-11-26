@@ -26,8 +26,18 @@
 	/// Userfriendly name of the mutator
 	var/name = "Set This"
 
+	/// A resource managed by this behavior in addition to or in place of plasma. Think Hedgehog shards, Acid Runner acid, etc
+	var/resource_name
+	var/resource_capacity
+	var/resource_icon_state
+	var/resource_description
+
 	/// The Xeno we handle mutator state for
 	var/mob/living/carbon/xenomorph/bound_xeno
+
+/// Optional current amount to display alongside capacity in the form's information panel.
+/datum/behavior_delegate/proc/preview_resource_amount()
+	return null
 
 /datum/behavior_delegate/Destroy(force, ...)
 	remove_from_xeno()
@@ -51,6 +61,12 @@
 
 /datum/behavior_delegate/proc/remove_from_xeno()
 	return
+
+/datum/behavior_delegate/proc/get_slash_icon_state()
+	return "slash"
+
+/datum/behavior_delegate/proc/get_tail_strike_icon_state(default_state)
+	return default_state
 
 /**
  * Modifies the damage of a slash based on the current mutator state.

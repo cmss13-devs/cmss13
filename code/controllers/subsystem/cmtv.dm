@@ -199,7 +199,12 @@ SUBSYSTEM_DEF(cmtv)
 		camera_mob.do_observe(current_perspective)
 
 /datum/controller/subsystem/cmtv/proc/setup_camera_mob()
-	var/mob/dead/observer/new_mob = new(locate(1, 1, 1))
+	var/starting_loc = locate(1, 1, 1)
+	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
+	if(spawn_point?.loc)
+		starting_loc = spawn_point.loc
+
+	var/mob/dead/observer/new_mob = new(starting_loc)
 	new_mob.client = camera_operator
 	new_mob.see_invisible = HIDE_INVISIBLE_OBSERVER
 	new_mob.alpha = 0
@@ -467,7 +472,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(!to_switch_to)
 		temporarily_observing_turf -= 10 SECONDS
 
-	temporarily_observing_turf = max(temporarily_observing_turf, 10 SECONDS)
+	COOLDOWN_START(src, temporarily_observing_turf, max(temporarily_observing_turf, 10 SECONDS))
 
 	if(current_perspective)
 		terminate_current_perspective(ticker_text = null)

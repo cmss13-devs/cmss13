@@ -1,9 +1,17 @@
 /datum/action/xeno_action/activable/throw_hugger
+	ability_stats_type = /datum/xeno_ability_stats/throw_hugger
+	ability_description = "Store, retrieve or throw a facehugger at prey."
 	name = "Use/Throw Facehugger"
 	action_icon_state = "throw_hugger"
 	macro_path = /datum/action/xeno_action/verb/verb_throw_facehugger
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+XENO_ABILITY_STATS(throw_hugger, datum/action/xeno_action/activable/throw_hugger)
+	var/delay = /datum/caste_datum/carrier::hugger_throw_delay
+	return list(
+		XENO_STAT_VALUE("Throw cooldown", delay * 0.1, null, "s."),
+	)
 
 /datum/action/xeno_action/activable/throw_hugger/action_cooldown_check()
 	if(owner)
@@ -12,6 +20,7 @@
 	return TRUE //When we first add the ability we still do this check, but owner is null, so a workaround
 
 /datum/action/xeno_action/activable/retrieve_egg
+	ability_description = "Store or retrieve an egg from your brood pouch."
 	name = "Retrieve Egg"
 	action_icon_state = "retrieve_egg"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
@@ -19,5 +28,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/set_hugger_reserve
+	ability_description = "Choose how many stored facehuggers to keep in reserve."
 	name = "Set Hugger Reserve"
 	action_icon_state = "xeno_banish"

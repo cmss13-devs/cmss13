@@ -318,8 +318,7 @@
 	var/broken = FALSE
 	buildstackamount = 0
 	can_rotate = FALSE
-	picked_up_item = null
-
+	foldabletype = null
 	unslashable = FALSE
 	unacidable = TRUE
 
@@ -344,6 +343,23 @@
 	init_pixel_y = pixel_y
 	init_pixel_x = pixel_x
 
+/obj/structure/bed/chair/vehicle/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
+	.=..()
+
+	var/approachness = NORTH|SOUTH|EAST|WEST
+	var/internalness = NORTH|SOUTH|EAST|WEST
+
+	if(neighbor && neighbor.buckled_mob)
+		internalness &= ~turn(dir, 180)	//cant walk into filled seats
+		approachness &= ~turn(dir, 180)
+
+	if(force_update && buckled_mob)
+		buckled_mob.density = FALSE
+		density = TRUE
+		AddComponent(/datum/component/shimmy_around, \
+			approach_dirs = approachness, \
+			internal_dirs = internalness \
+		)
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)
@@ -361,6 +377,7 @@
 			layer = BELOW_MOB_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+	update_shimmy_data()
 
 //------BUCKLING AND UNBUCKLING
 //trying to buckle a mob
@@ -395,21 +412,6 @@
 		if(buckle_offset_y != 0)
 			M.pixel_y = mob_old_y
 			mob_old_y = 0
-
-	for(var/obj/structure/bed/chair/vehicle/VS in get_turf(src))
-		if(VS != src)
-			//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
-			if(buckled_mob)
-				if(VS.buckled_mob)
-					REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-					REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				else
-					ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-			else
-				if(VS.buckled_mob)
-					ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-			break
 
 	handle_rotation()
 
@@ -479,6 +481,42 @@
 				break_seat()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_seat()
+
+/obj/structure/bed/chair/vehicle/toc
+	name = "overwatch chair"
+	desc = "A sturdy chair with a brace that lowers over the body. Prevents being flung around in vehicle during a crash and being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	icon_state = "armor_chair"
+	can_rotate = TRUE
+
+/obj/structure/bed/chair/vehicle/toc/afterbuckle(mob/M)
+	if(buckled_mob)
+		if(buckled_mob != M)
+			return
+		icon_state = initial(icon_state) + "_buckled"
+		overlays += chairbar
+
+		if(buckle_offset_x != 0)
+			mob_old_x = M.pixel_x
+			M.pixel_x = buckle_offset_x
+		if(buckle_offset_y != 0)
+			mob_old_y = M.pixel_y
+			M.pixel_y = buckle_offset_y
+
+		ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, BUCKLED_TRAIT)
+	else
+		icon_state = initial(icon_state)
+		overlays -= chairbar
+
+		if(buckle_offset_x != 0)
+			M.pixel_x = mob_old_x
+			mob_old_x = 0
+		if(buckle_offset_y != 0)
+			M.pixel_y = mob_old_y
+			mob_old_y = 0
+
+		REMOVE_TRAIT(M, TRAIT_UNDENSE, BUCKLED_TRAIT)
+
+	handle_rotation()
 
 // White chairs
 

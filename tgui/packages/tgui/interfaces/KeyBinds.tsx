@@ -1,5 +1,10 @@
 import type { Placement } from '@popperjs/core';
-import { Component, useState } from 'react';
+import {
+  Component,
+  type KeyboardEvent,
+  type MouseEvent,
+  useState,
+} from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -10,7 +15,11 @@ import {
   Input,
   Section,
 } from 'tgui/components';
-import { globalEvents } from 'tgui/events';
+import {
+  globalEvents,
+  type KeyEvent,
+  type MouseButtonEvent,
+} from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
 import { replaceRegexChars } from './helpers';
@@ -795,8 +804,15 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     };
   }
 
-  preventPassthrough(key) {
+  preventPassthrough(key: KeyEvent) {
     key.event.preventDefault();
+  }
+
+  preventPassthroughMouse(mouse: MouseButtonEvent) {
+    if (mouse.code < 3) {
+      return;
+    }
+    mouse.event.preventDefault();
   }
 
   doFinish() {
@@ -812,7 +828,7 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     clearInterval(this.timer);
   }
 
-  handleKeyPress(e) {
+  handleKeyPress(e: KeyboardEvent) {
     const { keysDown } = this.state;
 
     e.preventDefault();
@@ -840,6 +856,30 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     });
   }
 
+  handleMousePress(e: MouseEvent) {
+    const { keysDown } = this.state;
+
+    if (e.button < 3) {
+      return;
+    }
+
+    e.preventDefault();
+
+    let pressedButton = 'xbutton' + (e.button - 2); // button 3 is xbutton1 in byond
+
+    this.finishTimerStart(600);
+
+    // Prevents repeating
+    if (keysDown[pressedButton] && e.type === 'mousedown') {
+      return;
+    }
+
+    keysDown[pressedButton] = e.type === 'mousedown';
+    this.setState({
+      keysDown: keysDown,
+    });
+  }
+
   finishTimerStart(time) {
     clearInterval(this.timer);
     this.timer = setInterval(() => this.doFinish(), time);
@@ -854,6 +894,9 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     globalEvents.on('keydown', this.preventPassthrough);
     globalEvents.on('key', this.preventPassthrough);
     globalEvents.on('keyup', this.preventPassthrough);
+    globalEvents.on('mousedown', this.preventPassthroughMouse);
+    globalEvents.on('mouseup', this.preventPassthroughMouse);
+    globalEvents.on('mousebutton', this.preventPassthroughMouse);
   }
 
   doBlur() {
@@ -864,6 +907,9 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
     globalEvents.off('keydown', this.preventPassthrough);
     globalEvents.off('key', this.preventPassthrough);
     globalEvents.off('keyup', this.preventPassthrough);
+    globalEvents.off('mousedown', this.preventPassthroughMouse);
+    globalEvents.off('mouseup', this.preventPassthroughMouse);
+    globalEvents.off('mousebutton', this.preventPassthroughMouse);
   }
 
   render() {
@@ -884,6 +930,7 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
         onFocus={() => this.doFocus()}
         onBlur={() => this.doBlur()}
         onKeyDown={(e) => this.handleKeyPress(e)}
+        onMouseDown={(e) => this.handleMousePress(e)}
       >
         {focused
           ? Object.keys(keysDown)

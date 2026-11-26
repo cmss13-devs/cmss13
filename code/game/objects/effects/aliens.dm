@@ -50,7 +50,12 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	var/stun_duration = 1
+	var/initial_hit_damage = 20
 	var/damage_amount = 20
+	/// Damage while standing
+	var/standing_damage_multiplier = 0.4
+	/// Damage while prone
+	var/prone_damage_multiplier = 0.33
 	var/fire_level_to_extinguish = 13
 
 	var/time_to_live = 10
@@ -122,7 +127,7 @@
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
 				apply_spray(M)
-				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, initial_hit_damage), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -133,7 +138,7 @@
 		if (istype(loc, /turf/open))
 			var/turf/open/scorch_turf_target = loc
 			if(scorch_turf_target.scorchable)
-				scorch_turf_target.scorch(damage_amount)
+				scorch_turf_target.scorch(initial_hit_damage)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -177,8 +182,8 @@
 			human.emote("pain")
 			if(should_stun)
 				human.KnockDown(stun_duration)
-			human.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
-			human.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "l_foot")
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isxeno(human))
 			var/mob/living/carbon/xenomorph/X = human
@@ -189,7 +194,7 @@
 
 		human.last_damage_data = cause_data
 	else
-		human.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+		human.apply_armoured_damage(damage_amount * prone_damage_multiplier, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(human, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/weak
@@ -290,6 +295,7 @@
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "acid2"
 	damage_amount = 12
+	standing_damage_multiplier = 0.5
 	stun_duration = 0
 
 /obj/effect/xenomorph/spray/praetorian/apply_spray(mob/living/carbon/M)
@@ -308,10 +314,10 @@
 			to_chat(human, SPAN_DANGER("Your feet scald and burn! Argh!"))
 			human.emote("pain")
 			human.last_damage_data = cause_data
-			human.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-			human.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "l_foot", 50)
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "r_foot", 50)
 		else
-			human.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+			human.apply_armoured_damage(damage_amount * prone_damage_multiplier, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(human, SPAN_DANGER("You are scalded by the burning acid!"))
 	else if (isxeno(M))
 		..(M)
@@ -642,13 +648,122 @@
 /obj/effect/xenomorph/xeno_telegraph/green
 	color = COLOR_LIGHT_GREEN
 
-/// This has a brown icon state and does not have a color overlay by default.
-/obj/effect/xenomorph/xeno_telegraph/abduct_hook
+/obj/effect/xenomorph/xeno_telegraph/retrieve_hook
+	icon_state = "xeno_telegraph_retrieve_hook_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/perimeter
+	icon = 'icons/mob/xenos/telegraph_perimeter.dmi'
+	icon_state = "0"
+
+/// AoE telegraph for moves bigger than 3x3
+/proc/show_radial_telegraph(turf/center, list/affected_tiles, radius, telegraph_type, duration, outline_color)
+	if(!center)
+		return
+	if(radius <= 1)
+		for(var/turf/tile in affected_tiles)
+			new telegraph_type(tile, duration)
+		return
+
+	var/obj/effect/xenomorph/xeno_telegraph/attack/emblem = new telegraph_type(center, duration)
+	emblem.underlays.Cut()
+	emblem.transform = matrix().Scale(2)
+	emblem.appearance_flags |= PIXEL_SCALE
+
+	var/list/footprint = list(center)
+	for(var/turf/tile in affected_tiles)
+		footprint |= tile
+	for(var/turf/tile as anything in footprint)
+		var/exposed_edges = NONE
+		for(var/direction in GLOB.cardinals)
+			if(!(get_step(tile, direction) in footprint))
+				exposed_edges |= direction
+		if(exposed_edges)
+			var/obj/effect/xenomorph/xeno_telegraph/perimeter/edge = new(tile, duration, outline_color)
+			edge.icon_state = "[exposed_edges]"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/Initialize()
+	. = ..()
+	underlays += get_border()
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/show_on_target(mob/living/target)
+	pixel_x = -target.pixel_x
+	pixel_y = -target.pixel_y
+	appearance_flags |= RESET_COLOR
+	target.vis_contents += src
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/get_border()
+	var/static/mutable_appearance/red_border
+	if(isnull(red_border))
+		red_border = create_border(list("#373737" = "#6D0002", "#434343" = "#850001", "#565656" = "#AC0000", "#7E7E7E" = "#EB4210"))
+	return red_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/create_border(list/palette)
+	var/icon/border = icon(icon, "xeno_telegraph_attack_base")
+	for(var/shade in palette)
+		border.SwapColor(shade, palette[shade])
+	return mutable_appearance(border)
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/get_border()
+	var/static/mutable_appearance/brown_border
+	if(isnull(brown_border))
+		brown_border = create_border(list("#373737" = "#6D3300", "#434343" = "#853E00", "#565656" = "#AC4F00", "#7E7E7E" = "#D79600"))
+	return brown_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
-/// This has a brown icon state and does not have a color overlay by default.
-/obj/effect/xenomorph/xeno_telegraph/lash
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop
+	icon_state = "xeno_telegraph_high_gallop_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/stomp
+	icon_state = "xeno_telegraph_stomp_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/lash
 	icon_state = "xeno_telegraph_lash"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace
+	icon_state = "xeno_telegraph_caustic_embrace_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace/get_border()
+	var/static/mutable_appearance/olive_border
+	if(isnull(olive_border))
+		olive_border = create_border(list("#373737" = "#334025", "#434343" = "#5A6F40", "#565656" = "#68814B", "#7E7E7E" = "#769255"))
+	return olive_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/empower
+	icon_state = "xeno_telegraph_empower_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate
+	icon_state = "xeno_telegraph_eviscerate_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/pierce
+	icon_state = "xeno_telegraph_pierce_tail"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/pierce/tip
+	icon_state = "xeno_telegraph_pierce_anim"
+
+/proc/show_pierce_telegraph(turf/previous_turf, list/turf/path, reached_tiles)
+	for(var/index in 1 to reached_tiles)
+		var/turf/path_turf = path[index]
+		var/telegraph_type = index == reached_tiles ? /obj/effect/xenomorph/xeno_telegraph/attack/pierce/tip : /obj/effect/xenomorph/xeno_telegraph/attack/pierce
+		var/obj/effect/xenomorph/xeno_telegraph/attack/pierce/segment = new telegraph_type(path_turf, 0.6 SECONDS)
+		segment.setDir(get_dir(previous_turf, path_turf))
+		previous_turf = path_turf
+
+/obj/effect/xenomorph/xeno_telegraph/attack/prae_dash
+	icon_state = "xeno_telegraph_prae_dash_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/flurry
+	icon_state = "xeno_telegraph_flurry_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut
+	icon_state = "xeno_telegraph_scissor_cut_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut/empowered/get_border()
+	var/static/mutable_appearance/amber_border
+	if(isnull(amber_border))
+		amber_border = create_border(list("#373737" = "#D79600", "#434343" = "#E4A615", "#565656" = "#F5BA31", "#7E7E7E" = "#F7CF5F"))
+	return amber_border
 
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"
@@ -699,10 +814,6 @@
 				else
 					new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/trap in H.effects_list)
-				if (trap.cause_data && trap.cause_data.resolve_mob() == linked_xeno)
-					found = trap
-					break
 			if(found)
 				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else
@@ -716,25 +827,3 @@
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
 	deal_damage()
 	qdel(src)
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
-	var/total_hits = 0
-	for(var/obj/structure/barricade/cade in loc)
-		cade.corrosive_acid_act(damage*(1.15 + 0.55 * empowered))
-
-	for(var/mob/living/carbon/human in loc)
-		if(human.stat == DEAD)
-			continue
-
-		if(human.ally_of_hivenumber(hivenumber))
-			continue
-
-		total_hits++
-
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
-
-	trap.reduce_cooldown(total_hits*4 SECONDS)
-
-	return ..()

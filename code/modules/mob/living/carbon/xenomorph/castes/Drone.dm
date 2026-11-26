@@ -1,5 +1,21 @@
 /datum/caste_datum/drone
 	caste_type = XENO_CASTE_DRONE
+	playstyle = "Spread weeds and shape resin to extend the hive. Transfer plasma to sisters who need it and use pheromones to support them while they work or fight."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/choose_resin, //second macro
+		/datum/action/xeno_action/activable/secrete_resin, //third macro
+		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
@@ -59,26 +75,13 @@
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -8
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/choose_resin, //second macro
-		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/drone.dmi'
@@ -87,6 +90,32 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 	skull = /obj/item/skull/drone
 	pelt = /obj/item/pelt/drone
+
+/mob/living/carbon/xenomorph/drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	if(hive && !should_block_game_interaction(src))
+		if(!hive.living_xeno_queen && hive.allow_queen_evolve && !get_action(src, /datum/action/xeno_action/onclick/evolve))
+			var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+			evolve_action.give_to(src)
+		RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_queen))
+
+/// SIGNAL_HANDLER for COMSIG_HIVE_NEW_QUEEN to handle granting/removing evolve button
+/mob/living/carbon/xenomorph/drone/proc/handle_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = get_action(src, /datum/action/xeno_action/onclick/evolve)
+	if(new_queen)
+		// New queen: Remove evolve action if we still need evo
+		if(evolve_action && evolution_stored < evolution_threshold)
+			qdel(evolve_action)
+		return
+	// Queen death: Add evolve action if we don't already have it
+	if(evolve_action)
+		return
+	if(!hive.allow_queen_evolve)
+		return
+	evolve_action = new()
+	evolve_action.give_to(src)
 
 /obj/item/organ/xeno/drone
 	name = "drone heart"

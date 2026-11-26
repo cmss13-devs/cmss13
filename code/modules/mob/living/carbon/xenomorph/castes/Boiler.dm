@@ -1,5 +1,19 @@
 /datum/caste_datum/boiler
 	caste_type = XENO_CASTE_BOILER
+	playstyle = "Scout from long range and bombard an area with corrosive or weakening gas. Your selected gas also determines what Acid Shroud releases and what Toxic Tail Stab injects."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/boiler,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
+		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
+		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
+		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
+		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
+	)
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -13,7 +27,6 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
-	available_strains = list(/datum/xeno_strain/trapper)
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
@@ -65,19 +78,6 @@
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/boiler,
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
-		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
-		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
-		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
-	)
 	skull = /obj/item/skull/boiler
 	pelt = /obj/item/pelt/boiler
 
@@ -111,6 +111,8 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
 	. = ..()
+	if(!.)
+		return FALSE
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for (var/action_type in action_types_to_cd)
@@ -182,7 +184,7 @@
 			if(!neuro_effect)
 				neuro_effect = new(carbon_target, owner)
 			neuro_effect.duration += 20
-			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
+			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tail stab!"))
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
 		return TRUE
@@ -194,7 +196,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("We can't secrete any acid into [target]."))
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -206,10 +208,10 @@
 		return FALSE
 
 	if(!check_plasma(ACID_COST_BOILER))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
+	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with acid gas."))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -235,7 +237,7 @@
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
 	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid gas!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
+	SPAN_XENOWARNING("We pressurise the resin trap with acid gas!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_BOILER

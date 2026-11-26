@@ -5829,6 +5829,22 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
+"aoA" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CIC_Conference";
+	name = "\improper CIC Conference Shutters";
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cicconference)
 "aoB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -14710,7 +14726,7 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aML" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "aMM" = (
@@ -16209,6 +16225,7 @@
 	pixel_x = 25;
 	pixel_y = -7
 	},
+/obj/item/jungle_mag_binders/elastic_band,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "aQN" = (
@@ -25016,24 +25033,13 @@
 	icon_state = "SW-out";
 	layer = 2.5
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 11
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 15
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 18
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4;
+	pixel_y = 9
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
@@ -27305,19 +27311,14 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 11
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 15
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4;
+	pixel_y = 9;
+	stacked_size = 2
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
@@ -39978,7 +39979,8 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/machinery/door/airlock/almayer/glass{
 	name = "\improper Weyland-Yutani Office Reception";
-	dir = 2
+	dir = 2;
+	id_tag = "cl_office_door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -43642,19 +43644,8 @@
 /turf/open/floor/almayer,
 /area/almayer/middeck/briefing)
 "cbs" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 6
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -52601,27 +52592,8 @@
 	pixel_x = -19;
 	pixel_y = 5
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/four{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/living/offices)
@@ -55376,6 +55348,9 @@
 "eiq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/prop/magazine/dirty,
+/obj/item/stack/sheet/cardboard/small_stack{
+	layer = 3.01
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "eiw" = (
@@ -67048,12 +67023,12 @@
 /area/almayer/underdeck/req)
 "jnX" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "jot" = (
@@ -68222,27 +68197,8 @@
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "jSU" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/four{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer/green/west,
 /area/almayer/living/offices)
@@ -71737,6 +71693,11 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "CIC_Conference";
@@ -79151,8 +79112,9 @@
 	pixel_y = 9;
 	starting_attachment_types = list(/obj/item/attachable/stock/shotgun)
 	},
-/obj/item/stack/sheet/cardboard/small_stack{
-	layer = 3.01
+/obj/item/ammo_magazine/rifle/pre_bundled,
+/obj/item/jungle_mag_binders/elastic_band{
+	pixel_x = -8
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -83168,24 +83130,11 @@
 /area/almayer/squads/delta)
 "qrp" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -84823,7 +84772,8 @@
 	},
 /obj/item/desk_bell{
 	pixel_y = 11;
-	pixel_x = -7
+	pixel_x = -7;
+	anchored = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "IO Lab Shutters";
@@ -88532,21 +88482,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "sEi" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/living/grunt_rnr)
@@ -101636,24 +101573,11 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "yeN" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 8
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -203649,7 +203573,7 @@ atb
 aAs
 lso
 aAs
-yaX
+aoA
 aAs
 atb
 awz

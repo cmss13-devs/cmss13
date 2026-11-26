@@ -33,7 +33,7 @@
 	uid++
 	src.personal_uid = uid
 
-	render_source_atom.appearance_flags |= ( RESET_COLOR | RESET_TRANSFORM)
+	render_source_atom.appearance_flags |= (RESET_COLOR | RESET_TRANSFORM | KEEP_APART)
 
 	render_source_atom.vis_flags |= (VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_LAYER | VIS_UNDERLAY)
 
@@ -78,7 +78,7 @@
 /datum/component/seethrough_mob/proc/untrick_mob()
 	var/mob/fool = parent
 	animate(trickery_image, alpha = 255, time = animation_time)
-	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
+	UnregisterSignal(fool, list(COMSIG_MOB_GHOSTIZE, COMSIG_MOB_LOGOUT))
 
 	//after playing the fade-in animation, remove the image and the trick atom
 	addtimer(CALLBACK(src, PROC_REF(clear_image), trickery_image, fool.client), animation_time)
@@ -89,14 +89,14 @@
 	atom_parent.vis_contents -= render_source_atom
 	atom_parent.render_target = initial_render_target_value
 	remove_from?.images -= removee
+	is_active = FALSE
 
 ///Effect is disabled when they log out because client gets deleted
 /datum/component/seethrough_mob/proc/on_client_disconnect()
 	SIGNAL_HANDLER
 
 	var/mob/fool = parent
-	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
-	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
+	UnregisterSignal(fool, list(COMSIG_MOB_GHOSTIZE, COMSIG_MOB_LOGOUT))
 	clear_image(trickery_image, fool.client)
 
 /datum/component/seethrough_mob/proc/on_client_ghost()

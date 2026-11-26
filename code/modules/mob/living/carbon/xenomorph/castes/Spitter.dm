@@ -1,5 +1,17 @@
 /datum/caste_datum/spitter
 	caste_type = XENO_CASTE_SPITTER
+	playstyle = "Fight at range with acid spit and use Spray Acid to cover an approach. Charge Spit trades range for a stronger shot and gives you a brief burst of speed and armor."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/spitter,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/xeno_spit/spitter,
+		/datum/action/xeno_action/onclick/charge_spit,
+		/datum/action/xeno_action/activable/spray_acid/spitter,
+	)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -12,6 +24,8 @@
 	armor_deflection = XENO_ARMOR_MOD_MED
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_5
+
+	available_strains = list(/datum/xeno_strain/dissolver)
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
@@ -41,20 +55,11 @@
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 2
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/spitter,
-		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/activable/xeno_spit/spitter,
-		/datum/action/xeno_action/onclick/charge_spit,
-		/datum/action/xeno_action/activable/spray_acid/spitter,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/spitter.dmi'
@@ -62,8 +67,8 @@
 	acid_overlay = icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
-	weed_food_states = list("Drone_1","Drone_2","Drone_3")
-	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states = list("Spitter_1","Spitter_2","Spitter_3")
+	weed_food_states_flipped = list("Spitter_1","Spitter_2","Spitter_3")
 
 	skull = /obj/item/skull/spitter
 	pelt = /obj/item/pelt/spitter
@@ -89,7 +94,7 @@
 
 	XENO_ACTION_CHECK_USE_PLASMA(zenomorf)
 
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in our glands. Our next spit will be stronger but shorter-ranged."))
 	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
 	zenomorf.create_custom_empower(icolor = "#93ec78", ialpha = 200, small_xeno = TRUE)
 	zenomorf.balloon_alert(zenomorf, "our next spit will be stronger", text_color = "#93ec78")

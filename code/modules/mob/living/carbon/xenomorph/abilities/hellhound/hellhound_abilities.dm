@@ -1,5 +1,7 @@
 /datum/action/xeno_action/activable/pounce/gorge // charge them with your spikes
+	ability_stats_type = /datum/xeno_ability_stats/activable_pounce_gorge
 	name = "Gorge"
+	ability_description = "Pounce past shields and gore your target with your spikes."
 	action_icon_state = "headbite"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy =  XENO_PRIMARY_ACTION_1
@@ -8,10 +10,16 @@
 
 	freeze_self = FALSE
 	can_be_shield_blocked = FALSE
-	var/gorge_damage = 30
+	var/base_damage = 30
+
+XENO_ABILITY_STATS(activable_pounce_gorge, datum/action/xeno_action/activable/pounce/gorge)
+	return list(
+		XENO_STAT_BRUTE(base_damage, "Base brute damage"),
+	)
 
 /datum/action/xeno_action/onclick/sense_owner // tells them where the pred is
 	name = "Find Owner"
+	ability_description = "Sniff the ground to sense your owner's distance and direction on this level."
 	action_icon_state = "mark_hosts"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2

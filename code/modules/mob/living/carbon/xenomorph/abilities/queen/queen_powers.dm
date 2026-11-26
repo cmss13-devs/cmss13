@@ -91,7 +91,7 @@
 		return
 	xenoqueen.visible_message(SPAN_XENOWARNING("\The [xenoqueen] starts detaching itself from its ovipositor!"),
 		SPAN_XENOWARNING("We start detaching ourselves from our ovipositor."))
-	if(!do_after(xenoqueen, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10))
+	if(!do_after(xenoqueen, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10))
 		return
 	if(!xenoqueen.check_state())
 		return
@@ -143,7 +143,7 @@
 
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."),
 	SPAN_XENOWARNING("We start to grow an ovipositor...(takes 20 seconds, hold still)"))
-	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
+	if(!do_after(xeno, 20 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
 	if(!xeno.check_state())
 		return
@@ -942,7 +942,8 @@
 	FOR_DVIEW_END
 
 	var/list/mobs_in_view = list()
-	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
+	var/datum/caste_datum/queen/queen_caste = xeno.caste
+	FOR_DOVIEW(var/mob/living/carbon/M, queen_caste.screech_range, xeno, HIDE_INVISIBLE_OBSERVER)
 		mobs_in_view += M
 	FOR_DOVIEW_END
 	for(var/mob/living/carbon/M in orange(10, xeno))
@@ -989,6 +990,12 @@
 			to_chat(target_mob, SPAN_XENOQUEEN("We hear a strange, alien voice in our head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
 			to_chat(target_mob, SPAN_XENOQUEEN("We hear the voice of [xeno_player] resonate in our head. \"[SPAN_PSYTALK(whisper)]\""))
+
+		var/text_color = (xeno_player.hive.color ? xeno_player.hive.color : COLOR_PURPLE)
+		var/screen_text = xeno_player.langchat_speech(whisper, list(target_mob), GLOB.all_languages, skip_language_check = TRUE)
+		animate(screen_text, color = text_color, time = 0.3 SECONDS, loop = -1)
+		animate(color = COLOR_WHITE, time = 0.3 SECONDS)
+
 		to_chat(xeno_player, SPAN_XENONOTICE("We said: \"[whisper]\" to [target_mob]."))
 
 		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
@@ -1026,6 +1033,11 @@
 			to_chat(possible_target, SPAN_XENOQUEEN("We hear a strange, alien voice in our head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
 			to_chat(possible_target, SPAN_XENOQUEEN("We hear the voice of [xeno_player] resonate in our head. \"[SPAN_PSYTALK(whisper)]\""))
+
+		var/text_color = (xeno_player.hive.color ? xeno_player.hive.color : COLOR_PURPLE)
+		var/atom/movable/screen/text/screen_text = possible_target.play_screen_text(SPAN_LANGCHAT(SPAN_CENTERBOLD("<u>You hear an alien voice in your head...</u><br>[whisper]")), /atom/movable/screen/text/screen_text/command_order, override_color = text_color)
+		animate(screen_text, color = text_color, time = 0.3 SECONDS, loop = -1)
+		animate(color = COLOR_PINK, time = 0.3 SECONDS)
 	FOR_DVIEW_END
 	if(!length(target_list))
 		return

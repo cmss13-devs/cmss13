@@ -1,6 +1,7 @@
 // File that holds everything related to Xeno overwatch.
 // The action for watching another Xeno (Queen still has some shitty leftovers, but it's mostly been cleaned out)
 /datum/action/xeno_action/watch_xeno
+	ability_description = "Watch a sister through the hivemind."
 	name = "Watch Xenomorph"
 	action_icon_state = "watch_xeno"
 	plasma_cost = 0

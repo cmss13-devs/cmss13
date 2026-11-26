@@ -1,5 +1,21 @@
 /datum/caste_datum/drone
 	caste_type = XENO_CASTE_DRONE
+	playstyle = "Spread weeds and shape resin to extend the hive. Transfer plasma to sisters who need it and use pheromones to support them while they work or fight."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/choose_resin, //second macro
+		/datum/action/xeno_action/activable/secrete_resin, //third macro
+		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
@@ -72,21 +88,6 @@
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -8
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/choose_resin, //second macro
-		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,

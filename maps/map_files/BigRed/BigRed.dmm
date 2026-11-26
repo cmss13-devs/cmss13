@@ -24105,12 +24105,6 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
-"hPS" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_se)
 "hQD" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/asteroidwarning/east,
@@ -29828,12 +29822,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"nXw" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/dark,
-/area/bigredv2/caves/eta/xenobiology)
 "nXC" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_research)
@@ -60763,7 +60751,7 @@ bCV
 qTC
 qTC
 qTC
-nXw
+nUK
 qTC
 qTC
 qTC
@@ -82901,7 +82889,7 @@ izh
 izh
 izh
 izh
-hPS
+otb
 otb
 izh
 izh

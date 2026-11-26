@@ -1,5 +1,19 @@
 /datum/caste_datum/boiler
 	caste_type = XENO_CASTE_BOILER
+	playstyle = "Scout from long range and bombard an area with corrosive or weakening gas. Your selected gas also determines what Acid Shroud releases and what Toxic Tail Stab injects."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/boiler,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
+		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
+		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
+		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
+		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
+	)
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -64,19 +78,6 @@
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/boiler,
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
-		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
-		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
-		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
-		)
 	skull = /obj/item/skull/boiler
 	pelt = /obj/item/pelt/boiler
 

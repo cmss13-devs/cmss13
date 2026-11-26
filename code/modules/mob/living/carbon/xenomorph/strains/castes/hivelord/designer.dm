@@ -1,5 +1,6 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
+	summary = "Direct hive construction from a distance. Design nodes speed up building, reduce plasma costs or let sisters contribute to a structure."
 	description = "We give up direct resin building and lose some plasma and health to gain stronger pheromones and longer vision. We can place up to 36 design nodes: optimized nodes boost building by 50%, flexible nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on surfaces where we can't normally build. Some castes, like hivelord, carrier, burrower, and queen, can stimulate construct nodes to make thick weedbound variants, including plasma fruits. We can mark nodes as walls or doors and remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Our tackle is slightly stronger, causing longer knockdowns."
 	flavor_description = "You are the hive's designer. While you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
@@ -689,6 +690,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/greater_resin_surge
+	ability_description = "Temporarily turn your design nodes into reflective resin walls."
 	name = "Greater Resin Surge (250)"
 	action_icon_state = "greater_resin_surge"
 	plasma_cost = 250
@@ -765,6 +767,8 @@
 /////////////////////////////
 
 /datum/action/xeno_action/activable/place_design
+	ability_stats_type = /datum/xeno_ability_stats/activable_place_design
+	ability_description = "Apply the selected design action to a node or structure from a distance."
 	name = "Influence"
 	action_icon_state = "secrete_resin"
 	plasma_cost = 0
@@ -774,6 +778,11 @@
 	xeno_cooldown = 0
 	var/max_reach = 10
 	var/design_toggle = TRUE
+
+XENO_ABILITY_STATS(activable_place_design, datum/action/xeno_action/activable/place_design)
+	return list(
+		XENO_STAT_TILES(max_reach, "Range"),
+	)
 
 /datum/action/xeno_action/verb/place_design()
 	set category = "Alien"
@@ -1065,6 +1074,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/toggle_design_icons
+	ability_description = "Switch the design mark between a resin wall and a door."
 	name = "Change Design Mark"
 	action_icon_state = "design_mark_1"
 	plasma_cost = 0
@@ -1119,6 +1129,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/change_design
+	ability_description = "Choose which node or resin operation Influence will apply."
 	name = "Choose Action"
 	action_icon_state = "static_speednode"
 	plasma_cost = 0

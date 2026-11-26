@@ -1,0 +1,4 @@
+author: "carlarcCM"
+delete-after: True
+changes:
+  - rscadd: "Added langchat and screen text to psychic whisper and radiance respectively. You can now truly threaten your enemies!"

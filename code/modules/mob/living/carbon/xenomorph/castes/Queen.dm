@@ -5,7 +5,38 @@
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
 /datum/caste_datum/queen
+	var/screech_close_range = 4
+	var/screech_range = 7
+	var/screech_close_stun = 4
+	var/screech_far_stun = 3
+	/// Abilities gained after maturing
+	var/list/mature_actions = list(
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+	)
 	caste_type = XENO_CASTE_QUEEN
+	playstyle = "Direct the hive with orders and pheromones. Grow an ovipositor to lay eggs and use overwatch to heal sisters and build resin around them. Weak while immature, gain more health and unlock the powerful Screech and Spit abilities once mature."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/grow_ovipositor,
+		/datum/action/xeno_action/onclick/queen_word,
+		/datum/action/xeno_action/onclick/manage_hive,
+		/datum/action/xeno_action/onclick/send_thoughts,
+		/datum/action/xeno_action/activable/info_marker/queen,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+	)
 	tier = 0
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -309,28 +340,6 @@
 	skull = /obj/item/skull/queen
 	pelt = /obj/item/pelt/queen
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
-		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/queen_word,
-		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
-		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
-		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
-		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/activable/info_marker/queen,
-		/datum/action/xeno_action/onclick/manage_hive,
-		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-	)
-
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/claw_toggle,
 		/mob/living/carbon/xenomorph/proc/construction_toggle,
@@ -342,20 +351,20 @@
 	)
 
 	var/list/mobile_abilities = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/activable/gut,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		/datum/action/xeno_action/onclick/grow_ovipositor,
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
@@ -364,14 +373,6 @@
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 		/datum/action/xeno_action/onclick/autoweeding_toggle,
 	)
-
-	/// Abilities they get when they've successfully aged.
-	var/mobile_aged_abilities = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
-		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
-		)
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
@@ -598,7 +599,7 @@
 	UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 	refresh_combat_effective()
 
-/// When not on ovipositor, refreshes all mobile_abilities including mobile_aged_abilities if applicable
+/// When not on ovipositor, refreshes all mobile_abilities including mature_actions if applicable
 /mob/living/carbon/xenomorph/queen/proc/refresh_combat_abilities()
 	if(ovipositor)
 		return
@@ -613,7 +614,8 @@
 	var/list/abilities_to_give = mobile_abilities.Copy()
 
 	if(!queen_aged && queen_age_temp_timer_id == TIMER_ID_NULL)
-		abilities_to_give -= mobile_aged_abilities
+		var/datum/caste_datum/queen/queen_caste = caste
+		abilities_to_give -= queen_caste.mature_actions
 
 	for(var/path in abilities_to_give)
 		give_action(src, path)
@@ -834,12 +836,13 @@
 
 	var/list/immobile_abilities = list(
 		// These already have their placement locked in:
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/place_construction/not_primary,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
@@ -995,3 +998,6 @@
 #undef XENO_QUEEN_TEMP_AGE_EXTENSION
 #undef XENO_QUEEN_DEATH_DELAY
 #undef YOUNG_QUEEN_HEALTH_MULTIPLIER
+
+/datum/caste_datum/queen/get_preview_actions()
+	return ..() | mature_actions

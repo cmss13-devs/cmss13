@@ -1,5 +1,16 @@
 /datum/caste_datum/lurker
 	caste_type = XENO_CASTE_LURKER
+	playstyle = "Approach under cloak. A cloaked Pounce knocks prey down, and Crippling Strike strengthens your next slash and slows the target. Slashing breaks stealth."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/pounce/lurker,
+		/datum/action/xeno_action/onclick/lurker_invisibility,
+		/datum/action/xeno_action/onclick/lurker_assassinate,
+	)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -39,16 +50,6 @@
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 2
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/lurker,
-		/datum/action/xeno_action/onclick/lurker_invisibility,
-		/datum/action/xeno_action/onclick/lurker_assassinate,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
@@ -86,7 +87,7 @@
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 30 SECONDS // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2
-	var/slash_slow_duration = 35
+	var/slash_slow_duration = 3.5 SECONDS
 
 	// State
 	var/next_slash_buffed = FALSE

@@ -1,6 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
+	summary = "Trade movement speed and slash damage for explosive resistance. Stay back and pull enemies into reach with Abduct to punish out of position targets. Punch abducted targets to root them, and separate them further with Tail Lash."
 	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and several powerful abilities. Our Abduct ability pulls up to three non-prone enemies towards us, slows them, and has varying effects depending on how many victims we pull. Our Dislocate ability deals armor-piercing damage, extra damage to slowed enemies, and reduces all ability cooldowns by 5 seconds if it lands. We exchange our tail stab for Tail Seize, which has a shorter windup, extra range, and grabs and slows enemies. Finally, Tail Lash, after a windup, knocks back and slows anything in a 2x3 cone in front of us."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
@@ -278,7 +279,7 @@
 	oppressor_user.flick_attack_overlay(target_carbon, "punch")
 
 	if(!(target_carbon.mobility_flags & MOBILITY_MOVE) || !(target_carbon.mobility_flags & MOBILITY_STAND) || target_carbon.slowed)
-		target_carbon.apply_damage(get_xeno_damage_slash(target_carbon, damage), BRUTE, target_limb? target_limb.name : "chest")
+		target_carbon.apply_damage(get_xeno_damage_slash(target_carbon, base_damage), BRUTE, target_limb? target_limb.name : "chest")
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Oppressor Punch"))
 
 		if(ishuman(target_carbon))
@@ -288,7 +289,7 @@
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
 	else
-		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
+		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, base_damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)
 
 

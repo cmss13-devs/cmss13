@@ -31,13 +31,13 @@
 		var/active = 0
 		// player_list holds all cliented mobs, AKA "active" players
 		for(var/mob/player in GLOB.player_list)
-			if(player.job == job_title)
+			if(GET_DEFAULT_ROLE(player.job) == GET_DEFAULT_ROLE(job_title))
 				active++
 
-		var/role_category = get_job_department(job_title) || "other"
+		var/default_role = GET_DEFAULT_ROLE(job_title)
+		var/role_category = get_job_department(default_role) || "other"
 		//prevents the badges from showing outdated slot counts when you hover over them
 		var/total_positions = mode_job.get_total_positions(TRUE)
-		var/default_role = GET_DEFAULT_ROLE(job_title)
 		var/list/squad_data
 		var/list/available_squads = GLOB.RoleAuthority.get_latejoin_squads(mode_job)
 		if(available_squads)
@@ -57,7 +57,7 @@
 		APPEND_RAW(categorized_roles[role_category], list(
 			"Title" = job_title,
 			"DisplayTitle" = mode_job.disp_title,
-			"IsLeader" = is_job_leader(job_title),
+			"IsLeader" = is_job_leader(default_role),
 			"Available" = GLOB.RoleAuthority.check_role_entry(user, mode_job, latejoin = TRUE, faction = faction),
 			"WhitelistLocked" = !mode_job.check_whitelist_status(user),
 			"JobBanned" = !!(jobban_isbanned(user, job_title) || (mode_job.role_ban_alternative && jobban_isbanned(user, mode_job.role_ban_alternative))),

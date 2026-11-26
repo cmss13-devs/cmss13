@@ -22,6 +22,9 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 	for(var/squad_name in marine_roles_by_squad)
 		departments[squad_name] = GLOB.ROLES_MARINES
 
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt))
+		departments["Recon"] = GLOB.ROLES_BUG_HUNT
+
 	var/list/departments_with_jobs = list()
 
 	// Populate departments_with_jobs with role orders

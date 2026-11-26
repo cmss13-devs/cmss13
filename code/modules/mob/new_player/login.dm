@@ -275,6 +275,9 @@
 
 	attempt_observe()
 
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && isobserver(current_client.mob))
+		SSticker.mode.attempt_to_join_as_xeno(current_client.mob)
+
 	// If a mod wants to join as a xeno, disable their larva protection so that they can enter the larva pool.
 	if(check_client_rights(current_client, R_MOD, FALSE) && current_client.mob)
 		var/mob/dead/observer/mod_observer = current_client.mob

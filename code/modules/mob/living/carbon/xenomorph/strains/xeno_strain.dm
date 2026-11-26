@@ -72,6 +72,7 @@
 
 	apply_strain(xeno)
 	xeno.recalculate_everything()
+	xeno.add_predrop_building()
 
 	xeno.update_icons()
 	xeno.hive.hive_ui.update_xeno_info()

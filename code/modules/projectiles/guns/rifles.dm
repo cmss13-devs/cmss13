@@ -499,6 +499,28 @@
 /obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
+/obj/item/weapon/gun/rifle/m41aMK1/forecon
+	desc = "An M41A pulse rifle in Humbrol 76 camouflage, issued to USCM Force Reconnaissance units. Uses standard 10x24mm M41A MK1 magazines."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/forecon.dmi'
+	icon_state = "reconm41amk1"
+	item_state = "reconm41amk1"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/forecon.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/forecon.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/forecon_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/forecon_righthand.dmi',
+	)
+	map_specific_decoration = FALSE
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1/recon, /obj/item/attachable/stock/rifle/collapsible)
+
+/obj/item/weapon/gun/rifle/m41aMK1/forecon/Initialize()
+	attachable_allowed = attachable_allowed.Copy()
+	attachable_allowed += /obj/item/attachable/attached_gun/grenade/mk1/recon
+	return ..()
+
+/obj/item/weapon/gun/rifle/m41aMK1/forecon/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
+
 /obj/item/weapon/gun/rifle/m41aMK1/tactical
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness, /obj/item/attachable/stock/rifle/collapsible)
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap

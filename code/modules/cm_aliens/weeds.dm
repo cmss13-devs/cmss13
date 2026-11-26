@@ -664,6 +664,9 @@
 /obj/effect/alien/weeds/node/pylon/core
 	node_range = WEED_RANGE_CORE
 
+/obj/effect/alien/weeds/node/pylon/core/bug_hunt
+	node_range = WEED_RANGE_CORE * 2
+
 /obj/effect/alien/weeds/node/pylon/hunted
 	hivenumber = XENO_HIVE_HUNTED
 

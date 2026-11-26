@@ -125,6 +125,8 @@
 	pixel_y = -7
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/toc{
+	name = "Typhoon autopilot console";
+	shuttleId = "dropship_alamo";
 	pixel_y = 12;
 	pixel_x = 7
 	},
@@ -226,7 +228,7 @@
 	pixel_y = 26;
 	layer = 3
 	},
-/obj/structure/machinery/medical_pod/autodoc{
+/obj/structure/machinery/medical_pod/autodoc/unskilled{
 	pixel_y = 15;
 	density = 0
 	},

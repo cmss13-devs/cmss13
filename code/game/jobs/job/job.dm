@@ -366,7 +366,7 @@
 	if(!new_human.client || !new_human.client.prefs)
 		return
 
-	var/equipment_slot = new_human.client.prefs.get_active_loadout(title)
+	var/equipment_slot = new_human.client.prefs.get_active_loadout(GET_DEFAULT_ROLE(title))
 	if(!length(equipment_slot))
 		return
 

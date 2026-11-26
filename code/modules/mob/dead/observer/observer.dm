@@ -37,6 +37,8 @@
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default
+	/// Whether this observer has joined the Bug Hunt xeno queue
+	var/bug_hunt_xeno_queue = FALSE
 	var/ghostvision = TRUE
 	var/self_visibility = TRUE
 	var/can_reenter_corpse

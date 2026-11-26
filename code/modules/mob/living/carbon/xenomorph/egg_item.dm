@@ -102,7 +102,8 @@
 	if(locate(/obj/structure/ladder) in range(2, T))
 		to_chat(user, SPAN_XENOWARNING("We cannot plant [src] so close to a ladder."))
 		return
-	if(!user.check_plasma(30))
+	var/plasma_cost = istype(SSticker.mode, /datum/game_mode/bug_hunt) && !user.plasma_max ? 0 : 30
+	if(!user.check_plasma(plasma_cost))
 		return
 
 	var/obj/effect/alien/weeds/hive_weeds
@@ -145,17 +146,19 @@
 		plant_time = 25
 	else if(iscarrier(user))
 		plant_time = 10
+	if(user.can_build_instantly(T))
+		plant_time = 0
 
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
-	if(!user.check_plasma(30))
+	if(!user.check_plasma(plasma_cost))
 		return
 
 	for(var/obj/effect/alien/weeds/weed in T)
 		if(weed.weed_strength >= WEED_LEVEL_HIVE || !needs_hive_weeds)
-			user.use_plasma(30)
+			user.use_plasma(plasma_cost)
 			var/obj/effect/alien/egg/newegg
 			if(weed.weed_strength >= WEED_LEVEL_HIVE)
 				newegg = new /obj/effect/alien/egg(T, hivenumber)
@@ -193,7 +196,7 @@
 	if(user.caste.can_hold_eggs == CAN_HOLD_ONE_HAND)
 		attack_hand(user)
 		return XENO_NO_DELAY_ACTION
-	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS)
+	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS || istype(SSticker.mode, /datum/game_mode/bug_hunt))
 		if(user.r_hand || user.l_hand)
 			to_chat(user, SPAN_XENOWARNING("You need two hands to hold [src]."))
 		else

@@ -193,10 +193,14 @@
 	RETURN_TYPE(/list/mob/dead/observer)
 
 	var/list/mob/dead/observer/candidates = list()
+	var/respawn_delay = SSticker.mode?.xeno_respawn_delay || XENO_JOIN_DEAD_TIME
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
 		// Preference check
 		if(!cur_obs.client || !cur_obs.client.prefs || !(cur_obs.client.prefs.be_special & BE_ALIEN))
+			continue
+
+		if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && !cur_obs.bug_hunt_xeno_queue)
 			continue
 
 		// Jobban check
@@ -211,7 +215,7 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < XENO_JOIN_DEAD_TIME && !cur_obs.bypass_time_of_death_checks && !check_client_rights(cur_obs.client, R_ADMIN, FALSE))
+		if(deathtime < respawn_delay && !cur_obs.bypass_time_of_death_checks && !check_client_rights(cur_obs.client, R_ADMIN, FALSE))
 			continue
 
 		// AFK players cannot be drafted
@@ -352,6 +356,9 @@
 /proc/message_alien_candidate_observer(mob/dead/observer/candidate_observer, cache_only=FALSE)
 	if(!candidate_observer?.client)
 		return
+
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && !candidate_observer.bug_hunt_xeno_queue)
+		candidate_observer.larva_pool_cached_message = "You are not in the xenomorph queue. Use Join as Xeno to join."
 
 	if(candidate_observer.larva_pool_cached_message)
 		// They have a cached message

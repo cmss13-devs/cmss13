@@ -40,6 +40,10 @@
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/small
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "cameras_old"
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()

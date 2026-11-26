@@ -488,6 +488,14 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
+/obj/item/storage/box/kit/m41aMK1_kit/forecon/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41aMK1/forecon(src)
+	new /obj/item/attachable/attached_gun/shotgun(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"
 	pro_case_overlay = "shield"

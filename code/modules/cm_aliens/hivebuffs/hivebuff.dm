@@ -289,8 +289,8 @@
 		if(should_block_game_interaction(current_human))
 			continue
 
-		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
-		if(!job)
+		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
+		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
 			continue
 
 		var/turf/turf = get_turf(current_human)

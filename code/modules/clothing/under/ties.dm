@@ -589,7 +589,7 @@
 
 /obj/item/clothing/accessory/patch/forecon
 	name = "USCM Force Reconnaissance patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
+	desc = "A fire-resistant shoulder patch worn by members of USCM Force Reconnaissance."
 	icon_state = "forecon_patch"
 
 /obj/item/clothing/accessory/patch/royal_marines

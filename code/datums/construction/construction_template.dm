@@ -48,7 +48,7 @@
 		return
 	to_chat(xeno, SPAN_NOTICE("We begin adding \the plasma to \the [name]."))
 	xeno_attack_delay(xeno)
-	if(!do_after(xeno, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(xeno, xeno.can_build_instantly(get_turf(owner)) ? 0 : 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	//double-check amount required
 	if(plasma_stored >= plasma_required)

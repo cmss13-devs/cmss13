@@ -475,7 +475,7 @@
 /obj/vehicle/multitile/proc/update_minimap_icon(modules_broken)
 	if(!minimap_icon_state)
 		return
-	SSminimaps.remove_marker(src)
+	SSminimaps.remove_earlyadd(src)
 	minimap_icon_state = initial(minimap_icon_state)
 	if(health <= 0 || modules_broken)
 		minimap_icon_state += "_wreck"

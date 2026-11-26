@@ -153,8 +153,12 @@
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints
-/obj/effect/vehicle_spawner/apc_movierecon/fixed/load_hardpoints(obj/vehicle/multitile/apc/movie/V)
+/obj/effect/vehicle_spawner/apc_movierecon/fixed/load_hardpoints(obj/vehicle/multitile/apc/command/movierecon/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+	for(var/obj/item/hardpoint/hardpoint in V.get_hardpoints_with_ammo())
+		for(var/i in 1 to hardpoint.max_clips)
+			LAZYADD(hardpoint.backup_clips, new hardpoint.ammo.type(hardpoint))

@@ -373,10 +373,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	name = "command tablet cabinet"
 	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
 	req_one_access = list(ACCESS_MARINE_SENIOR)
+	var/headset_type = /obj/item/device/radio/headset/almayer/mcom/spare
 
 /obj/structure/closet/secure_closet/cmdcabinet/marine/Initialize()
 	. = ..()
-	new /obj/item/device/radio/headset/almayer/mcom/spare(src)
+	new headset_type(src)
 	new /obj/item/device/cotablet(src)
 	new /obj/item/device/radio/marine/command(src)
 	new /obj/item/device/radio/marine/command(src)

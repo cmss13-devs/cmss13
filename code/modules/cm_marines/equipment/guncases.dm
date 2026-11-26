@@ -94,6 +94,11 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
+/obj/item/storage/box/guncase/m41aMK1AP/forecon/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41aMK1/forecon/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+
 //------------
 //M85A1 grenade launcher
 /obj/item/storage/box/guncase/m85a1

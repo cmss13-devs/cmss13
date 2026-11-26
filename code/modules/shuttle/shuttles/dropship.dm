@@ -190,6 +190,11 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/alamo/typhoon
+	name = "Typhoon"
+	height = 18
+	dheight = 9
+
 /obj/docking_port/mobile/marine_dropship/morana
 	name = "Morana"
 	id = DROPSHIP_MORANA
@@ -451,6 +456,12 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/golden_arrow
+	name = "Halcyon Hangar"
+	id = ALMAYER_DROPSHIP_LZ1
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/alamo/typhoon
+
 /obj/docking_port/stationary/marine_dropship/upp/hangar_1
 	name = "Rostock Hangar bay 1"
 	id = UPP_DROPSHIP_LZ1
@@ -513,6 +524,10 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+/datum/map_template/shuttle/alamo/typhoon
+	name = "Typhoon"
+	shuttle_id = "dropship_typhoon"
 
 /datum/map_template/shuttle/morana
 	name = "Morana"

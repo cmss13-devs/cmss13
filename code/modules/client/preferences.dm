@@ -2537,6 +2537,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 /// If the role being equipped into has role-specific loadout, offer the player the option to change their slot
 /datum/preferences/proc/update_slot(picked_job, timeout = FALSE)
+	picked_job = GET_DEFAULT_ROLE(picked_job)
 	if(!(picked_job in GLOB.roles_with_gear))
 		return TRUE
 

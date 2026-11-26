@@ -42,6 +42,27 @@
 		select_gamemode_skin(type, override_icon_state, new_protection)
 	return ..() //Done after above in case gamemode skin is missing sprites.
 
+/obj/item/clothing/under/marine/equipped(mob/user, slot, silent)
+	. = ..()
+	if(slot != WEAR_BODY || !ishuman(user) || !istype(SSticker.mode, /datum/game_mode/bug_hunt) || (locate(/obj/item/clothing/accessory/ranks) in accessories))
+		return
+	var/mob/living/carbon/human/human_user = user
+	var/obj/item/card/id/id = human_user.get_idcard()
+	var/rank_type = get_rank_pins(id?.paygrade)
+	if(rank_type)
+		attach_accessory(human_user, new rank_type, TRUE)
+
+/obj/item/clothing/under/marine/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	. = ..()
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt))
+		add_forecon_patches(user)
+
+/obj/item/clothing/under/marine/proc/add_forecon_patches(mob/user)
+	if(!(locate(/obj/item/clothing/accessory/patch/uscmpatch) in accessories))
+		attach_accessory(user, new /obj/item/clothing/accessory/patch/uscmpatch, TRUE)
+	if(!(locate(/obj/item/clothing/accessory/patch/forecon) in accessories))
+		attach_accessory(user, new /obj/item/clothing/accessory/patch/forecon, TRUE)
+
 /obj/item/clothing/under/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	if(flags_atom & MAP_COLOR_INDEX)

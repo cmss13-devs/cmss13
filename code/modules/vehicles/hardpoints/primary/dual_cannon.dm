@@ -10,7 +10,7 @@
 	activation_sounds = list('sound/weapons/vehicles/dual_autocannon_fire.ogg')
 
 	damage_multiplier = 0.2
-
+	allowed_seat = VEHICLE_DRIVER
 	health = 500
 	firing_arc = 60
 
@@ -24,10 +24,10 @@
 	muzzleflash_icon_state = "muzzle_flash_double"
 
 	muzzle_flash_pos = list(
-		"1" = list(11, -29),
-		"2" = list(-11, 10),
-		"4" = list(-14, 9),
-		"8" = list(14, 9)
+		"1" = list(8, -12),
+		"2" = list(25, 24),
+		"4" = list(0, 27),
+		"8" = list(30, 9)
 	)
 
 	scatter = 1

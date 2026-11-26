@@ -1,6 +1,7 @@
 /datum/xeno_strain/eggsac
 	name = CARRIER_EGGSAC
-	description = "In exchange for our ability to store huggers and place traps, we gain larger plasma stores, strong pheromones, and the ability to lay eggs by using our plasma stores. In addition, we can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nWe can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while we remain within 14 tiles, or one minute if we leave this range."
+	summary = "Carry up to twelve eggs and place them farther away. Spend plasma to produce eggs and support nearby sisters with stronger pheromones."
+	description = "In exchange for our ability to store huggers and place traps, we gain strong pheromones, and the ability to lay eggs by using our plasma stores. In addition, we can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nWe can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while we remain within 14 tiles, or one minute if we leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	icon_state_prefix = "Eggsac"
 	phero_mod = XENO_PHERO_MOD_LARGE // praetorian level pheromones
@@ -88,6 +89,8 @@
 	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
+	ability_stats_type = /datum/xeno_ability_stats/generate_egg
+	ability_description = "Use plasma to produce eggs for the hive."
 	name = "Generate Eggs (50)"
 	action_icon_state = "lay_egg"
 	action_type = XENO_ACTION_CLICK
@@ -99,6 +102,11 @@
 	var/egg_generation_progress = 0
 
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+XENO_ABILITY_STATS(generate_egg, datum/action/xeno_action/active_toggle/generate_egg)
+	return list(
+		XENO_STAT_VALUE("Upkeep while producing", XENO_ABILITY_VALUE(ability, plasma_use_per_tick), "plasma", " plasma per life tick."),
+	)
 
 /datum/action/xeno_action/active_toggle/generate_egg/should_use_plasma()
 	. = FALSE

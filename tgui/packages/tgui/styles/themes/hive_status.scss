@@ -103,6 +103,34 @@
     background-image: url('../../assets/xenoLeaderBg.png');
   }
 
+  .StrainPreview__abilities {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .StrainPreview__chevrons {
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    font-size: 0.8rem;
+
+    > :not(:first-child) {
+      margin-top: -0.5rem;
+    }
+  }
+
+  .StrainPreview__ability {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 25%;
+    padding: 0.5rem;
+    text-align: center;
+    cursor: help;
+  }
+
   .ssdIcon {
     width: 16px;
     height: 16px;

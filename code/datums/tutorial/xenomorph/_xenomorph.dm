@@ -15,7 +15,7 @@
 
 	//Remove all actions from the tutorial xenomorph if remove_all_actions is TRUE
 	if(remove_all_actions)
-		for(var/datum/action/action_path as anything in new_character.base_actions)
+		for(var/datum/action/action_path as anything in new_character.caste.base_actions)
 			remove_action(new_character, action_path)
 
 	setup_xenomorph(new_character, tutorial_mob, is_late_join = FALSE)

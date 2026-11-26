@@ -19,19 +19,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
-		to_chat(src, "Release [user] before evolving!")
+		to_chat(src, "Release what you are hauling before evolving!")
 		return
 
-	var/list/castes_available = caste.evolves_to.Copy()
-
-	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
-	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
-		castes_available |= XENO_CASTE_QUEEN
-
-	// Allow drones to evo into any T2 before first drop / fog drop on Forward Base.
-	if(caste_type == XENO_CASTE_DRONE && SSticker.mode.allow_early_drone_evolution())
-		castes_available = caste.early_evolves_to.Copy()
-
+	var/list/castes_available = evolution_choices()
 	castes_available -= hive.blacklisted_castes
 
 	for(var/caste in castes_available)
@@ -43,7 +34,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 
 	var/castepick
-	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
+	if(length(castes_available) == 1)
+		castepick = castes_available[1]
+	else if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
 		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, 1 MINUTES, theme="hive_status")
 	else
 		var/list/fancy_caste_list = list()
@@ -51,7 +44,22 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
 		castepick = show_radial_menu(src, client?.get_eye(), fancy_caste_list)
-	if(!castepick) //Changed my mind
+	if(!(castepick in castes_available))
+		return
+
+	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
+	var/mob/living/carbon/xenomorph/xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
+	if(!caste_datum || !xeno_type)
+		CRASH("[castepick] is not a valid caste!")
+	if(!caste_datum.show_preview(src, xeno_type, "Evolve"))
+		return
+	if(QDELETED(src) || !client || !hive || evolving)
+		return
+	if(hauled_mob?.resolve())
+		to_chat(src, SPAN_WARNING("Release what you are hauling before evolving!"))
+		return
+	if(!(castepick in evolution_choices()))
+		to_chat(src, SPAN_WARNING("This caste is no longer available to us."))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
@@ -61,8 +69,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste!"))
 		return
 
-	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
-	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
+	if(caste_datum.minimum_evolve_time > ROUND_TIME)
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
 		return
 
@@ -110,13 +117,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
-
-	var/mob/living/carbon/xenomorph/xeno_type = null
-	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
-
-	if(isnull(xeno_type))
-		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
-		return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
 	var/potential_queens = hive.get_potential_queen_count()
@@ -236,6 +236,18 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] += 1
 
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
+
+/mob/living/carbon/xenomorph/proc/evolution_choices()
+	var/list/castes_available = caste.evolves_to.Copy()
+
+	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
+	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
+		castes_available |= XENO_CASTE_QUEEN
+
+	// Allow drones to evo into any T2 before first drop / fog drop on Forward Base.
+	if(caste_type == XENO_CASTE_DRONE && SSticker.mode.allow_early_drone_evolution())
+		castes_available = caste.early_evolves_to.Copy()
+	return castes_available
 
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
@@ -364,27 +376,57 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien.Essentials"
 
-	if(!check_state())
+	if(!can_deevolve())
 		return
+
+	var/newcaste
+	if(length(caste.deevolves_to) == 1)
+		newcaste = caste.deevolves_to[1]
+	else if(length(caste.deevolves_to) > 1)
+		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to, 1 MINUTES, theme="hive_status")
+
+	if(!(newcaste in caste.deevolves_to))
+		return
+
+	var/datum/caste_datum/destination = GLOB.xeno_datum_list[newcaste]
+	var/datum/xeno_strain/current_strain = strain
+	if(!destination?.show_preview(src, GLOB.RoleAuthority.get_caste_by_text(newcaste), "De-Evolve", "After de-evolving, you must wait before returning to your current caste."))
+		return
+	if(QDELETED(src) || !client || strain != current_strain || !(newcaste in caste.deevolves_to) || !can_deevolve())
+		return
+
+	SEND_SIGNAL(src, COMSIG_XENO_DEEVOLVE)
+
+	var/old_name = key_name(src)
+	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
+	if(new_xeno)
+		log_game("EVOLVE: [old_name] de-evolved into [new_xeno]. (Location: [AREACOORD(new_xeno.loc)])")
+
+	if(new_xeno?.ckey)
+		GLOB.deevolved_ckeys += new_xeno.ckey
+
+/mob/living/carbon/xenomorph/proc/can_deevolve()
+	if(!check_state())
+		return FALSE
 	if(is_ventcrawling)
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
-		return
+		return FALSE
 	if(!isturf(loc))
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
-		return
+		return FALSE
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
-		return
+		return FALSE
 	if(!organ && caste.organ_type)
 		to_chat(src, SPAN_XENOWARNING("We must wait for our organs to regenerate."))
-		return
+		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
-		return
+		return FALSE
 	if(lock_evolve || hive.evolution_locked)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
@@ -400,42 +442,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
 		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
 		return FALSE
-
-	var/newcaste
-	if(length(caste.deevolves_to) == 1)
-		newcaste = caste.deevolves_to[1]
-	else if(length(caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to, 1 MINUTES, theme="hive_status")
-
-	if(!newcaste)
-		return
-
-	var/confirm = tgui_alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]? You won't be able to return to it for a time.", "Deevolution", list("Yes", "No"))
-	if(confirm != "Yes")
-		return
-
-	if(!check_state())
-		return
-	if(is_ventcrawling)
-		return
-	if(!isturf(loc))
-		return
-	if(health <= 0)
-		return
-	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
-		return
-
-
-	SEND_SIGNAL(src, COMSIG_XENO_DEEVOLVE)
-
-	var/old_name = key_name(src)
-	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
-	if(new_xeno)
-		log_game("EVOLVE: [old_name] de-evolved into [new_xeno]. (Location: [AREACOORD(new_xeno.loc)])")
-
-	if(new_xeno.ckey)
-		GLOB.deevolved_ckeys += new_xeno.ckey
+	return TRUE
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
 	var/level_to_switch_to = get_vision_level()

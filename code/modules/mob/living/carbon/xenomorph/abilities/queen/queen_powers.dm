@@ -91,7 +91,7 @@
 		return
 	xenoqueen.visible_message(SPAN_XENOWARNING("\The [xenoqueen] starts detaching itself from its ovipositor!"),
 		SPAN_XENOWARNING("We start detaching ourselves from our ovipositor."))
-	if(!do_after(xenoqueen, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10))
+	if(!do_after(xenoqueen, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10))
 		return
 	if(!xenoqueen.check_state())
 		return
@@ -143,7 +143,7 @@
 
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."),
 	SPAN_XENOWARNING("We start to grow an ovipositor...(takes 20 seconds, hold still)"))
-	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
+	if(!do_after(xeno, 20 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
 	if(!xeno.check_state())
 		return
@@ -942,7 +942,8 @@
 	FOR_DVIEW_END
 
 	var/list/mobs_in_view = list()
-	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
+	var/datum/caste_datum/queen/queen_caste = xeno.caste
+	FOR_DOVIEW(var/mob/living/carbon/M, queen_caste.screech_range, xeno, HIDE_INVISIBLE_OBSERVER)
 		mobs_in_view += M
 	FOR_DOVIEW_END
 	for(var/mob/living/carbon/M in orange(10, xeno))

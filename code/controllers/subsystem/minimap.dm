@@ -1510,6 +1510,16 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	hidden = TRUE
 	update_button_icon()
+	RegisterSignal(mob, COMSIG_MOB_LOGGED_IN, PROC_REF(on_login))
+
+/datum/action/minimap_ceiling/remove_from(mob/L)
+	. = ..()
+	UnregisterSignal(L, COMSIG_MOB_LOGGED_IN)
+
+/// SIGNAL_HANDLER for COMSIG_MOB_LOGGED_IN because actions may be given prior to client being set
+/datum/action/minimap_ceiling/proc/on_login()
+	SIGNAL_HANDLER
+	update_button_icon()
 
 /datum/action/minimap_ceiling/update_button_icon()
 	. = ..()

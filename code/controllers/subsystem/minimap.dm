@@ -801,28 +801,29 @@ SUBSYSTEM_DEF(minimaps)
 				fetch_minimap_object(zlevel, flags, live, popup, drawing, FALSE)
 	return map
 
-/// Clears all drawings and labeled turfs for the provided `zlevel` and `minimap_flags` for minimap screens
-/datum/controller/subsystem/minimaps/proc/clear_drawings_and_labels(zlevel, minimap_flags)
-	var/regex/regex = regex("^[zlevel]-[minimap_flags]-\[01]-\[01]-1") // To include ceiling & cached client (and require drawing)
-	for(var/hash in hashed_minimaps)
-		if(regex.Find(hash))
-			var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
-			map.clear_drawing_overlays()
-			for(var/turf/label as anything in map.labelled_turfs)
-				SSminimaps.remove_marker(label)
-	for(var/atom/movable/screen/minimap/client_map in client_minimap_copies) // Because of uncached client...
-		if(client_map.target != zlevel)
-			continue
-		if(client_map.minimap_flags != minimap_flags)
-			continue
-		if(!client_map.drawing)
-			continue
-		client_map.clear_drawing_overlays()
-		for(var/turf/label as anything in client_map.labelled_turfs)
-			SSminimaps.remove_marker(label)
+/// Clears all current drawings and labels for the provided `zlevels` (list or singular z) and `minimap_flag`
+/datum/controller/subsystem/minimaps/proc/clear_drawings_and_labels(list/zlevels, minimap_flag)
+	if(!islist(zlevels))
+		zlevels = list(zlevels)
+
+	for(var/z in zlevels)
+		var/image/selected_drawing_image = get_drawing_image(z, minimap_flag)
+		selected_drawing_image?.icon = icon('icons/ui_icons/minimap.dmi')
+		var/hash = "[z]-[minimap_flag]"
+		for(var/key in transmitted_drawings)
+			if(string_starts_with(key, hash))
+				transmitted_drawings -= key
+		for(var/key in cic_drawings)
+			if(string_starts_with(key, hash))
+				cic_drawings -= key
+		for(var/key in drawn_images)
+			if(string_starts_with(key, hash))
+				drawn_images -= key
+
+	apply_drawings_to_live_minimaps(minimap_flag)
 
 ///fetches the drawing icon for a minimap flag and returns it, creating it if needed. assumes minimap_flag is ONE flag
-/datum/controller/subsystem/minimaps/proc/get_drawing_image(zlevel, minimap_flag, drawing)
+/datum/controller/subsystem/minimaps/proc/get_drawing_image(zlevel, minimap_flag)
 	var/hash = "[zlevel]-[minimap_flag]"
 	if(cic_drawings[hash])
 		return cic_drawings[hash]
@@ -1006,7 +1007,7 @@ SUBSYSTEM_DEF(minimaps)
 				drawing_images += SSminimaps.cic_drawings["[target]-[flag]"]
 			// Add all labels for this z-level and flag combination
 			for(var/key in SSminimaps.cic_drawings)
-				if(findtext(key, "[target]-[flag]label-"))
+				if(string_starts_with(key, "[target]-[flag]label-"))
 					drawing_images += SSminimaps.cic_drawings[key]
 	else
 		// Add transmitted drawings
@@ -1015,7 +1016,7 @@ SUBSYSTEM_DEF(minimaps)
 				drawing_images += SSminimaps.transmitted_drawings["[target]-[flag]"]
 			// Add all transmitted labels for this z-level and flag combination
 			for(var/key in SSminimaps.transmitted_drawings)
-				if(findtext(key, "[target]-[flag]label-"))
+				if(string_starts_with(key, "[target]-[flag]label-"))
 					drawing_images += SSminimaps.transmitted_drawings[key]
 
 	if(length(drawing_images))

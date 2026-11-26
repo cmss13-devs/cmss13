@@ -1420,7 +1420,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		. += burn_overlay
 
 	if(status & (LIMB_THIRD_DEGREE_BURNS)) //so the burn stays there even after the burn damage goes away
-		severe_burn_overlay.icon_state = "burn_[icon_name]_2" //fresh skin
+		severe_burn_overlay.icon_state = "burn_[icon_name]_2"
 		. += severe_burn_overlay
 	else if(status & (LIMB_ESCHAR)) //so the burn stays there even after the burn damage goes away
 		eschar_overlay.icon_state = "burn_[icon_name]_3"
@@ -1487,7 +1487,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 ////////////////////
 
 ///SET UP ORGANS
-		//Adds intestines and stomach overlay manually. They're fluff organs, but they
+		//Adds intestines and stomach overlay manually. Stomach will eventually be an organ as well. 
 		if(name == "groin" && !issynth(owner))
 			if(surgery_status & INCISION_PELVIS_HIDDEN)
 				surgery_extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1) //intestines.
@@ -1514,7 +1514,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 							if(organ.damage <= BONECHIPS_MAX_DAMAGE)
 								surgery_organ_damage_overlay.icon_state = "[organ.name]_hematoma_light"
 								surgery_organ_damage_overlay.color = owner?.species.incision_color_fresh
-						else if(organ && organ.damage <= 0)
+						else if(organ.damage <= 0)
 							surgery_extra_bone_overlay = null
 							surgery_organ_damage_overlay = null
 
@@ -1527,7 +1527,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi')
 					surgery_organ_damage_overlay = image('icons/mob/humans/dam_human.dmi')
 
-					if(organ.organ_status || organ.damage > 0)
+					if(organ.organ_status)
 						switch(organ.organ_status)
 							if(ORGAN_LITTLE_BRUISED)
 								surgery_organ_damage_overlay.icon_state = "damaged_[organ.name]" //A good hangover would do you well.

@@ -12,6 +12,7 @@
 
 	health = 350
 	firing_arc = 120
+	allowed_seat = VEHICLE_DRIVER
 
 	origins = list(0, -1)
 
@@ -23,10 +24,10 @@
 	muzzleflash_icon_state = "muzzle_flash_double"
 
 	muzzle_flash_pos = list(
-		"1" = list(-14, 46),
-		"2" = list(15, -76),
-		"4" = list(62, -26),
-		"8" = list(-62, -26)
+		"1" = list(34, 76),
+		"2" = list(-1, -76),
+		"4" = list(94, -7),
+		"8" = list(-62, 12)
 	)
 
 	scatter = 4

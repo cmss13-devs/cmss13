@@ -103,3 +103,6 @@
 #define COMSIG_GLOB_DELAYED_COMMS_FAILURE "!comms_delayed_failure"
 
 #define COMSIG_GLOB_BIOMASS_GAIN "!biomass_gain"
+
+/// From /datum/game_mode/survive/proc/initiate_evacuation()
+#define COMSIG_GLOB_SURVIVOR_EVAC "!survivor_evacuation_started"

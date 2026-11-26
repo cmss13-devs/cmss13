@@ -28,6 +28,7 @@
 	anchored = TRUE //Yep
 
 	var/mob_size = 15
+	var/ever_opened = FALSE
 
 /obj/structure/closet/Initialize()
 	. = ..()
@@ -41,6 +42,9 @@
 		RegisterSignal(door, list(COMSIG_DOOR_OPEN, COMSIG_DOOR_CLOSE), PROC_REF(check_doors))
 		if(door.density)
 			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	if(opened)
+		ever_opened = TRUE
 
 /obj/structure/closet/Destroy()
 	GLOB.closet_list -= src
@@ -115,6 +119,7 @@
 
 	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = TRUE
+	ever_opened = TRUE
 	update_icon()
 	playsound(loc, open_sound, 15, 1)
 	density = FALSE

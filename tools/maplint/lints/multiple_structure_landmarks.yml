@@ -1,0 +1,78 @@
+/obj/effect/landmark/structure_spawner:
+  banned_neighbors:
+    /obj/effect/landmark/structure_spawner:
+      identical: true
+
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door:
+  banned_neighbors:
+    NON_WEEDS: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)/(?!xeno_weed_node).+$" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall_reinforced:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall_hull:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door_hull:
+  banned_neighbors:
+    NON_WEEDS: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)/(?!xeno_weed_node).+$" }
+
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_membrane:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door:
+  banned_neighbors:
+    NON_WEEDS: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)/(?!xeno_weed_node).+$" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_nest:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_sticky:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_reinforced:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_reinforced:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull:
+  banned_neighbors:
+    NON_SAME_MODE: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)" }
+
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull:
+  banned_neighbors:
+    NON_WEEDS: { pattern: "^/obj/effect/landmark/structure_spawner/setup/(distress|survive)/(?!xeno_weed_node).+$" }

@@ -34,43 +34,101 @@
 /datum/cas_fire_mission/ui_data(mob/user)
 	. = list()
 	.["name"] = sanitize(copytext(name, 1, MAX_MESSAGE_LEN))
+	.["mission_length"] = mission_length
 	.["records"] = list()
 	for(var/datum/cas_fire_mission_record/record as anything in records)
 		.["records"] += list(record.ui_data(user))
 
-/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weapon, fire_length)
+/datum/cas_fire_mission/proc/clear_firemission_reticles(list/firemission_reticles)
+	for(var/obj/effect/overlay/temp/dropship_reticle/firemission/reticle as anything in firemission_reticles)
+		if(reticle)
+			qdel(reticle)
+	firemission_reticles.Cut()
+
+/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weapon, fire_length, list/saved_equipment_configs = null)
 	var/datum/cas_fire_mission_record/record = new()
 	record.weapon = weapon
 	record.offsets = new /list(fire_length)
-	for(var/idx = 1; idx<=fire_length; idx++)
-		record.offsets[idx] = "-"
+
+	var/list/mission_configs = saved_equipment_configs?[src]
+	var/list/saved_offsets = mission_configs?[get_equipment_config_key(weapon)]
+	if(!saved_offsets)
+		saved_offsets = mission_configs?[get_equipment_config_key(weapon, fallback = TRUE)]
+
+	for(var/idx = 1; idx <= fire_length; idx++)
+		if(saved_offsets && idx <= length(saved_offsets))
+			record.offsets[idx] = saved_offsets[idx]
+		else
+			record.offsets[idx] = "-"
 	records += record
 
-/datum/cas_fire_mission/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons, fire_length)
+/datum/cas_fire_mission/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons, fire_length, list/saved_equipment_configs = null)
 	var/list/datum/cas_fire_mission_record/bad_records = list()
 	var/list/obj/structure/dropship_equipment/weapon/missing_weapons = list()
-	for(var/datum/cas_fire_mission_record/record in records)
-		// if weapon appears in weapons list but not in record
-		// > add empty record for new weapon
+
+	var/list/mission_configs = saved_equipment_configs?[src]
+	if(saved_equipment_configs)
+		for(var/datum/cas_fire_mission_record/record as anything in records)
+			if(record.weapon?.ship_base?.attach_id)
+				var/record_attach_id = record.weapon.ship_base.attach_id
+				for(var/obj/structure/dropship_equipment/weapon/weapon as anything in weapons)
+					if(weapon?.ship_base?.attach_id == record_attach_id)
+						var/old_ammo = record.weapon?.ammo_equipped?.name || "No Ammo"
+						var/new_ammo = weapon?.ammo_equipped?.name || "No Ammo"
+						if(old_ammo != new_ammo)
+							if(!mission_configs)
+								mission_configs = list()
+								saved_equipment_configs[src] = mission_configs
+							mission_configs[get_equipment_config_key(record.weapon, old_ammo)] = record.offsets.Copy()
+						break
+
+	for(var/datum/cas_fire_mission_record/record as anything in records)
 		var/found = FALSE
-		for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
-			if(record.weapon == weapon)
-				found=TRUE
-				break
+		if(record.weapon?.ship_base?.attach_id)
+			var/record_attach_id = record.weapon.ship_base.attach_id
+			for(var/obj/structure/dropship_equipment/weapon/weapon as anything in weapons)
+				if(weapon?.ship_base?.attach_id == record_attach_id)
+					var/old_ammo = record.weapon?.ammo_equipped?.name || "No Ammo"
+					var/new_ammo = weapon?.ammo_equipped?.name || "No Ammo"
+					record.weapon = weapon
+					if(old_ammo != new_ammo && saved_equipment_configs)
+						var/list/saved_offsets = mission_configs?[get_equipment_config_key(weapon, new_ammo)]
+						if(!saved_offsets)
+							saved_offsets = mission_configs?[get_equipment_config_key(weapon, fallback = TRUE)]
+
+						if(saved_offsets)
+							for(var/idx = 1; idx <= length(record.offsets); idx++)
+								if(idx <= length(saved_offsets))
+									record.offsets[idx] = saved_offsets[idx]
+								else
+									record.offsets[idx] = "-"
+						else
+							for(var/idx = 1; idx <= length(record.offsets); idx++)
+								record.offsets[idx] = "-"
+
+					found = TRUE
+					break
 		if(!found)
 			bad_records.Add(record)
-	for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
+	for(var/obj/structure/dropship_equipment/weapon/weapon as anything in weapons)
 		var/found = FALSE
-		for(var/datum/cas_fire_mission_record/record in records)
-			if(record.weapon == weapon)
-				found=TRUE
-				break
+		if(weapon?.ship_base?.attach_id)
+			var/weapon_attach_id = weapon.ship_base.attach_id
+			for(var/datum/cas_fire_mission_record/record as anything in records)
+				if(record.weapon?.ship_base?.attach_id == weapon_attach_id)
+					found = TRUE
+					break
 		if(!found)
 			missing_weapons.Add(weapon)
-	for(var/datum/cas_fire_mission_record/record in bad_records)
+	for(var/datum/cas_fire_mission_record/record as anything in bad_records)
 		records -= record
-	for(var/obj/structure/dropship_equipment/weapon/weapon in missing_weapons)
-		build_new_record(weapon, fire_length)
+	for(var/obj/structure/dropship_equipment/weapon/weapon as anything in missing_weapons)
+		build_new_record(weapon, fire_length, saved_equipment_configs)
+
+/datum/cas_fire_mission/proc/get_equipment_config_key(obj/structure/dropship_equipment/weapon/weapon, ammo_name, fallback = FALSE)
+	if(fallback)
+		return "[weapon.type]_[weapon.ship_base.attach_id]_fallback"
+	return "[weapon.type]_[weapon.ship_base.attach_id]_[ammo_name || weapon.ammo_equipped?.name || "No Ammo"]"
 
 /datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
 	for(var/datum/cas_fire_mission_record/record as anything in records)
@@ -160,9 +218,59 @@
 		return "Weapon [weapon_string] has not enough ammunition to complete this Fire Mission."
 	return "Unknown Error"
 
-/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
+/// Returns a list of all turfs that will be targeted by this firemission, before any shots are fired
+/datum/cas_fire_mission/proc/get_all_target_turfs(initial_turf, direction, steps)
+	if(!initial_turf || !steps || !length(records))
+		return list()
+
+	var/list/turf/target_turfs = list()
+	var/turf/current_turf = initial_turf
+	var/tally_step = steps / mission_length
+	var/next_step = tally_step
+	var/sx = 0
+	var/sy = 0
+
+	switch(direction)
+		if(NORTH)
+			sx = 1
+			sy = 0
+		if(SOUTH)
+			sx = -1
+			sy = 0
+		if(EAST)
+			sx = 0
+			sy = -1
+		if(WEST)
+			sx = 0
+			sy = 1
+
+	for(var/step = 1; step <= steps; step++)
+		if(step > next_step)
+			current_turf = get_step(current_turf, direction)
+			next_step += tally_step
+		for(var/datum/cas_fire_mission_record/record as anything in records)
+			if(length(record.offsets) < step || record.offsets[step] == null || record.offsets[step] == "-")
+				continue
+			var/offset = record.offsets[step]
+			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
+			if(shootloc && !(shootloc in target_turfs))
+				target_turfs += shootloc
+	return target_turfs
+
+/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null, mob/user)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE
+
+	var/list/all_firemission_reticles = list()
+	var/list/all_target_turfs = get_all_target_turfs(initial_turf, direction, steps)
+	for(var/turf/impact_turf as anything in all_target_turfs)
+		if(impact_turf)
+			var/obj/effect/overlay/temp/dropship_reticle/firemission/firemission_reticle = new /obj/effect/overlay/temp/dropship_reticle/firemission(impact_turf)
+			all_firemission_reticles += firemission_reticle
+			if(GLOB.huds[MOB_HUD_DROPSHIP])
+				for(var/mob/hud_user as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+					if(hud_user)
+						firemission_reticle.update_visibility_for_mob(hud_user)
 
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
@@ -196,14 +304,18 @@
 				continue
 			var/offset = item.offsets[step]
 			if (current_turf == null)
+				clear_firemission_reticles(all_firemission_reticles)
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			var/area/area = get_area(shootloc)
 			if(shootloc && !CEILING_IS_PROTECTED(area?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
-				item.weapon.open_fire_firemission(shootloc)
+				item.weapon.open_fire_firemission(shootloc, user)
 		sleep(step_delay)
 	if(envelope)
 		envelope.change_current_loc(null)
+	clear_firemission_reticles(all_firemission_reticles)
+
+	return FIRE_MISSION_ALL_GOOD
 
 
 /**

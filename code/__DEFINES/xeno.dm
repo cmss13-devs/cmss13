@@ -218,6 +218,9 @@
 /// For how long the buff lasts
 #define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
 
+/// For /datum/hivebuff requirement of weighted marines groundside using /proc/get_groundside_marine_weight_ratio()
+#define XENO_BOON_REQUIRED_DANGER 0.25
+
 /// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
 #define HIJACK_RATIO_FOR_TACMAP 0.8
 
@@ -413,11 +416,11 @@
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
 #define HIVELORD_DESIGNER "Designer"
 
+// Spitter strain flags
+#define SPITTER_DISSOLVER "Dissolver"
+
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
-
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
 
 // Runner strain flags
 #define RUNNER_ACIDER "Acider"
@@ -465,6 +468,7 @@
 // Overall health pool
 #define XENO_HEALTH_MOD_VERY_SMALL  20
 #define XENO_HEALTH_MOD_SMALL   40
+#define XENO_HEALTH_MOD_SMALL_MED 50
 #define XENO_HEALTH_MOD_MED 60
 #define XENO_HEALTH_MOD_LARGE   80
 #define XENO_HEALTH_MOD_VERY_LARGE  100
@@ -656,7 +660,6 @@
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
-#define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
@@ -759,7 +762,6 @@
 #define FIRE_MULTIPLIER_DEADLY		3
 
 #define WHISPERER_VIEWRANGE 10
-#define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0

@@ -1,6 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - code_imp: "Tweaked some text to sound more fluid and less informal."
-  - spellcheck: "Corrects grammar, misspells, and missing punctuation in xeno caste files."
-  - spellcheck: "Any use of first or second person in regard to xeno castes has been changed to third person."

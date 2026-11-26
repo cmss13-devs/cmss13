@@ -13,7 +13,6 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
-	available_strains = list(/datum/xeno_strain/trapper)
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
@@ -111,6 +110,8 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
 	. = ..()
+	if(!.)
+		return FALSE
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for (var/action_type in action_types_to_cd)

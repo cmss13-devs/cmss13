@@ -1,8 +1,9 @@
 /datum/xeno_strain/resin_whisperer
 	name = HIVELORD_RESIN_WHISPERER
-	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, sacrifice your ability to plant weed nodes outside of weeds, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions including weed nodes up to a distance of twelve paces!"
-	flavor_description = "We let the resin guide us. It whispers, so listen closely."
+	description = "We sacrifice our corrosive acid, our ability to secrete thick resin, our ability to reinforce resin secretions, our ability to plant weed nodes outside of weeds, and a fifth of our plasma reserves to enhance our vision and gain a stronger connection to the resin. We can now remotely place resin secretions including weed nodes up to a distance of twelve paces!"
+	flavor_description = "My child, we let the resin guide us. It whispers, so listen closely."
 	icon_state_prefix = "Resin Whisperer"
+	plasma_mod = -(/datum/caste_datum/hivelord::plasma_max * 0.2) // -20% plasma pool
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/plant_weeds,
@@ -15,15 +16,13 @@
 		/datum/action/xeno_action/activable/secrete_resin/remote/whisperer, //third macro
 		/datum/action/xeno_action/onclick/toggle_long_range/whisperer, //fourth macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
-		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
 	)
 
 /datum/xeno_strain/resin_whisperer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+	..() // stat modifiers
 	hivelord.viewsize = WHISPERER_VIEWRANGE
-	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
-	hivelord.recalculate_plasma()
 	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
 
 	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_whisperer)
@@ -47,7 +46,7 @@
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2.5
+	build_speed_mod = 2.2
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -59,7 +58,7 @@
 	xeno_cooldown = 1.5 SECONDS // Slower than a drone, faster than a queen.
 	xeno_cooldown_interrupt_penalty = 1 SECONDS // Penalty for being interrupted
 	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.
-	build_speed_mod = 1.5 // She builds the walls and then proceeds to the next ones as planned without any unnecessary waiting.
+	build_speed_mod = 1 // Updated dynamically based on the distance to the target.
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())
@@ -94,15 +93,18 @@
 			return
 
 	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
+	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(care_about_adjacency)
-		if(owner.Adjacent(target_turf))
-			build_speed_mod = 1
+		var/max_build_distance = hivelord.caste.max_build_dist + hivelord.extra_build_dist
+		var/distance = clamp(get_dist(hivelord, target_turf), 1, max_build_distance)
+		var/distance_ratio = clamp((distance - 1) / 5, 0, 1) // Reach maximum build time at 6 tiles.
+		build_speed_mod = 1 + (distance_ratio * 1.2)
+
+		if(hivelord.Adjacent(target_turf))
 			xeno_cooldown = 1 SECONDS
 		else
-			build_speed_mod = initial(build_speed_mod)
 			xeno_cooldown = initial(xeno_cooldown)
 
-	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())
 		return
 
@@ -111,7 +113,7 @@
 
 	var/datum/resin_construction/resing_construction = GLOB.resin_constructions_list[hivelord.selected_resin]
 	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
+	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force them to secrete resin in the shape of \a [resing_construction.construction_name]."))
 	playsound(target_turf, "alien_resin_build", 25)
 	return TRUE
 

@@ -1,4 +1,0 @@
-author: "labeo0"
-delete-after: True
-changes:
-  - qol: "You can Ctrl+Click storage items capable of changing storage drawing methods. Examining these items gives a note in chat about it."

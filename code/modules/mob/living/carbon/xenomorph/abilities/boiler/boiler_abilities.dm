@@ -47,6 +47,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
 	/// Allows the sound to play. Flipped to false when sound is triggered and true after a timer. This prevents soundspam
 	var/sound_play = TRUE
+	cooldown_message = "Our stomach has sufficiently filled with gas and our pores are opened again. We can now shroud ourselves with acid."
 
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates
 	var/action_types_to_cd = list(
@@ -60,53 +61,6 @@
 	/// Duration for the cooldown of abilities affected by acid shroud
 	var/cooldown_duration = 30 SECONDS
 
-//////////////////////////// Trapper boiler abilities
-
-/datum/action/xeno_action/activable/boiler_trap
-	name = "Deploy Trap"
-	action_icon_state = "resin_pit"
-	plasma_cost = 60
-	macro_path = /datum/action/xeno_action/verb/verb_boiler_trap
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 20.5 SECONDS
-
-	/// Config
-	var/trap_ttl = 100
-	var/empowered = FALSE
-	var/empowering_charge_counter = 0
-	var/empower_charge_max = 10
-
-/datum/action/xeno_action/activable/acid_mine
-	name = "Acid Mine"
-	action_icon_state = "acid_mine"
-	plasma_cost = 40
-	macro_path = /datum/action/xeno_action/verb/verb_acid_mine
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 5.5 SECONDS
-
-	var/empowered = FALSE
-
-	var/damage = 45
-	var/delay = 13.5
-
-/datum/action/xeno_action/activable/acid_shotgun
-	name = "Acid Shotgun"
-	action_icon_state = "acid_shotgun"
-	plasma_cost = 60
-	macro_path = /datum/action/xeno_action/verb/verb_acid_shotgun
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 13 SECONDS
-	ability_uses_acid_overlay = TRUE
-
-	var/ammo_type = /datum/ammo/xeno/acid_shotgun
-
-/datum/action/xeno_action/onclick/toggle_long_range/trapper
-	handles_movement = FALSE
-	should_delay = FALSE
-	ability_primacy = XENO_PRIMARY_ACTION_4
-
 /datum/action/xeno_action/activable/tail_stab/boiler
 	name = "Toxic Tail Stab"
+	cooldown_message = "Our tail's acid stores have filled up enough to stab with it."

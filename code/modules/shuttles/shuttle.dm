@@ -119,12 +119,13 @@
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
-/datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
-	AL.safe = FALSE
-	AL.unlock()
-	AL.close()
-	AL.lock()
-	AL.safe = TRUE
+/datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/air) // whatever. SLEEPS
+	var/old_safe = air.safe
+	air.safe = FALSE
+	air.unlock(TRUE)
+	air.close(TRUE)
+	air.lock(TRUE)
+	air.safe = old_safe
 
 /datum/shuttle/proc/open_doors(area/area)
 	if(!area || !istype(area)) //somehow

@@ -18,13 +18,64 @@
 /obj/structure/bed/chair/Initialize()
 	. = ..()
 	handle_rotation()
+
 	if(!can_rotate)
 		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_rotation_on_dir_change)) // If this annoys you due to signal collision just remove it and override setDir, it's not that big a deal.
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_rotation_on_dir_change))
+
+/obj/structure/bed/chair/LateInitialize()
+	. = ..()
+
+	var/turf/found_turf = get_turf(src)
+	if(!found_turf || isnull(foldabletype))
+		return
+
+	var/list/found_chairs = list()
+	for(var/obj/structure/bed/chair/found_chair in found_turf)
+		if(!found_chair.foldabletype)
+			continue
+		found_chairs += found_chair
+
+	if(length(found_chairs) <= 1)
+		return
+
+	var/obj/structure/bed/chair/root = src
+	for(var/obj/structure/bed/chair/candidate as anything in found_chairs)
+		if(candidate.pixel_y < root.pixel_y)
+			root = candidate
+		else if(candidate.pixel_y == root.pixel_y && candidate.pixel_x < root.pixel_x)
+			root = candidate
+
+	if(root != src)
+		return
+
+	stacked_size = stacked_size ? stacked_size : 1
+
+	for(var/obj/structure/bed/chair/found_chair as anything in found_chairs)
+		if(found_chair == src)
+			continue
+		if(found_chair.stacked_size)
+			for(var/i in 1 to found_chair.stacked_size)
+				new /obj/item/weapon/twohanded/folded_metal_chair(src)
+				stacked_size++
+		else
+			new /obj/item/weapon/twohanded/folded_metal_chair(src)
+			stacked_size++
+		qdel(found_chair)
+
+	update_overlays()
+	layer = ABOVE_MOB_LAYER
+	unslashable = TRUE
+	can_buckle = FALSE
+	density = TRUE
+	flags_can_pass_all_temp -= PASS_OVER
+	projectile_coverage = PROJECTILE_COVERAGE_HIGH
+
 
 /obj/structure/bed/chair/proc/handle_rotation_on_dir_change(atom/self, dir, newdir)
 	SIGNAL_HANDLER
 	handle_rotation()
+
 
 /obj/structure/bed/chair/initialize_pass_flags(datum/pass_flags_container/PF)
 	if(PF)
@@ -405,6 +456,42 @@
 #undef INDEX_APPROACH_DIRS
 #undef INDEX_INTERNAL_DIRS
 
+//stacks of chairs (for mapping)
+/obj/structure/bed/chair/stack
+	name = "Stack of Chairs Spawner; this one has 2 chairs. just use /obj/structure/bed/chair for 1"
+	desc = "this gets turned into a stack of chairs on game start (LateInit), this exists soley for mappers to make chair stacks. :o)"
+	icon = 'icons/landmarks.dmi'
+	icon_state = "chairs_stack"
+	stacked_size = 2
+
+/obj/structure/bed/chair/stack/Initialize()
+	. = ..()
+	var/obj/structure/bed/chair/the_stack = new(get_turf(src))
+	the_stack.dir = dir
+	for(var/i=1;i<stacked_size;i++)
+		the_stack.contents += new/obj/item/weapon/twohanded/folded_metal_chair()
+		the_stack.stacked_size++
+	the_stack.update_overlays()
+	the_stack.layer = ABOVE_MOB_LAYER
+	the_stack.unslashable = TRUE
+	the_stack.can_buckle = FALSE
+	the_stack.density = TRUE
+	the_stack.flags_can_pass_all_temp -= PASS_OVER
+	the_stack.projectile_coverage = PROJECTILE_COVERAGE_HIGH
+	qdel(src)
+
+/obj/structure/bed/chair/stack/three
+	name = "Stack of Chairs Spawner; this one has 3 chairs."
+	stacked_size = 3
+
+/obj/structure/bed/chair/stack/four
+	name = "Stack of Chairs Spawner; this one has 4 chairs."
+	stacked_size = 4
+
+/obj/structure/bed/chair/stack/five
+	name = "Stack of Chairs Spawner; this one has 5 chairs. override stacked_size for more"
+	stacked_size = 5
+
 //Chair types
 /obj/structure/bed/chair/bolted
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably. It appears to be bolted to the ground."
@@ -548,11 +635,28 @@
 	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
+	/// Earliest time another movement input may offset the CAS camera.
+	var/next_camera_offset_time = 0
 
 /obj/structure/bed/chair/dropship/pilot/unbuckle()
 	if(buckled_mob && buckled_mob.buckled == src)
 		buckled_mob.reset_view()
 	return ..()
+
+/obj/structure/bed/chair/dropship/pilot/relaymove(mob/user, direction)
+	if(user != buckled_mob)
+		return
+	if(world.time < next_camera_offset_time)
+		return
+
+	var/obj/structure/machinery/computer/dropship_weapons/weapon_console = user.interactee
+	if(!istype(weapon_console))
+		return
+
+	if(!weapon_console.offset_firemission_camera(direction))
+		return
+	next_camera_offset_time = world.time + 0.1 SECONDS
+	return TRUE
 
 /obj/structure/bed/chair/dropship/passenger
 	name = "passenger seat"

@@ -389,7 +389,7 @@ You must still listen to the queen.
 
 	apply_cooldown()
 
-	xeno.throw_atom(get_step_towards(affected_atom, xeno), grab_range, SPEED_FAST, xeno, tracking=TRUE)
+	launch_with_dash_smoke(get_step_towards(affected_atom, xeno), grab_range, SPEED_FAST, xeno, tracking = TRUE)
 
 	if(xeno.Adjacent(target_carbon) && xeno.start_pulling(target_carbon, TRUE))
 		playsound(target_carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect

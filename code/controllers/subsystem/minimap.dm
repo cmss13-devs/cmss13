@@ -1722,7 +1722,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(!mob)
 		return
-	active_draw_tool.process_queue(mob)
+	active_draw_tool?.process_queue(mob)
 
 
 /atom/movable/screen/minimap_tool/draw_tool/proc/process_queue(mob/user)

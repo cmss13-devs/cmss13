@@ -801,7 +801,7 @@ SUBSYSTEM_DEF(minimaps)
 				fetch_minimap_object(zlevel, flags, live, popup, drawing, FALSE)
 	return map
 
-/// Clears all drawings and labeled turfs for the provided `zlevel` and `minimap_flags`
+/// Clears all drawings and labeled turfs for the provided `zlevel` and `minimap_flags` for minimap screens
 /datum/controller/subsystem/minimaps/proc/clear_drawings_and_labels(zlevel, minimap_flags)
 	var/regex/regex = regex("^[zlevel]-[minimap_flags]-\[01]-\[01]-1") // To include ceiling & cached client (and require drawing)
 	for(var/hash in hashed_minimaps)
@@ -1504,6 +1504,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap_ceiling
 	name = "Toggle Minimap Ceiling Overlay"
 	action_icon_state = "minimap_ceiling"
+	cooldown = 2 SECONDS // Because it writes prefs
 
 /datum/action/minimap_ceiling/give_to(mob/mob)
 	. = ..()
@@ -1524,14 +1525,6 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	if(!owner?.client?.prefs)
 		return FALSE
-
-	// Check cooldown
-	if(!COOLDOWN_FINISHED(owner.client, ceiling_protection_toggle_cooldown))
-		to_chat(owner, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(owner.client, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
-		return FALSE
-
-	// Set cooldown
-	COOLDOWN_START(owner.client, ceiling_protection_toggle_cooldown, 2 SECONDS)
 
 	owner.client.prefs.show_minimap_ceiling_protection = !owner.client.prefs.show_minimap_ceiling_protection
 	owner.client.prefs.save_preferences()
@@ -1680,8 +1673,6 @@ SUBSYSTEM_DEF(minimaps)
 
 /client/var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 /client/var/last_drawn
-/// Cooldown for toggling ceiling protection overlay
-/client/COOLDOWN_DECLARE(ceiling_protection_toggle_cooldown)
 /client/proc/handle_draw(mouse_x as num, mouse_y as num, size_x as num, size_y as num, view_size_x as num, view_size_y as num)
 	set instant = TRUE
 	set category = null

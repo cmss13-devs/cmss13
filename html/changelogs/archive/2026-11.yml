@@ -563,3 +563,19 @@
   - code_imp: Added a few extra signals for unique action, magazine behaviors
   - code_imp: Added flags for able to jungle style and able to act as binding item
   - imageadd: Added elastic band icons made by MinZizka
+2026-11-26:
+  Drathek:
+  - bugfix: Fixed errors/inconsistencies with the xeno see through ability
+  - qol: Queen ability order is more consistent again between ovi/deovi (and other
+      xenos) and she can use the see through ability on ovi
+  - maptweak: Added maplints for /obj/effect/landmark/structure_spawner and various
+      fixes for them on various maps such as weed nodes under walls and duplicate
+      walls
+  carlarcCM:
+  - rscadd: Activating an elastic band with magazines attached always removes the
+      magazine that's currently inactive first.
+  - qol: Made its description and examine text more descriptive, so people actually
+      know how to use elastic bands to tie two magazines together.
+  - mapadd: Added a pre-elastic-bundled magazine to charlie/delta prep on the Almayer,
+      alongside a small amount of spare elastic bands in both preps.
+  - rscadd: Made elastic bands a 4-point loadout item.

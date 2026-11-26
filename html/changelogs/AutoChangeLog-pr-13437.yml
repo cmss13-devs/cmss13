@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - maptweak: "Added maplints for /obj/effect/landmark/structure_spawner and various fixes for them on various maps such as weed nodes under walls and duplicate walls"

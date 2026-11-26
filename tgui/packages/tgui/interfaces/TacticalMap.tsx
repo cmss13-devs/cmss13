@@ -150,6 +150,7 @@ const ViewMapPanel = (props) => {
           }}
         >
           <ByondUi
+            key={data.mapRef}
             winsetParams={{
               id: data.mapRef,
               type: 'map',

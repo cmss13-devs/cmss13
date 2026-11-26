@@ -217,7 +217,6 @@
 
 	ui = new(user, src, "TacticalMap")
 	ui.open()
-	ui.set_autoupdate(FALSE)
 
 	user.client.using_popout_tacmap = TRUE
 

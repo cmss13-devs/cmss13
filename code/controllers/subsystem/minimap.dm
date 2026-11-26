@@ -1198,10 +1198,10 @@ SUBSYSTEM_DEF(minimaps)
 		if(owner.client?.using_main_tacmap || (map in owner.client?.screen))
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
-		RegisterSignal(owner.client, COMSIG_CLIENT_CEILING_PREF_CHANGED, PROC_REF(on_ceiling_change))
-		var/ceiling = owner.client?.prefs?.show_minimap_ceiling_protection
-		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing, ceiling)
+		if(!attempt_to_get_map())
+			return FALSE
 		if(owner.client)
+			RegisterSignal(owner.client, COMSIG_CLIENT_CEILING_PREF_CHANGED, PROC_REF(on_ceiling_change))
 			if(tool_references)
 				owner.client.remove_from_screen(tool_references)
 				QDEL_NULL_LIST(tool_references)
@@ -1386,6 +1386,19 @@ SUBSYSTEM_DEF(minimaps)
 	if(minimap_displayed)
 		toggle_minimap(force_state=FALSE)
 		toggle_minimap(force_state=TRUE)
+
+/datum/action/minimap/proc/attempt_to_get_map()
+	map = null
+	var/ceiling = owner.client?.prefs?.show_minimap_ceiling_protection
+	if(default_overwatch_level)
+		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
+			return null
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, FALSE, drawing, ceiling)
+	else
+		if(!SSminimaps.minimaps_by_z["[owner.z]"] || !SSminimaps.minimaps_by_z["[owner.z]"].hud_image)
+			return null
+		map = SSminimaps.fetch_minimap_object(owner.z, minimap_flags, live, FALSE, drawing, ceiling)
+	return map
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO

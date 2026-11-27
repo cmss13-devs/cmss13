@@ -798,7 +798,6 @@
 	network = list(CAMERA_NET_LASER_TARGETS)
 	ui_template_name = "DropshipGunneryConsole"
 	var/focused = FALSE
-	var/matrix_color = NV_COLOR_GREEN
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/obj/structure/bed/chair/vehicle/midway_gunner/linked_chair
 	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90

@@ -206,6 +206,9 @@
 	icon_state = "triagedecalbottomleft";
 	pixel_y = 9
 	},
+/obj/structure/vehicle_locker/movie{
+	layer = 2.9
+	},
 /turf/open/shuttle/vehicle/floor_2,
 /area/interior/vehicle/apc/med)
 "x" = (

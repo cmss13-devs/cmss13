@@ -20,8 +20,8 @@ Current Problems:
 	///The item that initiated the jungle mag construct
 	var/obj/item/binding_item
 	var/is_attached_magazine_active = FALSE //It's two slots, 0 and 1
-	///Default to zero for no attached mag
-	var/attached_magazine = null
+	///Default to null for no attached mag
+	var/obj/item/ammo_magazine/attached_magazine = null
 	///Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 	var/is_reseting_sprite = FALSE
 	///Specify the do_after time for removing magazine from the binding item, in seconds
@@ -263,7 +263,11 @@ Current Problems:
 	var/obj/item/ammo_magazine/target_magazine
 	if(attached_magazine != null) //Case #2
 		if(is_attached_magazine_active) //Case #3, so afterwards we know the prime mag is being seen as active mag
-			switch_active_magazine(user, TRUE)
+			user.put_in_inactive_hand(parent)
+			attached_magazine.AddComponent(/datum/component/jungle_magazine, user, binding_item)
+			reset_magazine_sprite(attached_magazine)
+			qdel(src)
+			return
 		target_magazine = attached_magazine
 		if (user)
 			user.put_in_hands(target_magazine)
@@ -287,13 +291,17 @@ Current Problems:
 	return TRUE
 
 /datum/component/jungle_magazine/proc/get_examine_text(mob/user)
-	. += SPAN_INFO("Use special action switch between magazines, use in hand to remove the magazines.")
+	. += SPAN_NOTICE("Your <b>Unique Action</b> will alternate between the magazines in your hand.")
+	. += "\n"
+	. += SPAN_NOTICE("Using the bundle of magazines in your hand will remove the magazine that's not currently active from it.")
+	. += "\n"
+	. += SPAN_NOTICE("If there's no secondary magazine attached, the band is removed from the magazine instead.")
 	. += "\n"
 	if (attached_magazine == null) //If there's no attached magazine there really shouldn't be a need for description of the other mag, user WILL have parent as active
-		. += "No magazine is attached at this moment."
+		. += SPAN_BOLDNOTICE("No magazine is attached at this moment.")
 	else
 		var/obj/item/ammo_magazine/target_mag = inactive_magazine()
-		. += SPAN_NOTICE("Inactive Magazine: [icon2html(target_mag, user)] \a [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds].")
+		. += SPAN_BOLDNOTICE("Inactive Magazine: [icon2html(target_mag, user)] \a [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds].")
 
 /datum/component/jungle_magazine/proc/signal_reg(obj/item/ammo_magazine/target_magazine) //? Only expecting magazines here
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACKED, PROC_REF(on_attackby))

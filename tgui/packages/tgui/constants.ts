@@ -18,6 +18,14 @@ export const UI_UPDATE = 1;
 export const UI_DISABLED = 0;
 export const UI_CLOSE = -1;
 
+// Shared by Scan Health and ability descriptions.
+export const DAMAGE_COLORS = {
+  brute: 'red',
+  burn: '#ffb833',
+  toxin: 'green',
+  oxygen: 'blue',
+} as const;
+
 // All game related colors are stored here
 export const COLORS = {
   // Department colors

@@ -52,6 +52,10 @@
 	var/stun_duration = 1
 	var/initial_hit_damage = 20
 	var/damage_amount = 20
+	/// Damage while standing
+	var/standing_damage_multiplier = 0.4
+	/// Damage while prone
+	var/prone_damage_multiplier = 0.33
 	var/fire_level_to_extinguish = 13
 
 	var/time_to_live = 10
@@ -178,8 +182,8 @@
 			human.emote("pain")
 			if(should_stun)
 				human.KnockDown(stun_duration)
-			human.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
-			human.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "l_foot")
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isxeno(human))
 			var/mob/living/carbon/xenomorph/X = human
@@ -190,7 +194,7 @@
 
 		human.last_damage_data = cause_data
 	else
-		human.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+		human.apply_armoured_damage(damage_amount * prone_damage_multiplier, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(human, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/weak
@@ -291,6 +295,7 @@
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "acid2"
 	damage_amount = 12
+	standing_damage_multiplier = 0.5
 	stun_duration = 0
 
 /obj/effect/xenomorph/spray/praetorian/apply_spray(mob/living/carbon/M)
@@ -309,10 +314,10 @@
 			to_chat(human, SPAN_DANGER("Your feet scald and burn! Argh!"))
 			human.emote("pain")
 			human.last_damage_data = cause_data
-			human.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-			human.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "l_foot", 50)
+			human.apply_armoured_damage(damage_amount * standing_damage_multiplier, ARMOR_BIO, BURN, "r_foot", 50)
 		else
-			human.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+			human.apply_armoured_damage(damage_amount * prone_damage_multiplier, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(human, SPAN_DANGER("You are scalded by the burning acid!"))
 	else if (isxeno(M))
 		..(M)

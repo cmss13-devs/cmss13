@@ -531,6 +531,9 @@
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
 
+/obj/structure/bed/chair/vehicle/omaha_pilot/relaymove(mob/user, direction)
+	return relay_dropship_camera_movement(user, direction)
+
 /obj/structure/bed/chair/vehicle/omaha_commander
 	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
 	icon_state = "command_chair"

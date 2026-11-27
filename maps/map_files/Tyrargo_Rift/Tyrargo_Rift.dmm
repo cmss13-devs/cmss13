@@ -94604,7 +94604,6 @@
 "eRB" = (
 /obj/effect/decal/hybrisa/road/roadmiddle,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "eRC" = (
@@ -108404,7 +108403,6 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/east)

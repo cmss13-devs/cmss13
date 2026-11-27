@@ -28,15 +28,16 @@
 	if(!(src in mobs_in_view))
 		return
 	var/dist = get_dist(queen, src)
+	var/datum/caste_datum/queen/queen_caste = queen.caste
 
-	if(dist <= 4)
+	if(dist <= queen_caste.screech_close_range)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-		adjust_effect(4, STUN)
-		apply_effect(4, WEAKEN)
+		adjust_effect(queen_caste.screech_close_stun, STUN)
+		apply_effect(queen_caste.screech_close_stun, WEAKEN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(5) //Deafens them temporarily
-	else if(dist > 4 && dist < 7)
-		adjust_effect(3, STUN)
+	else if(dist > queen_caste.screech_close_range && dist < queen_caste.screech_range)
+		adjust_effect(queen_caste.screech_far_stun, STUN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))

@@ -1,5 +1,21 @@
 /datum/caste_datum/carrier
 	caste_type = XENO_CASTE_CARRIER
+	playstyle = "Store eggs and live facehuggers, carry them to the front, then throw a hugger at exposed prey or hide one in a resin trap."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
+		/datum/action/xeno_action/onclick/place_trap, //2nd macro
+		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
+		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	caste_desc = "A carrier of huggies."
 	tier = 2
 
@@ -61,21 +77,6 @@
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
-		/datum/action/xeno_action/onclick/place_trap, //2nd macro
-		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
-		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
-		/datum/action/xeno_action/onclick/set_hugger_reserve,
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,

@@ -1,5 +1,12 @@
 /datum/caste_datum/larva
 	caste_type = XENO_CASTE_LARVA
+	playstyle = "Stay sheltered while you mature, then evolve into a caste to serve the hive. Hide and use vents to escape danger."
+	can_tackle = FALSE
+	base_actions = list(
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/xenohide,
+	)
 	tier = 0
 	plasma_gain = 0.1
 	plasma_max = 10
@@ -20,6 +27,8 @@
 
 /datum/caste_datum/larva/predalien
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
+	caste_desc = "A young hybrid born from a Yautja host, destined to become an Abomination."
+	playstyle = "Survive and mature to evolve into a Predalien, the Abomination. Hide and use vents to escape danger. Your only evolution is Predalien."
 	evolves_to = list(XENO_CASTE_PREDALIEN)
 
 	minimap_icon = "predalien_larva"
@@ -41,11 +50,6 @@
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
 	speaking_noise = "larva_talk"
-	base_actions = list(
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/xenohide,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)

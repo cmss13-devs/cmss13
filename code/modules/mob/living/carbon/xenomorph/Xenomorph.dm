@@ -184,10 +184,6 @@
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
 	var/leader_current_aura = "" //Pheromone type inherited from Queen
 
-	/// List of actions (typepaths) that a
-	/// xenomorph type is given upon spawn
-	var/base_actions
-
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
 	///The type of minimap this xeno has access too

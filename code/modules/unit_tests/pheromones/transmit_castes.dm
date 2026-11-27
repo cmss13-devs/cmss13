@@ -9,7 +9,7 @@
 		var/mob/living/carbon/xenomorph/dummy_xeno = dummy_xeno_abstract.initialize(src)
 		var/datum/caste_datum/caste = dummy_xeno.caste // We could also just do GLOB.xeno_datum_list[caste_name]
 
-		if(is_path_in_list(/datum/action/xeno_action/onclick/emit_pheromones, dummy_xeno.base_actions))
+		if(is_path_in_list(/datum/action/xeno_action/onclick/emit_pheromones, caste.base_actions))
 			QDEL_NULL(dummy_xeno) // We only needed their base_actions
 
 			// Test all pheros on the caste

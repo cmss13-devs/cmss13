@@ -1,5 +1,6 @@
 /datum/xeno_strain/berserker
 	name = RAVAGER_BERSERKER
+	summary = "Keep slashing to heal and build rage. Rage increases your armor, movement speed, attack speed and healing."
 	description = "We lose our Empower, Charge, and Scissor Cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make us a terrifying melee monster. By slashing, we heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Our new Apprehend ability increases our movement speed and applies a slow on the next target we slash. Our Clothesline ability flings our target to heal ourselves, even more so if we have a rage stack that will be used up. Finally, Eviscerate unleashes a devastating windmill attack that heals us for every enemy we hit after an immobilizing wind-up."
 	flavor_description = "Unbridled fury fills this one. It will become an extension of my rage."
 	icon_state_prefix = "Berserker"
@@ -32,8 +33,11 @@
 	var/hp_vamp_ratio = 0.3
 
 	// Rage config
-	var/max_rage = 5
-	var/rage_decay_time = 30 // How many deciseconds between slashes until we start to decay rage
+	resource_name = "Rage"
+	resource_capacity = 5
+	resource_icon_state = "rav_enrage"
+	resource_description = "Slashes build rage and heal you. Each stack improves armor, speed, attack speed and healing. Clothesline can spend a stack for extra healing."
+	var/rage_decay_time = 3 SECONDS // How many seconds between slashes until we start to decay rage
 	var/attack_delay_buff_per_rage = 0.6
 	var/armor_buff_per_rage = 3
 	var/movement_speed_buff_per_rage = 0.1
@@ -57,7 +61,7 @@
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
 	..()
 
-	if(rage != max_rage && !rage_cooldown_start_time)
+	if(rage != resource_capacity && !rage_cooldown_start_time)
 		rage = rage + 1
 		bound_xeno.armor_modifier += armor_buff_per_rage
 		bound_xeno.attack_speed_modifier -= attack_delay_buff_per_rage
@@ -66,7 +70,7 @@
 		bound_xeno.recalculate_speed()
 		last_slash_time = world.time
 
-		if(rage == max_rage)
+		if(rage == resource_capacity)
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max rage!"))
@@ -77,7 +81,7 @@
 
 /datum/behavior_delegate/ravager_berserker/append_to_stat()
 	. = list()
-	. += "Rage: [rage]/[max_rage]"
+	. += "Rage: [rage]/[resource_capacity]"
 
 /datum/behavior_delegate/ravager_berserker/on_life()
 	// Compute our current rage (demerit if necessary)
@@ -101,7 +105,7 @@
 	return
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock()
-	rage = max_rage
+	rage = resource_capacity
 	rage_lock_start_time = world.time
 	var/color = "#00000035"
 	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
@@ -233,9 +237,9 @@
 	playsound(carbon, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
 	var/obj/limb/head/head = carbon.get_limb("head")
 	if(ishuman(carbon) && head)
-		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+		carbon.apply_armoured_damage(base_damage, ARMOR_MELEE, BRUTE, "head")
 	else
-		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	if(!xeno.on_fire)
@@ -272,17 +276,15 @@
 	var/damage = base_damage
 	var/range = 1
 	var/windup_reduction = 0
-	var/lifesteal_per_marine = 50
-	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
 	if(behavior.rage == 0)
 		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
 		return
-	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
-	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
-	windup_reduction = windup_reduction_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.resource_capacity)]
+	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.resource_capacity)]
+	windup_reduction = windup_reduction_at_rage_levels[clamp(behavior.rage, 1, behavior.resource_capacity)]
 	behavior.decrement_rage(behavior.rage)
 
 	apply_cooldown()

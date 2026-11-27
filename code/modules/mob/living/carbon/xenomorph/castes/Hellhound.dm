@@ -1,5 +1,13 @@
 /datum/caste_datum/hellhound
 	caste_type = XENO_CASTE_HELLHOUND
+	base_actions = list(
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/onclick/xenohide,
+		/datum/action/xeno_action/activable/pounce/gorge,
+		/datum/action/xeno_action/onclick/sense_owner,
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+	)
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 0
 	melee_damage_lower = XENO_DAMAGE_TIER_3
@@ -61,14 +69,6 @@
 	mob_size = MOB_SIZE_XENO_SMALL
 	var/obj/structure/machinery/camera/camera
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/gorge,
-		/datum/action/xeno_action/onclick/sense_owner,
-		/datum/action/xeno_action/onclick/toggle_long_range/runner,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
@@ -174,18 +174,13 @@
 	var/mob/living/carbon/xenomorph/hellhound/hellhound_gorger = owner
 
 	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger] gorges at [carbon] with it's spikes."))
-	carbon.apply_armoured_damage(gorge_damage, BRUTE)
+	carbon.apply_armoured_damage(base_damage, BRUTE)
 	playsound(hellhound_gorger, "giant_lizard_growl", 30)
 	playsound(carbon, "alien_bite", 30)
 
 /datum/action/xeno_action/onclick/sense_owner/use_ability(atom/layer)
 	var/mob/living/carbon/xenomorph/hellhound/xeno = owner
 	var/datum/behavior_delegate/hellhound_base/hound_owner = xeno.behavior_delegate
-	var/direction = -3
-	var/dist = get_dist(xeno, hound_owner.pred_owner)
-
-	direction = Get_Compass_Dir(xeno, hound_owner.pred_owner)
-
 	if(!hound_owner.pred_owner)
 		to_chat(xeno, SPAN_XENOWARNING("You do not have an owner."))
 		return
@@ -194,10 +189,10 @@
 		to_chat(xeno, SPAN_XENOWARNING("You do not sense your owner in this place."))
 		return
 
-	for(var/mob/living/carbon/viewer in orange(xeno, 5))
-		to_chat(viewer, SPAN_WARNING("[xeno] sniffs the ground in a hurry."))
-		to_chat(xeno, SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."))
-		to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
+	xeno.visible_message(SPAN_WARNING("[xeno] sniffs the ground in a hurry."), SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."), max_distance = 5)
+	var/dist = get_dist(xeno, hound_owner.pred_owner)
+	var/direction = Get_Compass_Dir(xeno, hound_owner.pred_owner)
+	to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
 
 	apply_cooldown()
 	..()

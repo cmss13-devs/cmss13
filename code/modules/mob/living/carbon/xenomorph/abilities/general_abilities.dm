@@ -21,6 +21,7 @@
 		client?.set_right_click_menu_mode(shift_only = TRUE)
 
 /datum/action/xeno_action/onclick/plant_weeds
+	ability_description = "Plant a node that spreads weeds across nearby ground."
 	name = "Plant Weeds (75)"
 	action_icon_state = "plant_weeds"
 	plasma_cost = 75
@@ -33,6 +34,7 @@
 	var/node_type = /obj/effect/alien/weeds/node
 
 /datum/action/xeno_action/onclick/autoweeding_toggle
+	ability_description = "Toggle automatic weed planting as you move."
 	name = "Toggle Autoweeding"
 	action_icon_state = "autoweed_toggle"
 	plasma_cost = 0
@@ -45,11 +47,12 @@
 	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
 
 	var/step_count = 0
-	var/step_delay = 3
+	var/step_delay = 0.3 SECONDS
 	var/node_search_range = 4
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
+	ability_description = "Lie down to rest or stand back up."
 	name = "Rest"
 	action_icon_state = "resting"
 	action_type = XENO_ACTION_CLICK
@@ -67,6 +70,7 @@
 
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
+	ability_description = "Switch between available spit types. Acid burns targets, while neurotoxin stuns."
 	name = "Toggle Spit Type"
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
@@ -81,6 +85,7 @@
 
 // release_haul
 /datum/action/xeno_action/onclick/release_haul
+	ability_description = "Release the creature you are hauling."
 	name = "Release"
 	action_icon_state = "release_haul"
 	plasma_cost = 0
@@ -89,6 +94,9 @@
 
 // Choose Resin
 /datum/action/xeno_action/onclick/choose_resin
+	preview_icon_file = 'icons/mob/hud/xeno_building.dmi'
+	preview_icon_state = /datum/resin_construction/resin_turf/wall::construction_name
+	ability_description = "Select the structure you will build when secreting resin."
 	name = "Choose Resin Structure"
 	action_icon_state = "retrieve_egg"
 	plasma_cost = 0
@@ -101,6 +109,7 @@
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
+	ability_description = "Shape your selected resin structure on weeds."
 	name = "Secrete Resin"
 	action_icon_state = "secrete_resin"
 	var/thick = FALSE
@@ -112,7 +121,7 @@
 	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building or when interrupted.
 	var/xeno_cooldown_interrupt_penalty = 1 SECONDS
 	/// Something went wrong, for example, you can't build here
-	var/xeno_cooldown_fail = 1
+	var/xeno_cooldown_fail = 0.1 SECONDS
 	/// Placement time increase modifier
 	var/build_speed_mod = 1
 
@@ -133,6 +142,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
+	ability_description = "Build a thick resin structure or reinforce existing resin."
 	name = "Secrete Thick Resin"
 	thick = TRUE
 
@@ -154,10 +164,13 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', "mark_[x.icon_state]")
 
 /datum/action/xeno_action/activable/info_marker/queen
+	ability_description = "Leave a resin marker to direct the hive to a location."
 	max_markers = 5
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
+	ability_stats_type = /datum/xeno_ability_stats/activable_corrosive_acid
+	ability_description = "Coat an object or wall in acid to dissolve it over time."
 	name = "Corrosive Acid (100)"
 	action_icon_state = "corrosive_acid"
 	var/acid_plasma_cost = 100
@@ -167,6 +180,11 @@
 	ability_primacy = XENO_CORROSIVE_ACID
 	action_type = XENO_ACTION_CLICK
 	ability_uses_acid_overlay = TRUE
+
+XENO_ABILITY_STATS(activable_corrosive_acid, datum/action/xeno_action/activable/corrosive_acid)
+	return list(
+		XENO_STAT_PLASMA(acid_plasma_cost, "Base plasma cost"),
+	)
 
 /datum/action/xeno_action/activable/corrosive_acid/New()
 	update_level()
@@ -200,6 +218,7 @@
 	acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/onclick/emit_pheromones
+	ability_description = "Choose a pheromone aura to support nearby sisters."
 	name = "Emit Pheromones (30)"
 	action_icon_state = "emit_pheromones"
 	plasma_cost = 30
@@ -233,12 +252,12 @@
 	var/slash_bonus_damage = 0 // Any bonus damage to apply on the tackle slash, if applicable
 
 	var/freeze_self = TRUE // Should we freeze ourselves after the lunge?
-	var/freeze_time = 5 // 5 for runners, 15 for lurkers
+	var/freeze_time = 0.5 SECONDS // 5 for runners, 15 for lurkers
 	var/freeze_timer_id = TIMER_ID_NULL // Timer to cancel the end freeze if it can be cancelled earlier
 	var/freeze_play_sound = TRUE
 
 	var/windup = FALSE // Is there a do_after before we pounce?
-	var/windup_duration = 20 // How long to wind up, if applicable
+	var/windup_duration = 2 SECONDS // How long to wind up, if applicable
 	var/windup_interruptable = TRUE // Can the windup be interrupted?
 
 	var/can_be_shield_blocked = FALSE // Some legacy stuff, self explanatory
@@ -299,12 +318,13 @@
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
+	ability_description = "Extend your vision to scout distant terrain and targets."
 	name = "Toggle Long-Range Sight"
 	action_icon_state = "toggle_long_range"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
 	action_type = XENO_ACTION_ACTIVATE
 	var/should_delay = FALSE
-	var/delay = 20
+	var/delay = 2 SECONDS
 	var/handles_movement = TRUE
 
 	/// how much you can move before zoom breaks
@@ -378,6 +398,8 @@
 // ... or mutated at runtime by another action that retrieves and edits these values
 // ... as they are all safely mutable. (Except possibly xeno_cooldown)
 /datum/action/xeno_action/activable/spray_acid
+	ability_stats_type = /datum/xeno_ability_stats/activable_spray_acid
+	ability_description = "Spray acid across the ground to burn enemies in its path."
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
 	var/action_text = "spray acid"
@@ -399,16 +421,30 @@
 	var/activation_delay = FALSE // Is there an activation delay?
 	var/activation_delay_length = 0 // Only used if activation_delay is TRUE.
 
+XENO_ABILITY_STATS(activable_spray_acid, datum/action/xeno_action/activable/spray_acid)
+	var/obj/effect/xenomorph/spray/spray = XENO_ABILITY_VALUE(ability, spray_effect_type)
+	return list(
+		XENO_STAT_TILES(spray_distance, "Range"),
+	) + spray_stats(spray)
 
 /datum/action/xeno_action/activable/transfer_plasma
+	ability_stats_type = /datum/xeno_ability_stats/activable_transfer_plasma
+	ability_description = "Give some of your plasma to another xenomorph."
 	name = "Transfer Plasma"
 	action_icon_state = "transfer_plasma"
 	var/plasma_transfer_amount = 50
-	var/transfer_delay = 20
+	var/transfer_delay = 2 SECONDS
 	var/max_range = 2
 	macro_path = /datum/action/xeno_action/verb/verb_transfer_plasma
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+XENO_ABILITY_STATS(activable_transfer_plasma, datum/action/xeno_action/activable/transfer_plasma)
+	return list(
+		XENO_STAT_PLASMA(plasma_transfer_amount, "Plasma transferred"),
+		XENO_STAT_TILES(max_range, "Range"),
+		XENO_STAT_DURATION(transfer_delay, "Channel time"),
+	)
 
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -416,6 +452,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/xenohide
+	ability_description = "Flatten yourself to hide beneath objects."
 	name = "Hide"
 	action_icon_state = "xenohide"
 	plasma_cost = 0
@@ -454,6 +491,7 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/place_trap
+	ability_description = "Shape a resin hole that can conceal a facehugger or store acid."
 	name = "Place resin hole (200)"
 	action_icon_state = "place_trap"
 	plasma_cost = 200
@@ -462,6 +500,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/place_construction
+	ability_description = "Mark a site for a hive structure that sisters can build by donating plasma."
 	name = "Order Construction (400)"
 	action_icon_state = "morph_resin"
 	macro_path = /datum/action/xeno_action/verb/place_construction
@@ -469,9 +508,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/place_construction/not_primary //so it doesn't screw other macros up
+	preview_as = /datum/action/xeno_action/activable/place_construction
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/activable/xeno_spit
+	ability_description = "Spit a projectile at a distant target."
 	name = "Xeno Spit"
 	action_icon_state = "xeno_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
@@ -491,9 +532,22 @@
 	var/new_target
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
+	ability_stats_type = /datum/xeno_ability_stats/queen_spit
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_description = "Spit a projectile at a distant target. Available once mature."
+
+XENO_ABILITY_STATS(queen_spit, datum/action/xeno_action/activable/xeno_spit/queen_macro)
+	var/damage = /datum/ammo/xeno/acid/spatter::damage
+	return list(
+		XENO_STAT_VALUE("Acid base burn damage", damage, "burn", "."),
+		XENO_STAT_VALUE("Neurotoxin knockdown", /datum/ammo/xeno/toxin/queen::effect_power * GLOBAL_STATUS_MULTIPLIER DECISECONDS_TO_SECONDS, "crowd_control", "s."),
+		XENO_STAT_VALUE("Neurotoxin stimulant drain", /datum/ammo/xeno/toxin/queen::drain_power, null, " units."),
+		XENO_STAT_VALUE("Neurotoxin range", /datum/ammo/xeno/toxin/queen::max_range, null, " tiles."),
+	)
 
 /datum/action/xeno_action/activable/tail_stab
+	ability_stats_type = /datum/xeno_ability_stats/activable_tail_stab
+	ability_description = "Thrust your tail at a nearby enemy for a melee strike."
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
 	action_type = XENO_ACTION_CLICK
@@ -505,6 +559,12 @@
 	var/blunt_stab = FALSE
 	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
 	cooldown_message = "Our tail is no longer tired. We can stab with it again."
+
+XENO_ABILITY_STATS(activable_tail_stab, datum/action/xeno_action/activable/tail_stab)
+	return list(
+		XENO_STAT_TILES(stab_range, "Range"),
+		XENO_STAT_VALUE("Melee damage multiplier", XENO_ABILITY_VALUE(ability, damage_multiplier), "brute", "x."),
+	)
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
@@ -545,6 +605,7 @@
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision
+	ability_description = "Toggle vision that reveals terrain through obstructions."
 	name = "Toggle Meson Vision"
 	action_icon_state = "project_xeno"
 	plasma_cost = 0
@@ -560,31 +621,31 @@
 	owner.sight &= ~SEE_TURFS
 
 /mob/living/carbon/xenomorph/proc/add_abilities()
-	if(!base_actions)
+	if(!caste.base_actions)
 		return
-	for(var/action_path in base_actions)
+	for(var/action_path in caste.base_actions)
 		give_action(src, action_path)
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough
+	ability_description = "Toggle transparency so you can see what is beneath you."
 	name = "Toggle Seethrough"
 	action_icon_state = "xenohide"
 	xeno_cooldown = 5 SECONDS
 	ability_primacy = XENO_BECOME_SEETHROUGH
 
-
 /datum/action/xeno_action/onclick/toggle_seethrough/use_ability(atom/target)
-
 	var/datum/component/seethrough_mob/seethroughComp = owner.GetComponent(/datum/component/seethrough_mob)
 	. = ..()
+
+	if(!.)
+		return
 
 	if(!action_cooldown_check())
 		return
 
-
 	seethroughComp.toggle_active()
 	apply_cooldown()
-
 
 
 /mob/living/carbon/xenomorph/proc/set_orders()

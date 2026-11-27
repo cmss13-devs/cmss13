@@ -495,6 +495,10 @@
 	recalculate_everything()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 
+	// Create empty overlays so they aren't loaded mid-combat
+	for(var/i in HUD_PAIN_STATES_XENO)
+		overlay_fullscreen("xeno_pain", /atom/movable/screen/fullscreen/xeno_pain, i, screen_alpha = 0)
+
 	. = ..()
 
 					//Set leader to the new mob

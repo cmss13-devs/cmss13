@@ -3,19 +3,24 @@
 /mob
 	var/list/fullscreens = list()
 
-/mob/proc/overlay_fullscreen(category, type, severity)
+// This magic number is checked in the proc. If this is the val the overlay's alpha is set to the initial value rather than 255.
+#define MAX_ALPHA 256
+
+/mob/proc/overlay_fullscreen(category, type, severity, screen_alpha = MAX_ALPHA)
 	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
 	if (!screen || screen.type != type)
 		// needs to be recreated
 		clear_fullscreen(category, FALSE)
 		fullscreens[category] = screen = type ? new type() : null
 	else if ((!severity || severity == screen.severity) && (!client || screen.screen_loc != "CENTER-7,CENTER-7" || screen.fs_view == client.view))
-		// doesn't need to be updated
+		// doesn't need to be created
+		screen.alpha = MAX_ALPHA ? initial(screen.alpha) : screen_alpha
 		return screen
 
 	if(!screen)
 		return
 
+	screen.alpha = MAX_ALPHA ? initial(screen.alpha) : screen_alpha
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity
 	if (client && screen.should_show_to(src))
@@ -37,12 +42,12 @@
 	else
 		if(client)
 			client.remove_from_screen(screen)
-		qdel(screen)
+		screen.alpha = 0
 
 /mob/proc/clear_fullscreen_after_animate(atom/movable/screen/fullscreen/screen)
 	if(client)
 		client.remove_from_screen(screen)
-	qdel(screen)
+	screen.alpha = 0
 
 /mob/proc/clear_fullscreens()
 	for(var/category in fullscreens)

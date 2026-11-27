@@ -365,7 +365,7 @@
 			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s pressurized reagent canister receiver valve failed.'"))
 				return FALSE
-			else if ((is_type_in_list(autoinjector, stimpacks))) //Wait a minute...
+			else if(is_type_in_list(autoinjector, stimpacks)) //Wait a minute...
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s stimpack receiver valve failed.'"))
 				return FALSE
 			else if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //No error message. It's a crystal, right? It totally doesn't have medicine in it.

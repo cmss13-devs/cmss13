@@ -393,17 +393,6 @@
 			//INVOKE_ASYNC(extra_spot, TYPE_PROC_REF(/obj/effect/fill_spot, try_fill_node), wanderer)
 			extra_spot.try_fill_node(wanderer)
 
-/mob/verb/debug()
-	set name = "Debug Rimworld"
-	set category = "Admin.Shuttles"
-
-	if(!check_rights(R_HOST))
-		return
-	for(var/area/place in GLOB.all_areas)
-		place.unoviable_timer = 0
-	var/mob/living/carbon/xenomorph/queen/combat_ready/q = new (get_turf(src))
-	q.ckey = src.ckey
-
 /obj/effect/alien/resin/building_node/proc/try_fill(mob/living/carbon/xenomorph/filler, build_cost = TRUE)
 	var/turf/nodeturf = get_turf(src)
 	if(isnull(nodeturf))

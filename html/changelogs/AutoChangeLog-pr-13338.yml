@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Hive buff danger calculation now adds up total marine role weight groundside vs total marine weight"
-  - code_imp: "Updated abandon_on_hijack to skip anyone OOB and simplified some other hivebuff checks"
-  - rscdel: "Removed unused code handling limit of larva spawned automatically from pylons"
-  - refactor: "Calculate_role_weight is refactored into just a variable defined on the job"

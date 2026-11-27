@@ -19,7 +19,7 @@
 
 	face_atom(acided_thing)
 
-	var/wait_time = 10
+	var/wait_time = 1 SECONDS
 
 	var/turf/turf = get_turf(acided_thing)
 
@@ -53,12 +53,12 @@
 				to_chat(src, SPAN_WARNING("We cannot dissolve [turf]."))
 				return
 			if(1)
-				wait_time = 50
+				wait_time = 5 SECONDS
 			if(2)
 				if(acid_type != /obj/effect/xenomorph/acid/strong)
 					to_chat(src, SPAN_WARNING("This [turf.name] is too tough to be melted by our weak acid."))
 					return
-				wait_time = 100
+				wait_time = 10 SECONDS
 			else
 				return
 		if(istype(turf, /turf/closed/wall))
@@ -310,7 +310,7 @@
 		sleep(2)
 
 
-/mob/living/carbon/xenomorph/proc/xeno_transfer_plasma(atom/A, amount = 50, transfer_delay = 20, max_range = 2)
+/mob/living/carbon/xenomorph/proc/xeno_transfer_plasma(atom/A, amount = 50, transfer_delay = 2 SECONDS, max_range = 2)
 	if(!istype(A, /mob/living/carbon/xenomorph))
 		return
 	var/mob/living/carbon/xenomorph/target = A

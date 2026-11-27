@@ -1,6 +1,7 @@
 /datum/xeno_strain/dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = PRAETORIAN_DANCER
+	summary = "Trade armor for speed and evasion. Slashes apply red tags that enhance Impale and Tail Trip. Slashing a target at critical health spreads golden tags, which reset abilities with a slash or enhance Impale or Tail Trip without a cooldown."
 	description = "We lose all acid-based abilities and a small amount of our armor in exchange for increased movement speed, evasion, and unparalleled agility. Our strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how our tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Our new Tail Stab adapts to our intent. When used in Disarm mode, it becomes a blunt, armor-piercing strike. When enemies are brought close to death, yellow tags will spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of our tail abilities, and using a tail trip or impale ability on a yellow-tagged target grants no cooldown penalty."
 	flavor_description = "A performance fit for a Queen, this one will become my instrument of death."
 	icon_state_prefix = "Dancer"
@@ -506,6 +507,8 @@
 					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
 
+	apply_cooldown()
+
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
@@ -556,7 +559,6 @@
 		target_carbon.apply_effect(daze_duration, DAZE)
 	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)
 
-	apply_cooldown()
 	return ..()
 
 #undef ACTION_CURRENT_TAIL_MODE

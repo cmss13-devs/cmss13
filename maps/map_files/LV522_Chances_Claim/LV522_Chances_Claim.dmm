@@ -1775,11 +1775,6 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/containers)
-"agk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/containers)
 "agl" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/corsat/plate,
@@ -2312,6 +2307,13 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/containers)
+"ain" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "aio" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/marked,
@@ -11442,13 +11444,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness/glass)
-"fvo" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/burst,
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor/south)
 "fvN" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -13641,12 +13636,6 @@
 "gHz" = (
 /turf/open/asphalt/cement/cement2,
 /area/lv522/outdoors/nw_rockies)
-"gHF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor/south)
 "gHN" = (
 /obj/structure/prop/vehicles/crawler{
 	icon_state = "crawler_covered_bed"
@@ -67535,8 +67524,8 @@ yaC
 yaC
 xZE
 saC
-fvo
-jDN
+mkh
+ain
 qjG
 qjG
 oeU
@@ -68361,8 +68350,8 @@ eVg
 aaU
 qjG
 jDN
-qjG
-gHF
+oeU
+yje
 saC
 saC
 saC
@@ -77833,7 +77822,7 @@ cpy
 cpy
 cpy
 ien
-agk
+agj
 agj
 lBM
 pvZ

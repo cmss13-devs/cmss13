@@ -4,6 +4,7 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 	static_comms_amount = 2
+	required_ready_players = 0 //debugging
 	votable = FALSE
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 

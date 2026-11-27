@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	/// The number of players required to vote to start this gamemode
 	var/required_players = 0
 	/// The number of players required to start this gamemode (uses required_players if null)
-	var/required_ready_players = 1 //this is a baseline for all gamemodes so it doesnt end up in an infinite loop of start game on zero players > end round at 00:20 restart repeat, sure it can still end in rounds ending at 20 minutes from no xeno/marine players but this will help
+	var/required_ready_players = null
 	/// The number of players required to start this gamemode when secret
 	var/required_players_secret = 0
 	/// The number of players before this gamemode is not available for voting

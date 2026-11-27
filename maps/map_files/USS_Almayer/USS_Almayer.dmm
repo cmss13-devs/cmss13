@@ -16232,6 +16232,7 @@
 	pixel_x = 25;
 	pixel_y = -7
 	},
+/obj/item/jungle_mag_binders/elastic_band,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "aQN" = (
@@ -55354,6 +55355,9 @@
 "eiq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/prop/magazine/dirty,
+/obj/item/stack/sheet/cardboard/small_stack{
+	layer = 3.01
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "eiw" = (
@@ -79115,8 +79119,9 @@
 	pixel_y = 9;
 	starting_attachment_types = list(/obj/item/attachable/stock/shotgun)
 	},
-/obj/item/stack/sheet/cardboard/small_stack{
-	layer = 3.01
+/obj/item/ammo_magazine/rifle/pre_bundled,
+/obj/item/jungle_mag_binders/elastic_band{
+	pixel_x = -8
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)

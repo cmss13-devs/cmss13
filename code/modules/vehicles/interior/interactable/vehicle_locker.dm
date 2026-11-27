@@ -15,8 +15,6 @@
 	unslashable = TRUE
 	explo_proof = TRUE
 
-	var/list/role_restriction = list(JOB_TANK_CREW, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN, JOB_ARMY_TANK)
-
 	var/obj/item/storage/internal/container
 
 /obj/structure/vehicle_locker/Initialize()
@@ -45,10 +43,6 @@
 
 	var/mob/living/carbon/human/H = usr
 	if (!ishuman(H) || H.is_mob_restrained())
-		return
-
-	if(!role_restriction.Find(H.job))
-		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
 	empty(get_turf(H), H)
@@ -80,10 +74,6 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
-		return TRUE
-
 	if(Adjacent(user))
 		container.open(user)
 		return TRUE
@@ -98,9 +88,6 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
-		return
 	if (container.handle_mousedrop(user, over_object))
 		..(over_object)
 
@@ -110,9 +97,6 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(!istype(user))
-		return
-	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	return container.attackby(W, user)
 
@@ -145,7 +129,6 @@
 	name = "wall-mounted surgery kit storage"
 	desc = "A small locker that securely stores a full surgical kit. ID-locked to surgeons."
 	icon_state = "locker_med"
-	role_restriction = list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_SYNTH, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_SEA, JOB_CLF_MEDIC, "Colonial Doctor", "Sorokyne Strata Doctor", JOB_SYNTH, JOB_WO_SYNTH)
 
 	var/has_tray = TRUE
 
@@ -197,9 +180,6 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
-		return
 	if(istype(W, /obj/item/storage/surgical_tray))
 		add_tray(user, W)
 		return
@@ -215,10 +195,6 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
-		return TRUE
-
 	if(!has_tray)
 		to_chat(user, SPAN_WARNING("\The [name] doesn't have a surgical tray installed!"))
 		return TRUE
@@ -232,9 +208,6 @@
 	if(!istype(user))
 		return
 	if(user.is_mob_incapacitated())
-		return
-	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(!has_tray)
 		to_chat(user, SPAN_WARNING("\The [name] doesn't have a surgical tray installed!"))
@@ -254,10 +227,6 @@
 	var/mob/living/carbon/human/H = usr
 
 	if(H.is_mob_incapacitated())
-		return
-
-	if(!role_restriction.Find(H.job))
-		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
 	remove_tray(H)
@@ -306,4 +275,9 @@
 
 /obj/structure/vehicle_locker/pmc
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
-	role_restriction = list(JOB_PMC_LEAD_INVEST, JOB_PMC_LEADER, JOB_PMC_SYNTH, JOB_WY_COMMANDO_LEADER, JOB_PMC_CREWMAN)
+
+/obj/structure/vehicle_locker/movie
+	name = "storage compartment"
+	desc = "A wide storage unit to allow it's users to store a wide variety of objects, from equipment to weapons and their ammo. Very versatile."
+	icon = 'icons/obj/vehicles/interiors/movie.dmi'
+	icon_state = "locker"

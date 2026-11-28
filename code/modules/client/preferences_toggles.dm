@@ -695,23 +695,8 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 	if(!mob)
 		return
 
-	// Check cooldown
-	if(!COOLDOWN_FINISHED(src, ceiling_protection_toggle_cooldown))
-		to_chat(mob, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(src, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
-		return
-
-	prefs.show_minimap_ceiling_protection = !prefs.show_minimap_ceiling_protection
-
-	// Set cooldown
-	COOLDOWN_START(src, ceiling_protection_toggle_cooldown, 2 SECONDS)
-	prefs.save_preferences()
-	to_chat(mob, SPAN_NOTICE("Ceiling protection overlay [prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
-
-	// Refresh minimaps for this client
-	for(var/atom/movable/screen/minimap/mini_map in screen)
-		if(mini_map.assigned_map) // Skip shared popup maps
-			continue
-		mini_map.update_ceiling_overlay(src)
+	var/datum/action/minimap_ceiling/action = get_action(mob, /datum/action/minimap_ceiling)
+	action?.action_activate()
 
 //------------ GHOST PREFERENCES ---------------------------------
 

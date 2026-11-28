@@ -194,7 +194,7 @@
 			if(!tacmap_holder)
 				var/list/ground_zlevels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 				if(length(ground_zlevels))
-					tacmap_holder = new(null, ground_zlevels[1], minimap_flag, drawing = TRUE, popup = FALSE, uncached = TRUE)
+					tacmap_holder = new(null, ground_zlevels[1], minimap_flag, popup=FALSE, drawing=TRUE, uncached=TRUE)
 					tacmap_component.is_embedded = TRUE
 			if(tacmap_holder?.map)
 				var/matrix/transform = matrix()

@@ -1,3 +1,4 @@
+import { clamp } from 'common/math';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Button, Flex, Section, Stack, Tabs } from 'tgui/components';
@@ -27,23 +28,24 @@ type Data = {
   xeno_ckeys: string[];
   xeno_names: string[];
   xeno_times: string[];
-  uscm_map: string | null;
-  uscm_svg: string | null;
-  xeno_map: string | null;
-  xeno_svg: string | null;
+  uscm_maps: string[] | null;
+  uscm_drawings: string[] | null;
+  xeno_maps: string[] | null;
+  xeno_drawings: string[] | null;
   uscm_selection: number;
   xeno_selection: number;
   map_fallback: string;
   last_update_time: number;
+  ground_zs: number[];
 };
 
 export const TacmapAdminPanel = (props) => {
   const { data } = useBackend<Data>();
   const {
-    uscm_map,
-    xeno_map,
-    uscm_svg,
-    xeno_svg,
+    uscm_maps,
+    xeno_maps,
+    uscm_drawings,
+    xeno_drawings,
     uscm_ckeys,
     xeno_ckeys,
     uscm_names,
@@ -54,11 +56,24 @@ export const TacmapAdminPanel = (props) => {
     xeno_selection,
     map_fallback,
     last_update_time,
+    ground_zs,
   } = data;
 
   const [pageIndex, setPageIndex] = useState(0);
+  const [currentZ, setCurrentZ] = useState(0);
+
+  function handleAdjustment(adjustment: number) {
+    setCurrentZ((prev) => clamp(prev + adjustment, 0, ground_zs.length - 1));
+  }
 
   const PageComponent = PAGES[pageIndex].component();
+
+  const uscm_map = uscm_maps?.[currentZ] ?? '';
+  const uscm_drawing = uscm_drawings?.[currentZ] ?? '';
+  const xeno_map = xeno_maps?.[currentZ] ?? '';
+  const xeno_drawing = xeno_drawings?.[currentZ] ?? '';
+  const current_map = pageIndex === 0 ? uscm_map : xeno_map;
+  const current_drawing = pageIndex === 0 ? uscm_drawing : xeno_drawing;
 
   return (
     <Window
@@ -103,17 +118,39 @@ export const TacmapAdminPanel = (props) => {
               }}
             >
               <DrawnMap
-                key={last_update_time + pageIndex}
-                flatImage={(pageIndex === 0 ? uscm_map : xeno_map) || ''}
+                key={current_map + last_update_time + pageIndex}
+                flatImage={current_map}
                 backupImage={map_fallback}
               />
               <DrawnMap
-                key={last_update_time + pageIndex + 2} // +2 because the other page is +1
-                flatImage={(pageIndex === 0 ? uscm_svg : xeno_svg) || ''}
+                key={current_drawing + last_update_time + pageIndex + 2} // +2 because the other page is +1
+                flatImage={current_drawing}
                 backupImage={map_fallback}
                 showLoading={false}
               />
             </div>
+          </Stack.Item>
+          <Stack.Item mt={1}>
+            <Flex direction="row" justify="space-between">
+              <Flex.Item>
+                <Button
+                  icon="chevron-left"
+                  width={3}
+                  onClick={() => handleAdjustment(-1)}
+                  disabled={currentZ === 0}
+                  textAlign="left"
+                />
+              </Flex.Item>
+              <Flex.Item>
+                <Button
+                  icon="chevron-right"
+                  width={3}
+                  onClick={() => handleAdjustment(1)}
+                  disabled={currentZ === ground_zs.length - 1}
+                  textAlign="right"
+                />
+              </Flex.Item>
+            </Flex>
           </Stack.Item>
         </Stack>
       </Window.Content>

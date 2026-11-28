@@ -31,6 +31,10 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 /datum/tacmap_admin_panel/ui_state(mob/user)
 	return GLOB.admin_state
 
+/datum/tacmap_admin_panel/ui_static_data(mob/user)
+	. = list()
+	.["ground_zs"] = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+
 /datum/tacmap_admin_panel/ui_data(mob/user)
 	var/list/data = list()
 	var/list/uscm_ckeys = list()
@@ -40,20 +44,23 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	var/list/uscm_times = list()
 	var/list/xeno_times = list()
 
-	// Assumption: Length of flat_tacmap_data is the same as svg_tacmap_data
+	// Assumption: Length of flat_tacmap_data is the same as drawing_tacmap_data
 	var/uscm_length = length(GLOB.uscm_drawing_tacmap_data)
 	if(uscm_selection < 0 || uscm_selection >= uscm_length)
 		uscm_selection = uscm_length - 1
 	for(var/i = 1, i <= uscm_length, i++)
-		var/datum/drawing_data/current_draw_data = GLOB.uscm_drawing_tacmap_data[i]
-		if(!current_draw_data)
+		var/list/datum/drawing_data/draw_data = GLOB.uscm_drawing_tacmap_data[i]
+		if(!draw_data)
 			uscm_ckeys += "DELETED"
 			uscm_names += "DELETED"
 			uscm_times += "DELETED"
 		else
-			uscm_ckeys += current_draw_data.ckey
-			uscm_names += current_draw_data.name
-			uscm_times += current_draw_data.time
+			for(var/current_z in draw_data)
+				var/datum/drawing_data/current_drawing = draw_data[current_z]
+				uscm_ckeys += current_drawing.ckey
+				uscm_names += current_drawing.name
+				uscm_times += current_drawing.time
+				break
 	data["uscm_ckeys"] = uscm_ckeys
 	data["uscm_names"] = uscm_names
 	data["uscm_times"] = uscm_times
@@ -62,36 +69,51 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	if(xeno_selection < 0 || xeno_selection >= xeno_length)
 		xeno_selection = xeno_length - 1
 	for(var/i = 1, i <= xeno_length, i++)
-		var/datum/drawing_data/current_draw_data = GLOB.xeno_drawing_tacmap_data[i]
-		if(!current_draw_data)
+		var/list/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[i]
+		if(!draw_data)
 			xeno_ckeys += "DELETED"
 			xeno_names += "DELETED"
 			xeno_times += "DELETED"
 		else
-			xeno_ckeys += current_draw_data.ckey
-			xeno_names += current_draw_data.name
-			xeno_times += current_draw_data.time
+			for(var/current_z in draw_data)
+				var/datum/drawing_data/current_drawing = draw_data[current_z]
+				xeno_ckeys += current_drawing.ckey
+				xeno_names += current_drawing.name
+				xeno_times += current_drawing.time
+				break
 	data["xeno_ckeys"] = xeno_ckeys
 	data["xeno_names"] = xeno_names
 	data["xeno_times"] = xeno_times
 
-	if(uscm_selection == LATEST_SELECTION)
-		data["uscm_map"] = null
-		data["uscm_svg"] = null
+	if(uscm_selection == LATEST_SELECTION || !GLOB.uscm_flat_tacmap_data[uscm_selection + 1])
+		data["uscm_maps"] = null
+		data["uscm_drawings"] = null
 	else
-		var/datum/flattened_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
-		var/datum/drawing_data/selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
-		data["uscm_map"] = selected_flat ? selected_flat.flat_tacmap : null
-		data["uscm_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
+		var/list/selected_flats = list()
+		var/list/selected_drawings = list()
+		var/list/datum/flattened_tacmap/selected_flat_data = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+		var/list/datum/drawing_data/selected_drawing_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
+		for(var/current_z in selected_flat_data)
+			selected_flats += selected_flat_data[current_z].flat_tacmap
+		for(var/current_z in selected_drawing_data)
+			selected_drawings += selected_drawing_data[current_z].draw_data
+		data["uscm_maps"] = selected_flats
+		data["uscm_drawings"] = selected_drawings
 
-	if(xeno_selection == LATEST_SELECTION)
-		data["xeno_map"] = null
-		data["xeno_svg"] = null
+	if(xeno_selection == LATEST_SELECTION || !GLOB.xeno_flat_tacmap_data[xeno_selection + 1])
+		data["xeno_maps"] = null
+		data["xeno_drawings"] = null
 	else
-		var/datum/flattened_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
-		var/datum/drawing_data/selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
-		data["xeno_map"] = selected_flat ? selected_flat.flat_tacmap : null
-		data["xeno_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
+		var/list/selected_flats = list()
+		var/list/selected_drawings = list()
+		var/list/datum/flattened_tacmap/selected_flat_data = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+		var/list/datum/drawing_data/selected_drawing_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
+		for(var/current_z in selected_flat_data)
+			selected_flats += selected_flat_data[current_z].flat_tacmap
+		for(var/current_z in selected_drawing_data)
+			selected_drawings += selected_drawing_data[current_z].draw_data
+		data["xeno_maps"] = selected_flats
+		data["xeno_drawings"] = selected_drawings
 
 	data["uscm_selection"] = uscm_selection
 	data["xeno_selection"] = xeno_selection
@@ -113,25 +135,27 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	switch(action)
 		if("recache")
 			var/is_uscm = params["uscm"]
-			var/datum/flattened_tacmap/selected_flat
-			var/datum/drawing_data/selected_draw_data
+			var/list/datum/flattened_tacmap/selected_flat_data
+			var/list/datum/drawing_data/selected_draw_data
 			if(is_uscm)
 				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
-				selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+				selected_flat_data = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
 				selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
 			else
 				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
-				selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+				selected_flat_data = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
 				selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
 
-			if(!selected_flat || !selected_draw_data)
+			if(!selected_flat_data || !selected_draw_data)
 				to_chat(user, SPAN_WARNING("The selected tacmap couldn't be recached since it was deleted."))
 				return
 
-			SSassets.transport.send_assets(client_user, selected_draw_data.asset_key)
-			SSassets.transport.send_assets(client_user, selected_flat.asset_key)
+			for(var/current_z in selected_flat_data)
+				SSassets.transport.send_assets(client_user, selected_flat_data[current_z].asset_key)
+			for(var/current_z in selected_draw_data)
+				SSassets.transport.send_assets(client_user, selected_draw_data[current_z].asset_key)
 			last_update_time = world.time
 			return TRUE
 
@@ -146,36 +170,36 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 
 		if("delete")
 			var/is_uscm = params["uscm"]
-			var/image/selected_drawing_image
-			var/atom/movable/screen/minimap/selected_minimap
 			var/drawn_by
+			var/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 
 			if(is_uscm)
 				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
-				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_USCM, TRUE)
-				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=TRUE)
-				selected_minimap.update()
-				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, live=TRUE, popup=FALSE, drawing=TRUE)
-				for(var/turf/label as anything in selected_minimap.labelled_turfs)
-					SSminimaps.remove_marker(label)
-				var/datum/drawing_data/draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
-				drawn_by = draw_data.ckey
+				// Clear overlays and labels from all minimaps and reset drawing images
+				SSminimaps.clear_drawings_and_labels(ground_zs, MINIMAP_FLAG_USCM)
+				// Figure out who drew it for logging
+				var/list/datum/drawing_data/draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
+				for(var/current_z in draw_data)
+					drawn_by = draw_data[current_z].ckey
+					break
+				// Null out the datums
 				GLOB.uscm_drawing_tacmap_data[uscm_selection + 1] = null
 				GLOB.uscm_flat_tacmap_data[uscm_selection + 1] = null
 			else
 				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
-				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_XENO, live=TRUE, popup=FALSE, drawing=TRUE)
-				for(var/turf/label as anything in selected_minimap.labelled_turfs)
-					SSminimaps.remove_marker(label)
-				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_XENO, drawing=FALSE)
-				var/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
-				drawn_by = draw_data.ckey
+				// Clear overlays and labels from all minimaps and reset drawing images
+				SSminimaps.clear_drawings_and_labels(ground_zs, MINIMAP_FLAG_XENO)
+				// Figure out who drew it for logging
+				var/list/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
+				for(var/current_z in draw_data)
+					drawn_by = draw_data[current_z].ckey
+					break
+				// Null out the datums
 				GLOB.xeno_drawing_tacmap_data[xeno_selection + 1] = null
 				GLOB.xeno_flat_tacmap_data[xeno_selection + 1] = null
 
-			selected_drawing_image.icon = icon('icons/ui_icons/minimap.dmi')
 			last_update_time = world.time
 			for(var/client/client as anything in GLOB.clients)
 				var/mob/player = client.mob

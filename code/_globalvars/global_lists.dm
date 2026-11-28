@@ -12,11 +12,11 @@ GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if so
 // for all of our various bugs and runtimes
 GLOBAL_LIST_EMPTY(bug_reports)
 
-//datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
+//2d lists of /datum/flattened_tacmap per zlevel
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
 
-//datum containing the drawing overlay coords in array format.
+//2d lists of /datum/drawing_data per zlevel
 GLOBAL_LIST_EMPTY(uscm_drawing_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_drawing_tacmap_data)
 

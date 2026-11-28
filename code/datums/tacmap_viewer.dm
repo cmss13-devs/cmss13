@@ -26,6 +26,10 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 	else
 		return GLOB.observer_state
 
+/datum/tacmap_viewer/ui_static_data(mob/user)
+	. = list()
+	.["ground_zs"] = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+
 /datum/tacmap_viewer/ui_data(mob/user)
 	var/list/data = list()
 
@@ -38,25 +42,46 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 
 	data["factions"] = factions
 
+	// Assumption: Length of flat_tacmap_data is the same as drawing_tacmap_data
+	data["uscm_maps"] = null
+	data["uscm_drawings"] = null
 	var/uscm_length = length(GLOB.uscm_drawing_tacmap_data)
-	if(uscm_length == 0)
-		data["uscm_map"] = null
-		data["uscm_svg"] = null
-	else
-		var/datum/flattened_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_length]
-		var/datum/drawing_data/selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_length]
-		data["uscm_map"] = selected_flat ? selected_flat.flat_tacmap : null
-		data["uscm_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
+	if(uscm_length != 0)
+		// Find the first non-null (in case of deletion)
+		for(var/i = uscm_length, i > 0, i--)
+			var/list/datum/flattened_tacmap/selected_flat_data = GLOB.uscm_flat_tacmap_data[i]
+			var/list/datum/drawing_data/selected_drawing_data = GLOB.uscm_drawing_tacmap_data[i]
+			if(!selected_flat_data || !selected_drawing_data)
+				continue
+			var/list/selected_flats = list()
+			var/list/selected_drawings = list()
+			for(var/current_z in selected_flat_data)
+				selected_flats += selected_flat_data[current_z].flat_tacmap
+			for(var/current_z in selected_drawing_data)
+				selected_drawings += selected_drawing_data[current_z].draw_data
+			data["uscm_maps"] = selected_flats
+			data["uscm_drawings"] = selected_drawings
+			break
 
+	data["xeno_maps"] = null
+	data["xeno_drawings"] = null
 	var/xeno_length = length(GLOB.xeno_drawing_tacmap_data)
-	if(xeno_length == 0)
-		data["xeno_map"] = null
-		data["xeno_svg"] = null
-	else
-		var/datum/flattened_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_length]
-		var/datum/drawing_data/selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_length]
-		data["xeno_map"] = selected_flat ? selected_flat.flat_tacmap : null
-		data["xeno_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
+	if(xeno_length != 0)
+		// Find the first non-null (in case of deletion)
+		for(var/i = xeno_length, i > 0, i--)
+			var/list/datum/flattened_tacmap/selected_flat_data = GLOB.xeno_flat_tacmap_data[i]
+			var/list/datum/drawing_data/selected_drawing_data = GLOB.xeno_drawing_tacmap_data[i]
+			if(!selected_flat_data || !selected_drawing_data)
+				continue
+			var/list/selected_flats = list()
+			var/list/selected_drawings = list()
+			for(var/current_z in selected_flat_data)
+				selected_flats += selected_flat_data[current_z].flat_tacmap
+			for(var/current_z in selected_drawing_data)
+				selected_drawings += selected_drawing_data[current_z].draw_data
+			data["xeno_maps"] = selected_flats
+			data["xeno_drawings"] = selected_drawings
+			break
 
 	data["map_fallback"] = wiki_map_fallback
 	return data

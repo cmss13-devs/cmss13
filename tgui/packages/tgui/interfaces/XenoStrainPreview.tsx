@@ -1,6 +1,8 @@
+import { KEY } from 'common/keys';
 import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import {
+  Autofocus,
   Box,
   Button,
   Collapsible,
@@ -246,7 +248,18 @@ export function XenoStrainPreview() {
       theme="hive_status"
       title={data.windowTitle || 'Strain Information'}
     >
-      <Window.Content>
+      <Window.Content
+        onKeyDown={(event) => {
+          if (event.defaultPrevented) {
+            return;
+          }
+          if (event.key === KEY.Enter && data.buttons.length > 0) {
+            event.preventDefault();
+            act('choose', { choice: data.buttons[0] });
+          }
+        }}
+      >
+        <Autofocus />
         <Stack fill vertical>
           <Stack.Item grow overflowY="auto">
             <Section>
@@ -306,9 +319,24 @@ export function XenoStrainPreview() {
               </Collapsible>
             )}
           </Stack.Item>
-          <Stack.Item textAlign="right">
+          <Stack.Item textAlign="center">
             {data.buttons.map((choice) => (
-              <Button key={choice} onClick={() => act('choose', { choice })}>
+              <Button
+                key={choice}
+                color={
+                  choice === 'De-Evolve'
+                    ? 'bad'
+                    : ['Evolve', 'Mutate'].includes(choice)
+                      ? 'good'
+                      : undefined
+                }
+                minWidth={8}
+                fontSize={1.1}
+                px={2}
+                py={0.5}
+                textAlign="center"
+                onClick={() => act('choose', { choice })}
+              >
                 {choice}
               </Button>
             ))}

@@ -9,7 +9,7 @@
   @include meta.load-css('~tgui/styles/components/BlockQuote');
   @include meta.load-css(
     '~tgui/styles/components/Button',
-    $with: ('color-selected': #52375c)
+    $with: ('color-selected': colors.bg(colors.$good))
   );
   @include meta.load-css('~tgui/styles/components/Table');
 

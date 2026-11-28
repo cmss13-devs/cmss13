@@ -1,8 +1,10 @@
+import { KEY } from 'common/keys';
 import type { BooleanLike } from 'common/react';
+import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
+  Autofocus,
   Box,
-  Button,
   Collapsible,
   Divider,
   Icon,
@@ -13,6 +15,8 @@ import {
 } from 'tgui/components';
 import { DAMAGE_COLORS } from 'tgui/constants';
 import { Window } from 'tgui/layouts';
+
+import { HorizontalButtons } from './AlertModal';
 
 const valueColors = {
   ...DAMAGE_COLORS,
@@ -239,6 +243,7 @@ function AbilityGroup(props: {
 
 export function XenoStrainPreview() {
   const { act, data } = useBackend<Data>();
+  const [selected, setSelected] = useState(0);
   return (
     <Window
       width={580}
@@ -246,7 +251,38 @@ export function XenoStrainPreview() {
       theme="hive_status"
       title={data.windowTitle || 'Strain Information'}
     >
-      <Window.Content>
+      <Window.Content
+        onKeyDown={(event) => {
+          if (event.defaultPrevented) {
+            return;
+          }
+          if (!data.buttons.length) {
+            return;
+          }
+          switch (event.key) {
+            case KEY.Space:
+            case KEY.Enter:
+              event.preventDefault();
+              act('choose', { choice: data.buttons[selected] });
+              return;
+            case KEY.Escape:
+              act('cancel');
+              return;
+            case KEY.Left:
+              event.preventDefault();
+              setSelected(
+                (selected - 1 + data.buttons.length) % data.buttons.length,
+              );
+              return;
+            case KEY.Tab:
+            case KEY.Right:
+              event.preventDefault();
+              setSelected((selected + 1) % data.buttons.length);
+              return;
+          }
+        }}
+      >
+        <Autofocus />
         <Stack fill vertical>
           <Stack.Item grow overflowY="auto">
             <Section>
@@ -306,12 +342,15 @@ export function XenoStrainPreview() {
               </Collapsible>
             )}
           </Stack.Item>
-          <Stack.Item textAlign="right">
-            {data.buttons.map((choice) => (
-              <Button key={choice} onClick={() => act('choose', { choice })}>
-                {choice}
-              </Button>
-            ))}
+          <Stack.Item>
+            <HorizontalButtons
+              selected={selected}
+              buttonColors={{
+                Evolve: 'good',
+                Mutate: 'good',
+                'De-Evolve': 'bad',
+              }}
+            />
           </Stack.Item>
         </Stack>
       </Window.Content>

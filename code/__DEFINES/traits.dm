@@ -281,6 +281,8 @@
 
 // -- specific ability traits --
 /// Used by dancer dodge ability.
+#define TRAIT_ABILITY_ASSASSINATE "t_ability_assassinate"
+#define TRAIT_ABILITY_INVIS "t_ability_invis"
 #define TRAIT_ABILITY_DODGE "t_ability_dodge"
 /// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"

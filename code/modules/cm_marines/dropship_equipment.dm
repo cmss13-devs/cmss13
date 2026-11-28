@@ -771,8 +771,8 @@
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////
 
-//unfinished and unused
 /obj/structure/dropship_equipment/adv_comp
+	name = "advanced computer"
 	compatible_category_flags = DROPSHIP_CATEGORY_COMPUTER
 	point_cost = 0
 
@@ -787,6 +787,42 @@
 	name = "\improper AN/AKW-222 Docking Computer"
 	icon_state = "docking_comp"
 	point_cost = 0
+
+
+/obj/structure/dropship_equipment/adv_comp/motion
+	name = "\improper APQ-1178 Radar"
+	shorthand = "Motion Radar"
+	desc = "An advanced radar computer capable of detecting movement behind obstructed material. 15,000 MHz pulse waves transmit live information to the weapon camera's tactical target identification feed, rhymthically outlining moving targets. Fits only on dropship computer attach points. A powerloader is required to move it."
+	icon_state = "sensor_comp"
+	point_cost = 800
+	/// Time between radar pings
+	var/pulse_interval = 2 SECONDS
+	/// Duration of a fading ping
+	var/reveal_duration = 1 SECONDS
+
+
+/obj/structure/dropship_equipment/adv_comp/offensive
+	name = "\improper AN/ALQ-2005O Offensive System"
+	shorthand = "Offensive Computer"
+	desc = "An advanced fire control computer that permits the use of additional weaponry during suborbital bombardment while in a transport flight. Fits only on dropship computer attach points. A powerloader is required to move it."
+	icon_state = "offensive_comp"
+	point_cost = 800
+
+
+/obj/structure/dropship_equipment/adv_comp/meson
+	name = "\improper EDS-1361 Radar"
+	shorthand = "Meson Radar"
+	desc = "An advanced emission detection computer capable of mapping terrain behind obscured material. Electromagnetic emitters are detected and used to feed terrain data to the weapon camera. Fits only on dropship computer attach points. A powerloader is required to move it."
+	icon_state = "meson_comp"
+	point_cost = 800
+
+
+/obj/structure/dropship_equipment/adv_comp/avionic
+	name = "AN/ALQ-1630 Avionics System"
+	shorthand = "Avionics Computer"
+	desc = "An advanced fire control computer that permits the use of firemission maneuvers during standard transport flight, provided enough flight time remains to complete the run. Transport weapon restrictions still apply. Fits only on dropship computer attach points. A powerloader is required to move it."
+	icon_state = "docking_comp"
+	point_cost = 800
 
 
 /// CAS Dropship weaponry, used for aerial bombardment
@@ -807,8 +843,20 @@
 	/// Delay between firing, in deciseconds
 	var/firing_delay = 20
 	/// True if this weapon can only be fired in Fire Missions (not Direct)
-	var/fire_mission_only = FALSE
+	var/fire_mission_only = TRUE
 	var/gunnery_only = FALSE
+	/// Only these weapons may fire in transport firemissions
+	var/transport_firemission_allowed = FALSE
+	/// Unlocks transport direct fire for a flyby only weapon
+	var/transport_fire_required_equipment = null
+
+/// Whether this weapon can be direct fired outside a flyby.
+/obj/structure/dropship_equipment/weapon/proc/can_fire_during_transport()
+	if(!fire_mission_only)
+		return TRUE
+	if(!transport_fire_required_equipment || !linked_shuttle)
+		return FALSE
+	return !!(locate(transport_fire_required_equipment) in linked_shuttle.equipments)
 
 /obj/structure/dropship_equipment/weapon/update_equipment()
 	if(ship_base)
@@ -830,6 +878,9 @@
 
 /obj/structure/dropship_equipment/weapon/get_examine_text(mob/user)
 	. = ..()
+	if(fire_mission_only && transport_fire_required_equipment)
+		var/obj/structure/dropship_equipment/required_equipment = transport_fire_required_equipment
+		. += SPAN_NOTICE("Can be direct fired during transport runs with an installed <b>[initial(required_equipment.name)]</b>.")
 	if(ammo_equipped)
 		var/ammo_info = ammo_equipped.show_loaded_desc(user)
 		if(ammo_info)
@@ -847,8 +898,8 @@
 /obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, mob/user = usr)
 	set waitfor = 0
 
-	if(fire_mission_only)
-		to_chat(user, SPAN_WARNING("[src] can only be used in a fire mission!"))
+	if(!linked_shuttle?.in_flyby && !can_fire_during_transport())
+		to_chat(user, SPAN_WARNING("[src] requires a Fire Mission flight type to be fired."))
 		return
 
 	var/offset_x = 0
@@ -1012,6 +1063,7 @@
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 	shorthand = "GAU"
+	transport_firemission_allowed = TRUE
 
 /obj/structure/dropship_equipment/weapon/heavygun/update_icon()
 	if(ammo_equipped)
@@ -1055,6 +1107,7 @@
 	firing_delay = 10 //1 seconds
 	point_cost = 600
 	shorthand = "RKT"
+	transport_fire_required_equipment = /obj/structure/dropship_equipment/adv_comp/offensive
 	stackable_ammo = TRUE
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
@@ -1085,6 +1138,7 @@
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 	shorthand = "LZR"
+	transport_firemission_allowed = TRUE
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -1124,6 +1178,7 @@
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	skill_required = SKILL_PILOT_TRAINED
 	gunnery_only = TRUE
+	fire_mission_only = FALSE
 	detachable = FALSE
 	firing_delay = 10
 	shorthand = "M90"

@@ -75,12 +75,16 @@
 	///This damage is taken when atmos doesn't fit all the requirements above
 	var/unsuitable_atoms_damage = 2
 	var/fire_overlay
+	///All brute damage recieved will be multiplied by this number
+	var/brute_damage_mod = 1
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
 
 /mob/living/simple_animal/Destroy()
+	if(ishordemodemob(src))
+		SShorde_mode_mobs.living_misc_mobs -= src
 	SSmob.living_misc_mobs -= src
 	return ..()
 
@@ -426,7 +430,7 @@
 		explosion_throw(severity, direction)
 
 /mob/living/simple_animal/adjustBruteLoss(damage)
-	health = clamp(health - damage, 0, maxHealth)
+	health = min(health - damage * brute_damage_mod, maxHealth)
 
 /mob/living/simple_animal/adjustFireLoss(damage)
 	health = clamp(health - damage, 0, maxHealth)

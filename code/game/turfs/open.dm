@@ -16,9 +16,15 @@
 	var/depth = WATER_DEPTH_LAND // for water_overlay_effects
 	var/covered = 0	//if it has a catwalk like thing
 	var/water_type = null //for specifically partial water turfs: used in water overlays, as to not overlay sand/dirt/grass etc
+	/// for turfs like toxic water turfs, do not add the var/icon definition into this list.. its automatically done on init
+	var/list/icon_variants = list()
+	var/variant_key = 1	//key for the variants list, base icon is at start and will progressively transition to the last
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
+	if(locate(icon) in icon_variants)
+		CRASH("base icon added to icon_variants: [icon] (this is done automatically in /turf/open/Initialize(mapload, ...), and shouldnt be manually done)")
+	icon_variants.Insert(variant_key, icon)	//add the assigned icon to the point in the list it refers to
 	update_water_element()
 	update_icon()
 
@@ -35,6 +41,9 @@
 	update_overlays()
 
 	add_cleanable_overlays()
+
+	if(length(icon_variants))
+		icon = icon_variants[variant_key]
 
 	var/alist/auto_turf_dirs = alist()
 	for(var/turf/open/auto_turf/auto_neighbor in orange(1, src))
@@ -198,7 +207,7 @@
 
 /// Returns returns a list of all values var/icon is set to over the course of the lifetime of this turf. Mostly for water turfs that change their icon when purified (water overlays needs to know)
 /turf/open/proc/get_all_possible_icon_files()
-	return list(icon)
+	return icon_variants
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void

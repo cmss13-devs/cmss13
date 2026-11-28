@@ -162,7 +162,8 @@
 /turf/open/desert/desert_shore
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore1"
-	var/toxic = WATER_TOXIC_NO
+	icon_variants = list('icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+	variant_key = WATER_TOXIC_NO
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
 	depth = WATER_DEPTH_COAST_SHALLOW
@@ -171,20 +172,14 @@
 	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/desert/desert_shore/update_icon()
-	..()
-	switch(toxic)
-		if(WATER_TOXIC_YES)
-			set_light(2)
-			icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	. = ..()
+	switch(variant_key)
 		if(WATER_TOXIC_NO)
 			set_light(0)
-			icon = 'icons/turf/floors/desert_water.dmi'
 		if(WATER_TOXIC_DISPERSING)
 			set_light(1)
-			icon = 'icons/turf/floors/desert_water_transition.dmi'
-
-/turf/open/desert/desert_shore/get_all_possible_icon_files()
-	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+		if(WATER_TOXIC_YES)
+			set_light(2)
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
@@ -310,25 +305,20 @@
 	name = "cave shore"
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
-	var/toxic = WATER_TOXIC_NO
+	icon_variants = list('icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+	variant_key = WATER_TOXIC_NO
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 
 /turf/open/desert/cave/cave_shore/update_icon()
-	..()
-	switch(toxic)
-		if(WATER_TOXIC_YES)
-			set_light(2)
-			icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	. = ..()
+	switch(variant_key)
 		if(WATER_TOXIC_NO)
 			set_light(0)
-			icon = 'icons/turf/floors/desert_water.dmi'
 		if(WATER_TOXIC_DISPERSING)
 			set_light(1)
-			icon = 'icons/turf/floors/desert_water_transition.dmi'
-
-/turf/open/desert/cave/cave_shore/get_all_possible_icon_files()
-	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+		if(WATER_TOXIC_YES)
+			set_light(2)
 
 /turf/open/desert/cave/cave_shore/east
 	dir = EAST
@@ -344,28 +334,23 @@
 	name = "water"
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shallow"
-	var/toxic = WATER_TOXIC_NO
+	icon_variants = list('icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+	variant_key = WATER_TOXIC_NO
 	default_name = "water"
 	is_weedable = NOT_WEEDABLE
 	depth = WATER_DEPTH_SHALLOW
 	water_type = /turf/open/gm/river/desert
 
 /turf/open/gm/river/desert/update_icon()
-	..()
-	switch(toxic)
-		if(WATER_TOXIC_YES)
-			set_light(2)
-			icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	. = ..()
+	switch(variant_key)
 		if(WATER_TOXIC_NO)
 			set_light(0)
-			icon = 'icons/turf/floors/desert_water.dmi'
 		if(WATER_TOXIC_DISPERSING)
 			set_light(1)
-			icon = 'icons/turf/floors/desert_water_transition.dmi'
+		if(WATER_TOXIC_YES)
+			set_light(2)
 	update_overlays()
-
-/turf/open/gm/river/desert/get_all_possible_icon_files()
-	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 //shallow water
 /turf/open/gm/river/desert/shallow
@@ -379,6 +364,8 @@
 
 /turf/open/gm/river/desert/shallow/toxic
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon_variants = list( 'icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi')
+	variant_key = WATER_TOXIC_YES
 	water_type = /turf/open/gm/river/desert/shallow/toxic
 
 /turf/open/gm/river/desert/shallow/pool
@@ -480,6 +467,9 @@
 
 /turf/open/gm/river/desert/deep/toxic
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon_variants = list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi')
+	variant_key = WATER_TOXIC_YES
+	water_type = /turf/open/gm/river/desert/deep/toxic
 
 //shallow water channel plain
 /turf/open/gm/river/desert/channel
@@ -688,6 +678,7 @@
 /turf/open/gm/river/desert/tyrargo
 	icon_state = "seashallow"
 	water_type = /turf/open/gm/river/desert/tyrargo
+	icon_variants = list()
 
 /turf/open/gm/river/desert/tyrargo/no_slowdown
 	base_river_slowdown = 1

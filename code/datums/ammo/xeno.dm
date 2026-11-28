@@ -28,7 +28,7 @@
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST|AMMO_SKIPS_ALIENS
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
-	var/drain_power = 2
+	var/drain_power = 1
 	var/increment_amount = 5
 	var/datum/callback/neuro_callback
 
@@ -55,9 +55,6 @@
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in human.reagents.reagent_list)
 				human.reagents.remove_reagent(med.id, drain, TRUE)
-	if(!apply_effect)
-		return
-
 	if(!apply_effect)
 		return
 
@@ -112,6 +109,7 @@
 
 		if (!sns)
 			sns = new /datum/effects/sentinel_neuro_stacks(human)
+
 		sns.increment_stack_count(increment_amount)
 
 	neuro_callback.Invoke(target_mob, effect_power, drain_power, FALSE, TRUE, TRUE)
@@ -131,7 +129,7 @@
 	drain_power = 4
 
 	accuracy = HIT_ACCURACY_TIER_5*2
-	max_range = 6 - 1
+	max_range = 5
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/target_mob,obj/projectile/projectile)
 	neuro_callback.Invoke(target_mob, effect_power, drain_power, TRUE, TRUE, FALSE)

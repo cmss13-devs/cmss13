@@ -238,9 +238,9 @@
 	desc = "Contains a variety of autoinjectors for quickly treating injuries."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/firstaid/full/black
@@ -254,7 +254,7 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -303,9 +303,9 @@
 	storage_slots = 5
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
@@ -794,9 +794,9 @@
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
@@ -811,13 +811,13 @@
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/meralyne(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dermaline(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/meralyne(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp(src)
 
 /obj/item/storage/pouch/medical/socmed/commando/deathsquad/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -826,10 +826,10 @@
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/meralyne(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dermaline(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/meralyne(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
@@ -839,9 +839,9 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
@@ -860,8 +860,8 @@
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
@@ -935,12 +935,12 @@
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
 
 /obj/item/storage/pouch/autoinjector/full/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/autoinjector/full/wy
@@ -1012,15 +1012,15 @@
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/medkit/full_advanced/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -1041,18 +1041,18 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/device/healthanalyzer(src)
 
 /obj/item/storage/pouch/medkit/full_rmc_officer_aid/fill_preset_inventory()
 	new /obj/item/storage/surgical_case/rmc_surgical_case/full(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/device/healthanalyzer(src)
 
 /obj/item/storage/pouch/medkit/full/toxin/fill_preset_inventory()
@@ -1079,7 +1079,7 @@
 	icon_state = "wy_medkit"
 
 /obj/item/storage/pouch/medkit/wy/full_advanced/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -1093,7 +1093,7 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
 	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
-	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/research)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
@@ -1129,13 +1129,13 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/research/A = contents[1]
 		A.reagents.add_reagent(ragent, A.volume)
 		A.update_uses_left()
 		A.update_icon()
@@ -1164,7 +1164,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("tricordrazine", A.volume/3)
@@ -1179,7 +1179,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("peridaxon", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("peridaxon", A.volume/3)
@@ -1199,7 +1199,7 @@
 			update_icon()
 		return
 
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
+	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/research))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		fill_autoinjector(A)
 		return ..()

@@ -31092,7 +31092,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 4
 	},
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium,
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/medium,
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/south,
@@ -101971,7 +101971,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine,
 /turf/open/floor/prison/whitegreen/west,
 /area/lv759/indoors/hospital/cryo_room)
 "ojX" = (

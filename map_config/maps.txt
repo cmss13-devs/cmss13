@@ -16,15 +16,7 @@ map lv624
 	default
 endmap
 
-map lv624_forward_base
-	voteweight 1
-endmap
-
 map bigredv2
-endmap
-
-map bigred_forward_base
-	voteweight 1
 endmap
 
 map prison_station_fop
@@ -58,19 +50,11 @@ endmap
 map kutjevo
 endmap
 
-map kutjevo_forward_base
-	voteweight 1
-endmap
-
 map sorokyne_strata
 	minplayers 110
 endmap
 
 map lv522_chances_claim
-endmap
-
-map lv522_chances_claim_forward_base
-	voteweight 1
 endmap
 
 map lv759_hybrisa_prospera
@@ -94,10 +78,6 @@ map cape_river
 endmap
 
 map lv1021_falcons_fury
-endmap
-
-map lv1021_falcons_fury_forward_base
-	voteweight 1
 endmap
 
 map whiskey_outpost_v2

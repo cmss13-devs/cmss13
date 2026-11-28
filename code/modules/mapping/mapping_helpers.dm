@@ -128,9 +128,12 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 		#endif
 		return INITIALIZE_HINT_QDEL
 
-	LAZYADDASSOCLIST(GLOB.sentry_spawns[landing_zone], position, get_turf(src))
+	return INITIALIZE_HINT_ROUNDSTART
 
-	return INITIALIZE_HINT_QDEL
+/obj/effect/sentry_landmark/LateInitialize()
+	// So nightmare inserts can replace the original LZ placements
+	LAZYADDASSOCLIST(GLOB.sentry_spawns[landing_zone], position, get_turf(src))
+	qdel(src)
 
 /obj/effect/sentry_landmark/lz_1
 	abstract_type = /obj/effect/sentry_landmark/lz_1

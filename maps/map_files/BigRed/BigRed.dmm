@@ -6140,6 +6140,12 @@
 "awT" = (
 /turf/open/floor/whitegreencorner/west,
 /area/bigredv2/outside/medical)
+"awU" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "forward-base"
+	},
+/turf/closed/cordon,
+/area/space)
 "awV" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -40326,7 +40332,7 @@ aab
 aab
 aab
 aab
-aab
+awU
 "}
 (2,1,1) = {"
 aab

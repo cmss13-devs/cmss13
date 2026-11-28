@@ -1,4 +1,13 @@
 [
+    {
+        "type": "map_insert",
+        "landmark": "forward-base",
+        "chance": 1.0,
+        "path": "standalone/LV624_Forward_Base.dmm",
+        "when": {
+            "$gamemode": "Distress Signal: Forward Base"
+        }
+    },
 	{
 		"type": "map_insert",
 		"landmark": "clfship",

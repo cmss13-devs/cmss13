@@ -2413,6 +2413,12 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_north)
+"ajC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "forward-base"
+	},
+/turf/closed/cordon,
+/area/space)
 "akH" = (
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -17754,7 +17760,7 @@ aaU
 hSA
 hSA
 hSA
-hSA
+ajC
 "}
 (2,1,1) = {"
 hSA

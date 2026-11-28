@@ -1535,12 +1535,14 @@ and you're good to go.
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
-		return FALSE
+		return
 
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE))
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(target, src, user)
-		return TRUE
+		return
+
+	. = ..()
 
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)
@@ -2790,6 +2792,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 // CO GUN STUFF END
 
+/obj/item/weapon/gun/check_can_ignite()
+	return active_attachable && HAS_TRAIT(active_attachable, TRAIT_IGNITER) && active_attachable.check_can_ignite()
 /// For ejecting the spent casing from corresponding guns
 /obj/item/weapon/gun/proc/eject_casing()
 	if(!length(spent_casings))

@@ -27,6 +27,11 @@
 	behavior_delegate_type = /datum/behavior_delegate/warrior_bulwark
 
 /datum/xeno_strain/bulwark/apply_strain(mob/living/carbon/xenomorph/warrior/warrior)
+	warrior.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_1
+	warrior.health_modifier += XENO_HEALTH_MOD_VERY_LARGE
+	warrior.armor_modifier += XENO_ARMOR_MOD_SMALL
+	warrior.add_plasma += XENO_PLASMA_TIER_2
+	warrior.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
 	..() // stat modifiers
 	warrior.melee_vulnerability_mult += 1.5
 
@@ -34,7 +39,8 @@
 // bulwark config
 //
 
-#define BULWARK_DIR_ARMOR 10
+#define BULWARK_FRONTDIR_ARMOR 10
+#define BULWARK_SIDEDIR_ARMOR 5
 #define BULWARK_GRENADE_SWEEP_THROW 3
 #define BULWARK_REFLECTION_CHANCE_FRONT 100
 #define BULWARK_REFLECTED_BULLET_DAMAGE 0.5
@@ -47,8 +53,8 @@
 /datum/behavior_delegate/warrior_bulwark
 	name = "Bulwark Warrior Behavior Delegate"
 
-	var/frontal_armor = BULWARK_DIR_ARMOR
-	var/sided_armor = BULWARK_DIR_ARMOR
+	var/frontal_armor = BULWARK_FRONTDIR_ARMOR
+	var/sided_armor = BULWARK_SIDEDIR_ARMOR
 
 /datum/behavior_delegate/warrior_bulwark/append_to_stat()
 	. = list()
@@ -65,7 +71,6 @@
 
 /datum/behavior_delegate/warrior_bulwark/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
-	ADD_TRAIT(bound_xeno, TRAIT_NO_DIR_LOCK_SLOWDOWN, TRAIT_SOURCE_ABILITY("no_dir_lock_slowdown"))
 
 /datum/behavior_delegate/warrior_bulwark/proc/apply_directional_armor(mob/living/carbon/xenomorph/xeno_player, list/damagedata)
 	SIGNAL_HANDLER
@@ -132,8 +137,8 @@
 	xeno_player.ability_speed_modifier += speed_debuff
 	xeno_player.mob_size = MOB_SIZE_BIG //knockback immune
 	button.icon_state = "template_active"
-	behavior.frontal_armor += BULWARK_DIR_ARMOR
-	behavior.sided_armor -= BULWARK_DIR_ARMOR
+	behavior.frontal_armor += BULWARK_FRONTDIR_ARMOR
+	behavior.sided_armor -= BULWARK_SIDEDIR_ARMOR
 	xeno_player.damage_modifier -= XENO_DAMAGE_MOD_BULWARK
 	xeno_player.tackle_min_modifier += 2
 
@@ -155,8 +160,8 @@
 	xeno_player.ability_speed_modifier -= speed_debuff
 	xeno_player.mob_size = MOB_SIZE_XENO //no longer knockback immune
 	button.icon_state = "template_xeno"
-	behavior.frontal_armor -= BULWARK_DIR_ARMOR
-	behavior.sided_armor += BULWARK_DIR_ARMOR
+	behavior.frontal_armor -= BULWARK_FRONTDIR_ARMOR
+	behavior.sided_armor += BULWARK_SIDEDIR_ARMOR
 	xeno_player.damage_modifier += XENO_DAMAGE_MOD_BULWARK
 	xeno_player.tackle_min_modifier -= 2
 

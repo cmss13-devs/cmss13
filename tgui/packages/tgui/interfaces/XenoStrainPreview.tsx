@@ -1,10 +1,10 @@
 import { KEY } from 'common/keys';
 import type { BooleanLike } from 'common/react';
+import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Autofocus,
   Box,
-  Button,
   Collapsible,
   Divider,
   Icon,
@@ -15,6 +15,8 @@ import {
 } from 'tgui/components';
 import { DAMAGE_COLORS } from 'tgui/constants';
 import { Window } from 'tgui/layouts';
+
+import { HorizontalButtons } from './AlertModal';
 
 const valueColors = {
   ...DAMAGE_COLORS,
@@ -241,6 +243,7 @@ function AbilityGroup(props: {
 
 export function XenoStrainPreview() {
   const { act, data } = useBackend<Data>();
+  const [selected, setSelected] = useState(0);
   return (
     <Window
       width={580}
@@ -253,9 +256,29 @@ export function XenoStrainPreview() {
           if (event.defaultPrevented) {
             return;
           }
-          if (event.key === KEY.Enter && data.buttons.length > 0) {
-            event.preventDefault();
-            act('choose', { choice: data.buttons[0] });
+          if (!data.buttons.length) {
+            return;
+          }
+          switch (event.key) {
+            case KEY.Space:
+            case KEY.Enter:
+              event.preventDefault();
+              act('choose', { choice: data.buttons[selected] });
+              return;
+            case KEY.Escape:
+              act('cancel');
+              return;
+            case KEY.Left:
+              event.preventDefault();
+              setSelected(
+                (selected - 1 + data.buttons.length) % data.buttons.length,
+              );
+              return;
+            case KEY.Tab:
+            case KEY.Right:
+              event.preventDefault();
+              setSelected((selected + 1) % data.buttons.length);
+              return;
           }
         }}
       >
@@ -319,27 +342,15 @@ export function XenoStrainPreview() {
               </Collapsible>
             )}
           </Stack.Item>
-          <Stack.Item textAlign="center">
-            {data.buttons.map((choice) => (
-              <Button
-                key={choice}
-                color={
-                  choice === 'De-Evolve'
-                    ? 'bad'
-                    : ['Evolve', 'Mutate'].includes(choice)
-                      ? 'good'
-                      : undefined
-                }
-                minWidth={8}
-                fontSize={1.1}
-                px={2}
-                py={0.5}
-                textAlign="center"
-                onClick={() => act('choose', { choice })}
-              >
-                {choice}
-              </Button>
-            ))}
+          <Stack.Item>
+            <HorizontalButtons
+              selected={selected}
+              buttonColors={{
+                Evolve: 'good',
+                Mutate: 'good',
+                'De-Evolve': 'bad',
+              }}
+            />
           </Stack.Item>
         </Stack>
       </Window.Content>

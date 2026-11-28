@@ -112,23 +112,28 @@ type ButtonDisplayProps = {
 /**
  * Displays a list of buttons ordered by user prefs.
  */
-function HorizontalButtons(props: ButtonDisplayProps) {
+export function HorizontalButtons(
+  props: ButtonDisplayProps & {
+    readonly buttonColors?: Partial<Record<string, string>>;
+  },
+) {
   const { act, data } = useBackend<Data>();
   const { buttons = [], large_buttons, swapped_buttons } = data;
-  const { selected } = props;
+  const { selected, buttonColors } = props;
 
   return (
     <Stack fill justify="space-around" reverse={!swapped_buttons}>
       {buttons.map((button, index) => (
         <Stack.Item grow={large_buttons ? 1 : undefined} key={index}>
           <Button
+            color={buttonColors?.[button]}
             fluid={!!large_buttons}
             minWidth={8}
             onClick={() => act('choose', { choice: button })}
             overflowX="hidden"
             px={2}
             py={large_buttons ? 0.5 : 0}
-            selected={selected === index}
+            selected={selected === index && !buttonColors?.[button]}
             textAlign="center"
           >
             {!large_buttons ? button : button.toUpperCase()}

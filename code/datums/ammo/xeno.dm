@@ -354,12 +354,34 @@
 	else
 		PAS.increment_stack_count()
 
+#define DESPOILER_BARRAGE_BARRICADE_DAMAGE_LIMIT 160
+
+/obj/projectile/despoiler
+	var/list/barricade_damage = list()
+	/// Shared by every projectile in one barrage.
+	var/list/mob_hits_remaining = list()
+
+/obj/projectile/despoiler/handle_mob(mob/living/target_living)
+	if(isnull(mob_hits_remaining[target_living]))
+		var/datum/effects/acid/acid_effect = locate() in target_living.effects_list
+		mob_hits_remaining[target_living] = acid_effect ? 1 : 2
+	if(!mob_hits_remaining[target_living])
+		return FALSE
+
+	. = ..()
+	if(.)
+		mob_hits_remaining[target_living]--
+
+/obj/projectile/despoiler/Destroy()
+	barricade_damage = null
+	mob_hits_remaining = null
+	return ..()
+
 /datum/ammo/xeno/acid/despoiler
 	name = "corrosive spit"
 	icon_state = "xeno_acid_lingering"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER|AMMO_HITS_TARGET_TURF
 	accuracy = HIT_ACCURACY_MULT_TIER_5
-	accurate_range_min_strict = 3
 	accurate_range = 32
 	max_range = 7
 	shell_speed = AMMO_SPEED_TIER_2
@@ -381,20 +403,27 @@
 	on_hit_turf(get_turf(projectile), projectile)
 
 /datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
+	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
 	. = ..()
 	if(. == FALSE)
 		return
-	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
 	if(!acid_effect)
 		acid_effect = new /datum/effects/acid(mob, projectile.firer)
-	acid_effect.enhance_acid()
-	acid_effect.increment_duration(acid_progression)
+	else
+		acid_effect.enhance_acid()
+		acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)
 
 /datum/ammo/xeno/acid/despoiler/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
+		if(istype(proj_hit, /obj/projectile/despoiler))
+			var/obj/projectile/despoiler/barrage_projectile = proj_hit
+			var/damage_remaining = max(0, DESPOILER_BARRAGE_BARRICADE_DAMAGE_LIMIT - barrage_projectile.barricade_damage[barricade])
+			proj_hit.damage = min(proj_hit.damage, damage_remaining)
+			barrage_projectile.barricade_damage[barricade] += proj_hit.damage
+
 		var/datum/effects/acid/acid_effect = locate() in barricade.effects_list
 		if(!acid_effect)
 			barricade.acid_spray_act()
@@ -406,6 +435,8 @@
 		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
 		if(!acid_effect)
 			new /datum/effects/acid/(victim, projectile.firer)
+
+#undef DESPOILER_BARRAGE_BARRICADE_DAMAGE_LIMIT
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

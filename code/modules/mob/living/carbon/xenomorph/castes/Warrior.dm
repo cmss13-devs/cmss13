@@ -1,5 +1,16 @@
 /datum/caste_datum/warrior
 	caste_type = XENO_CASTE_WARRIOR
+	playstyle = "Lunge to grab and disarm prey, then Punch or Fling to separate it from support. Slashes heal a portion of your missing health, with stronger healing when more enemies are nearby."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/warrior_punch,
+		/datum/action/xeno_action/activable/lunge,
+		/datum/action/xeno_action/activable/fling,
+	)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
@@ -46,16 +57,6 @@
 	old_x = -16
 	tier = 2
 	pull_speed = 2 // about what it was before, slightly faster
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/warrior_punch,
-		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/fling,
-	)
 
 	claw_type = CLAW_TYPE_SHARP
 
@@ -83,7 +84,7 @@
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
 	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
-	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
+	var/lifesteal_lock_duration = 2 SECONDS // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
@@ -234,7 +235,7 @@
 
 	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
 
-	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
+	launch_with_dash_smoke(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking = TRUE)
 
 	if(lunge_user.Adjacent(carbon))
 		lunge_user.start_pulling(carbon,1)
@@ -279,13 +280,13 @@
 
 	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
 	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	if(stun_power)
-		carbon.Stun(get_xeno_stun_duration(carbon, stun_power))
-	if(weaken_power)
-		carbon.KnockDown(get_xeno_stun_duration(carbon, weaken_power))
-	if(slowdown)
-		if(carbon.slowed < slowdown)
-			carbon.apply_effect(slowdown, SLOW)
+	if(stun_duration)
+		carbon.Stun(get_xeno_stun_duration(carbon, stun_duration))
+	if(knockdown_duration)
+		carbon.KnockDown(get_xeno_stun_duration(carbon, knockdown_duration))
+	if(slow_duration)
+		if(carbon.slowed < slow_duration)
+			carbon.apply_effect(slow_duration, SLOW)
 	carbon.last_damage_data = create_cause_data(initial(fling_user.caste_type), fling_user)
 
 	var/facing = get_dir(fling_user, carbon)
@@ -359,9 +360,9 @@
 			carbon.apply_effect(3, SLOW)
 
 		if(isyautja(carbon))
-			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
+			damage = rand(base_damage_pred, base_damage_pred + damage_variance)
 		else if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
+			damage = rand(base_damage_synth, base_damage_synth + damage_variance)
 
 
 	carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")

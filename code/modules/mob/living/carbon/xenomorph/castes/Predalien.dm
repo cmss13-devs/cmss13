@@ -1,5 +1,18 @@
 /datum/caste_datum/predalien
 	caste_type = XENO_CASTE_PREDALIEN
+	playstyle = "Collect Trophies from kills. Close the gap with Feral Rush, slam prey with Feral Smash, and use Roar to break nearby hunter cloaks and empower allied xenomorphs."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/feralrush,
+		/datum/action/xeno_action/onclick/predalien_roar,
+		/datum/action/xeno_action/activable/feral_smash,
+		/datum/action/xeno_action/activable/feralfrenzy,
+		/datum/action/xeno_action/onclick/toggle_gut_targeting,
+	)
 	display_name = "Abomination"
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -54,18 +67,6 @@
 	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/feralrush,
-		/datum/action/xeno_action/onclick/predalien_roar,
-		/datum/action/xeno_action/activable/feral_smash,
-		/datum/action/xeno_action/activable/feralfrenzy,
-		/datum/action/xeno_action/onclick/toggle_gut_targeting,
-	)
 
 	skull = /obj/item/skull/abomination
 	pelt = /obj/item/pelt/abomination
@@ -149,18 +150,24 @@ You must still listen to the queen.
 
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"
+	resource_name = "Trophies"
+	resource_capacity = 10
+	resource_icon_state = "butchering"
+	resource_description = "Earn 1 Trophy per kill and keep it for life. Each adds 2.5 slash damage, increases Feral Smash and Feral Frenzy damage, and makes Roar's buff to allies stronger and longer."
 
 	var/kills = 0
-	var/max_kills = 10
+
+/datum/behavior_delegate/predalien_base/preview_resource_amount()
+	return kills
 
 /datum/behavior_delegate/predalien_base/append_to_stat()
 	. = list()
-	. += "Kills: [kills]/[max_kills]"
+	. += "Trophies: [kills]/[resource_capacity]"
 
-/datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
+/datum/behavior_delegate/predalien_base/on_kill_mob(mob/target_mob)
 	. = ..()
 
-	kills = min(kills + 1, max_kills)
+	kills = min(kills + 1, resource_capacity)
 
 /datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/attacked_mob)
 	if(ishuman(attacked_mob))
@@ -175,7 +182,7 @@ You must still listen to the queen.
 
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
+	playsound(xeno.loc, pick(predalien_roar), 50, 0, status = 0, falloff = 3)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
 	FOR_DVIEW(var/mob/living/carbon/target_carbon, 7, xeno, HIDE_INVISIBLE_OBSERVER)
@@ -280,7 +287,7 @@ You must still listen to the queen.
 			xeno.spin_circle()
 			xeno.flick_attack_overlay(target_carbon, "tail")
 
-		playsound(owner, 'sound/voice/predalien_growl.ogg', 50, 0, status = 0)
+		playsound(owner, 'sound/voice/predalien_growl.ogg', 60, 0, status = 0)
 
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = FALSE
@@ -389,7 +396,7 @@ You must still listen to the queen.
 
 	apply_cooldown()
 
-	xeno.throw_atom(get_step_towards(affected_atom, xeno), grab_range, SPEED_FAST, xeno, tracking=TRUE)
+	launch_with_dash_smoke(get_step_towards(affected_atom, xeno), grab_range, SPEED_FAST, xeno, tracking = TRUE)
 
 	if(xeno.Adjacent(target_carbon) && xeno.start_pulling(target_carbon, TRUE))
 		playsound(target_carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
@@ -407,7 +414,7 @@ You must still listen to the queen.
 	playsound(target_carbon, 'sound/effects/bang.ogg', 25, 0)
 	playsound(target_carbon,"slam", 50, 1)
 	animate(target_carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING) //animates the smash
-	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, base_damage + damage_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)

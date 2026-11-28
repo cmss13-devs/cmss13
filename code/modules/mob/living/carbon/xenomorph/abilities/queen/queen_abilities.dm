@@ -4,11 +4,12 @@
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/grow_ovipositor
+	ability_description = "Anchor yourself to grow an ovipositor and lay eggs for the hive."
 	name = "Grow Ovipositor (500)"
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
 	xeno_cooldown = 5 MINUTES
-	cooldown_message = "You are ready to grow an ovipositor again."
+	cooldown_message = "We are ready to grow an ovipositor again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
@@ -25,17 +26,30 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 8 SECONDS
+	cooldown_message = "If we have the stores, we can heal one of our children again."
 
 /datum/action/xeno_action/onclick/screech
+	ability_stats_type = /datum/xeno_ability_stats/screech
+	ability_description = "Unleash a roar that stuns nearby enemies in sight, knocking down those closest to you and temporarily deafening them. Nearby facehuggers are also affected. Available once mature."
 	name = "Screech (250)"
 	action_icon_state = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
-	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	cooldown_message = "We feel our throat muscles vibrate. We are ready to screech again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
+
+XENO_ABILITY_STATS(screech, datum/action/xeno_action/onclick/screech)
+	var/close_range = /datum/caste_datum/queen::screech_close_range
+	var/far_range = /datum/caste_datum/queen::screech_range - 1
+	var/close_stun = /datum/caste_datum/queen::screech_close_stun * GLOBAL_STATUS_MULTIPLIER * 0.1
+	var/far_stun = /datum/caste_datum/queen::screech_far_stun * GLOBAL_STATUS_MULTIPLIER * 0.1
+	return list(
+		xeno_stat_row("Close stun and knockdown", list(xeno_description_value(close_stun, "crowd_control"), "s within ", xeno_description_value(close_range), " tiles.")),
+		xeno_stat_row("Distant stun", list(xeno_description_value(far_stun, "crowd_control"), "s, up to ", xeno_description_value(far_range), " tiles.")),
+	)
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
@@ -45,8 +59,10 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 12 SECONDS
+	cooldown_message = "If we have the stores, we can can heal one of our children again."
 
 /datum/action/xeno_action/onclick/queen_word
+	ability_description = "Broadcast a message to your hive."
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"
 	plasma_cost = 50
@@ -54,13 +70,14 @@
 	macro_path = /mob/living/carbon/xenomorph/proc/hive_message
 
 /datum/action/xeno_action/activable/gut
+	ability_description = "Rip open an adjacent victim with your claws."
 	name = "Gut (200)"
 	action_icon_state = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 MINUTES
 	plasma_cost = 200
-	cooldown_message = "You feel your anger return. You are ready to gut again."
+	cooldown_message = "We feel our anger return. We are ready to gut again."
 
 /datum/action/xeno_action/activable/expand_weeds
 	name = "Expand Weeds (50)"
@@ -75,11 +92,13 @@
 	var/turf_build_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/onclick/manage_hive
+	ability_description = "Manage membership and permissions within your hive."
 	name = "Manage The Hive"
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/send_thoughts // and prayers
+	ability_description = "Send a psychic whisper to issue an order or project psychic radiance."
 	name = "Psychic Communication"
 	action_icon_state = "psychic_whisper"
 	plasma_cost = 0
@@ -140,7 +159,7 @@
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
-		to_chat(owner, SPAN_XENOHIGHDANGER("Your boosted building has been disabled!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("Our boosted building has been disabled!"))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS

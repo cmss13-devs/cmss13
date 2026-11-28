@@ -18,8 +18,19 @@
 	// Is in gun-run mode
 	var/in_flyby = FALSE
 
+	/// firemission shadow appearance. set the icon to null to disable it
+	var/cas_shadow_icon = 'icons/effects/dropship_hover.dmi'
+	var/cas_shadow_icon_state = "dropship_shadow"
+	/// direction the nose points in the icon
+	var/cas_shadow_nose_direction = NORTH
+	var/cas_shadow_scale = 0.75
+	/// max opacity
+	var/cas_shadow_alpha = 70
+
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
+	/// Allows xenos to hijack during AO withdrawal
+	var/withdrawal_launch_override = FALSE
 	var/datum/dropship_hijack/almayer/hijack
 	/// Any allied queen present on launch otherwise null
 	var/datum/weakref/boarded_allied_queen = null
@@ -33,6 +44,7 @@
 	var/automated_timer
 	var/datum/cas_signal/paradrop_signal
 	var/faction = FACTION_MARINE
+	var/list/obj_shuttle_contents = list()
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -50,10 +62,79 @@
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
+			var/obj/structure/machinery/door/airlock/hatch/side_hatch/side_door = air
+			if(istype(side_door))
+				hatch.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
+
+
+/obj/docking_port/mobile/marine_dropship/multiz/Initialize(mapload)
+	.=..()
+	for(var/area/areas in shuttle_areas)
+		for(var/obj/thing in areas)
+			obj_shuttle_contents += thing
+
+	var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button = locate(/obj/structure/machinery/door_control/shuttle_ramp) in obj_shuttle_contents
+	if(ramp_button)
+		if(ramp_button.id == "aft_ramp")
+			ramp_button.linked_dropship = src
+			door_control.add_ramp(ramp_button, "aft")
+
+	for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in obj_shuttle_contents)
+		hatch_button.linked_dropship = src
+
+	for(var/obj/deployer/shuttle/dropship/deployerino in obj_shuttle_contents)
+		deployerino.linked_dropship = src
+
+	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console = locate(/obj/structure/machinery/computer/cameras/dropship/midway/gunnery) in obj_shuttle_contents
+	if(console)
+		console.linked_dropship = src
+
+		/// cache each asset/configuration/direction combination
+/obj/docking_port/mobile/marine_dropship/proc/get_cas_shadow_icon(direction)
+	if(!cas_shadow_icon || cas_shadow_scale <= 0 || !(direction in GLOB.cardinals) || !(cas_shadow_nose_direction in GLOB.cardinals))
+		return
+	var/static/list/shadow_icons = list()
+	var/cache_key = "[cas_shadow_icon]:[cas_shadow_icon_state]:[cas_shadow_nose_direction]:[cas_shadow_scale]:[direction]"
+	if(shadow_icons[cache_key])
+		return shadow_icons[cache_key]
+	if(!(cas_shadow_icon_state in icon_states(cas_shadow_icon)))
+		return
+	var/icon/silhouette = icon(cas_shadow_icon, cas_shadow_icon_state)
+	var/frame_width = max(1, round(silhouette.Width() * cas_shadow_scale))
+	var/frame_height = max(1, round(silhouette.Height() * cas_shadow_scale))
+	silhouette.Scale(frame_width, frame_height)
+
+	var/square_size = max(frame_width, frame_height)
+	var/pad_left = round((square_size - frame_width) / 2)
+	var/pad_bottom = round((square_size - frame_height) / 2)
+	silhouette.Crop(1 - pad_left, 1 - pad_bottom, square_size - pad_left, square_size - pad_bottom)
+	var/rotation = (dir2angle(direction) - dir2angle(cas_shadow_nose_direction) + 360) % 360
+	silhouette.Turn(rotation)
+	var/crop_left = pad_left
+	var/crop_bottom = pad_bottom
+	var/rotated_width = frame_width
+	var/rotated_height = frame_height
+	switch(rotation)
+		if(90)
+			crop_left = pad_bottom
+			crop_bottom = square_size - pad_left - frame_width
+			rotated_width = frame_height
+			rotated_height = frame_width
+		if(180)
+			crop_left = square_size - pad_left - frame_width
+			crop_bottom = square_size - pad_bottom - frame_height
+		if(270)
+			crop_left = square_size - pad_bottom - frame_height
+			crop_bottom = pad_left
+			rotated_width = frame_height
+			rotated_height = frame_width
+	silhouette.Crop(crop_left + 1, crop_bottom + 1, crop_left + rotated_width, crop_bottom + rotated_height)
+	shadow_icons[cache_key] = silhouette
+	return silhouette
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
@@ -87,8 +168,14 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/canMove()
+	if(SShijack.withdrawal_end_time && is_mainship_level(z) && !withdrawal_launch_override)
+		return FALSE
+	return ..()
+
 /obj/docking_port/mobile/marine_dropship/enterTransit()
 	. = ..()
+	withdrawal_launch_override = FALSE
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
 	boarded_allied_queen = null
@@ -114,6 +201,27 @@
 /obj/docking_port/mobile/marine_dropship/alamo/get_transit_path_type()
 	return /turf/open/space/transit/dropship/alamo
 
+/obj/docking_port/mobile/marine_dropship/multiz
+	multiz_ship = TRUE
+	use_ripples = FALSE
+	var/shuttle_shadow
+
+/obj/docking_port/mobile/marine_dropship/multiz/omaha
+	name = "Omaha"
+	id = DROPSHIP_OMAHA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+	zdepth = 1
+	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/omaha
+	cas_shadow_icon_state = "shadow_mohawk"
+
+/obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
+	return /turf/open/space/transit/dropship/omaha
+
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
 	id = DROPSHIP_NORMANDY
@@ -121,6 +229,22 @@
 
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
+
+/obj/docking_port/mobile/marine_dropship/multiz/midway
+	name = "Midway"
+	id = DROPSHIP_MIDWAY
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+	zdepth = 1
+	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/midway
+	cas_shadow_icon_state = "shadow_mohawk"
+
+/obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
+	return /turf/open/space/transit/dropship/midway
 
 /obj/docking_port/mobile/marine_dropship/saipan
 	name = "Saipan"
@@ -201,7 +325,7 @@
 
 /// Triggers a sneak hijack if not already hijacked, less than 20s left on call, and a hostile queen is aboard
 /obj/docking_port/mobile/marine_dropship/proc/sneak_hijack_check()
-	if(is_hijacked)
+	if(is_hijacked || SShijack.ground_claimed)
 		return FALSE
 
 	if(SSticker.mode?.is_in_endgame)
@@ -318,13 +442,20 @@
 
 /obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
-	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
+	var/obj/docking_port/mobile/shuttle = arriving_shuttle
+	var/obj/docking_port/mobile/marine_dropship/marine_dropship
+	if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+		marine_dropship = shuttle
 
-	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
-		dropship.in_flyby = FALSE
-		dropship.control_doors("unlock", "all", force=FALSE)
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
-		console?.update_equipment()
+	if(auto_open)
+		if(marine_dropship)
+			marine_dropship.in_flyby = FALSE
+			marine_dropship.control_doors("unlock", "all", force=FALSE)
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/console = marine_dropship.getControlConsole()
+			console?.update_equipment()
+		else if(istype(shuttle, /obj/docking_port/mobile/emergency_response))
+			var/obj/docking_port/mobile/emergency_response/ert_shuttle = shuttle
+			ert_shuttle.control_doors("unlock", force=FALSE)
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
 		SSticker.mode.flags_round_type |= MODE_DS_LANDED
@@ -333,13 +464,16 @@
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
 
-	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
-		eq.on_arrival()
-
-	if(dropship.is_hijacked || !is_mainship_level(z))
+	if(!marine_dropship)
 		return
 
-	for(var/area/checked_area in dropship.shuttle_areas)
+	for(var/obj/structure/dropship_equipment/eq as anything in marine_dropship.equipments)
+		eq.on_arrival()
+
+	if(marine_dropship.is_hijacked || !is_mainship_level(z))
+		return
+
+	for(var/area/checked_area in marine_dropship.shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
 			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
 				continue
@@ -351,6 +485,10 @@
 
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
+
+	if(!istype(departing_shuttle, /obj/docking_port/mobile/marine_dropship))
+		return
+
 	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_launch()
@@ -371,11 +509,33 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha
+	name = "Almayer Hangar bay 1"
+	id = ALMAYER_DROPSHIP_LZ1
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/omaha
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
 	name = "Almayer Hangar bay 2"
 	id = ALMAYER_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
+
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway
+	name = "Almayer Hangar bay 2"
+	id = ALMAYER_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/midway
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_1
 	name = "Rostock Hangar bay 1"
@@ -403,6 +563,11 @@
 	. = ..()
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
 		var/obj/docking_port/mobile/marine_dropship/ds = arriving_shuttle
+		dheight = ds.dheight
+		dwidth = ds.dwidth
+		height = ds.height
+		width = ds.width
+		zdepth = ds.zdepth
 		ds.hijack.crash_landing()
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
@@ -432,9 +597,25 @@
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO
 
+/datum/map_template/shuttle/omaha
+	name = "Omaha"
+	shuttle_id = DROPSHIP_OMAHA
+
+/datum/map_template/shuttle_roof/omaha
+	name = "Omaha Roof"
+	roof_id = "omaha"
+
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/datum/map_template/shuttle/midway
+	name = "Midway"
+	shuttle_id = DROPSHIP_MIDWAY
+
+/datum/map_template/shuttle_roof/midway
+	name = "Midway Roof"
+	roof_id = "midway"
 
 /datum/map_template/shuttle/saipan
 	name = "Saipan"

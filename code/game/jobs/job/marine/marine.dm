@@ -3,7 +3,7 @@
 	selection_class = "job_marine"
 	total_positions = 8
 	spawn_positions = 8
-	allow_additional = 1
+	role_weight = 1
 
 /datum/job/marine/generate_entry_message(mob/living/carbon/human/current_human)
 	if(current_human.assigned_squad)

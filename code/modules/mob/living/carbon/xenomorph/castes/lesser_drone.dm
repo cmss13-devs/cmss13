@@ -1,5 +1,18 @@
 /datum/caste_datum/lesser_drone
 	caste_type = XENO_CASTE_LESSER_DRONE
+	playstyle = "Support the hive by building resin, moving eggs and spreading weeds near existing hive nodes. Straying away from weeds will damage you over time, but resting will stop that damage. This fragile builder cannot evolve."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/plant_weeds/lesser, //first macro
+		/datum/action/xeno_action/onclick/choose_resin, //second macro
+		/datum/action/xeno_action/activable/secrete_resin, //third macro
+		)
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_1
@@ -18,7 +31,7 @@
 	build_time_mult = BUILD_TIME_MULT_LESSER_DRONE
 	behavior_delegate_type = /datum/behavior_delegate/lesser_drone_base
 
-	caste_desc = "A builder of hives."
+	caste_desc = "A builder of smaller hives. It depends on weeds for survival."
 	can_hold_facehuggers = TRUE
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
@@ -59,23 +72,13 @@
 	health_threshold_dead = 0
 	gib_chance = 100
 	acid_blood_damage = 15
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/plant_weeds/lesser, //first macro
-		/datum/action/xeno_action/onclick/choose_resin, //second macro
-		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/squatter
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/lesser_drone.dmi'
@@ -83,6 +86,14 @@
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
+
+/mob/living/carbon/xenomorph/lesser_drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	GLOB.xeno_ghost_role_mobs += src
+	return ..()
+
+/mob/living/carbon/xenomorph/lesser_drone/Destroy()
+	GLOB.xeno_ghost_role_mobs -= src
+	return ..()
 
 /mob/living/carbon/xenomorph/lesser_drone/Login()
 	var/last_ckey_inhabited = persistent_ckey

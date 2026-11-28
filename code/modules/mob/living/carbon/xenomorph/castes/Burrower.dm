@@ -1,6 +1,23 @@
 //burrower is COMBAT support
 /datum/caste_datum/burrower
 	caste_type = XENO_CASTE_BURROWER
+	playstyle = "Dig linked tunnel entrances for the hive and hide facehuggers in resin traps. Burrow to approach underground, then surface and use Tremor to disrupt enemies around you."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/build_tunnel,
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/place_trap, //second macro
+		/datum/action/xeno_action/activable/burrow, //third macro
+		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
@@ -54,22 +71,6 @@
 	base_pixel_y = -20
 	tier = 2
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/build_tunnel,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/place_trap, //second macro
-		/datum/action/xeno_action/activable/burrow, //third macro
-		/datum/action/xeno_action/onclick/tremor, //fourth macro
-		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -169,7 +170,7 @@
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
-	burrow_timer = world.time + 90 // How long we can be burrowed
+	burrow_timer = world.time + (caste ? caste.burrow_duration : /datum/caste_datum::burrow_duration) // How long we can be burrowed
 	process_burrow()
 
 /mob/living/carbon/xenomorph/proc/process_burrow()
@@ -185,7 +186,7 @@
 /mob/living/carbon/xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
-	to_chat(src, SPAN_NOTICE("You resurface."))
+	to_chat(src, SPAN_NOTICE("We resurface."))
 	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	alpha = initial(alpha)
@@ -314,17 +315,18 @@
 
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
 	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
-	burrower_tremor.create_stomp()
-
+	var/list/impact_area = range(impact_radius, burrower_tremor)
+	show_radial_telegraph(get_turf(burrower_tremor), impact_area, impact_radius, /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop, 0.35 SECONDS, "#D79600")
+	scatter_smoke_plumes(impact_area)
 
 	for(var/mob/living/carbon/carbon_target in range(7, burrower_tremor))
-		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
+		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath you!"))
 		shake_camera(carbon_target, 2, 3)
-		if(get_dist(burrower_tremor, carbon_target) <= 3 && !burrower_tremor.can_not_harm(carbon_target))
+		if(get_dist(burrower_tremor, carbon_target) <= impact_radius && !burrower_tremor.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
-				carbon_target.apply_effect(1, SLOW)
+				carbon_target.apply_effect(slow_duration, SLOW)
 			else
-				carbon_target.apply_effect(1, WEAKEN)
+				carbon_target.apply_effect(knockdown_duration, WEAKEN)
 			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
 	apply_cooldown()

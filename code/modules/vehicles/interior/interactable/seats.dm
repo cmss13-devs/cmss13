@@ -318,8 +318,7 @@
 	var/broken = FALSE
 	buildstackamount = 0
 	can_rotate = FALSE
-	picked_up_item = null
-
+	foldabletype = null
 	unslashable = FALSE
 	unacidable = TRUE
 
@@ -344,6 +343,23 @@
 	init_pixel_y = pixel_y
 	init_pixel_x = pixel_x
 
+/obj/structure/bed/chair/vehicle/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
+	.=..()
+
+	var/approachness = NORTH|SOUTH|EAST|WEST
+	var/internalness = NORTH|SOUTH|EAST|WEST
+
+	if(neighbor && neighbor.buckled_mob)
+		internalness &= ~turn(dir, 180)	//cant walk into filled seats
+		approachness &= ~turn(dir, 180)
+
+	if(force_update && buckled_mob)
+		buckled_mob.density = FALSE
+		density = TRUE
+		AddComponent(/datum/component/shimmy_around, \
+			approach_dirs = approachness, \
+			internal_dirs = internalness \
+		)
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)
@@ -361,6 +377,7 @@
 			layer = BELOW_MOB_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+	update_shimmy_data()
 
 //------BUCKLING AND UNBUCKLING
 //trying to buckle a mob
@@ -395,21 +412,6 @@
 		if(buckle_offset_y != 0)
 			M.pixel_y = mob_old_y
 			mob_old_y = 0
-
-	for(var/obj/structure/bed/chair/vehicle/VS in get_turf(src))
-		if(VS != src)
-			//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
-			if(buckled_mob)
-				if(VS.buckled_mob)
-					REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-					REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				else
-					ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-			else
-				if(VS.buckled_mob)
-					ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-			break
 
 	handle_rotation()
 
@@ -480,9 +482,104 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_seat()
 
+/obj/structure/bed/chair/vehicle/toc
+	name = "overwatch chair"
+	desc = "A sturdy chair with a brace that lowers over the body. Prevents being flung around in vehicle during a crash and being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	icon_state = "armor_chair"
+	can_rotate = TRUE
+
+/obj/structure/bed/chair/vehicle/toc/afterbuckle(mob/M)
+	if(buckled_mob)
+		if(buckled_mob != M)
+			return
+		icon_state = initial(icon_state) + "_buckled"
+		overlays += chairbar
+
+		if(buckle_offset_x != 0)
+			mob_old_x = M.pixel_x
+			M.pixel_x = buckle_offset_x
+		if(buckle_offset_y != 0)
+			mob_old_y = M.pixel_y
+			M.pixel_y = buckle_offset_y
+
+		ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, BUCKLED_TRAIT)
+	else
+		icon_state = initial(icon_state)
+		overlays -= chairbar
+
+		if(buckle_offset_x != 0)
+			M.pixel_x = mob_old_x
+			mob_old_x = 0
+		if(buckle_offset_y != 0)
+			M.pixel_y = mob_old_y
+			mob_old_y = 0
+
+		REMOVE_TRAIT(M, TRAIT_UNDENSE, BUCKLED_TRAIT)
+
+	handle_rotation()
+
 // White chairs
 
 /obj/structure/bed/chair/vehicle/white
 	name = "passenger seat"
 	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
+/obj/structure/bed/chair/vehicle/omaha_pilot
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
+	icon_state = "passenger_chair"
+	name = "pilot's chair"
+	desc = "A specially designed chair for pilots to sit in."
+
+/obj/structure/bed/chair/vehicle/omaha_commander
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
+	icon_state = "command_chair"
+	name = "officer's chair"
+	desc = "A specially designed chair for officers to sit in."
+
+/obj/structure/bed/chair/vehicle/omaha_passenger
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
+	icon_state = "passenger_chair"
+
+/obj/structure/bed/chair/vehicle/midway_gunner // make it indestructible
+	icon = 'icons/obj/structures/machinery/midway/seats.dmi'
+	icon_state = "passenger_chair"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/linked_gunnery_console
+
+/obj/structure/bed/chair/vehicle/midway_gunner/afterbuckle(mob/user)
+	. = ..()
+	to_chat(user, SPAN_NOTICE("Interact with the [linked_gunnery_console.name] to provide fire support."))
+//	M.reset_view(linked_dropship)
+
+/obj/structure/bed/chair/vehicle/midway_gunner/unbuckle(mob/user)
+	.=..()
+	linked_gunnery_console.ui_close(user)
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
+	icon_state = "passenger_chair"
+	var/post_init_layer
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/Initialize()
+	. = ..()
+	chairbar = image(icon, "vehicle_bars")
+	chairbar.layer = ABOVE_MOB_LAYER
+
+	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
+	handle_rotation()
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/Initialize()
+	init_pixel_y = pixel_y
+	layer = (3 + (1 - (y / 256))) + ((initial(layer) - 3) / 2)/1000
+	return ..()
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/handle_rotation()
+	return
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/afterShuttleMove()
+	.=..()
+	pixel_y = init_pixel_y
+	pixel_x = init_pixel_x

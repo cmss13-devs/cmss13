@@ -29,11 +29,14 @@ const DoorStatusEnum = {
   SHUTTLE_DOOR_LOCKED: 1,
 } as const;
 
+const doorControlOrder = ['port', 'aft', 'starboard'];
+
 type DoorStatusEnums = (typeof DoorStatusEnum)[keyof typeof DoorStatusEnum];
 
 interface DoorStatus {
   id: string;
   value: DoorStatusEnums;
+  is_ramp: string; // idk how to pass a boolean. simple (....xxx, "is_ramp" = controller.is_ramp) in shuttle/helpers @ln75 is not working for some reason
 }
 
 interface AutomatedControl {
@@ -113,6 +116,10 @@ const DropshipDoorControl = () => {
       <Stack justify="space-between" className="DoorControlStack">
         {data.door_status
           .filter((x) => x.id !== 'all')
+          .sort(
+            (a, b) =>
+              doorControlOrder.indexOf(a.id) - doorControlOrder.indexOf(b.id),
+          )
           .map((x) => {
             const name = x.id.substr(0, 1).toLocaleUpperCase() + x.id.substr(1);
             return (
@@ -123,38 +130,74 @@ const DropshipDoorControl = () => {
                       No response
                     </Button>
                   )}
-                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'force-lock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-closed"
-                    >
-                      Lock {name}
-                    </Button>
-                  )}
-                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'unlock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-open"
-                    >
-                      Unlock {name}
-                    </Button>
-                  )}
+                  {x.is_ramp === '0' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'force-lock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-closed"
+                      >
+                        Lock {name}
+                      </Button>
+                    )}
+                  {x.is_ramp === '0' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'unlock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-open"
+                      >
+                        Unlock {name}
+                      </Button>
+                    )}
+                  {x.is_ramp === '1' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'force-lock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-closed"
+                      >
+                        Raise {name} Ramp
+                      </Button>
+                    )}
+                  {x.is_ramp === '1' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'unlock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-open"
+                      >
+                        Lower {name} Ramp
+                      </Button>
+                    )}
                 </>
               </Stack.Item>
             );
@@ -170,6 +213,42 @@ export const DropshipDestinationSelection = () => {
     'target_site',
     undefined,
   );
+  const [lockedHangarDestination] = useSharedState<string | null>(
+    'locked_hangar_destination',
+    null,
+  );
+  const [lockedPlanetDestination] = useSharedState<string | null>(
+    'locked_planet_destination',
+    null,
+  );
+
+  // Auto-select locked destination if available
+  useEffect(() => {
+    if (
+      !siteselection &&
+      (lockedHangarDestination || lockedPlanetDestination)
+    ) {
+      const availableLockedDestination = data.destinations.find((dest) => {
+        return (
+          dest.available === 1 &&
+          (dest.id === lockedHangarDestination ||
+            dest.id === lockedPlanetDestination)
+        );
+      });
+      if (availableLockedDestination) {
+        setSiteSelection(availableLockedDestination.id);
+        act('button-push');
+      }
+    }
+  }, [
+    data.destinations,
+    lockedHangarDestination,
+    lockedPlanetDestination,
+    siteselection,
+    setSiteSelection,
+    act,
+  ]);
+
   return (
     <Section m="0" mb="6px" title="Flight Controls">
       <Stack justify="space-evenly">
@@ -188,6 +267,7 @@ export const DropshipDestinationSelection = () => {
         <DestinationSelector
           options={data.destinations}
           selected={siteselection}
+          showLockButtons
           onClick={(value) => {
             setSiteSelection(value);
             act('button-push');
@@ -204,10 +284,42 @@ interface DestinationProps {
   readonly selected?: string;
   readonly applyFilter?: boolean;
   readonly availableOnly?: boolean;
+  readonly showLockButtons?: boolean;
 }
 
 const DestinationSelector = (props: DestinationProps) => {
   const { data } = useBackend<DropshipNavigationProps>();
+  const [lockedHangarDestination, setLockedHangarDestination] = useSharedState<
+    string | null
+  >('locked_hangar_destination', null);
+  const [lockedPlanetDestination, setLockedPlanetDestination] = useSharedState<
+    string | null
+  >('locked_planet_destination', null);
+
+  const toggleLockDestination = (destinationId: string) => {
+    // Find the destination and check its name for "Hangar"
+    const destination = data.destinations.find(
+      (dest) => dest.id === destinationId,
+    );
+    const isHangar = destination
+      ? destination.name.toLowerCase().includes('hangar')
+      : false;
+
+    if (isHangar) {
+      if (lockedHangarDestination === destinationId) {
+        setLockedHangarDestination(null);
+      } else {
+        setLockedHangarDestination(destinationId);
+      }
+    } else {
+      if (lockedPlanetDestination === destinationId) {
+        setLockedPlanetDestination(null);
+      } else {
+        setLockedPlanetDestination(destinationId);
+      }
+    }
+  };
+
   return (
     <>
       {props.options
@@ -237,6 +349,31 @@ const DestinationSelector = (props: DestinationProps) => {
                   {x.name}
                 </Button>
               </Flex.Item>
+              {props.showLockButtons && (
+                <Flex.Item>
+                  <Button
+                    icon={
+                      lockedHangarDestination === x.id ||
+                      lockedPlanetDestination === x.id
+                        ? 'lock'
+                        : 'unlock'
+                    }
+                    color={
+                      lockedHangarDestination === x.id ||
+                      lockedPlanetDestination === x.id
+                        ? 'good'
+                        : 'transparent'
+                    }
+                    onClick={() => toggleLockDestination(x.id)}
+                    tooltip={
+                      lockedHangarDestination === x.id ||
+                      lockedPlanetDestination === x.id
+                        ? `Locked: Auto-select ${x.name}`
+                        : `Lock ${x.name} for auto-selection`
+                    }
+                  />
+                </Flex.Item>
+              )}
             </Flex>
           </Stack.Item>
         ))}
@@ -282,6 +419,43 @@ const AutopilotConfig = () => {
     'autopilot_groundside',
     undefined,
   );
+  const [lockedHangarDestination] = useSharedState<string | null>(
+    'locked_hangar_destination',
+    null,
+  );
+  const [lockedPlanetDestination] = useSharedState<string | null>(
+    'locked_planet_destination',
+    null,
+  );
+
+  // Auto-select locked destinations for autopilot
+  useEffect(() => {
+    if (!automatedHangar && lockedHangarDestination) {
+      const lockedHangar = data.destinations.find(
+        (dest) => dest.id === lockedHangarDestination,
+      );
+      if (lockedHangar) {
+        setAutomatedHangar(lockedHangar.id);
+      }
+    }
+    if (!automatedLZ && lockedPlanetDestination) {
+      const lockedLZ = data.destinations.find(
+        (dest) => dest.id === lockedPlanetDestination,
+      );
+      if (lockedLZ) {
+        setAutomatedLZ(lockedLZ.id);
+      }
+    }
+  }, [
+    data.destinations,
+    lockedHangarDestination,
+    lockedPlanetDestination,
+    automatedHangar,
+    automatedLZ,
+    setAutomatedHangar,
+    setAutomatedLZ,
+  ]);
+
   return (
     <Section
       m="0"
@@ -319,6 +493,7 @@ const AutopilotConfig = () => {
           selected={automatedHangar}
           applyFilter={false}
           availableOnly={false}
+          showLockButtons
           onClick={(value) => {
             setAutomatedHangar(value);
             act('button-push');
@@ -337,6 +512,7 @@ const AutopilotConfig = () => {
           selected={automatedLZ}
           applyFilter={false}
           availableOnly={false}
+          showLockButtons
           onClick={(value) => {
             setAutomatedLZ(value);
             act('button-push');

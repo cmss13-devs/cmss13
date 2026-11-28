@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(mapping)
 	///Name of all shuttles
 	var/list/shuttle_templates = list()
 	var/list/all_shuttle_templates = list()
+	var/list/shuttle_roof_templates = list()
 	///map_id of all tents
 	var/list/tent_type_templates = list()
 
@@ -232,7 +233,7 @@ SUBSYSTEM_DEF(mapping)
 		ground_base_path = "data/"
 	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
-	if(!ground_map.disable_ship_map)
+	if(!ground_map.disable_ship_map && trim(file2text("data/mode.txt")) != GAMEMODE_SURVIVE)
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
 		var/ship_base_path = "maps/"
 		if(ship_map.override_map)
@@ -283,11 +284,14 @@ SUBSYSTEM_DEF(mapping)
 	for(var/path in paths)
 		var/list/filelist = flist(path)
 		for(var/map in filelist)
+			if(!findtext(map, ".dmm", -4))
+				continue
 			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 			map_templates[T.name] = T
 
 	preloadShuttleTemplates()
 	preload_tent_templates()
+	preload_shuttle_roof_templates()
 
 /proc/generateMapList(filename)
 	. = list()
@@ -328,6 +332,11 @@ SUBSYSTEM_DEF(mapping)
 		shuttle_templates[S.shuttle_id] = S
 		all_shuttle_templates[item] = S
 		map_templates[S.shuttle_id] = S
+
+/datum/controller/subsystem/mapping/proc/preload_shuttle_roof_templates()
+	for(var/template in subtypesof(/datum/map_template/shuttle_roof))
+		var/datum/map_template/shuttle_roof/new_shuttle_roof = new template()
+		shuttle_roof_templates[new_shuttle_roof.roof_id] = new_shuttle_roof
 
 /datum/controller/subsystem/mapping/proc/preload_tent_templates()
 	for(var/template in subtypesof(/datum/map_template/tent))

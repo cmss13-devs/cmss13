@@ -1,0 +1,4 @@
+author: "doc12693420"
+delete-after: True
+changes:
+  - server: "removes the distress-signal start override so it still requires 1 player readied to start"

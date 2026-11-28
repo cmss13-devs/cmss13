@@ -153,6 +153,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
 		user.set_interaction(src)
+	if(camera_holder)
+		if(istype(get_area(camera_holder), /area/shuttle))
+			var/atom/movable/screen/plane_master/roof_dropship/roof_plane = user.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+			roof_plane?.Hide()
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/overwatch/get_examine_text(mob/user)
@@ -599,6 +603,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
+	data["hijack_plan"] = SShijack.hijack_plan
+	data["sd_unlocked"] = SShijack.sd_unlocked
+	data["hijack_started"] = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND
+	data["can_select_hijack_plan"] = allowed(user) && SShijack.can_select_hijack_plan()
+	data["withdrawal_available"] = SShijack.withdrawal_available
+	data["withdrawal_end_time"] = SShijack.withdrawal_end_time
+	data["can_start_withdrawal"] = allowed(user) && SShijack.can_start_withdrawal()
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
@@ -877,6 +888,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					disconnect_holder()
 				cam = new_cam
 				if(new_holder)
+					if(istype(get_area(new_holder), /area/shuttle))
+						var/atom/movable/screen/plane_master/roof_dropship/roof_plane = user.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+						roof_plane?.Hide()
 					connect_holder(new_holder)
 
 		if("change_operator")
@@ -1109,6 +1123,22 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
 			. = TRUE
 
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("withdrawal_start")
+			if(!allowed(ui.user))
+				return FALSE
+			return SShijack.start_withdrawal()
+
+		if("hijack_plan")
+			if(!allowed(ui.user))
+				return FALSE
+			return SShijack.select_hijack_plan(params["plan"])
+
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER
 	if(inoperable())
@@ -1259,6 +1289,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 	tacmap_component.close_popout_tacmaps(user)
+	if(!istype(get_area(src), /area/shuttle))
+		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = user.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+		roof_plane?.Show()
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
@@ -1649,6 +1682,35 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "overwatch_computer"
 
+/obj/structure/machinery/computer/overwatch/almayer/dropship
+	name = "Overwatch console"
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "overwatch_module"
+	density = FALSE
+	layer = WALL_OBJ_LAYER
+
+/obj/structure/machinery/computer/overwatch/almayer/dropship/omaha
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "overwatch_module"
+
+/obj/structure/overwatch_dummy
+	density = FALSE
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "overwatch_module_dummy"
+	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	unslashable = TRUE
+	unacidable = TRUE
+	pixel_x = -6
+	pixel_y = -10
+
+/obj/structure/machinery/computer/overwatch/almayer/dropship/midway
+	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
+
+/obj/structure/overwatch_dummy/midway
+	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
+	icon_state = "overwatch_module_dummy"
+
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 	freq = CLF_FREQ
@@ -1765,6 +1827,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	else
 		data["clarity_color"] = "bad"
 		data["clarity_status"] = "CRITICAL BLACKOUT"
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/apc
+	name = "TOC Overwatch Console"
+	desc = "The Tactical Operations Center overwatch console. Many different screens make up the display. A large scribbled text is next to one of the monitors.. WARNING: THE SHIPS GROUNDSIDE OPERATIONS CONSOLE MUST NOT BE LOGGED IN AT THE SAME TIME!"
+	icon = 'icons/obj/structures/machinery/toc.dmi'
+	icon_state = "toc"
+	bound_width = 64
+	bound_height = 32
+	layer = ABOVE_TABLE_LAYER
+	density = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

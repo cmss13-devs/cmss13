@@ -1,7 +1,21 @@
 /datum/caste_datum/king
 	caste_type = XENO_CASTE_KING
+	playstyle = "Crush enemies beneath with Destroy, plunge them into darkness with Doom, and decimate nearby enemies with Rend. Protect your sisters with Bulwark of the Hive as you break through the enemy's futile last stand."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/rend,
+		/datum/action/xeno_action/activable/doom,
+		/datum/action/xeno_action/activable/destroy,
+		/datum/action/xeno_action/onclick/king_shield,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+	)
 	caste_desc = "The end of the line."
 	tier = 4
+	is_intelligent = TRUE
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_8
@@ -12,6 +26,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_7
 	armor_deflection = XENO_ARMOR_FACTOR_TIER_5
 	speed = XENO_SPEED_TIER_1
+	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 
 	evolves_to = null
 	deevolves_to = null
@@ -42,21 +57,10 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
-	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/rend,
-		/datum/action/xeno_action/activable/doom,
-		/datum/action/xeno_action/activable/destroy,
-		/datum/action/xeno_action/onclick/king_shield,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-	)
+
+	water_config = /datum/water_overlay_config/xeno/medium/loud_stomps
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	weed_food_states = list()
@@ -77,7 +81,7 @@
 
 /mob/living/carbon/xenomorph/king/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-
+	hive.living_xeno_king = null
 	return ..()
 
 /mob/living/carbon/xenomorph/king/Initialize()
@@ -89,6 +93,7 @@
 		hive.banned_allies = list("All")
 		if(hive.break_all_alliances())
 			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
+		hive.living_xeno_king = src
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -134,6 +139,7 @@
 
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
+	hive.living_xeno_king = null
 	if(hive)
 		hive.setup_banned_allies()
 
@@ -154,14 +160,14 @@
 			continue
 		if(xeno.can_not_harm(carbon))
 			continue
-		carbon.apply_armoured_damage(damage)
+		carbon.apply_armoured_damage(base_damage)
 		carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 		xeno.flick_attack_overlay(carbon, "slash")
 		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
 		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourselves!"))
 	apply_cooldown()
 	..()
 
@@ -207,9 +213,9 @@
 			if(xeno.can_not_harm(carbon))
 				continue
 
-			carbon.EyeBlur(daze_length_seconds)
-			carbon.Daze(daze_length_seconds)
-			carbon.Superslow(slow_length_seconds)
+			carbon.EyeBlur(blur_ticks)
+			carbon.Daze(daze_duration)
+			carbon.Superslow(slow_duration)
 			carbon.add_client_color_matrix("doom", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
 			carbon.overlay_fullscreen("doom", /atom/movable/screen/fullscreen/flash/noise/nvg)
 			addtimer(CALLBACK(carbon, TYPE_PROC_REF(/mob, remove_client_color_matrix), "doom", 1 SECONDS), 5 SECONDS)
@@ -330,7 +336,7 @@
 
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
-	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourselves for a giant leap."))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))

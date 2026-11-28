@@ -99,6 +99,7 @@
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT5 "ert_mcaste_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT_ALAMO "ert_alamo_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
 #define MOBILE_SHUTTLE_ID_HUNTER "hunter_shuttle"
@@ -117,7 +118,9 @@
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
 #define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_OMAHA "dropship_omaha"
 #define DROPSHIP_NORMANDY "dropship_normandy"
+#define DROPSHIP_MIDWAY "dropship_midway"
 #define DROPSHIP_SAIPAN "dropship_saipan"
 #define DROPSHIP_MORANA "dropship_morana"
 #define DROPSHIP_DEVANA "dropship_devana"

@@ -232,6 +232,8 @@
 	else
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, langchat_drop_image), language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
+	return langchat_image
+
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/
 /atom/proc/langchat_display_image(mob/player)

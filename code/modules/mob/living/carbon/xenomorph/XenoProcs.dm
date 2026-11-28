@@ -292,6 +292,7 @@
 	if(slowed && !superslowed)
 		. += XENO_SLOWED_AMOUNT
 
+	. += CONFIG_GET(number/alien_delay)
 	var/list/L = list("speed" = .)
 	SEND_SIGNAL(src, COMSIG_XENO_MOVEMENT_DELAY, L)
 	. = L["speed"]
@@ -481,9 +482,11 @@
 					to_chat(src, SPAN_WARNING("[O] is blocking the resin! There's not enough space to build that here."))
 				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
-			if(!silent)
-				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
-			return
+			var/obj/item/clothing/mask/facehugger/blocking_hugger = O
+			if(blocking_hugger.stat != DEAD)
+				if(!silent)
+					to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
+				return
 		if(istype(O, /obj/effect/alien/egg))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There's already an egg."))

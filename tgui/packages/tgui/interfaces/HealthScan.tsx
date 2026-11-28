@@ -13,6 +13,7 @@ import {
   Section,
   Stack,
 } from 'tgui/components';
+import { DAMAGE_COLORS } from 'tgui/constants';
 import { Window } from 'tgui/layouts';
 
 type LimbData = {
@@ -205,22 +206,22 @@ const Patient = (props) => {
             <Stack>
               <Stack.Item>Damage:</Stack.Item>
               <Stack.Item>
-                <Box inline bold color={'red'} mr={1}>
+                <Box inline bold color={DAMAGE_COLORS.brute} mr={1}>
                   {total_brute}
                 </Box>
               </Stack.Item>
               <Stack.Item>
-                <Box inline bold color={'#ffb833'} mx={1}>
+                <Box inline bold color={DAMAGE_COLORS.burn} mx={1}>
                   {total_burn}
                 </Box>
               </Stack.Item>
               <Stack.Item>
-                <Box inline bold color={'green'} mx={1}>
+                <Box inline bold color={DAMAGE_COLORS.toxin} mx={1}>
                   {toxin}
                 </Box>
               </Stack.Item>
               <Stack.Item>
-                <Box inline bold color={'blue'} mx={1}>
+                <Box inline bold color={DAMAGE_COLORS.oxygen} mx={1}>
                   {oxy}
                 </Box>
               </Stack.Item>
@@ -306,7 +307,7 @@ const Patient = (props) => {
             <Box inline>
               <ProgressBar value={0}>
                 Brute:{' '}
-                <Box inline bold color={'red'}>
+                <Box inline bold color={DAMAGE_COLORS.brute}>
                   {total_brute}
                 </Box>
               </ProgressBar>
@@ -315,7 +316,7 @@ const Patient = (props) => {
             <Box inline>
               <ProgressBar value={0}>
                 Burn:{' '}
-                <Box inline bold color={'#ffb833'}>
+                <Box inline bold color={DAMAGE_COLORS.burn}>
                   {total_burn}
                 </Box>
               </ProgressBar>
@@ -324,7 +325,7 @@ const Patient = (props) => {
             <Box inline>
               <ProgressBar value={0}>
                 Toxin:{' '}
-                <Box inline bold color={'green'}>
+                <Box inline bold color={DAMAGE_COLORS.toxin}>
                   {toxin}
                 </Box>
               </ProgressBar>
@@ -333,7 +334,7 @@ const Patient = (props) => {
             <Box inline>
               <ProgressBar value={0}>
                 Oxygen:{' '}
-                <Box inline bold color={'blue'}>
+                <Box inline bold color={DAMAGE_COLORS.oxygen}>
                   {oxy}
                 </Box>
               </ProgressBar>

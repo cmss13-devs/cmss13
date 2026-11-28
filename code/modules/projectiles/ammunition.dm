@@ -1,4 +1,4 @@
-//Magazine items, and casings.
+//Magazine items, casings in decals\cleanable\casings.dm.
 /*
 Boxes of ammo. Certain weapons have internal boxes of ammo that cannot be removed and function as part of the weapon.
 They're all essentially identical when it comes to getting the job done.
@@ -107,6 +107,7 @@ They're all essentially identical when it comes to getting the job done.
 			C.update_inv_l_hand()
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()
+	SEND_SIGNAL(src, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
 
 /obj/item/ammo_magazine/get_examine_text(mob/user)
 	. = ..()
@@ -121,7 +122,8 @@ They're all essentially identical when it comes to getting the job done.
 		. += SPAN_NOTICE("It has [SPAN_BOLD(current_rounds)] round[current_rounds == 1 ? "" : "s"] out of [SPAN_BOLD(max_rounds)].")
 
 /obj/item/ammo_magazine/attack_self(mob/user) // literally just a copy of attack_hand
-	if(flags_magazine & AMMUNITION_REFILLABLE)
+	. = ..() //Calling the parent so the signals are properly handled; expecting either nothing or 1
+	if(flags_magazine & AMMUNITION_REFILLABLE && !.)
 		if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
 			to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
 			return
@@ -131,9 +133,11 @@ They're all essentially identical when it comes to getting the job done.
 		else
 			to_chat(user, SPAN_INFO("[src] is empty. Nothing to grab."))
 		return
-	return ..()
+	return
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
+	if(SEND_SIGNAL(src, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, user) & COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL)
+		return ..() //Do normal stuff yeah
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
 			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
@@ -149,6 +153,7 @@ They're all essentially identical when it comes to getting the job done.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
 /obj/item/ammo_magazine/attackby(obj/item/transferring, mob/living/user, bypass_hold_check = 0)
+	. = ..()
 	if(istype(transferring, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/magazine = transferring
 		if((magazine.flags_magazine & AMMUNITION_HANDFUL) || (magazine.flags_magazine & AMMUNITION_SLAP_TRANSFER && flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
@@ -163,6 +168,8 @@ They're all essentially identical when it comes to getting the job done.
 						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
+	else if(transferring.flags_item & JUNGLE_MAG_BINDER && src.flags_magazine & JUNGLE_STYLE_ABLE)
+		AddComponent(/datum/component/jungle_magazine, user, transferring)
 
 //Is the ammo magazine transferrable, silent version
 /obj/item/ammo_magazine/proc/is_transferable(obj/item/ammo_magazine/source)
@@ -394,71 +401,3 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	if(bullet.handful_color)
 		color = bullet.handful_color
 	update_icon()
-
-//----------------------------------------------------------------//
-
-
-/*
-Doesn't do anything or hold anything anymore.
-Generated per the various mags, and then changed based on the number of
-casings. .dir is the main thing that controls the icon. It modifies
-the icon_state to look like more casings are hitting the ground.
-There are 8 directions, 8 bullets are possible so after that it tries to grab the next
-icon_state while reseting the direction. After 16 casings, it just ignores new
-ones. At that point there are too many anyway. Shells and bullets leave different
-items, so they do not intersect. This is far more efficient than using Bl*nd() or
-Turn() or Shift() as there is virtually no overhead. ~N
-*/
-/obj/item/ammo_casing
-	name = "spent casing"
-	desc = "Empty and useless now."
-	icon = 'icons/obj/items/casings.dmi'
-	icon_state = "casing"
-	throwforce = 1
-	w_class = SIZE_TINY
-	layer = LOWER_ITEM_LAYER //Below other objects
-	dir = NORTH //Always north when it spawns.
-	flags_atom = FPRINT|CONDUCT|DIRLOCK
-	matter = list("metal" = 8) //tiny amount of metal
-	var/current_casings = 1 //This is manipulated in the procs that use these.
-	var/max_casings = 16
-	var/current_icon = 0
-	var/number_of_states = 10 //How many variations of this item there are.
-	garbage = TRUE
-
-/obj/item/ammo_casing/Initialize()
-	. = ..()
-	pixel_x = rand(-2.0, 2) //Want to move them just a tad.
-	pixel_y = rand(-2.0, 2)
-	icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
-
-//This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
-/obj/item/ammo_casing/update_icon()
-	if(max_casings >= current_casings)
-		if(current_casings == 2)
-			name += "s" //In case there is more than one.
-		if(floor((current_casings-1)/8) > current_icon)
-			current_icon++
-			icon_state += "_[current_icon]"
-
-		var/I = current_casings*8 // For the metal.
-		matter = list("metal" = I)
-		var/base_direction = current_casings - (current_icon * 8)
-		setDir(base_direction + floor(base_direction)/3)
-		switch(current_casings)
-			if(3 to 5)
-				w_class = SIZE_SMALL //Slightly heavier.
-			if(9 to 10)
-				w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
-
-
-//Making child objects so that locate() and istype() doesn't screw up.
-/obj/item/ammo_casing/bullet
-
-/obj/item/ammo_casing/cartridge
-	name = "spent cartridge"
-	icon_state = "cartridge"
-
-/obj/item/ammo_casing/shell
-	name = "spent shell"
-	icon_state = "shell"

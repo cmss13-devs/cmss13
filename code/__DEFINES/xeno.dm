@@ -107,6 +107,9 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
+/// Whether the xeno in question is capable of prying open dropships, starting hijack (queen) and disabling ERT shuttles
+#define IS_XENO_DROPSHIP_CAPABLE(X) (X.hive_pos == XENO_QUEEN || X.caste_type == XENO_CASTE_PREDALIEN || X.caste_type == XENO_CASTE_KING)
+
 // Queen permission toggles
 #define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
 #define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
@@ -213,6 +216,9 @@
 
 /// For how long the buff lasts
 #define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
+
+/// For /datum/hivebuff requirement of weighted marines groundside using /proc/get_groundside_marine_weight_ratio()
+#define XENO_BOON_REQUIRED_DANGER 0.25
 
 /// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
 #define HIJACK_RATIO_FOR_TACMAP 0.8
@@ -409,11 +415,11 @@
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
 #define HIVELORD_DESIGNER "Designer"
 
+// Spitter strain flags
+#define SPITTER_DISSOLVER "Dissolver"
+
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
-
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
 
 // Runner strain flags
 #define RUNNER_ACIDER "Acider"
@@ -461,6 +467,7 @@
 // Overall health pool
 #define XENO_HEALTH_MOD_VERY_SMALL  20
 #define XENO_HEALTH_MOD_SMALL   40
+#define XENO_HEALTH_MOD_SMALL_MED 50
 #define XENO_HEALTH_MOD_MED 60
 #define XENO_HEALTH_MOD_LARGE   80
 #define XENO_HEALTH_MOD_VERY_LARGE  100
@@ -652,7 +659,6 @@
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
-#define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
@@ -755,7 +761,6 @@
 #define FIRE_MULTIPLIER_DEADLY		3
 
 #define WHISPERER_VIEWRANGE 10
-#define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0
@@ -857,3 +862,39 @@
 
 /// Determines how fast xeno botany chems produce.
 #define XENO_BOTANY_RATE 10 SECONDS
+
+// Ability information helpers
+// FIELD is an unquoted action variable (base_damage)
+// LABEL is player facing text ("Impact damage")
+// NAME is its subtype name, e.g. tumble.
+// TYPE is the action's full type, e.g. datum/action/xeno_action/activable/tumble.
+// VALUE is a number
+// KIND selects text color, "brute", "burn", "toxin", "oxygen", "health", "shield", "plasma", or "crowd_control"
+// ABILITY is a typed action reference or type path
+
+/// Declares a stat provider's get_stats proc
+#define XENO_ABILITY_STATS(NAME, TYPE) /datum/xeno_ability_stats/NAME/get_stats(TYPE/ability)
+/// Reads FIELD from ABILITY
+#define XENO_ABILITY_VALUE(ABILITY, FIELD) (ispath(ABILITY) ? initial(ABILITY.FIELD) : ABILITY.FIELD)
+/// Builds one row for a calculated value
+#define XENO_STAT_VALUE(LABEL, VALUE, KIND, SUFFIX) xeno_stat_row(LABEL, list(xeno_description_value(VALUE, KIND), SUFFIX))
+/// Displays FIELD as brute damage in red
+#define XENO_STAT_BRUTE(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "brute", ".")
+/// Displays FIELD as burn damage in yellow
+#define XENO_STAT_BURN(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "burn", ".")
+/// Displays FIELD as health or healing in teal
+#define XENO_STAT_HEALTH(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "health", ".")
+/// Displays FIELD as shield points in purple
+#define XENO_STAT_SHIELD(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "shield", ".")
+/// Displays FIELD as plasma cost, transfer, or gain in teal, matching health
+#define XENO_STAT_PLASMA(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "plasma", ".")
+/// Displays FIELD as a neutral number, such as armor points or a target count
+#define XENO_STAT_NUMBER(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), null, ".")
+/// Displays FIELD as a neutral distance with the " tiles." suffix
+#define XENO_STAT_TILES(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), null, " tiles.")
+/// Displays a duration FIELD assigned with SECONDS or MINUTES as seconds. For example, 2 SECONDS displays as 2s.
+#define XENO_STAT_DURATION(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD) * 0.1, null, "s.")
+/// Displays a duration FIELD assigned with SECONDS in orange for stuns, roots, slows, and other control effects.
+#define XENO_STAT_CONTROL_DURATION(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD) * 0.1, "crowd_control", "s.")
+/// Displays legacy Stun, KnockDown, or Daze units as seconds in orange. FIELD is a raw count, not a SECONDS value.
+#define XENO_STAT_CONTROL_LEGACY(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD) * GLOBAL_STATUS_MULTIPLIER * 0.1, "crowd_control", "s.")

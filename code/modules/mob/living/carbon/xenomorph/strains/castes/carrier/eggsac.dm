@@ -1,8 +1,10 @@
 /datum/xeno_strain/eggsac
 	name = CARRIER_EGGSAC
-	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
+	summary = "Carry up to twelve eggs and place them farther away. Spend plasma to produce eggs and support nearby sisters with stronger pheromones."
+	description = "In exchange for our ability to store huggers and place traps, we gain strong pheromones, and the ability to lay eggs by using our plasma stores. In addition, we can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nWe can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while we remain within 14 tiles, or one minute if we leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	icon_state_prefix = "Eggsac"
+	phero_mod = XENO_PHERO_MOD_LARGE // praetorian level pheromones
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
@@ -18,10 +20,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
 
 /datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
+	..() // stat modifiers
 	carrier.plasma_types = list(PLASMA_EGG)
-	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
-	carrier.recalculate_plasma()
-	carrier.recalculate_pheromones()
 
 	if(carrier.huggers_cur)
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
@@ -58,7 +58,7 @@
 		if(my_egg)
 			remove_egg_owner(my_egg)
 			my_egg.start_unstoppable_decay()
-			to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
+			to_chat(bound_xeno, SPAN_XENOWARNING("We can only sustain [egg_sustain_cap] eggs off hive weeds! Our oldest placed egg is decaying rapidly."))
 
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		//Get the distance from us to our sustained egg
@@ -89,17 +89,24 @@
 	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
+	ability_stats_type = /datum/xeno_ability_stats/generate_egg
+	ability_description = "Use plasma to produce eggs for the hive."
 	name = "Generate Eggs (50)"
 	action_icon_state = "lay_egg"
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 50
 	plasma_use_per_tick = 15
 
-	action_start_message = "You start forming eggs."
+	action_start_message = "We start forming eggs."
 	action_end_message = "We don't have enough plasma to support forming eggs."
 	var/egg_generation_progress = 0
 
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+XENO_ABILITY_STATS(generate_egg, datum/action/xeno_action/active_toggle/generate_egg)
+	return list(
+		XENO_STAT_VALUE("Upkeep while producing", XENO_ABILITY_VALUE(ability, plasma_use_per_tick), "plasma", " plasma per life tick."),
+	)
 
 /datum/action/xeno_action/active_toggle/generate_egg/should_use_plasma()
 	. = FALSE

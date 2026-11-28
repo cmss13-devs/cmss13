@@ -11,7 +11,7 @@
 
 // resistance_flags = RESIST_ALL
 	anchored = TRUE
-
+	flags_atom = NO_ZFALL
 	/**
 	  * The identifier of the port or ship.
 	  * This will be used in numerous other places like the console,
@@ -33,6 +33,7 @@
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
 	var/dheight = 0
+	var/zdepth = 0
 	var/area_type
 	///are we invisible to shuttle navigation computers?
 	var/hidden = FALSE
@@ -40,6 +41,8 @@
 	var/delete_after = FALSE
 	///are we registered in SSshuttles?
 	var/registered = FALSE
+
+	var/multiz_ship = FALSE
 
 ///register to SSshuttles
 /obj/docking_port/proc/register()
@@ -284,28 +287,32 @@
 /obj/docking_port/stationary/proc/on_crash()
 	return
 
-/// Called when a new shuttle arrives
-/obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
-	turn_off_landing_lights()
-	return
-
 /// Called when a new shuttle is about to arrive
 /obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle, landing_sound)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_PREARRIVAL, arriving_shuttle)
 	if(!landing_lights_on)
 		turn_on_landing_lights()
 		if(landing_sound)
 			playsound(return_center_turf(), landing_sound, 60, 0, falloff=4)
-	return
+
+/// Called when a new shuttle arrives
+/obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_ARRIVAL, arriving_shuttle)
+	turn_off_landing_lights()
 
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_IGNITION, departing_shuttle)
 	turn_on_landing_lights()
-	return
 
 /// Called when a shuttle is about to complete undocking from this stationary dock (already physically gone)
 /obj/docking_port/stationary/proc/on_departure(obj/docking_port/mobile/departing_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_DEPARTURE, departing_shuttle)
 	turn_off_landing_lights()
-	return
 
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
@@ -321,10 +328,11 @@
 
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
+			for(var/zscan in 0 to 1)
+				var/turf/searchspot = locate(xscan, yscan, src.z - zscan)
+				for(var/obj/structure/machinery/landinglight/light in searchspot)
+					landing_lights += light
+					light.linked_port = src
 
 /obj/docking_port/stationary/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -791,6 +799,21 @@
 /obj/docking_port/mobile/proc/remove_ripples()
 	QDEL_LIST(ripples)
 
+/obj/docking_port/mobile/marine_dropship/multiz/create_ripples(obj/docking_port/stationary/our_dock, animate_time)
+	var/turf/target_turf = locate(our_dock.x - dwidth, our_dock.y - dheight, our_dock.z)
+	ripples += new shuttle_shadow(target_turf, animate_time)
+	if(is_hijacked)
+		var/turf/turf_above = SSmapping.get_turf_above(target_turf)
+		ripples += new shuttle_shadow(turf_above, animate_time)
+	else
+		var/turf/turf_below = SSmapping.get_turf_below(target_turf)
+		ripples += new shuttle_shadow(turf_below, animate_time)
+
+	return TRUE
+
+/obj/docking_port/mobile/marine_dropship/multiz/remove_ripples()
+	QDEL_LIST(ripples)
+
 /obj/docking_port/mobile/proc/ripple_area(obj/docking_port/stationary/S1)
 	if(!S1)
 		return list()
@@ -1011,15 +1034,14 @@
 	else
 		. = "unknown"
 
-
-// attempts to locate /obj/structure/machinery/computer/shuttle with matching ID inside the shuttle
+/// attempts to locate /obj/structure/machinery/computer/shuttle with matching ID in the shuttle's areas
 /obj/docking_port/mobile/proc/getControlConsole()
-	for(var/place in shuttle_areas)
-		var/area/shuttle/shuttle_area = place
-		for(var/obj/structure/machinery/computer/shuttle/S in shuttle_area)
-			if(S.shuttleId == id)
-				return S
+	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
+		for(var/obj/structure/machinery/computer/shuttle/computer in shuttle_area)
+			if(computer.shuttleId == id)
+				return computer
 	return null
+
 /*
 /obj/docking_port/mobile/proc/hyperspace_sound(phase, list/areas)
 	var/s

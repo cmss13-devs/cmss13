@@ -2093,14 +2093,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
-"Vq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/ice,
-/area/corsat/sigma/biodome/ice)
 "Vt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4143,7 +4135,7 @@ Zr
 Wk
 Wk
 fc
-Vq
+gP
 fc
 dS
 Wk

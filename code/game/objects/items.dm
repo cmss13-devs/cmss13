@@ -348,6 +348,8 @@
 /obj/item/attackby(obj/item/W, mob/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
+	if(SEND_SIGNAL(W, COMSIG_ITEM_ATTACK_ITEM, src, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+		return
 
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
@@ -1084,12 +1086,12 @@
  * Set the item up on a table.
  * @param target: table which is being used to host the item.
  */
-/obj/item/proc/set_to_table(obj/structure/surface/target)
-	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+/obj/item/proc/set_to_table(obj/structure/surface/target, mob/user)
+	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		table_setup = TRUE
-		usr.drop_inv_item_to_loc(src, target.loc)
+		user.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+		to_chat(user, SPAN_WARNING("You fail to setup the [name]"))
 
 /**
  * Called to reset the state of the item to not be settled on the table.
@@ -1153,6 +1155,8 @@
 
 // formerly in gun_helpers.dm, moved here for universal usage
 /obj/item/proc/unique_action(mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, user) & COMPONENT_CANCEL_UNIQUE_ACTION) //? Rather pointless right now as unique action is typically overwrited
+		return
 	return
 
 /obj/item/verb/use_unique_action()

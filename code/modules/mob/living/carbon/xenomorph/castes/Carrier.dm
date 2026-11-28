@@ -1,5 +1,21 @@
 /datum/caste_datum/carrier
 	caste_type = XENO_CASTE_CARRIER
+	playstyle = "Store eggs and live facehuggers, carry them to the front, then throw a hugger at exposed prey or hide one in a resin trap."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
+		/datum/action/xeno_action/onclick/place_trap, //2nd macro
+		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
+		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	caste_desc = "A carrier of huggies."
 	tier = 2
 
@@ -61,21 +77,6 @@
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
-		/datum/action/xeno_action/onclick/place_trap, //2nd macro
-		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
-		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
-		/datum/action/xeno_action/onclick/set_hugger_reserve,
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
@@ -90,6 +91,8 @@
 
 	skull = /obj/item/skull/carrier
 	pelt = /obj/item/pelt/carrier
+
+	water_config = /datum/water_overlay_config/xeno/medium/squatter
 
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
@@ -255,7 +258,7 @@
 			to_chat(src, SPAN_NOTICE("We take [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		behavior_delegate?.on_update_icons()
 	else
-		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
+		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on us."))
 
 /mob/living/carbon/xenomorph/carrier/proc/throw_hugger(atom/object)
 	if(!object)
@@ -273,7 +276,7 @@
 				drop_inv_item_on_ground(child)
 				return
 			if(on_fire)
-				to_chat(src, SPAN_WARNING("Touching \the [child] while you're on fire would burn it!"))
+				to_chat(src, SPAN_WARNING("Touching \the [child] while we're on fire would burn it!"))
 				return
 			store_hugger(child)
 			return
@@ -286,7 +289,7 @@
 				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
 				return
 			if(on_fire)
-				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while we're on fire would burn the facehuggers in it!"))
 				return
 			store_huggers_from_egg_morpher(morpher)
 			return
@@ -475,5 +478,5 @@
 		"How many to reserve?",
 		carrier.huggers_reserved, carrier.huggers_max, 0
 	)
-	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourself."))
+	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourselves."))
 	return ..()

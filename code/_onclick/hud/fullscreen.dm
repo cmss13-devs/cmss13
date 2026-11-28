@@ -107,6 +107,11 @@
 /atom/movable/screen/fullscreen/brute/nvg
 	color = COLOR_BLACK
 
+/atom/movable/screen/fullscreen/clouds
+	icon_state = "clouds"
+	layer = FULLSCREEN_CLOUDS_LAYER
+	alpha = 175
+
 /atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
@@ -195,6 +200,11 @@
 	icon_state = "vulture_scope_overlay_spotter"
 	should_resize = FALSE
 
+/atom/movable/screen/fullscreen/tactical_designator
+	icon_state = "rangefinder_scope_overlay"
+	layer = FULLSCREEN_VULTURE_SCOPE_LAYER
+	should_resize = TRUE
+
 //Weather overlays//
 
 /atom/movable/screen/fullscreen/weather
@@ -243,3 +253,7 @@
 	layer = LIGHTING_PRIMARY_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
+
+/atom/movable/screen/fullscreen/pilot_camera/
+	icon_state = "CAS_Camera"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

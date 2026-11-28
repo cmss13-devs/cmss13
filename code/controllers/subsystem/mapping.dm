@@ -64,6 +64,7 @@ SUBSYSTEM_DEF(mapping)
 				to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting."))
 				configs[i] = old_config
 
+	SSticker.load_mode()
 	loadWorld()
 	repopulate_sorted_areas()
 	preloadTemplates()
@@ -227,13 +228,15 @@ SUBSYSTEM_DEF(mapping)
 	ground_start = world.maxz + 1
 
 	var/datum/map_config/ground_map = configs[GROUND_MAP]
+	if(GLOB.master_mode == GAMEMODE_FORWARD_BASE)
+		ground_map.environment_traits[ZTRAIT_FOG] = TRUE
 	INIT_ANNOUNCE("Loading [ground_map.map_name]...")
 	var/ground_base_path = "maps/"
 	if(ground_map.override_map)
 		ground_base_path = "data/"
 	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
-	if(!ground_map.disable_ship_map && trim(file2text("data/mode.txt")) != GAMEMODE_SURVIVE)
+	if(!ground_map.disable_ship_map && !(GLOB.master_mode in list(GAMEMODE_SURVIVE, GAMEMODE_FORWARD_BASE)))
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
 		var/ship_base_path = "maps/"
 		if(ship_map.override_map)

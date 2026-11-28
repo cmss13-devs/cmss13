@@ -105,7 +105,7 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
 
-	if(get_groundside_marine_weight_ratio() < XENO_BOON_REQUIRED_DANGER)
+	if(!_check_danger())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
 		return FALSE
 
@@ -278,6 +278,9 @@
 /datum/hivebuff/proc/_roundtime_check()
 	return ROUND_TIME > roundtime_to_enable
 
+/datum/hivebuff/proc/_check_danger()
+	return get_groundside_marine_weight_ratio() >= XENO_BOON_REQUIRED_DANGER
+
 /// Gets the ratio of role weight of marines groundside / total
 /proc/get_groundside_marine_weight_ratio()
 	var/groundside_weight = 0
@@ -399,6 +402,41 @@
 
 
 // BUFFS //
+
+/datum/hivebuff/hive_surge
+	name = "Hive Surge"
+	cost = 0
+	desc = "Grants transmute, matures the Queen, and temporarily boosts evolution. Requires holding both comms pylons for five uninterrupted minutes. Can only be used once."
+	tier = HIVEBUFF_TIER_MAJOR
+	number_of_required_pylons = 2
+	is_reusable = FALSE
+	apply_on_new_xeno = FALSE
+	special_fail_message = "Our hold on the relays is too weak. Keep both pylons intact for five uninterrupted minutes while their power gathers."
+	engage_failure_message = "We cannot summon this blessing. Secure both relay pylons and gather our strength again."
+	engage_flavourmessage = "Our Queen calls upon the strength of the hive! Reshape yourselves and tear open the tallhosts' fortress!"
+
+/datum/hivebuff/hive_surge/_check_num_required_pylons()
+	return LAZYLEN(hive.active_endgame_pylons) >= number_of_required_pylons
+
+/datum/hivebuff/hive_surge/_check_danger()
+	return TRUE
+
+/datum/hivebuff/hive_surge/handle_special_checks()
+	var/datum/game_mode/colonialmarines/forward_base/mode = SSticker.mode
+	return istype(mode) && hive.hivenumber == XENO_HIVE_NORMAL && mode.hive_pylons_charged
+
+/datum/hivebuff/hive_surge/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	if(!handle_special_checks() || !_check_pass_reusable())
+		return FALSE
+	hive.bless_on_hijack()
+	return TRUE
+
+/datum/hivebuff/hive_surge/_announce_buff_engage()
+	..()
+	var/channel = get_free_channel()
+	for(var/client/player as anything in GLOB.clients)
+		playsound_client(player, 'sound/voice/predalien_roar.ogg', vol = 75, channel = channel)
+	marine_announcement("Mar-- KRRSH --this is Cam-- ... What the fuck am I picking up on my signals console? Massive spike from your pos-- KZZZT --all frequencies at once! Base, do you co-- ... What the fuck is down th--", "BRIGADIER GENERAL CAMERON - CHINOOK 91 GSO STATION", 'sound/AI/commandreport.ogg')
 
 /datum/hivebuff/extra_larva
 	name = "Surge of Larva"

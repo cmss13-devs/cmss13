@@ -40,3 +40,48 @@ Exact usage goes beyond this quick start guide, but to take an example:
   "when": { "mainpath": "right" }                # when "mainpath" is "right"
 },
 ```
+
+## Forward Base: adding a bunker to an existing map
+
+The bunker goes in a separate DMM that loads over the normal map. We'll use Big Red as an example map here.
+
+## 1. Make the bunker file
+
+Create `maps/map_files/BigRed/standalone/BigRed_Forward_Base.dmm`. Make it the same size as `maps/map_files/BigRed/BigRed.dmm`, with the same amount of z-levels.
+
+Set every tile you aren't using to `/turf/template_noop` and `/area/template_noop`, with no objects or anything else on it. That tells the game to leave the normal map alone. Only create the base, the paths up to it, its fog, upper floors, and off-map ASRS elevator. Don't crop off the blank space.
+
+## 2. Put the base together
+
+For making your life easier, copy the working parts from another FB map, like `maps/map_files/Kutjevo/standalone/Kutjevo_Forward_Base.dmm`, then arrange them to fit your base.
+
+- For indoor areas, only use areas under `/area/forward_base`
+- Copy the Normandy landing port and flight console. Put the console in a Forward Base area. Give the port a unique `id`, such as `bigred-fb-hangar`, and set the console's `linked_lz` to match.
+- Copy the ASRS elevator and its off-map part. Keep their areas as `/area/supply/station/uscm` and `/area/supply/dock/uscm`
+
+## 3. Mark where it loads
+
+Open the normal `maps/map_files/BigRed/BigRed.dmm`. At the coordinate (1,1,1), place `/obj/effect/landmark/nightmare` and set its `insert_tag` to `forward-base`. This lines the bunker file up with the normal map.
+
+## 4. Add it to Nightmare
+
+Open `maps/Nightmare/maps/BigRed/nightmare.json` and put this at the top of the list, just after the opening `[`:
+
+```json
+{
+  "type": "map_insert",
+  "landmark": "forward-base",
+  "chance": 1.0,
+  "path": "standalone/BigRed_Forward_Base.dmm",
+  "when": {
+    "$gamemode": "Distress Signal: Forward Base"
+  }
+}
+```
+
+The bunker loads first. Other inserts can still load afterward if their landmarks survive, so check they don't overwrite your base or thhe fog.
+
+## 5. Allow Forward Base on the map
+
+In `maps/bigredv2.json`, add `"Distress Signal: Forward Base"` to the `gamemodes` list.
+

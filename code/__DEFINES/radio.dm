@@ -19,6 +19,7 @@
 //Radio channels
 #define RADIO_CHANNEL_BLANK "UNSET"
 #define RADIO_CHANNEL_ALMAYER "Almayer"
+#define RADIO_CHANNEL_BUNKER "Bunker"
 #define RADIO_CHANNEL_ALAMO "Alamo"
 #define RADIO_CHANNEL_OMAHA "Omaha"
 #define RADIO_CHANNEL_MIDWAY "Midway"

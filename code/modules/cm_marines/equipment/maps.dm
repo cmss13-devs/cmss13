@@ -283,23 +283,28 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 /proc/setup_all_maps()
 	return list(
 		MAP_LV_624 = new /obj/item/map/lazarus_landing_map(),
+		MAP_LV_624_FORWARD_BASE = new /obj/item/map/lazarus_landing_map(),
 		MAP_ICE_COLONY = new /obj/item/map/ice_colony_map(),
 		MAP_ICE_COLONY_V3 = new /obj/item/map/ice_colony_map_v3(),
 		MAP_WHISKEY_OUTPOST = new /obj/item/map/whiskey_outpost_map(),
 		MAP_BIG_RED = new /obj/item/map/big_red_map(),
+		MAP_BIG_RED_FORWARD_BASE = new /obj/item/map/big_red_map(),
 		MAP_PRISON_STATION = new /obj/item/map/FOP_map(),
 		MAP_PRISON_STATION_V3 = new /obj/item/map/FOP_map_v3(),
 		MAP_DESERT_DAM = new /obj/item/map/desert_dam(),
 		MAP_SOROKYNE_STRATA = new /obj/item/map/sorokyne_map(),
 		MAP_CORSAT = new /obj/item/map/corsat(),
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
+		MAP_KUTJEVO_FORWARD_BASE = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
+		MAP_LV522_CHANCES_CLAIM_FORWARD_BASE = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
 		MAP_CAPE_RIVER = new /obj/item/map/cape_river(),
 		MAP_LV1021_FALCONS_FURY = new /obj/item/map/lv1021_map(),
+		MAP_LV1021_FALCONS_FURY_FORWARD_BASE = new /obj/item/map/lv1021_map(),
 		MAP_FORT_MCNEIL = new /obj/item/map/fort_mcneil()
 	)
 

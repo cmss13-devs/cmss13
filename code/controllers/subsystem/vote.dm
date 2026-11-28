@@ -294,7 +294,7 @@ SUBSYSTEM_DEF(vote)
 				var/list/maps = list()
 				for(var/i in config.maplist[GROUND_MAP])
 					var/datum/map_config/VM = config.maplist[GROUND_MAP][i]
-					if(VM.map_file == SSmapping.configs[GROUND_MAP].map_file)
+					if(VM.map_file == SSmapping.configs[GROUND_MAP].map_file && GLOB.master_mode == SSticker.mode?.config_tag)
 						continue
 					if(!VM.voteweight)
 						continue

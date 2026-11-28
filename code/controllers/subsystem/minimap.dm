@@ -14,7 +14,7 @@ GLOBAL_PROTECT(roles_allowed_minimap_draw)
  * Handles updating and handling of the by-zlevel minimaps
  *
  * Minimaps are a low priority subsystem that fires relatively often
- * the Initialize proc for this subsystem draws the maps as one of the last initializing subsystems
+ * the Initialize proc draws the maps during round setup, after Nightmare inserts have loaded
  *
  * Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
  * actual updating of marker locations is handled by [/datum/controller/subsystem/minimaps/proc/on_move]
@@ -28,6 +28,7 @@ GLOBAL_PROTECT(roles_allowed_minimap_draw)
 SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
 	init_order = SS_INIT_MINIMAP
+	flags = SS_NO_INIT // Initialized on round start, after Nightmare finishes loading
 	priority = SS_PRIORITY_MINIMAPS
 	wait = 10
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
@@ -57,6 +58,9 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/atom/movable/screen/minimap/client_minimap_copies = list()
 	///assoc list storing frozen overlay states when updates are sent
 	var/list/frozen_overlay_states = list()
+
+/datum/controller/subsystem/minimaps/PreInit()
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(Initialize)))
 
 /datum/controller/subsystem/minimaps/Initialize()
 	initialized = TRUE

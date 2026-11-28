@@ -120,6 +120,12 @@
 "aaC" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/north_central_caves)
+"aaD" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "forward-base"
+	},
+/turf/closed/cordon,
+/area/space)
 "aaE" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -22155,7 +22161,7 @@ aac
 aac
 aac
 aac
-aac
+aaD
 "}
 (2,1,1) = {"
 aac

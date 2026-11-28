@@ -1775,6 +1775,12 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/containers)
+"agk" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "forward-base"
+	},
+/turf/closed/cordon,
+/area/lv522/oob)
 "agl" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/corsat/plate,
@@ -48520,7 +48526,7 @@ bMX
 bMX
 bMX
 bMX
-bMX
+agk
 "}
 (2,1,1) = {"
 bMX

@@ -28394,6 +28394,12 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
+"bsC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "forward-base"
+	},
+/turf/closed/cordon,
+/area/space)
 "bsO" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/flora/jungle/vines/light_1,
@@ -44181,7 +44187,7 @@ jfQ
 jfQ
 jfQ
 jfQ
-jfQ
+bsC
 "}
 (2,1,1) = {"
 jfQ

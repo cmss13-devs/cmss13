@@ -1,5 +1,14 @@
 [
     {
+        "type": "map_insert",
+        "landmark": "forward-base",
+        "chance": 1.0,
+        "path": "standalone/LV1021_Falcons_Fury_Forward_Base.dmm",
+        "when": {
+            "$gamemode": "Distress Signal: Forward Base"
+        }
+    },
+    {
         "type": "map_sprinkle",
         "path": "sprinkles/"
     }

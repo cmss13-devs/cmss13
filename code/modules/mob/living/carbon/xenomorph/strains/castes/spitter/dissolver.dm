@@ -235,7 +235,3 @@ XENO_ABILITY_STATS(store_acid, datum/action/xeno_action/onclick/store_acid)
 	bound_xeno.armor_modifier += armor_reduction_per_stored
 	bound_xeno.recalculate_armor()
 	return TRUE
-
-
-
-

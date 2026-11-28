@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(ticker)
 	var/tutorial_disabled = FALSE
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
-	load_mode()
+	log_game("Saved mode is '[GLOB.master_mode]'")
 
 	var/all_music = CONFIG_GET(keyed_list/lobby_music)
 	var/key = SAFEPICK(all_music)
@@ -361,7 +361,6 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode ? SSmapping.configs[GROUND_MAP].force_mode : mode
 	else
 		GLOB.master_mode = GAMEMODE_EXTENDED
-	log_game("Saved mode is '[GLOB.master_mode]'")
 
 
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)

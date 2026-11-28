@@ -251,7 +251,12 @@
 /obj/structure/machinery/reagentgrinder/proc/connect_smartfridge()
 	if(linked_storage || tether_range <= 0)
 		return
-	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
+	var/closest_distance = tether_range + 1
+	for(var/obj/structure/machinery/smartfridge/chemistry/storage in range(tether_range, src))
+		var/distance = get_dist(src, storage)
+		if(distance < closest_distance || (distance == closest_distance && get_area(storage) == get_area(src)))
+			linked_storage = storage
+			closest_distance = distance
 	if(linked_storage)
 		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup), override = TRUE)
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))

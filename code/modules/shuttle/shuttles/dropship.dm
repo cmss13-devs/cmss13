@@ -217,7 +217,7 @@
 	dheight = 12
 	zdepth = 1
 	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/omaha
-	cas_shadow_icon_state = "shadow_mohawk"
+	cas_shadow_icon_state = "mohawk_shadow"
 
 /obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
@@ -241,7 +241,7 @@
 	dheight = 12
 	zdepth = 1
 	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/midway
-	cas_shadow_icon_state = "shadow_mohawk"
+	cas_shadow_icon_state = "mohawk_shadow"
 
 /obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
 	return /turf/open/space/transit/dropship/midway

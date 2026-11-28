@@ -43,10 +43,14 @@ export type MedevacTargets = {
 
 export type CameraProps = {
   camera_map_ref?: string;
+  matrix_upgrade?: string;
+  nvg_available?: boolean;
+  nvg_enabled?: boolean;
 };
 
 export type EquipmentContext = {
   equipment_data: Array<DropshipEquipment>;
+  targets_data?: Array<LazeTarget>;
 };
 
 export type MedevacContext = {
@@ -79,6 +83,7 @@ export type SentrySpec = {
 
 export type SpotlightSpec = {
   name: string;
+  deployed: 0 | 1;
 };
 
 export type ParadropSpec = {

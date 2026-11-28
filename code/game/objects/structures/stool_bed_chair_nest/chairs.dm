@@ -14,6 +14,8 @@
 	var/can_rotate = TRUE
 	var/stacked_size = 0
 	var/list/shimmy_data = list()
+	/// Earliest time another movement input from a pilot seat may offset the CAS camera.
+	var/next_camera_offset_time = 0
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
@@ -635,8 +637,6 @@
 	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
-	/// Earliest time another movement input may offset the CAS camera.
-	var/next_camera_offset_time = 0
 
 /obj/structure/bed/chair/dropship/pilot/unbuckle()
 	if(buckled_mob && buckled_mob.buckled == src)
@@ -644,13 +644,29 @@
 	return ..()
 
 /obj/structure/bed/chair/dropship/pilot/relaymove(mob/user, direction)
+	return relay_dropship_camera_movement(user, direction)
+
+/// Moves the active Weapon Console camera for the pilot buckled into this seat.
+/obj/structure/bed/chair/proc/relay_dropship_camera_movement(mob/user, direction)
 	if(user != buckled_mob)
 		return
 	if(world.time < next_camera_offset_time)
 		return
 
-	var/obj/structure/machinery/computer/dropship_weapons/weapon_console = user.interactee
-	if(!istype(weapon_console))
+	var/obj/structure/machinery/computer/dropship_weapons/weapon_console
+	for(var/datum/tgui/ui as anything in user.tgui_open_uis)
+		var/obj/structure/machinery/computer/dropship_weapons/open_console = ui.src_object
+		if(!istype(open_console) || QDELETED(open_console) || ui.closing)
+			continue
+		if(open_console.ui_status(user, ui.state) != UI_INTERACTIVE)
+			continue
+		if(open_console == user.interactee)
+			weapon_console = open_console
+			break
+		if(!weapon_console)
+			weapon_console = open_console
+
+	if(!weapon_console)
 		return
 
 	if(!weapon_console.offset_firemission_camera(direction))

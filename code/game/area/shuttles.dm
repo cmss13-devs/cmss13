@@ -12,10 +12,10 @@
 	base_lighting_alpha = 255
 
 
-///area/shuttle/Initialize()
-// if(!canSmoothWithAreas)
-// canSmoothWithAreas = type
-// . = ..()
+/area/shuttle/Initialize(mapload)
+	. = ..()
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	dropship_hud.register_dropship_area(src)
 
 /area/shuttle/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	. = ..()

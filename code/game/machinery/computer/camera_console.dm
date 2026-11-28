@@ -18,6 +18,7 @@
 	var/colony_camera_mapload = TRUE
 	var/admin_console = FALSE
 	var/stay_connected = FALSE
+	/// TGUI interface opened by this console.
 	var/ui_template_name = "CameraConsole"
 	var/datum/weakref/user_weakref
 
@@ -28,6 +29,7 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
+
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
@@ -75,25 +77,26 @@
 
 	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
 
-	if(!ui)
-		if(user.Adjacent(src)) // holy fuuuuuuuuuck
-			var/user_ref = WEAKREF(user)
-			var/is_living = isliving(user)
-			// Ghosts shouldn't count towards concurrent users, which produces
-			// an audible terminal_on click.
-			if(is_living)
-				concurrent_users += user_ref
-				user_weakref = user_ref
-			// Turn on the console
-			if(length(concurrent_users) == 1 && is_living)
-				update_use_power(USE_POWER_ACTIVE)
+	if(!ui && user.Adjacent(src))
+		prepare_tgui(user)
+		var/user_ref = WEAKREF(user)
+		var/is_living = isliving(user)
+		// Ghosts shouldn't count towards concurrent users, which produces
+		// an audible terminal_on click.
+		if(is_living)
+			concurrent_users += user_ref
+			user_weakref = user_ref
+		// Turn on the console
+		if(length(concurrent_users) == 1 && is_living)
+			update_use_power(USE_POWER_ACTIVE)
+		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 
-			SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
+		// Open UI
+		ui = new(user, src, ui_template_name, name)
+		ui.open()
 
-			// Open UI
-//			playsound(src, get_sfx("terminal_button"), 25, FALSE)
-			ui = new(user, src, "[ui_template_name]", name)
-			ui.open()
+/obj/structure/machinery/computer/cameras/proc/prepare_tgui(mob/user)
+	return
 
 /obj/structure/machinery/computer/cameras/ui_data()
 	var/list/data = list()
@@ -425,7 +428,7 @@
 
 /obj/structure/machinery/computer/cameras/dropship
 	name = "abstract dropship camera computer"
-	desc = "A computer to monitor cameras linked to the dropship."
+	desc = "A computer to monitor cameras and manage auxiliary equipment linked to the dropship."
 	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
@@ -433,11 +436,336 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
+	ui_template_name = "DropshipCameraConsole"
 
+	var/shuttle_tag
+	var/camera_target_id
+	var/camera_width = 11
+	var/camera_height = 11
+	var/obj/structure/dropship_equipment/camera_area_equipment = null
+	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
+	var/matrix_color = NV_COLOR_GREEN //color of matrix, only used when we upgrade to nv
+	/// Tacmap embedded in the console's UI.
+	var/datum/tacmap_holder/tacmap_holder
+	/// Client ceiling layers used by users viewing this console.
+	var/list/atom/movable/screen/minimap_ceiling_layer/ceiling_layers
+
+/obj/structure/machinery/computer/cameras/dropship/Initialize(mapload)
+	. = ..()
+	ceiling_layers = list()
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = MINIMAP_FLAG_USCM, has_update = TRUE)
+
+/obj/structure/machinery/computer/cameras/dropship/Destroy()
+	QDEL_LIST_ASSOC_VAL(ceiling_layers)
+	QDEL_NULL(tacmap_holder)
+	return ..()
+
+/obj/structure/machinery/computer/cameras/dropship/attack_hand(mob/user)
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Auxiliary equipment access denied."))
+		return TRUE
+	return ..()
+
+/obj/structure/machinery/computer/cameras/dropship/prepare_tgui(mob/user)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(!tacmap_component)
+		return
+
+	if(!tacmap_holder)
+		var/list/ground_zlevels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+		if(length(ground_zlevels))
+			tacmap_holder = new(null, ground_zlevels[1], MINIMAP_FLAG_USCM, drawing = TRUE, popup = FALSE, uncached = TRUE)
+			tacmap_component.is_embedded = TRUE
+
+	if(!tacmap_holder?.map)
+		QDEL_NULL(tacmap_holder)
+		return
+
+	var/matrix/transform = matrix()
+	transform.Translate(-32, 14)
+	tacmap_holder.map.transform = transform
+	tacmap_holder.map.del_on_map_removal = FALSE
+	user.client.register_map_obj(tacmap_holder.map)
+	var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = new(null, tacmap_holder.map_ref, tacmap_holder.map.target, transform)
+	ceiling_layers[user] = ceiling_layer
+	user.client.register_map_obj(ceiling_layer)
+
+/obj/structure/machinery/computer/cameras/dropship/proc/unregister_tacmap(mob/user)
+	if(!tacmap_holder)
+		return
+
+	var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = ceiling_layers[user]
+	user.client?.clear_map(tacmap_holder.map_ref)
+	QDEL_NULL(ceiling_layer)
+	ceiling_layers -= user
+
+/obj/structure/machinery/computer/cameras/dropship/on_unset_interaction(mob/user)
+	. = ..()
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component?.on_unset_interaction(user)
+
+/obj/structure/machinery/computer/cameras/dropship/ui_close(mob/user)
+	unregister_tacmap(user)
+	return ..()
+
+/obj/structure/machinery/computer/cameras/dropship/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/computer/cameras/dropship/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/computer/cameras/dropship/ui_static_data(mob/user)
+	. = list()
+	if(tacmap_holder)
+		.["tactical_map_ref"] = tacmap_holder.map_ref
+	.["camera_map_ref"] = camera_map_name
+
+/obj/structure/machinery/computer/cameras/dropship/ui_data(mob/user)
+	. = list()
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if(!istype(dropship))
+		return
+
+	.["ceiling_overlay_enabled"] = ceiling_layers[user]?.enabled
+	.["equipment_data"] = get_sanitised_equipment(user, dropship)
+
+	.["shuttle_state"] = dropship.mode
+	.["flight_time"] = dropship.timeLeft(10)
+	.["max_flight_duration"] = dropship.callTime * 0.1
+	.["max_refuel_duration"] = dropship.rechargeTime * 0.1
+
+	.["medevac_targets"] = list()
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if(istype(equipment, /obj/structure/dropship_equipment/medevac_system))
+			var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
+			.["medevac_targets"] += medevac.ui_data(user)
+
+	.["fulton_targets"] = list()
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if(istype(equipment, /obj/structure/dropship_equipment/fulton_system))
+			var/obj/structure/dropship_equipment/fulton_system/fult = equipment
+			.["fulton_targets"] += fult.ui_data(user)
+
+	.["camera_target_id"] = camera_target_id
+	.["matrix_upgrade"] = upgraded
+	.["nvg_available"] = (upgraded == MATRIX_NVG)
+	var/datum/component/camera_manager/camera_component = GetComponent(/datum/component/camera_manager)
+	.["nvg_enabled"] = camera_component ? camera_component.nvg_enabled : FALSE
+
+	.["available_cameras"] = list()
+	var/list/cameras = get_available_cameras()
+	for(var/c_tag in cameras)
+		var/obj/structure/machinery/camera/camera = cameras[c_tag]
+		if(camera)
+			.["available_cameras"] += list(list("name" = c_tag))
+
+	.["targets_data"] = get_targets()
+
+	.["worldtime"] = world.time
+
+/obj/structure/machinery/computer/cameras/dropship/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if(!dropship || dropship.is_hijacked)
+		return
+	var/mob/user = ui.user
+
+	switch(action)
+		if("toggle-ceiling-overlay")
+			var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = ceiling_layers[user]
+			if(!ceiling_layer)
+				return FALSE
+			ceiling_layer.set_enabled(!ceiling_layer.enabled)
+			return TRUE
+
+		if("set-camera")
+			var/target_camera = params["equipment_id"]
+			var/obj/structure/dropship_equipment/equipment = get_equipment_by_mount(target_camera)
+			if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+				var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+				var/obj/structure/machinery/defenses/sentry/premade/dropship/defense = sentry.deployed_turret
+				if(!defense || defense.loc == sentry)
+					to_chat(user, SPAN_WARNING("Sentry must be deployed to access camera."))
+					return TRUE
+				if(!defense.has_camera || !defense.linked_cam)
+					to_chat(user, SPAN_WARNING("Sentry camera is not available."))
+					return TRUE
+				camera_area_equipment = sentry
+				SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, defense.linked_cam, defense.linked_cam.view_range, defense.linked_cam.view_range)
+				to_chat(user, SPAN_NOTICE("Switching to sentry camera view."))
+				return TRUE
+
+			set_camera_target(target_camera)
+			return TRUE
+
+		if("auto-deploy")
+			var/obj/structure/dropship_equipment/equipment = get_equipment_by_mount(params["equipment_id"])
+			if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+				var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+				sentry.auto_deploy = !sentry.auto_deploy
+			else if(istype(equipment, /obj/structure/dropship_equipment/mg_holder))
+				var/obj/structure/dropship_equipment/mg_holder/mg = equipment
+				mg.auto_deploy = !mg.auto_deploy
+			return TRUE
+
+		if("clear-camera")
+			set_camera_target(null)
+			return TRUE
+
+		if("nvg-enable")
+			if(upgraded != MATRIX_NVG)
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				return FALSE
+			if(user.client?.prefs?.night_vision_preference)
+				matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, matrix_color)
+			return TRUE
+
+		if("nvg-disable")
+			SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR_NVG)
+			return TRUE
+
+		if("paradrop-lock")
+			if(dropship.mode != SHUTTLE_CALL)
+				return FALSE
+			if(dropship.paradrop_signal)
+				clear_locked_turf_and_lock_aft()
+				return TRUE
+			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
+			if(!sig)
+				to_chat(user, SPAN_WARNING("No signal chosen."))
+				return FALSE
+			var/turf/location = get_turf(sig.signal_loc)
+			var/area/location_area = get_area(location)
+			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
+				to_chat(user, SPAN_WARNING("Target is obscured."))
+				return FALSE
+			var/obj/structure/dropship_equipment/equipment = get_equipment_by_mount(params["equipment_id"])
+			if(!istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
+				return FALSE
+			var/obj/structure/dropship_equipment/paradrop_system/paradrop_system = equipment
+			if(paradrop_system.system_cooldown > world.time)
+				to_chat(user, SPAN_WARNING("You toggled the system too recently."))
+				return FALSE
+			paradrop_system.system_cooldown = world.time + 5 SECONDS
+			paradrop_system.visible_message(SPAN_NOTICE("[paradrop_system] hums as it locks to a signal."))
+			dropship.paradrop_signal = sig
+			paradrop_system.on_signal_lock()
+			addtimer(CALLBACK(src, PROC_REF(open_aft_for_paradrop)), 2 SECONDS)
+			RegisterSignal(dropship.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
+			RegisterSignal(dropship, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
+			return TRUE
+
+		if("firemission-dual-offset-camera")
+			var/target_id = params["target_id"]
+			var/datum/cas_signal/cas_sig = get_cas_signal(target_id, valid_only = TRUE)
+			if(!cas_sig)
+				return FALSE
+			camera_target_id = target_id
+			var/turf/target_turf = get_turf(cas_sig.signal_loc)
+			if(!target_turf)
+				return FALSE
+			var/shape_size = upgraded == MATRIX_WIDE ? max(camera_width, camera_height) * 1.5 : max(camera_width, camera_height)
+			var/datum/shape/rectangle/square/target_area = new(target_turf.x, target_turf.y, shape_size)
+			SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, target_area, target_turf.z)
+			for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+				equipment.update_equipment()
+			return TRUE
+
+		if("deploy-equipment")
+			var/obj/structure/dropship_equipment/equipment = get_equipment_by_mount(params["equipment_id"])
+			if(equipment?.is_interactable)
+				if(camera_area_equipment == equipment)
+					set_camera_target(null)
+				equipment.equipment_interact(user)
+			return TRUE
+
+		if("medevac-target")
+			var/obj/structure/dropship_equipment/equipment = get_equipment_by_mount(params["equipment_id"])
+			if(istype(equipment, /obj/structure/dropship_equipment/medevac_system))
+				var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
+				medevac.automate_interact(user, params["ref"])
+				if(medevac.linked_stretcher)
+					SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, medevac.linked_stretcher, 5, 5)
+			return TRUE
+
+		if("fulton-target")
+			var/obj/structure/dropship_equipment/equipment = get_equipment_by_mount(params["equipment_id"])
+			if(istype(equipment, /obj/structure/dropship_equipment/fulton_system))
+				var/obj/structure/dropship_equipment/fulton_system/fulton = equipment
+				fulton.automate_interact(user, params["ref"])
+			return TRUE
+
+/obj/structure/machinery/computer/cameras/dropship/proc/set_camera_target(target_ref)
+	camera_area_equipment = null
+
+	var/datum/cas_signal/target = get_cas_signal(target_ref, valid_only = TRUE)
+	camera_target_id = target_ref
+
+	if(!target)
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
+		return
+
+	var/cam_width = camera_width
+	var/cam_height = camera_height
+	if(upgraded == MATRIX_WIDE)
+		cam_width = cam_width * 1.5
+		cam_height = cam_height * 1.5
+
+	SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, target.linked_cam, cam_width, cam_height)
+
+/obj/structure/machinery/computer/cameras/dropship/proc/get_cas_signal(sig_id, valid_only = FALSE)
+	var/datum/cas_iff_group/group = GLOB.cas_groups[FACTION_MARINE]
+	if(!group)
+		return
+	for(var/datum/cas_signal/sig as anything in group.cas_signals)
+		if(sig.target_id != sig_id)
+			continue
+		if(valid_only && !sig.valid_signal())
+			return
+		return sig
+
+/obj/structure/machinery/computer/cameras/dropship/proc/get_equipment_by_mount(equipment_tag)
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if(!dropship)
+		return
+	var/mount_point = isnum(equipment_tag) ? equipment_tag : text2num(equipment_tag)
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if(equipment.ship_base?.attach_id == mount_point)
+			return equipment
+
+/obj/structure/machinery/computer/cameras/dropship/proc/get_targets()
+	. = list()
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
+	if(!cas_group)
+		return
+	for(var/datum/cas_signal/cas_signal as anything in cas_group.cas_signals)
+		if(!cas_signal.valid_signal())
+			continue
+		var/turf/signal_turf = get_turf(cas_signal.signal_loc)
+		if(!signal_turf || !is_ground_level(signal_turf.z))
+			continue
+		var/area/laser_area = get_area(signal_turf)
+		. += list(list(
+			"target_name" = "[cas_signal.name] ([laser_area.name])",
+			"target_tag" = cas_signal.target_id,
+			"ceiling_protection_tier" = laser_area.ceiling,
+		))
+
+/obj/structure/machinery/computer/cameras/dropship/proc/get_sanitised_equipment(mob/user, obj/docking_port/mobile/marine_dropship/dropship)
+	. = list()
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		. += list(equipment.get_console_data(user))
 
 /obj/structure/machinery/computer/cameras/dropship/one
-	name = "\improper 'Alamo' camera controls"
+	name = "\improper 'Alamo' auxiliary support controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
+	shuttle_tag = DROPSHIP_ALAMO
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 
 /obj/structure/machinery/computer/cameras/dropship/omaha
 	name = "\improper 'Omaha' camera controls"
@@ -448,8 +776,10 @@
 	network = list(CAMERA_NET_OMAHA, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/cameras/dropship/two
-	name = "\improper 'Normandy' camera controls"
+	name = "\improper 'Normandy' auxiliary support controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
+	shuttle_tag = DROPSHIP_NORMANDY
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 
 /obj/structure/machinery/computer/cameras/dropship/midway
 	name = "\improper 'Midway' camera controls"
@@ -468,7 +798,6 @@
 	network = list(CAMERA_NET_LASER_TARGETS)
 	ui_template_name = "DropshipGunneryConsole"
 	var/focused = FALSE
-	var/matrix_color = NV_COLOR_GREEN
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/obj/structure/bed/chair/vehicle/midway_gunner/linked_chair
 	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
@@ -673,8 +1002,10 @@
 
 
 /obj/structure/machinery/computer/cameras/dropship/three
-	name = "\improper 'Saipan' camera controls"
+	name = "\improper 'Saipan' auxiliary support controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
+	shuttle_tag = DROPSHIP_SAIPAN
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 
 /obj/structure/machinery/computer/cameras/internal
 	name = "Internal Camera Link"
@@ -698,3 +1029,24 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, NV_COLOR_RED)
 
 #undef DEFAULT_MAP_SIZE
+
+/obj/structure/machinery/computer/cameras/dropship/proc/open_aft_for_paradrop()
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if(!dropship || !dropship.paradrop_signal || dropship.mode != SHUTTLE_CALL)
+		return
+	dropship.door_control.control_doors("force-unlock", "aft", TRUE)
+
+/obj/structure/machinery/computer/cameras/dropship/proc/clear_locked_turf_and_lock_aft()
+	SIGNAL_HANDLER
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if(!dropship)
+		return
+	dropship.door_control.control_doors("force-lock", "aft", TRUE)
+	visible_message(SPAN_WARNING("[src] displays an alert as it loses the paradrop target."))
+	for(var/obj/structure/dropship_equipment/paradrop_system/parad in dropship.equipments)
+		parad.visible_message(SPAN_WARNING("[parad] displays an alert as it loses the paradrop target."))
+		parad.on_signal_lost()
+	if(dropship.paradrop_signal)
+		UnregisterSignal(dropship.paradrop_signal, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(dropship, COMSIG_SHUTTLE_SETMODE)
+	dropship.paradrop_signal = null

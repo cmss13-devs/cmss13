@@ -60,6 +60,8 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
+	surgery.affected_limb.remove_surgery_flags()
+	target.update_surgery_overlays()
 	complete(target, surgery)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
@@ -83,14 +85,7 @@
 	if(!added_sutures) //No suture datum to answer the signal
 		new /datum/suture_handler(surgery.affected_limb)
 		added_sutures = SEND_SIGNAL(surgery.affected_limb, COMSIG_LIMB_ADD_SUTURES, TRUE) //This time, with feeling.
-
-	switch(target_zone)
-		if("head")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-		if("chest")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+		
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
 			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."),
@@ -107,6 +102,8 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
+	surgery.affected_limb.remove_surgery_flags()
+	target.update_surgery_overlays()
 	complete(target, surgery)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)

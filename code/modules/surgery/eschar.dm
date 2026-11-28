@@ -61,7 +61,7 @@
 	failure_sound = 'sound/surgery/organ2.ogg'
 	var/use_stack = 1 //uses one stack of burn heal stuff.
 
-/datum/surgery_step/graft_exposed_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
+/datum/surgery_step/graft_exposed_flesh/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	var/toolname
 
 	switch(tool_type)
@@ -82,7 +82,7 @@
 	target.custom_pain("Your exposed skin feels tender as [user] presses on it! Ouch!", 1)
 	log_interact(user, target, "[key_name(user)] begins to apply and seal a graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
-/datum/surgery_step/graft_exposed_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
+/datum/surgery_step/graft_exposed_flesh/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	if(istype(tool, /obj/item/stack/medical)) //uses 1 stack of ointment/burnpack but not synthgraft, very important.
 		var/obj/item/stack/medical/packs = tool
 		packs.use(use_stack) //use 1 stack, please.
@@ -95,12 +95,14 @@
 	to_chat(target, SPAN_NOTICE("Your skin is covered and safe. You feel better."))
 
 	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
+	target.update_damage_overlays()
 	surgery.affected_limb.status &= ~LIMB_ESCHAR
+	surgery.affected_limb.status &= ~LIMB_THIRD_DEGREE_BURNS
 	surgery.affected_limb.heal_damage(0, surgery.affected_limb.burn_healing_threshold)
 	target.pain.recalculate_pain()
 	return
 
-/datum/surgery_step/graft_exposed_flesh/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
+/datum/surgery_step/graft_exposed_flesh/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	if(tool_type == /obj/item/stack/medical/ointment)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, smearing [tool] over the exposed flesh on [target]'s [surgery.affected_limb.display_name]!"),

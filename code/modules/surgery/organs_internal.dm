@@ -85,7 +85,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	playsound(get_turf(target), 'sound/handling/bandage.ogg', 25, TRUE)
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
-/datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(istype(tool, /obj/item/stack/medical))
 		var/obj/item/stack/medical/packs = tool
 		packs.use(use_stack)
@@ -103,8 +103,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 			int_organ.rejuvenate()
 			target.pain.recalculate_pain()
 			break
-		
-/datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+
+/datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
@@ -126,6 +126,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
 		if(int_organ && int_organ.damage > 0)
 			int_organ.take_damage(dam_amt,0)
+			target.update_surgery_overlays()
+
 
 	log_interact(user, target, "[key_name(user)] failed to mend organs in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return FALSE

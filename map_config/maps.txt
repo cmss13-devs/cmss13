@@ -82,3 +82,6 @@ endmap
 
 map whiskey_outpost_v2
 endmap
+
+map fire_colony
+endmap

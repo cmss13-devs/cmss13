@@ -318,7 +318,8 @@
 	var/broken = FALSE
 	buildstackamount = 0
 	can_rotate = FALSE
-	foldabletype = null
+	picked_up_item = null
+
 	unslashable = FALSE
 	unacidable = TRUE
 
@@ -326,6 +327,7 @@
 	var/mob_old_x = 0
 	var/buckle_offset_y = 0
 	var/mob_old_y = 0
+	var/allways_undense = FALSE
 
 	var/init_pixel_y
 	var/init_pixel_x
@@ -343,23 +345,6 @@
 	init_pixel_y = pixel_y
 	init_pixel_x = pixel_x
 
-/obj/structure/bed/chair/vehicle/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
-	.=..()
-
-	var/approachness = NORTH|SOUTH|EAST|WEST
-	var/internalness = NORTH|SOUTH|EAST|WEST
-
-	if(neighbor && neighbor.buckled_mob)
-		internalness &= ~turn(dir, 180)	//cant walk into filled seats
-		approachness &= ~turn(dir, 180)
-
-	if(force_update && buckled_mob)
-		buckled_mob.density = FALSE
-		density = TRUE
-		AddComponent(/datum/component/shimmy_around, \
-			approach_dirs = approachness, \
-			internal_dirs = internalness \
-		)
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)
@@ -377,7 +362,6 @@
 			layer = BELOW_MOB_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
-	update_shimmy_data()
 
 //------BUCKLING AND UNBUCKLING
 //trying to buckle a mob
@@ -414,6 +398,12 @@
 			mob_old_y = 0
 
 	handle_rotation()
+
+/obj/structure/bed/chair/vehicle/unbuckle()
+	if(buckled_mob && buckled_mob.buckled == src)
+		REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+	. = ..()
+
 
 //attack handling
 
@@ -583,3 +573,21 @@
 	.=..()
 	pixel_y = init_pixel_y
 	pixel_x = init_pixel_x
+
+// Comfy Seats
+
+/obj/structure/bed/chair/vehicle/comfy
+	icon = 'icons/obj/vehicles/interiors/seats.dmi'
+	allways_undense = TRUE
+
+/obj/structure/bed/chair/vehicle/comfy/alt
+	icon_state = "alt_vehicle_seat"
+
+/obj/structure/bed/chair/vehicle/comfy/alt_1
+	icon_state = "alt1_vehicle_seat"
+
+/obj/structure/bed/chair/vehicle/comfy/alt_2
+	icon_state = "alt2_vehicle_seat"
+
+/obj/structure/bed/chair/vehicle/comfy/alt_3
+	icon_state = "alt3_vehicle_seat"

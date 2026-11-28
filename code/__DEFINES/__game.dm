@@ -45,6 +45,7 @@
 #define MAP_FORT_MCNEIL "Fort McNeil"
 #define MAP_CAPE_RIVER "Cape River Mining Colony"
 #define MAP_LV1021_FALCONS_FURY "LV-1021: Operation Falcon's Fury"
+#define MAP_FIRE_COLONY "LV-376 Charon's Crucible"//heavily modified ice colony V2 - low-medium pop
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -434,6 +435,8 @@
 #define WALL_SHIVA_FAB_PINK "shiva_fab_pnk"
 #define WALL_SHIVA_FAB_WHITE "shiva_fab_wht"
 #define WALL_SHIVA_FAB_RED "shiva_fab_red"
+#define WALL_SHIVA_FAB_DARK "shiva_fab_dark"
+#define WALL_ENGINEER_RUIN "engineer_stone"
 #define WALL_DOME "dome"
 #define WALL_DOMER "r_dome"
 #define WALL_SOLARIS "solaris_interior"

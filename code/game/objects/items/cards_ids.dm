@@ -240,6 +240,8 @@
 	. = ..()
 	if(istype(src, /obj/item/card/id/silver/cl/hyperdyne))
 		AddElement(/datum/element/corp_label/hyperdyne)
+	else if(istype(src, /obj/item/card/id/silver/cl/lasalle_bionational))
+		AddElement(/datum/element/corp_label/bionational)
 	else
 		AddElement(/datum/element/corp_label/wy)
 
@@ -247,6 +249,11 @@
 	name = "corporate holo-badge"
 	desc = "A corporate holo-badge. It's a unique Corporate orange and black."
 	icon_state = "hyperdyne"
+
+/obj/item/card/id/silver/cl/lasalle_bionational
+	name = "corporate holo-badge"
+	desc = "A corporate holo-badge. It's a unique Corporate blue and black."
+	icon_state = "lasalle_bionational"
 
 /obj/item/card/id/gold/council
 	name = "identification holo-badge"

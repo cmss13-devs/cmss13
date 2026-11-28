@@ -132,6 +132,12 @@
 	item_state = "b_smartpack_a1"
 	icon_state = "b_smartpack_a1"
 
+/obj/item/storage/backpack/marine/smartpack/a1/lb_black
+	name = "\improper LB-S-V42A1 backpack"
+	desc = "A Lasalle Bionational redesign of the S-V42 backpack, bearing a remarkable resemblance to a joint USCM and Weyland-Yutani project. Lasalle insists the similarities are purely coincidental. It features an integrated shoulder lamp."
+	item_state = "b_smartpack_a1"
+	icon_state = "b_smartpack_a1"
+
 /obj/item/storage/backpack/marine/smartpack/a1/white
 	item_state = "w_smartpack_a1"
 	icon_state = "w_smartpack_a1"

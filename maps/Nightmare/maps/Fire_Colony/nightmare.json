@@ -1,0 +1,31 @@
+[
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+    {
+		"type": "map_insert",
+		"landmark": "lasalle_merc_insert",
+		"chance": 1.0,
+		"path": "standalone/lasalle_merc_insert.dmm",
+		"when": { "lvevent": "lasalle_merc" }
+    },
+    {
+		"type": "map_insert",
+		"landmark": "lasalle_merc_omicron",
+		"chance": 1.0,
+		"path": "standalone/lasalle_merc_omicron.dmm",
+		"when": { "lvevent": "lasalle_merc" }
+    },
+    {
+		"type": "map_insert",
+		"landmark": "lasalle_merc_hydro",
+		"chance": 1.0,
+		"path": "standalone/lasalle_merc_hydro.dmm",
+		"when": { "lvevent": "lasalle_merc" }
+    },
+    {
+		"type": "map_insert",
+		"landmark": "lasalle_merc_armory",
+		"chance": 1.0,
+		"path": "standalone/lasalle_merc_armory.dmm",
+		"when": { "lvevent": "lasalle_merc" }
+    }
+]

@@ -113,6 +113,18 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)
 			new /obj/item/clothing/under/tshirt/gray_blu(src)
 
+/datum/supply_packs/contraband/seized/advanced_fire_saftey_equipment
+	name = "advanced fire-safety equipment crate"
+	contains = list(
+		/obj/item/clothing/suit/storage/marine/cbrn/lava,
+		/obj/item/clothing/gloves/marine/fireproof_gloves,
+		/obj/item/clothing/shoes/marine/fireproof_boots,
+		/obj/item/reagent_container/glass/canister/oxygen,
+		/obj/item/tool/extinguisher/mini,
+	)
+	dollar_cost = 40
+	containertype = /obj/structure/largecrate/empty/secure
+
 /datum/supply_packs/contraband/seized/confiscated_weaponry
 	name = "seized foreign weaponry crate"
 	contains = list()
@@ -191,6 +203,32 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/ak4047,
 	)
 	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/seized/w_ek_17
+	name = "W/EK 17 Carbine crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/seized/a_m36
+	name = "A-M36 experimental smg crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+	)
+	dollar_cost = 60
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/m16
@@ -873,7 +911,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/b92fs
-	name = "Magazines box (Beretta 92FS, 16x mags)"
+	name = "Magazines box (Beretta M92X, 16x mags)"
 	dollar_cost = 30
 	contains = list(/obj/item/ammo_box/magazine/b92fs)
 	containertype = /obj/structure/largecrate/black_market
@@ -1197,7 +1235,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	//We need to pick a 'secured wildlife' mob that actually makes sense.
 	var/unfit_simplemobs = list(/mob/living/simple_animal/drone, /mob/living/simple_animal/hostile/retaliate/malf_drone)
 	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear,, /mob/living/simple_animal/hostile/retaliate/goat)
-	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
+	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera, /mob/living/carbon/human/neaera_alt)
 	var/mob/contained_mob_type = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs - unfit_simplemobs)
 	new contained_mob_type(loc)
 	. = ..()

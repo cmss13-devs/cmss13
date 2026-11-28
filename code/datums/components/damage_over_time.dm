@@ -15,20 +15,28 @@
 	var/cause_path
 	/// Whether the damage is considered to be from an environmental source
 	var/enviro = FALSE
+	/// Whether the DOT applies fire stacks or not
+	var/apply_fire = FALSE
+	/// stuff for fire stacks
+	var/burn_reagent = /datum/reagent/napalm/ut
+	var/burn_stacks = 30
 
 	/// Parent as a living mob
 	var/mob/living/living_parent
 
-/datum/component/damage_over_time/InheritComponent(cause_path, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult, pred_dmg_mult, warning_message, enviro)
+/datum/component/damage_over_time/InheritComponent(cause_path, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult, pred_dmg_mult, warning_message, enviro, apply_fire, burn_reagent, burn_stacks)
 	return // Ultimately just here to suppress named arg errors
 
-/datum/component/damage_over_time/Initialize(cause_path, dam_amount=5, dam_type=BURN, target_temp=T90C, temp_delta=5, synth_dmg_mult=0.5, pred_dmg_mult=0.5, warning_message="You feel your body start to shake as the scalding water sears your skin, heat overwhelming your senses...", enviro=FALSE)
+/datum/component/damage_over_time/Initialize(cause_path, dam_amount=5, dam_type=BURN, target_temp=T90C, temp_delta=5, synth_dmg_mult=0.5, pred_dmg_mult=0.5, warning_message="You feel your body start to shake as the scalding water sears your skin, heat overwhelming your senses...", enviro=FALSE, apply_fire=FALSE, burn_reagent = /datum/reagent/napalm/ut, burn_stacks = 30)
 	src.dam_amount = dam_amount
 	src.dam_type = dam_type
 	src.target_temp = target_temp
 	src.temp_delta = temp_delta
 	src.cause_path = cause_path
 	src.enviro = enviro
+	src.apply_fire = apply_fire
+	src.burn_reagent = burn_reagent
+	src.burn_stacks = burn_stacks
 
 	living_parent = parent
 
@@ -78,6 +86,12 @@
 			living_parent.bodytemperature -= temp_delta
 		else
 			living_parent.bodytemperature = target_temp
+	if(apply_fire)
+		if(ispath(burn_reagent))
+			var/datum/reagent/temp = burn_reagent
+			burn_reagent = GLOB.chemical_reagents_list[initial(temp.id)]
+		living_parent.TryIgniteMob(burn_stacks, burn_reagent) //30 burn stacks, proc needs a reagent to work.
+
 
 /datum/component/damage_over_time/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)

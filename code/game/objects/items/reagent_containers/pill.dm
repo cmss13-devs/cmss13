@@ -298,3 +298,7 @@
 	pill_initial_reagents = list("imidazoline" = 10, "alkysine" = 5)
 	pill_icon_class = "alky"
 
+/obj/item/reagent_container/pill/kelo_oxy_mix
+	pill_desc = "An Kelotane-Oxycodone (2:1) pill. Heals burns while also significantly reducing pain."
+	pill_initial_reagents = list("kelotane" = 10, "oxycodone" = 5)
+	pill_icon_class = "kelo"

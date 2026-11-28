@@ -21,6 +21,9 @@
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "floor"
 
+/turf/open/floor/strata/fake_catwalk
+	icon_state = "plating_catwalk_alt"
+
 /turf/open/floor/strata/grey_multi_tiles
 	icon_state = "grey_multi_tiles"
 
@@ -276,6 +279,94 @@
 /turf/open/floor/strata/blue4/west
 	dir = WEST
 
+////strata -  light-blue////
+
+/turf/open/floor/strata/lightblue1
+	icon_state = "lightblue1"
+
+/turf/open/floor/strata/lightblue2
+	icon_state = "lightblue2"
+
+/turf/open/floor/strata/lightblue3
+	icon_state = "lightblue3"
+
+/turf/open/floor/strata/lightblue3/east
+	dir = EAST
+
+/turf/open/floor/strata/lightblue3/north
+	dir = NORTH
+
+/turf/open/floor/strata/lightblue3/west
+	dir = WEST
+
+/turf/open/floor/strata/lightblue3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/lightblue3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/lightblue3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/lightblue3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/lightblue4
+	icon_state = "lightblue4"
+
+/turf/open/floor/strata/lightblue4/north
+	dir = NORTH
+
+/turf/open/floor/strata/lightblue4/east
+	dir = EAST
+
+/turf/open/floor/strata/lightblue4/west
+	dir = WEST
+
+/// SEEGSON
+
+/turf/open/floor/strata/seeg1
+	icon_state = "seeg1"
+
+/turf/open/floor/strata/seeg2
+	icon_state = "seeg2"
+
+/turf/open/floor/strata/seeg3
+	icon_state = "seeg3"
+
+/turf/open/floor/strata/seeg3/east
+	dir = EAST
+
+/turf/open/floor/strata/seeg3/north
+	dir = NORTH
+
+/turf/open/floor/strata/seeg3/west
+	dir = WEST
+
+/turf/open/floor/strata/seeg3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/seeg3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/seeg3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/seeg3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/seeg4
+	icon_state = "seeg4"
+
+/turf/open/floor/strata/seeg4/north
+	dir = NORTH
+
+/turf/open/floor/strata/seeg4/east
+	dir = EAST
+
+/turf/open/floor/strata/seeg4/west
+	dir = WEST
+
 /turf/open/floor/strata/damaged3
 	icon_state = "damaged3"
 
@@ -452,3 +543,230 @@
 
 /turf/open/floor/strata/yellow3/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/strata/smooth
+	icon_state = "smooth"
+
+/turf/open/floor/strata/smooth_dir
+	icon_state = "smooth_dir"
+
+/turf/open/floor/strata/smooth_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/smooth_dir/north
+	dir = NORTH
+
+/turf/open/floor/strata/smooth_dir/east
+	dir = EAST
+
+/turf/open/floor/strata/smooth_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/smooth_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/smooth_dir/west
+	dir = WEST
+
+/turf/open/floor/strata/smooth_dir/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/smooth_u
+	icon_state = "smooth_u"
+
+/turf/open/floor/strata/smooth_u/north
+	dir = NORTH
+
+/turf/open/floor/strata/smooth_u/east
+
+	dir = EAST
+
+/turf/open/floor/strata/smooth_u/south
+
+	dir = SOUTH
+
+/turf/open/floor/strata/smooth_u/west
+
+	dir = WEST
+
+////strata -  sand////
+
+/turf/open/floor/strata/sand1
+	icon_state = "sand1"
+
+/turf/open/floor/strata/sand2
+	icon_state = "sand2"
+
+/turf/open/floor/strata/sand3
+	icon_state = "sand3"
+
+/turf/open/floor/strata/sand3/east
+	dir = EAST
+
+/turf/open/floor/strata/sand3/north
+	dir = NORTH
+
+/turf/open/floor/strata/sand3/west
+	dir = WEST
+
+/turf/open/floor/strata/sand3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/sand3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/sand3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/sand3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/sand4
+	icon_state = "sand4"
+
+/turf/open/floor/strata/sand4/north
+	dir = NORTH
+
+/turf/open/floor/strata/sand4/east
+	dir = EAST
+
+/turf/open/floor/strata/sand4/west
+	dir = WEST
+
+////strata -  red-alt////
+
+/turf/open/floor/strata/altred1
+	icon_state = "altred1"
+
+/turf/open/floor/strata/altred2
+	icon_state = "altred2"
+
+/turf/open/floor/strata/altred3
+	icon_state = "altred3"
+
+/turf/open/floor/strata/altred3/east
+	dir = EAST
+
+/turf/open/floor/strata/altred3/north
+	dir = NORTH
+
+/turf/open/floor/strata/altred3/west
+	dir = WEST
+
+/turf/open/floor/strata/altred3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/altred3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/altred3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/altred3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/altred4
+	icon_state = "altred4"
+
+/turf/open/floor/strata/altred4/north
+	dir = NORTH
+
+/turf/open/floor/strata/altred4/east
+	dir = EAST
+
+/turf/open/floor/strata/altred4/west
+	dir = WEST
+
+////strata -  medbay////
+
+/turf/open/floor/strata/medbay1
+	icon_state = "medbay1"
+
+/turf/open/floor/strata/medbay2
+	icon_state = "medbay2"
+
+/turf/open/floor/strata/medbay3
+	icon_state = "medbay3"
+
+/turf/open/floor/strata/medbay3/east
+	dir = EAST
+
+/turf/open/floor/strata/medbay3/north
+	dir = NORTH
+
+/turf/open/floor/strata/medbay3/west
+	dir = WEST
+
+/turf/open/floor/strata/medbay3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/medbay3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/medbay3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/medbay3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/medbay4
+	icon_state = "medbay4"
+
+/turf/open/floor/strata/medbay4/north
+	dir = NORTH
+
+/turf/open/floor/strata/medbay4/east
+	dir = EAST
+
+/turf/open/floor/strata/medbay4/west
+	dir = WEST
+
+////strata -  green-alt////
+
+/turf/open/floor/strata/altgreen1
+	icon_state = "altgreen1"
+
+/turf/open/floor/strata/altgreen2
+	icon_state = "altgreen2"
+
+/turf/open/floor/strata/altgreen3
+	icon_state = "altgreen3"
+
+/turf/open/floor/strata/altgreen3/east
+	dir = EAST
+
+/turf/open/floor/strata/altgreen3/north
+	dir = NORTH
+
+/turf/open/floor/strata/altgreen3/west
+	dir = WEST
+
+/turf/open/floor/strata/altgreen3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/altgreen3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/altgreen3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/altgreen3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/strata/altgreen4
+	icon_state = "altgreen4"
+
+/turf/open/floor/strata/altgreen4/north
+	dir = NORTH
+
+/turf/open/floor/strata/altgreen4/east
+	dir = EAST
+
+/turf/open/floor/strata/altgreen4/west
+	dir = WEST
+
+/turf/open/floor/strata/deco
+	icon_state = "deco"
+
+/turf/open/floor/strata/deco2
+	icon_state = "deco2"

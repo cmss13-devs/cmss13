@@ -269,6 +269,59 @@
 /obj/structure/cargo_container/seegson/right
 	icon_state = "seegson_r"
 
+/obj/structure/cargo_container/seegson/alt/left
+	icon_state = "seegson_alt_l"
+
+/obj/structure/cargo_container/seegson/alt/mid
+	icon_state = "seegson_alt_m"
+
+/obj/structure/cargo_container/seegson/alt/right
+	icon_state = "seegson_alt_r"
+
+/obj/structure/cargo_container/seegson/white/left
+	icon_state = "seegson_alt2_l"
+
+/obj/structure/cargo_container/seegson/white/mid
+	icon_state = "seegson_alt2_m"
+
+/obj/structure/cargo_container/seegson/white/right
+	icon_state = "seegson_alt2_r"
+
+/obj/structure/cargo_container/lasalle
+	name = "Lasalle Bionational Corporation Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from Lasalle Bionational, they are known for their radiation-resistant crops and bioengineered livestock."
+
+/obj/structure/cargo_container/lasalle/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/bionational)
+
+/obj/structure/cargo_container/lasalle/left
+	icon_state = "lasa_l"
+
+/obj/structure/cargo_container/lasalle/mid
+	icon_state = "lasa_m"
+
+/obj/structure/cargo_container/lasalle/right
+	icon_state = "lasa_r"
+
+/obj/structure/cargo_container/lasalle/alt_1/left
+	icon_state = "lasa1_l"
+
+/obj/structure/cargo_container/lasalle/alt_1/mid
+	icon_state = "lasa1_m"
+
+/obj/structure/cargo_container/lasalle/alt_1/right
+	icon_state = "lasa1_r"
+
+/obj/structure/cargo_container/lasalle/alt_2/left
+	icon_state = "lasa2_l"
+
+/obj/structure/cargo_container/lasalle/alt_2/mid
+	icon_state = "lasa2_m"
+
+/obj/structure/cargo_container/lasalle/alt_2/right
+	icon_state = "lasa2_r"
+
 /obj/structure/cargo_container/attack_hand(mob/user as mob)
 
 	playsound(loc, 'sound/effects/clang.ogg', 25, 1)

@@ -296,8 +296,14 @@
 	w_class = SIZE_LARGE
 	on = 1
 
+/obj/item/device/flashlight/lamp/tripod/off
+	on = 0
+
 /obj/item/device/flashlight/lamp/tripod/grey
 	icon_state = "tripod_lamp_grey"
+
+/obj/item/device/flashlight/lamp/tripod/grey/off
+	on = 0
 
 /obj/item/device/flashlight/lamp/item_action_slot_check(mob/user, slot)
 	return FALSE // Do not add our verbs to mobs
@@ -595,6 +601,17 @@
 	light_color = "#d69c46"
 
 /obj/item/device/flashlight/lantern/on
+	on = TRUE
+
+/obj/item/device/flashlight/lantern/alt
+	name = "lantern"
+	icon_state = "tactical_lantern"
+	item_state = ""
+	desc = "An expensive looking lantern."
+	light_range = 7 // luminosity when on
+	light_color = "#71cfff"
+
+/obj/item/device/flashlight/lantern/alt/on
 	on = TRUE
 
 /obj/item/device/flashlight/lantern/yautja

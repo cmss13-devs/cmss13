@@ -278,6 +278,12 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	html_link = "images/9/9e/Galaxy_Map.png"
 	color = "#005eab"
 
+/obj/item/map/fire_colony
+	name = "\improper LV-376 map"
+	desc = "A map of the Lasalle Bionational owned colony on LV-376, commonly known as 'Charon's Crucible'."
+	html_link = "images/1/18/Map_icecolony.png"
+	color = "#d2440c"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()
@@ -298,6 +304,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
+		MAP_FIRE_COLONY = new /obj/item/map/fire_colony(),
 		MAP_CAPE_RIVER = new /obj/item/map/cape_river(),
 		MAP_LV1021_FALCONS_FURY = new /obj/item/map/lv1021_map(),
 		MAP_FORT_MCNEIL = new /obj/item/map/fort_mcneil()

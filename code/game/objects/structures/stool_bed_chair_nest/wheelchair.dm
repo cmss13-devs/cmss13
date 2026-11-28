@@ -4,7 +4,7 @@
 	icon_state = "wheelchair"
 	anchored = FALSE
 	drag_delay = 1 //pulling something on wheels is easy
-	foldabletype = null
+	picked_up_item = null
 	var/bloodiness = 0
 	var/move_delay = 6
 

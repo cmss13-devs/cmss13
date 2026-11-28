@@ -118,3 +118,41 @@
 	name = "Fort McNeil - Colony Sign"
 	desc = "A small sign denoting this as the colony of Fort McNeil. The sign proclaims a population of 536, but a more recent lather of red paint has partially removed the 5."
 	icon_state = "antre_sign_2"
+
+/obj/structure/lz_sign/charon_sign
+	name = "Charon's Crucible Sign"
+	desc = "A large sign reading 'Charon's Crucible'. It's heavily damaged and covered in ash. It has the Seegson logo."
+	icon_state = "charon_sign"
+
+/obj/structure/lz_sign/charon_sign/alt
+	name = "Charon's Crucible Sign"
+	desc = "A large sign reading 'Charon's Crucible'. It's heavily damaged and covered in ash. It has the Seegson logo."
+	icon_state = "charon_sign_alt"
+
+/obj/structure/lz_sign/charon_sign/lasalle_bionational
+	name = "Charon's Crucible Sign"
+	desc = "A large sign reading 'Charon's Crucible'. It has the Lasalle Bionational corporation logo."
+	icon_state = "charon_sign_lasalle"
+
+/obj/structure/lz_sign/lasalle_bionational_sign
+	name = "Lasalle Bionational Sign"
+	desc = "A large sign with the Lasalle Bionational Corporation name and logo."
+	icon_state = "lasalle_bio_sign"
+
+/obj/structure/lz_sign/seegson_sign
+	name = "Seegson Sign"
+	desc = "A large sign reading 'Seegson'."
+	icon_state = "seegson"
+	bound_width = 64
+	bound_height = 32
+	projectile_coverage = PROJECTILE_COVERAGE_MINIMAL
+
+/obj/structure/lz_sign/seegson_sign/damaged
+	name = "Seegson Sign"
+	desc = "A large sign reading 'Seegson'."
+	icon_state = "seegson_d"
+
+/obj/structure/lz_sign/seegson_sign/damaged_ash
+	name = "Seegson Sign"
+	desc = "A large sign reading 'Seegson'."
+	icon_state = "seegson_a"

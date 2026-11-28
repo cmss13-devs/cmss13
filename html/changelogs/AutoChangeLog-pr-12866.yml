@@ -1,9 +1,0 @@
-author: "thwomper, poltava, steelpoint"
-delete-after: True
-changes:
-  - rscadd: "added thwomp's ud6 mohawk 'omaha'"
-  - code_imp: "abysmal dogshit"
-  - imageadd: "added thwomper's sprites"
-  - mapadd: "mapped a new ds based off of thwomp's file and concept"
-  - maptweak: "changed almayer landing pads to accomodate thwomp's new ds"
-  - soundadd: "added ladder climbing sounds and ramp sounds"

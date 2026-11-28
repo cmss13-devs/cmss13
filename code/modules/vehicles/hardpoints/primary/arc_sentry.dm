@@ -25,7 +25,7 @@
 		"1" = list(1, 4),
 		"2" = list(1, -29),
 		"4" = list(16, 3),
-		"8" = list(-16, 3)
+		"8" = list(-16, 3),
 	)
 	gun_firemode = GUN_FIREMODE_BURSTFIRE
 	gun_firemode_list = list(

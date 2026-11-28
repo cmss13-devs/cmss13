@@ -10,13 +10,13 @@
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 	)
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	var/whistle_sound = 'sound/items/whistles/whistle.ogg'

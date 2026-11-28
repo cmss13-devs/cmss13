@@ -159,7 +159,7 @@
 	var/list/cannot_hack = list(
 		/obj/item/tool/kitchen/knife/butcher,
 		/obj/item/tool/hatchet,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 		)
 	//preop sound is handled in preop step code
 	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm

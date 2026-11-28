@@ -744,7 +744,7 @@
 			"firemission_delay" = equipment.ammo_equipped?.fire_mission_delay,
 			"burst" = equipment.ammo_equipped?.ammo_used_per_firing,
 			"icon_state" = equipment.icon_state,
-			"data" = equipment.ui_data(user)
+			"data" = equipment.ui_data(user),
 		)
 
 		if(istype(equipment, /obj/structure/dropship_equipment/weapon))

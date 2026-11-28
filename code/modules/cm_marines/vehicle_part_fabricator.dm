@@ -286,7 +286,7 @@
 				"desc" = build_description,
 				"cost" = build_cost,
 				"index" = index,
-				"is_ammo" = is_ammo
+				"is_ammo" = is_ammo,
 			)
 
 			var/category_found = FALSE
@@ -326,7 +326,7 @@
 				"desc" = build_description,
 				"cost" = build_cost,
 				"index" = index,
-				"is_ammo" = is_ammo
+				"is_ammo" = is_ammo,
 			)
 
 			var/category = initial(ship_ammo_data.fabricator_category)

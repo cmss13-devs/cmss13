@@ -140,7 +140,7 @@
 		"admin_open_tickets" = list(),
 		"mentor_open_tickets" = list(),
 		"admin_archived_tickets" = list(),
-		"mentor_archived_tickets" = list()
+		"mentor_archived_tickets" = list(),
 	)
 
 	if(CLIENT_IS_STAFF(user.client))

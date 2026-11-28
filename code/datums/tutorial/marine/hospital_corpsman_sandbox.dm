@@ -63,7 +63,7 @@
 		TUTORIAL_HM_INJURY_SEVERITY_SEVERE,
 		TUTORIAL_HM_INJURY_SEVERITY_FATAL,
 		TUTORIAL_HM_INJURY_SEVERITY_EXTREME,
-		TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM
+		TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM,
 	)
 	/// Max amount of patient NPCs per survival wave (NOT including booboo NPCs)
 	var/max_survival_agents = 3
@@ -88,7 +88,7 @@
 		/datum/reagent/medical/tramadol,
 		/datum/reagent/medical/bicaridine,
 		/datum/reagent/medical/kelotane,
-		/datum/reagent/medical/oxycodone
+		/datum/reagent/medical/oxycodone,
 	)
 	/// List of supply room vendors to be restocked before a supply phase
 	var/list/supply_vendors = list()

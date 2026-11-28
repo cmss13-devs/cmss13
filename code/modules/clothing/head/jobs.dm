@@ -52,7 +52,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
 	)
 
 //Security
@@ -95,7 +95,7 @@
 	blood_overlay_type = "surgcap"
 	icon = 'icons/obj/items/clothing/hats/surgical_caps.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/surgical_caps.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/surgical_caps.dmi',
 	)
 	flags_inv_hide = HIDETOPHAIR
 
@@ -156,7 +156,7 @@
 	desc = "A classic tan fedora."
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 	icon_state = "fedora_tan"
 	item_state = "fedora_tan"

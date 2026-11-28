@@ -8,7 +8,7 @@
 
 	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi',
 	)
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
@@ -215,7 +215,7 @@
 	item_state = "thrallmask_ebony"
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi',
 	)
 	item_state_slots = list(WEAR_FACE = "thrallmask_ebony")
 	random_icon = FALSE
@@ -279,7 +279,7 @@
 /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood
 	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi',
 	)
 	icon_state = "pred_mask_bb_patchwork"
 	random_icon = FALSE
@@ -321,7 +321,7 @@
 
 	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi',
 	)
 	icon_state = "pred_mask1_ebony"
 
@@ -367,7 +367,7 @@
 	desc = "An ornate ancient faceplate of an aged alloy, once worn by a revered hunter. Though tarnished by time, its craftsmanship remains exquisite - a fusion of artistry and deadly function."
 	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi',
 	)
 	icon_state = "pred_mask_ancient_redglow"
 	item_state = "helmet"

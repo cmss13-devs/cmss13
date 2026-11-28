@@ -9,8 +9,8 @@
 		/datum/action/xeno_action/activable/tail_stab/sentinel,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
-		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
-		/datum/action/xeno_action/activable/draining_bite,
+		/datum/action/xeno_action/onclick/paralyzing_slash, //second macro
+		/datum/action/xeno_action/activable/draining_bite, //third macro
 	)
 	tier = 1
 

@@ -13,7 +13,7 @@
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/hats/donator.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/donator.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
@@ -62,7 +62,7 @@
 	item_state = null
 	icon = 'icons/obj/items/clothing/masks/donator.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/donator.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/donator.dmi',
 	)
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	flags_inventory = ALLOWREBREATH
@@ -165,7 +165,7 @@
 	xeno_types = null
 	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi',
 	)
 
 /obj/item/storage/backpack/marine/satchel/fluff
@@ -173,7 +173,7 @@
 	xeno_types = null
 	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi',
 	)
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
@@ -227,7 +227,7 @@
 	icon_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
@@ -275,7 +275,7 @@
 	item_state = "armor_reflec"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
@@ -323,7 +323,7 @@
 	item_state = "rangerarmor"
 	item_state_slots = list(
 		WEAR_L_HAND = "marine_armor",
-		WEAR_R_HAND = "marine_armor"
+		WEAR_R_HAND = "marine_armor",
 	)
 
 /obj/item/clothing/suit/storage/marine/light/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -550,7 +550,7 @@
 	item_state = "steelpoint_armor"
 	item_state_slots = list(
 		WEAR_L_HAND = "marine_armor",
-		WEAR_R_HAND = "marine_armor"
+		WEAR_R_HAND = "marine_armor",
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -771,7 +771,7 @@
 	icon_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -781,7 +781,7 @@
 	icon_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -816,7 +816,7 @@
 	icon_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -833,7 +833,7 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -861,7 +861,7 @@
 	icon_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -942,7 +942,7 @@
 	item_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -953,7 +953,7 @@
 	item_state = "hosberet"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -964,7 +964,7 @@
 	item_state = "hosberet"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -975,7 +975,7 @@
 	item_state = "hosberet"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -1022,7 +1022,7 @@
 	item_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -1033,7 +1033,7 @@
 	item_state = "cargosoft"
 	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -1086,7 +1086,7 @@
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -1177,7 +1177,7 @@
 	item_state = "bluesoft"
 	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -1262,7 +1262,7 @@
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "marine_jumpsuit",
-		WEAR_R_HAND = "marine_jumpsuit"
+		WEAR_R_HAND = "marine_jumpsuit",
 	)
 
 /obj/item/clothing/under/marine/fluff/sas_elite/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -1511,7 +1511,7 @@
 	icon_state = "pmc_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
@@ -1529,7 +1529,7 @@
 	item_state = "swat"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
 	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEYES|HIDEFACE
@@ -1541,7 +1541,7 @@
 	item_state = "swat"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
 	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEYES|HIDEFACE
@@ -1569,7 +1569,7 @@
 	item_state = "cigar_on"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
 	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEFACE
@@ -1639,7 +1639,7 @@
 	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
 	)
 
 /obj/item/storage/backpack/marine/fluff/mitii
@@ -1650,7 +1650,7 @@
 	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
 	)
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
@@ -1661,7 +1661,7 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	item_state_slots = list(
 		WEAR_L_HAND = "marinepack",
-		WEAR_R_HAND = "marinepack"
+		WEAR_R_HAND = "marinepack",
 	)
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)

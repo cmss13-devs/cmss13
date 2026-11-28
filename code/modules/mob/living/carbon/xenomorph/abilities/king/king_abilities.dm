@@ -12,7 +12,15 @@
 
 	var/base_damage = 25
 
-	var/slash_sounds = list('sound/weapons/alien_claw_flesh1.ogg', 'sound/weapons/alien_claw_flesh2.ogg', 'sound/weapons/alien_claw_flesh3.ogg', 'sound/weapons/alien_claw_flesh4.ogg', 'sound/weapons/alien_claw_flesh5.ogg', 'sound/weapons/alien_claw_flesh6.ogg')
+	var/slash_sounds = list(
+		'sound/weapons/alien_claw_flesh1.ogg',
+		'sound/weapons/alien_claw_flesh2.ogg',
+		'sound/weapons/alien_claw_flesh3.ogg',
+		'sound/weapons/alien_claw_flesh4.ogg',
+		'sound/weapons/alien_claw_flesh5.ogg',
+		'sound/weapons/alien_claw_flesh6.ogg',
+		)
+
 XENO_ABILITY_STATS(onclick_rend, datum/action/xeno_action/onclick/rend)
 	return list(
 		XENO_STAT_BRUTE(base_damage, "Base brute damage"),

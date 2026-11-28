@@ -134,7 +134,7 @@ Private Military Contractors
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_EXPERT,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER, //trained in medicine more than combat
-		SKILL_CQC = SKILL_CQC_TRAINED
+		SKILL_CQC = SKILL_CQC_TRAINED,
 	)
 
 /datum/skills/pmc/engineer

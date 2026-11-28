@@ -183,6 +183,7 @@
 	color = "#B31008" // rgb: 179, 16, 8
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPERTHERMIC = 1)
+	flavor = "burning heat across your tongue"
 
 /datum/reagent/condensedcapsaicin
 	name = "Condensed Capsaicin"
@@ -228,9 +229,10 @@
 	id = "frostoil"
 	description = "A special oil that noticeably chills the body. Extracted from Ice Peppers."
 	reagent_state = LIQUID
-	color = "#B31008" // rgb: 139, 166, 233
+	color = "#9dc0d8"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPOTHERMIC = 6)
+	flavor = "bitter biting cold"
 
 // HYDRO HARD TIER CHEMS
 

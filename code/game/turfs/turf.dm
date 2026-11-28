@@ -267,7 +267,7 @@
 	changing_turf = FALSE
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
-		C.cleanup_cleanable()
+		C.cleanup_cleanable(override=TRUE)
 
 	var/turf/above = SSmapping.get_turf_above(src)
 	var/turf/below = SSmapping.get_turf_below(src)
@@ -1027,4 +1027,3 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/is_signal_obstructed()
 	var/area/laser_area = get_area(src)
 	return !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_2)
-

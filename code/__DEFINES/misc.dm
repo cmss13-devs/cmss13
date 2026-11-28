@@ -339,3 +339,10 @@
 #define PROC_RETURN_SLEEP -1
 
 #define RIDING_OFFSET_ALL "ALL"
+
+/*
+	Cleanables
+*/
+#define CLEANABLE_BY_WATER (1<<0)
+#define CLEANABLE_BY_CLEANER (1<<1)
+#define CLEANABLE_BY_SOAP (1<<2)

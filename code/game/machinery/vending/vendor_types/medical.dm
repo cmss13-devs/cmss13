@@ -751,7 +751,11 @@
 		list("Fire Extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
 		list("Ointment", floor(scale * 8), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", floor(scale * 8), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Splints", floor(scale * 8), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
+		list("Splints", floor(scale * 8), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+
+		list("MEDICHEW GUM", -1, null, null),
+		list("Caffeine Medichew", 6,/obj/item/storage/gum/medichew/caffeine, VENDOR_ITEM_REGULAR),
+		list("Nicotine Medichew", 6, /obj/item/storage/gum/medichew/nicotine, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag

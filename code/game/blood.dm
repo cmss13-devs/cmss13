@@ -62,15 +62,14 @@
 	return TRUE
 
 
-/atom/proc/clean_blood()
+/atom/proc/clean_blood(cleaning_reagent)
 	return FALSE
 
-/turf/clean_blood()
-	for(var/obj/effect/decal/cleanable/blood/B in src)
-		qdel(B)
-		. = 1
+/turf/clean_blood(cleaning_reagent)
+	for(var/obj/effect/decal/cleanable/blood/cleanable_blood in src)
+		. = cleanable_blood.cleanup_cleanable(cleaning_reagent)
 
-/obj/item/clean_blood()
+/obj/item/clean_blood(cleaning_reagent)
 	if(!blood_color)
 		return 0
 	blood_color = null
@@ -79,27 +78,35 @@
 		blood_overlay = null // so guns will actually be cleaned of blood
 	return 1
 
-/obj/item/clothing/gloves/clean_blood()
+/obj/item/clothing/gloves/clean_blood(cleaning_reagent)
 	. = ..()
 	gloves_blood_amt = 0
 
-/obj/item/clothing/shoes/clean_blood()
+/obj/item/clothing/shoes/clean_blood(cleaning_reagent)
 	. = ..()
 	shoes_blood_amt = 0
 
-/mob/living/carbon/human/clean_blood(clean_feet)
+/mob/living/carbon/human/clean_blood(clean_feet, cleaning_reagent)
 	if(gloves)
 		if(gloves.clean_blood())
 			update_inv_gloves()
-			. = 1
+			. = TRUE
 
 	else if(hands_blood_color)
 		hands_blood_color = null
 		hands_blood_amt = 0
 		update_inv_gloves()
-		. = 1
+		. = TRUE
 
 	if(clean_feet && !shoes && feet_blood_color)
 		feet_blood_color = null
 		update_inv_shoes()
-		return 1
+		. = TRUE
+
+	if(cleaning_reagent == "soap" || cleaning_reagent == "cleaner")
+		for(var/obj/bubblegum_bubble/gummy_mess in vis_contents)
+			if(gummy_mess.popped)
+				vis_contents -= gummy_mess
+				qdel(gummy_mess)
+				. = TRUE
+

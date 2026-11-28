@@ -7215,6 +7215,13 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
+"arP" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/almayer/bluecorner,
+/area/almayer/living/basketball)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -91108,9 +91115,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/bed/chair{
-	dir = 4
-	},
+/obj/structure/machinery/vending/gum,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "tQi" = (
@@ -93285,9 +93290,7 @@
 /turf/open/floor/almayer/emeraldcorner/west,
 /area/almayer/living/briefing)
 "uNN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer/blue,
 /area/almayer/living/basketball)
 "uNQ" = (
@@ -96709,10 +96712,10 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower/workshop/hangar)
 "wfx" = (
-/obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/vending/gum,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
 "wfE" = (
@@ -100166,10 +100169,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_bow)
 "xzf" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
+/obj/structure/machinery/vending/snack_generic,
 /turf/open/floor/almayer/blue/southeast,
 /area/almayer/living/basketball)
 "xzh" = (
@@ -100407,7 +100407,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/bravo)
 "xGF" = (
-/obj/structure/machinery/vending/snack{
+/obj/structure/machinery/vending/gum{
 	density = 0;
 	pixel_y = 18
 	},
@@ -211283,7 +211283,7 @@ uaI
 xsi
 adF
 aef
-kqN
+arP
 agA
 lXl
 yiu

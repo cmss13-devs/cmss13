@@ -160,7 +160,17 @@
 	trans_to_datum(V, amount, reaction = FALSE)
 	if(issynth(target))
 		return
-	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
+
+	var/list/reagent_weights = list()	//doing a pick_weight approach, otherwise dominant reagent will always be tasted
+	for(var/datum/reagent/reagent as anything in V.reagent_list)
+		var/weight = round(reagent.volume * 1000, 1)
+		if(weight > 0)
+			reagent_weights[reagent] = weight
+	var/datum/reagent/chosen_reagent = pick_weight(reagent_weights)
+	if(chosen_reagent.flavor)
+		to_chat(target, SPAN_NOTICE("You taste [chosen_reagent.flavor]."))
+	else
+		to_chat(target, SPAN_NOTICE("You taste [chosen_reagent]."))
 
 	for(var/datum/reagent/RG as anything in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)

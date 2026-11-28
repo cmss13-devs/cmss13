@@ -130,13 +130,53 @@ XENO_ABILITY_STATS(screech, datum/action/xeno_action/onclick/screech)
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))
+	RegisterSignal(L, COMSIG_XENO_FINISH_BUILDING, PROC_REF(build_from_queue))
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/build_from_queue(mob/living/carbon/xenomorph/queen/queen_owner, message = TRUE)
+
+	if(!length(queen_owner.current_building_nodes))
+		return
+
+	var/obj/effect/alien/resin/building_node/queued_node = queen_owner.current_building_nodes[1]
+	if(!queued_node)
+		return
+
+
+	// Build turfs (walls) before objects (doors, and others)
+	// This is because 1. Walls are the most important resin construction, 2. Walls are necessary for doors
+	if((queued_node.resin_type in typesof(/datum/resin_construction/resin_obj)))
+		for(var/obj/effect/alien/resin/building_node/other_node in queen_owner.current_building_nodes)
+			if(other_node.resin_type in typesof(/datum/resin_construction/resin_turf))
+				queued_node = other_node
+
+	if(queued_node.temp_disable && (length(queen_owner.current_building_nodes) > 1))
+		var/index_of_node = queen_owner.current_building_nodes[queued_node]
+		queued_node = queen_owner.current_building_nodes[index_of_node + 1]
+
+	// Shove the new node to the back of the list, in case it's a door and we fail to make it later
+	LAZYREMOVE(queen_owner.current_building_nodes, queued_node)
+	LAZYADD(queen_owner.current_building_nodes, queued_node)
+
+	if(queued_node.try_fill(queen_owner, build_cost = (plasma_cost != 0)) == SECRETE_RESIN_SUCCESS)
+		return build_from_queue(queen_owner, message)
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/life_tick()
+	. = ..()
+	var/mob/living/carbon/xenomorph/queen/queen_owner = owner
+	if(!queen_owner.ovipositor || queen_owner.action_busy)
+		return
+	build_from_queue(queen_owner, message = FALSE)
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/remove_from(mob/living/carbon/xenomorph/xeno)
+	..()
+	UnregisterSignal(xeno, COMSIG_XENO_FINISH_BUILDING)
 
 // queenos don't need weeds under them to build on ovi
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/can_remote_build()
 	return TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
-	var/boost_duration = 30 MINUTES
+	var/boost_duration = 5 MINUTES
 	// In the event secrete_resin is given after round start
 	if(SSticker.round_start_time)
 		boost_duration = (30 MINUTES) - (world.time - SSticker.round_start_time)
@@ -145,7 +185,7 @@ XENO_ABILITY_STATS(screech, datum/action/xeno_action/onclick/screech)
 		xeno_cooldown = 0
 		xeno_cooldown_interrupt_penalty = 3 SECONDS // still punish the queen when interrupted
 		plasma_cost = 0
-		build_speed_mod = 1
+		build_speed_mod = 0.1
 		thick = TRUE // Allow queen to remotely thicken structures.
 		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, PROC_REF(override_secrete_thick_resin))
 		addtimer(CALLBACK(src, PROC_REF(disable_boost)), boost_duration)

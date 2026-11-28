@@ -43,7 +43,6 @@
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
-	max_build_dist = 1
 
 	tackle_min = 2
 	tackle_max = 4

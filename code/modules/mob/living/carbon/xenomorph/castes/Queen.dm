@@ -826,6 +826,11 @@
 	set_resting(FALSE)
 	ovipositor = TRUE
 
+	// Change the existing nodes to be YELLOW.
+	for(var/obj/effect/alien/resin/building_node/build_node in current_building_nodes)
+		build_node.ovi_node = TRUE
+		build_node.create_node_image(src)
+
 	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
 	for(var/datum/action/xeno_action/action in actions)
 		action.hide_from(src)
@@ -949,6 +954,11 @@
 		var/datum/action/minimap/minimap_action = locate() in actions
 		if(minimap_action && !minimap_action.minimap_displayed)
 			minimap_action.action_activate()
+
+	// Adapt the nodes to be normal building nodes.
+	for(var/obj/effect/alien/resin/building_node/build_node in current_building_nodes)
+		build_node.ovi_node = FALSE
+		build_node.create_node_image(src)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
 

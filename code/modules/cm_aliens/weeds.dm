@@ -153,6 +153,8 @@
 
 
 /obj/effect/alien/weeds/Destroy()
+	for(var/atom/thingy in get_turf(src))
+		SEND_SIGNAL(thingy, COMSIG_TURF_WEED_DESTROYED)
 	if(parent)
 		if(istype(parent, /obj/effect/alien/weeds/node/pylon))
 			var/obj/effect/alien/weeds/node/pylon/P = parent

@@ -85,7 +85,8 @@
 /obj/effect/landmark/interior/spawn/interior_camera{
 	dir = 5;
 	pixel_x = -18;
-	pixel_y = 38
+	pixel_y = 38;
+	layer = 3.3
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8;
@@ -295,6 +296,10 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8;
 	pixel_y = 14
+	},
+/obj/structure/vehicle_locker/movie{
+	pixel_y = 34;
+	pixel_x = 1
 	},
 /turf/open/shuttle/vehicle/floor_2,
 /area/interior/vehicle/apc)

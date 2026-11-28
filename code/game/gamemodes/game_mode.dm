@@ -64,6 +64,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(bypass_checks)
 		return TRUE
 	var/players = 0
+
 	for(var/mob/new_player/player in GLOB.new_player_list)
 		if(player.client && player.ready)
 			players++

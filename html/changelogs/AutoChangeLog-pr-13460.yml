@@ -1,0 +1,4 @@
+author: "doc12693420"
+delete-after: True
+changes:
+  - rscadd: "vehicle lockers inside vehicles no longer have access restrictions"

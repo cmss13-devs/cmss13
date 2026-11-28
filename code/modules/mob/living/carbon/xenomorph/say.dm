@@ -71,7 +71,7 @@
 		return
 
 	if(speaking_noise)
-		playsound(loc, speaking_noise, 25, 1)
+		playsound(loc, speaking_noise, client?.prefs.volume_preferences[VOLUME_XENO_VOICES] * 100, 1)
 	..(message, speaking, verb, null, null, message_range, null)
 
 /mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)

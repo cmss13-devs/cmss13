@@ -25,6 +25,7 @@
 
 	// Cameras
 	var/camera_target_id
+	var/list/operator_map_aims = list()
 	/// shared between camera/firemission targeting
 	var/datum/weakref/acknowledged_target_ref
 	/// current target
@@ -39,7 +40,8 @@
 
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	/// tacmap embedded in the console's ui
-	var/datum/tacmap_holder/tacmap_holder
+	/// Private embedded map holders, keyed by weapons operator.
+	var/list/operator_tacmap_holders = list()
 	/// client ceiling layers used by the user viewing this console.
 	var/list/atom/movable/screen/minimap_ceiling_layer/ceiling_layers = list()
 
@@ -65,12 +67,12 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = TRUE)
+	AddComponent(/datum/component/tacmap/dropship, has_drawing_tools = FALSE, minimap_flag = minimap_flag | MINIMAP_FLAG_DROPSHIP, has_update = TRUE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	QDEL_LIST_ASSOC_VAL(ceiling_layers)
-	QDEL_NULL(tacmap_holder)
+	QDEL_LIST_ASSOC_VAL(operator_tacmap_holders)
 	if(selected_cas_signal)
 		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
 		selected_cas_signal = null
@@ -92,6 +94,7 @@
 	camera_map_name = value
 
 /obj/structure/machinery/computer/dropship_weapons/proc/unregister_tacmap(mob/user)
+	var/datum/tacmap_holder/tacmap_holder = operator_tacmap_holders[user]
 	if(!tacmap_holder)
 		return
 
@@ -99,6 +102,8 @@
 	user.client?.clear_map(tacmap_holder.map_ref)
 	QDEL_NULL(ceiling_layer)
 	ceiling_layers -= user
+	operator_tacmap_holders -= user
+	qdel(tacmap_holder)
 
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
@@ -187,6 +192,7 @@
 		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
 		registered = TRUE
 
+	var/datum/tacmap_holder/tacmap_holder = operator_tacmap_holders[user]
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
@@ -194,9 +200,11 @@
 			if(!tacmap_holder)
 				var/list/ground_zlevels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 				if(length(ground_zlevels))
-					tacmap_holder = new(null, ground_zlevels[1], minimap_flag, drawing = TRUE, popup = FALSE, uncached = TRUE)
+					tacmap_holder = new(null, ground_zlevels[1], minimap_flag | MINIMAP_FLAG_DROPSHIP, drawing = TRUE, popup = FALSE, for_client = user.client, uncached = TRUE)
+					operator_tacmap_holders[user] = tacmap_holder
 					tacmap_component.is_embedded = TRUE
 			if(tacmap_holder?.map)
+				tacmap_component.configure_user_map(tacmap_holder.map, user)
 				var/matrix/transform = matrix()
 				transform.Translate(-16, 14)
 				tacmap_holder.map.transform = transform
@@ -206,6 +214,7 @@
 				ceiling_layers[user] = ceiling_layer
 				user.client.register_map_obj(ceiling_layer)
 			else
+				operator_tacmap_holders -= user
 				QDEL_NULL(tacmap_holder)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
@@ -213,6 +222,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
+	operator_map_aims -= user
 
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	if(tacmap_component)
@@ -238,6 +248,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["camera_map_ref"] = camera_map_name
+	var/datum/tacmap_holder/tacmap_holder = operator_tacmap_holders[user]
 	if(tacmap_holder)
 		.["tactical_map_ref"] = tacmap_holder.map_ref
 
@@ -399,6 +410,7 @@
 		if("set-camera")
 			var/target_camera = params["equipment_id"]
 			set_camera_target(target_camera)
+			set_operator_map_aim(user, get_cas_signal(target_camera), 0, 0)
 			return TRUE
 
 		if("set-camera-sentry")
@@ -517,12 +529,13 @@
 			// and block the user from accessing TGUI
 			// we change the minute_count
 			user.client.reduce_minute_count()
-			set_firemission_camera_offset(
+			if(set_firemission_camera_offset(
 				target_id = target_id,
 				horizontal_offset = text2num(params["x_offset_value"]),
 				vertical_offset = text2num(params["y_offset_value"]),
 				refresh_equipment = TRUE,
-			)
+			))
+				set_operator_map_aim(user, get_cas_signal(camera_target_id), last_ui_offset_x, last_ui_offset_y)
 
 			return TRUE
 
@@ -641,6 +654,31 @@
 			if(valid_only && !sig.valid_signal())
 				continue
 			return sig
+
+/obj/structure/machinery/computer/dropship_weapons/proc/set_operator_map_aim(mob/user, datum/cas_signal/signal, offset_x, offset_y)
+	if(!signal || !isnum(offset_x) || !isnum(offset_y))
+		operator_map_aims -= user
+	else
+		operator_map_aims[user] = list("signal" = signal, "x" = offset_x, "y" = offset_y)
+	var/datum/component/tacmap/component = GetComponent(/datum/component/tacmap)
+	var/list/user_objects = component?.interactees[user]
+	var/atom/movable/screen/minimap/user_map = user_objects?["map"]
+	user_map?.update_operator_aim_marker()
+	var/datum/tacmap_holder/embedded = operator_tacmap_holders[user]
+	embedded?.map?.update_operator_aim_marker()
+
+/obj/structure/machinery/computer/dropship_weapons/proc/get_operator_map_aim(mob/user)
+	var/list/aim = operator_map_aims[user]
+	if(!aim)
+		return
+	var/datum/cas_signal/signal = aim["signal"]
+	var/datum/cas_iff_group/group = GLOB.cas_groups[faction]
+	if(QDELETED(signal) || !(signal in group?.cas_signals))
+		return
+	var/obj/source = signal.signal_loc
+	if(QDELETED(source) || !isturf(source.loc) || source.z != signal.z_initial)
+		return
+	return locate(source.x + aim["x"], source.y + aim["y"], source.z)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
 	camera_area_equipment = null

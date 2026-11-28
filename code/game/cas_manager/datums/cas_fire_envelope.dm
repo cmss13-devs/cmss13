@@ -25,6 +25,10 @@
 
 	var/obj/effect/firemission_guidance/guidance
 	var/atom/tracked_object
+	var/datum/fire_support_warning/tacmap_warning
+	var/datum/cas_fire_mission/warning_mission
+	var/turf/warning_target
+	var/warning_direction
 
 	/// Saved fire mission offsets, keyed by mission and equipment configuration.
 	var/list/saved_equipment_configs = list()
@@ -34,6 +38,7 @@
 	missions = list()
 
 /datum/cas_fire_envelope/Destroy(force, ...)
+	clear_tacmap_warning()
 	linked_console = null
 	saved_equipment_configs = null
 	untrack_object()
@@ -50,6 +55,7 @@
 
 	for(var/datum/cas_fire_mission/mission as anything in missions)
 		mission.update_weapons(weapons, fire_length, saved_equipment_configs)
+	refresh_tacmap_warning()
 
 /// Saves fire mission configurations for equipment that is about to be removed.
 /datum/cas_fire_envelope/proc/save_equipment_configs(list/obj/structure/dropship_equipment/weapon/current_weapons)
@@ -134,14 +140,17 @@
 		return FIRE_MISSION_NOT_EXECUTABLE
 	if(check_result == FIRE_MISSION_ALL_GOOD)
 		save_equipment_config(mission, fire_mission_record.weapon)
+		refresh_tacmap_warning()
 		return FIRE_MISSION_ALL_GOOD
 	if(check_result == FIRE_MISSION_WEAPON_OUT_OF_AMMO)
 		save_equipment_config(mission, fire_mission_record.weapon)
+		refresh_tacmap_warning()
 		return FIRE_MISSION_ALL_GOOD
 
 	mission_error = mission.error_message(check_result)
 	if(skip_checks)
 		save_equipment_config(mission, fire_mission_record.weapon)
+		refresh_tacmap_warning()
 		return FIRE_MISSION_ALL_GOOD
 
 	//we have mission error. Fill the thing and restore previous state
@@ -337,9 +346,15 @@
 
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir, mob/user)
+	if(QDELETED(mission))
+		clear_tacmap_warning()
+		stat = FIRE_MISSION_STATE_OFF_TARGET
+		return
+	refresh_tacmap_warning()
 	stat = FIRE_MISSION_STATE_FIRING
 	var/result = mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src, user)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
+	addtimer(CALLBACK(src, PROC_REF(clear_tacmap_warning)), 1 SECONDS)
 	// shadow effect only appears after firemission finishes firing
 	var/exit_duration = min(CAS_SHADOW_EXIT_DURATION, exit_phase_end - world.time)
 	if(result == FIRE_MISSION_ALL_GOOD && exit_duration > 0)
@@ -353,8 +368,35 @@
 
 /// Step 7: Sets the fire mission stat to FIRE_MISSION_STATE_IDLE
 /datum/cas_fire_envelope/proc/end_cooldown()
+	clear_tacmap_warning()
 	stat = FIRE_MISSION_STATE_IDLE
 	firemission_initiate_time = 0
+
+/datum/cas_fire_envelope/proc/clear_tacmap_warning()
+	SIGNAL_HANDLER
+	if(warning_mission)
+		UnregisterSignal(warning_mission, COMSIG_PARENT_QDELETING)
+	warning_mission = null
+	warning_target = null
+	QDEL_NULL(tacmap_warning)
+
+/datum/cas_fire_envelope/proc/refresh_tacmap_warning()
+	QDEL_NULL(tacmap_warning)
+	if(!warning_mission || !warning_target || linked_console?.faction != FACTION_MARINE)
+		return
+	var/list/rectangle = warning_mission.get_tacmap_rectangle(warning_direction)
+	if(rectangle)
+		tacmap_warning = new(warning_target, 0, "CAS", execution_start + fire_length * step_delay + 30 SECONDS, "#54c7ec", rectangle)
+
+/datum/cas_fire_envelope/proc/start_tacmap_warning(datum/cas_fire_mission/mission, turf/target, direction)
+	clear_tacmap_warning()
+	if(QDELETED(mission) || !target || linked_console?.faction != FACTION_MARINE)
+		return
+	warning_mission = mission
+	warning_target = target
+	warning_direction = direction
+	RegisterSignal(mission, COMSIG_PARENT_QDELETING, PROC_REF(clear_tacmap_warning))
+	refresh_tacmap_warning()
 
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission, mob/user)
@@ -369,6 +411,7 @@
 		return
 	firemission_initiate_time = world.time
 	to_chat(user, SPAN_ALERT("Fire Mission underway!"))
+	start_tacmap_warning(mission, target_turf, dir)
 	// Confirm the accepted mission before the lase can end during the approach.
 	signal?.notify_cas_fire(linked_console, TRUE)
 	exit_phase_end = world.time + flyoff_period
